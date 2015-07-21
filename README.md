@@ -1,15 +1,16 @@
-== README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 技术栈
 
-Things you may want to cover:
+* Ruby 2.2.2/Rails 4.2.3
+* MySQL
+* HAML/SCSS
 
-* Ruby version
+### 配置
+
+1. 复制 config 文件下 .example 结尾的文件，并删除 .example
 
 * System dependencies
-
-* Configuration
 
 * Database creation
 
@@ -20,9 +21,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
