@@ -25,11 +25,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Use Unicorn as the app server
+# gem 'puma', group: :production
+
+# Use Mina for deployment
+# gem 'mina', group: :development
+
+# Make any Ruby object quack like ActiveRecord
+gem 'active_type'
 
 # 后台模板相关
 gem 'bootstrap-sass'
