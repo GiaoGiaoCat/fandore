@@ -31,6 +31,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# 后台模板相关
+gem 'bootstrap-sass'
+gem "font-awesome-rails"
+
 # 服务器性能监控
 gem 'oneapm_rpm'
 
