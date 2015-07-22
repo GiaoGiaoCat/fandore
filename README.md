@@ -3,7 +3,7 @@
 ### 技术栈
 
 * Ruby 2.2.2/Rails 4.2.3
-* MySQL
+* MySQL 5.5
 * haml/scss
 
 ### 资料
@@ -11,6 +11,10 @@
 * [haml Tutorial](http://haml.info/tutorial.html)
 * [haml reference](http://haml.info/docs/yardoc/file.REFERENCE.html)
 * [html2haml](http://html2haml.herokuapp.com/)
+
+### 第三方服务
+
+* [360网站卫士常用前端公共库CDN服务](http://libs.useso.com/)
 
 ### 配置
 
