@@ -33,7 +33,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # 后台模板相关
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+# HTML Abstraction Markup Language
+gem 'haml-rails'
 
 # 服务器性能监控
 gem 'oneapm_rpm'

@@ -4,7 +4,13 @@
 
 * Ruby 2.2.2/Rails 4.2.3
 * MySQL
-* HAML/SCSS
+* haml/scss
+
+### 资料
+
+* [haml Tutorial](http://haml.info/tutorial.html)
+* [haml reference](http://haml.info/docs/yardoc/file.REFERENCE.html)
+* [html2haml](http://html2haml.herokuapp.com/)
 
 ### 配置
 
