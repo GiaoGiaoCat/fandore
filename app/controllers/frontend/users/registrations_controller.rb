@@ -1,5 +1,5 @@
 class Frontend::Users::RegistrationsController < Frontend::ApplicationController
-  skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user!
 
   def new
     build_user
@@ -18,7 +18,7 @@ private
 
   def save_user
     if @user.save
-      redirect_to root_url
+      redirect_to root_path
     end
   end
 

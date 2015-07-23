@@ -1,5 +1,5 @@
 class Frontend::Users::SessionsController < Frontend::ApplicationController
-  skip_before_filter :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def new
     build_sign_in
