@@ -27,10 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 
 # Use Unicorn as the app server
-# gem 'puma', group: :production
-
-# Use Mina for deployment
-# gem 'mina', group: :development
+gem 'puma', group: :production
 
 # Make any Ruby object quack like ActiveRecord
 gem 'active_type'
@@ -58,18 +55,12 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  #自动部署工具
+  # Use Mina for deployment
   gem 'mina'
-
-  #自动部署工具----puma
   gem 'mina-puma', :require => false
 end
 
 group :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-end
-
-group :production do
-  gem 'puma'
 end
