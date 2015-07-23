@@ -1,5 +1,6 @@
 class Frontend::Users::RegistrationsController < Frontend::ApplicationController
   skip_before_action :authenticate_user!
+  layout 'empty'
 
   def new
     build_user

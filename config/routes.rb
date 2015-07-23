@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   controller 'frontend/users/sessions' do
     get 'sign_in' => :new
     post 'sign_in' => :create
-    post 'sign_out' => :destroy
+    delete 'sign_out' => :destroy
   end
 
   # You can have the root of your site routed with "root"

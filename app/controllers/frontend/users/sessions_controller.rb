@@ -1,5 +1,6 @@
 class Frontend::Users::SessionsController < Frontend::ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
+  layout 'empty'
 
   def new
     build_sign_in
