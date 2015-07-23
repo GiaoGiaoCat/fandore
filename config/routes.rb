@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     get 'signup' => :new
     post 'signup' => :create
   end
-  
+
+  controller 'frontend/users/sessions' do
+    get 'login' => :new
+    post 'login' => :create
+    post 'logout' => :destroy
+  end
+
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
