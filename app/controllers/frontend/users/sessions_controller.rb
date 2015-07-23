@@ -28,8 +28,13 @@ private
     end
   end
 
+  def sign_out
+    session[:current_user_id] = nil
+    @current_user = nil
+  end
+
   def sign_in_params
-    user_params = params[:sign_in]
+    user_params = params[:user_login_form]
     user_params ? user_params.permit(:username, :password) : {}
   end
 

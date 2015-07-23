@@ -1,0 +1,9 @@
+= form_for(@sign_in, url: login_path) do |f|
+  %div
+    = f.label '手机/邮件'
+    = f.text_field :username, autofocues: true
+  %div
+    = f.label '密码'
+    = f.password_field :password
+  %div
+    = f.submit
