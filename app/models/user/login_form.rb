@@ -3,9 +3,6 @@ class User::LoginForm < ActiveType::Object
   attribute :password, :string
   attribute :remember_me, :boolean
 
-  validates :username, presence: true
-  validates :password, presence: true
-
   validate :validate_user_exists
   validate :validate_password_correct
 

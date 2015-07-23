@@ -1,4 +1,10 @@
 = form_for(@user, url: sign_up_path) do |f|
+  - if @user.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @user.errors.full_messages
+          %li= message
   %div
     = f.label '手机'
     = f.text_field :mobile
