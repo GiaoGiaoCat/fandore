@@ -1,0 +1,15 @@
+= form_for(@user, url: signup_path) do |f|
+  %div
+    = f.label '手机'
+    = f.text_field :mobile
+  %div
+    = f.label '邮件'
+    = f.text_field :email, autofocues: true
+  %div
+    = f.label '密码'
+    = f.password_field :password
+  %div
+    = f.label '重复密码'
+    = f.password_field :password_confirmation
+  %div
+    = f.submit
