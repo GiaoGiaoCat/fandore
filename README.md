@@ -11,6 +11,7 @@
 * [haml Tutorial](http://haml.info/tutorial.html)
 * [haml reference](http://haml.info/docs/yardoc/file.REFERENCE.html)
 * [html2haml](http://html2haml.herokuapp.com/)
+* [ransack](https://github.com/activerecord-hackery/ransack)
 
 ### 第三方服务
 

@@ -135,6 +135,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
+    ransack (1.6.6)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.2)
     rdoc (4.2.0)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
@@ -192,6 +198,7 @@ DEPENDENCIES
   oneapm_rpm
   puma
   rails (= 4.2.3)
+  ransack
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
