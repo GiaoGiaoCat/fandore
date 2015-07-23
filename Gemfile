@@ -35,6 +35,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Make any Ruby object quack like ActiveRecord
 gem 'active_type'
 
+# Object-based searching.
+gem 'ransack'
+
 # 后台模板相关
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
