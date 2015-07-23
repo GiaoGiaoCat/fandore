@@ -54,9 +54,19 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #自动部署工具
+  gem 'mina'
+
+  #自动部署工具----puma
+  gem 'mina-puma', :require => false
 end
 
 group :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+end
+
+group :production do
+  gem 'puma'
 end
