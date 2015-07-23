@@ -2,8 +2,8 @@ source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use mysql as the database for Active Record
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,13 +23,27 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+# gem 'puma', group: :production
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Use Mina for deployment
+# gem 'mina', group: :development
+
+# Make any Ruby object quack like ActiveRecord
+gem 'active_type'
+
+# 后台模板相关
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
+
+# HTML Abstraction Markup Language
+gem 'haml-rails'
+
+# 服务器性能监控
+gem 'oneapm_rpm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,4 +54,19 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #自动部署工具
+  gem 'mina'
+
+  #自动部署工具----puma
+  gem 'mina-puma', :require => false
+end
+
+group :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'puma'
 end

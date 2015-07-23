@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title Fandore
+    / Main css styles
+    = stylesheet_link_tag    'backend', media: 'all', 'data-turbolinks-track' => true
+    / Main javascript files
+    = javascript_include_tag 'backend', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    #wrapper
+      = render 'layouts/navigation'
+      #page-wrapper.gray-bg
+        = render 'layouts/topnavbar'
+        = yield
+        = render 'layouts/footer'
