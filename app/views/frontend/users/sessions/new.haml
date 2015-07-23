@@ -1,4 +1,10 @@
 = form_for(@sign_in, url: login_path) do |f|
+  - if @sign_in.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @sign_in.errors.full_messages
+          %li= message
   %div
     = f.label '手机/邮件'
     = f.text_field :username, autofocues: true

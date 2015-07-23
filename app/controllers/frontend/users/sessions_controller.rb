@@ -1,5 +1,5 @@
 class Frontend::Users::SessionsController < Frontend::ApplicationController
-  # before_filter :authenticate_user!, only: [:destroy]
+  skip_before_filter :authenticate_user!, only: [:new, :create]
 
   def new
     build_sign_in
@@ -23,13 +23,13 @@ private
 
   def save_sign_in
     if @sign_in.save
-      session[:current_user_id] = @sign_in.user.id
+      session[:user_id] = @sign_in.user.id
       redirect_to root_path
     end
   end
 
   def sign_out
-    session[:current_user_id] = nil
+    session[:user_id] = nil
     @current_user = nil
   end
 

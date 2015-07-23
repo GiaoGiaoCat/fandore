@@ -3,14 +3,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   controller 'frontend/users/registrations' do
-    get 'signup' => :new
-    post 'signup' => :create
+    get 'sign_up' => :new
+    post 'sign_up' => :create
   end
 
   controller 'frontend/users/sessions' do
-    get 'login' => :new
-    post 'login' => :create
-    post 'logout' => :destroy
+    get 'sign_in' => :new
+    post 'sign_in' => :create
+    post 'sign_out' => :destroy
   end
 
   # You can have the root of your site routed with "root"
