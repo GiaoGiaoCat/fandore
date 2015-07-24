@@ -11,22 +11,31 @@ class Frontend::Users::ProfileController < Frontend::ApplicationController
 
   def update
     load_user
-    up_user
+    build_user
+    save_user or render 'edit'
   end
 
-private
+  private
 
   def load_user
     @user = current_user
   end
 
-  def up_user
-    current_user.update(user_params)
-    redirect_to action: :show
+  def build_user
+    @user.attributes = user_params
+  end
+
+  def save_user
+    if @user.save
+      redirect_to users_profile_path(current_user)
+    end
   end
 
   def user_params
+    profile_attrs = [
+      :avatar, :name, :birthday, :gender, :partner_name, :partner_birthday, :partner_email, :partner_mobile
+    ]
     user_params = params[:user]
-    user_params ? user_params.permit(:name, :avatar, :gender, :birthday) : {}
+    user_params ? user_params.permit(:email, :mobile, :password, :password_confirmation, profile_attributes: profile_attrs) : {}
   end
 end
