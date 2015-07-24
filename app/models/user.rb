@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   after_create :send_sms
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile, update_only: true
   # class methods .............................................................
   # public instance methods ...................................................
   def profile
@@ -34,5 +34,5 @@ class User < ActiveRecord::Base
   def send_sms
     User::VerificationCode.send_verification_code(self.mobile)
   end
-  
+
 end

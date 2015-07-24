@@ -27,7 +27,7 @@ class Frontend::Users::ProfileController < Frontend::ApplicationController
 
   def save_user
     if @user.save
-      redirect_to users_profile_path(current_user)
+      redirect_to users_profile_path
     end
   end
 
