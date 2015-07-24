@@ -4,7 +4,7 @@
     .col-sm-10= f.telephone_field :mobile, class: 'form-control'
   .form-group
     = f.label :email, class: 'col-sm-2 control-label'
-    .col-sm-10= f.text_field :email, class: 'form-control'
+    .col-sm-10= f.email_field :email, class: 'form-control'
   - if @user.new_record?
     .form-group
       = f.label :password, class: 'col-sm-2 control-label'
@@ -12,14 +12,32 @@
     .form-group
       = f.label :password_confirmation, class: 'col-sm-2 control-label'
       .col-sm-10= f.password_field :password_confirmation, class: 'form-control'
-
+  .hr-line-dashed
   = f.fields_for :profile do |field|
     .form-group
       = field.label :name, class: 'col-sm-2 control-label'
       .col-sm-10= field.text_field :name, class: 'form-control'
     .form-group
+      = field.label :birthday, class: 'col-sm-2 control-label'
+      .col-sm-10= field.datetime_field :birthday, class: 'form-control'
+    .form-group
+      = field.label :gender, class: 'col-sm-2 control-label'
+      .col-sm-10= field.text_field :gender, class: 'form-control'
+
+    .hr-line-dashed
+
+    .form-group
       = field.label :partner_name, class: 'col-sm-2 control-label'
       .col-sm-10= field.text_field :partner_name, class: 'form-control'
+    .form-group
+      = field.label :partner_birthday, class: 'col-sm-2 control-label'
+      .col-sm-10= field.datetime_field :partner_birthday, class: 'form-control'
+    .form-group
+      = field.label :partner_email, class: 'col-sm-2 control-label'
+      .col-sm-10= field.email_field :partner_email, class: 'form-control'
+    .form-group
+      = field.label :partner_mobile, class: 'col-sm-2 control-label'
+      .col-sm-10= field.text_field :partner_mobile, class: 'form-control'
 
   .hr-line-dashed
   .form-group

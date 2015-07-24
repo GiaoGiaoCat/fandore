@@ -48,10 +48,12 @@ gem 'oneapm_rpm'
 # http请求
 gem 'faraday'
 
-# 验证码
+# ActiveModel::Otp makes adding Two Factor Authentication (TFA) to a model simple.
 gem 'active_model_otp'
 
+# Enumerated attributes with I18n and ActiveRecord/Mongoid support
 gem 'enumerize'
+
 gem 'colorize'
 gem 'carrierwave'
 gem 'kaminari'
