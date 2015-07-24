@@ -15,11 +15,31 @@
               %a{:href => "#"} Logout
         .logo-element
           IN+
-      %li{ class: is_active_controller('welcome') }
+      %li{ class: is_active_controller('backend/dashboards') }
         = link_to "/" do
-          %i.fa.fa-laptop
-          %span.nav-label Main page
+          %i.fa.fa-dashboard
+          %span.nav-label 仪表面板
       %li
-        = link_to "/home/minor" do
+        = link_to '#' do
+          %i.fa.fa-cubes
+          %span.nav-label 商品管理
+      %li
+        = link_to '#' do
+          %i.fa.fa-shopping-cart
+          %span.nav-label 销售管理
+      %li
+        = link_to '#' do
+          %i.fa.fa-fax
+          %span.nav-label 售后管理
+      %li
+        = link_to '#' do
+          %i.fa.fa-comments
+          %span.nav-label 评论管理
+      %li{ class: is_active_controller('backend/users') }
+        = link_to admin_users_path do
+          %i.fa.fa-users
+          %span.nav-label 会员管理
+      %li
+        = link_to '#' do
           %i.fa.fa-desktop
-          %span.nav-label Minor page
+          %span.nav-label 系统管理

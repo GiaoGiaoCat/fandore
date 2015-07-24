@@ -1,0 +1,34 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    %h3 Welcome to IN+
+    %p
+      Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+    %p Login in. To see it in action.
+    = form_for(@user, url: users_profile_update_path) do |f|
+      - if @user.errors.any?
+        .error_messages
+          %h2 Form is invalid
+          %ul
+            - for message in @user.errors.full_messages
+              %li= message
+      .form-group
+        = label :name, "姓名"
+        = f.text_field :name, class: 'form-control'
+      .form-group
+        = label :name, "邮箱"
+        = f.text_field :email, class: 'form-control'
+      .form-group
+        = label :name, "头像"
+        = f.file_field :avatar, class: 'form-control'
+      .form-group
+        = label :name, "性别"
+        = f.select :gender, User.gender.options, {}, class: 'form-control'
+      .form-group
+        = label :name, "生日"
+        = f.date_field :birthday, class: 'form-control'
+
+      = f.submit '更新', class: 'btn btn-primary block full-width m-b'
+    %p.m-t
+      %small Inspinia we app framework base on Bootstrap 3 &#169; 2015

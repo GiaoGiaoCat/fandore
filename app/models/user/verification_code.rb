@@ -1,38 +1,42 @@
-class User < ActiveRecord::Base
+class User::VerificationCode < ActiveRecord::Base
   # extends ...................................................................
-  has_secure_password
-  has_one_time_password length: 6
   # includes ..................................................................
   # constants .................................................................
+  self.table_name = "verification_codes"
   # related macros ............................................................
   # relationships .............................................................
-  has_one :profile
-  has_many :verification_codes
+  belongs_to :user
   # validations ...............................................................
-  validates :mobile, presence: true,
-            uniqueness: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            length: { in: 6..20 },
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
-  after_create :send_sms
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  accepts_nested_attributes_for :profile
   # class methods .............................................................
-  # public instance methods ...................................................
-  def profile
-    super || build_profile
+  class << self
+    def send_verification_code(mobile)
+      user = User.find_by(mobile: mobile.to_s)
+      code = user.otp_code(time: Time.now + 1200)
+      User::VerificationCode.create(user: user, code: code, mobile: user.mobile)
+      # User::Sms.send_message(mobile,'twMG94',"sms_reg_code : #{code}")
+    end
+
+    def registration_code(mobile)
+      code = rand(999999)
+      User::VerificationCode.create(code: code, mobile: mobile)
+      # User::Sms.send_message(mobile,'twMG94',"sms_reg_code : #{code}")
+    end
+
+
+    def self.verify(mobile, code)
+      user = User.find_by(mobile: mobile)
+      user && user.authenticate_otp(code, drift: 1200)
+    end
   end
+  # public instance methods ...................................................
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
 
-  def send_sms
-    User::VerificationCode.send_verification_code(self.mobile)
+  def generate_code
+    Time.now.to_i[0..5]
   end
-  
 end

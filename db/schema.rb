@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722134043) do
+ActiveRecord::Schema.define(version: 20150724152706) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            limit: 100
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20150722134043) do
     t.boolean  "is_email_actived",             default: false, null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.string   "otp_secret_key",   limit: 255
+    t.integer  "otp_counter",      limit: 4
   end
+
+  create_table "verification_codes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "code",       limit: 24
+    t.string   "mobile",     limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "verification_codes", ["user_id"], name: "index_verification_codes_on_user_id", using: :btree
 
 end
