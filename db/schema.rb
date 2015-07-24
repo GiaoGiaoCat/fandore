@@ -13,6 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20150724152706) do
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
+    t.string   "avatar",           limit: 255
+    t.string   "name",             limit: 40
+    t.datetime "birthday"
+    t.integer  "gender",           limit: 4
+    t.string   "partner_name",     limit: 40
+    t.datetime "partner_birthday"
+    t.string   "partner_email",    limit: 100
+    t.string   "partner_mobile",   limit: 50
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",            limit: 100
     t.string   "mobile",           limit: 50
@@ -20,6 +34,11 @@ ActiveRecord::Schema.define(version: 20150724152706) do
     t.boolean  "is_email_actived",             default: false, null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.string   "avatar",           limit: 255
+    t.string   "name",             limit: 255
+    t.integer  "gender",           limit: 4
+    t.datetime "birthday"
+    t.string   "role",             limit: 255
     t.string   "otp_secret_key",   limit: 255
     t.integer  "otp_counter",      limit: 4
   end
@@ -34,4 +53,5 @@ ActiveRecord::Schema.define(version: 20150724152706) do
 
   add_index "verification_codes", ["user_id"], name: "index_verification_codes_on_user_id", using: :btree
 
+  add_foreign_key "profiles", "users"
 end
