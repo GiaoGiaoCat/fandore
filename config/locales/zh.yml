@@ -189,6 +189,7 @@ zh:
       last_word_connector: ! ', 和 '
       two_words_connector: ! ' 和 '
       words_connector: ! ', '
+
   time:
     am: 上午
     formats:
@@ -200,6 +201,11 @@ zh:
       date_only_short: ! '%Y-%m-%d'
       time_only: ! '%H:%M'
     pm: 下午
+
+  enumerize:
+    user/profile:
+      male: 男
+      female: 女
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
@@ -220,9 +226,15 @@ zh:
         email: '邮件'
         password: '密码'
         password_confirmation: '确认密码'
-      backend_users/sign_in:
-        username: '用户名'
-        password: '密码'
+      user/profile:
+        avatar: '头像'
+        name: '姓名'
+        birthday: '生日'
+        gender: '性别'
+        partner_name: 'Ta 的姓名'
+        partner_birthday: 'Ta 的生日'
+        partner_email: 'Ta 的邮件'
+        partner_mobile: 'Ta 的手机'
 
   views:
     pagination:
