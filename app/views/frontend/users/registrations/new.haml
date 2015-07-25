@@ -21,7 +21,7 @@
       .form-group
         = f.password_field :password_confirmation, class: 'form-control', placeholder: '重复密码'
       %dive.input-group
-        %input{:class => "form-control", :placeholder => "验证码", :style => 'width: 200px;'}
+        %input{:class => "form-control", :placeholder => "验证码", :style => 'width: 200px;', :name => "user[verification_code]"}
         %button.btn.test_alert 发送验证码    
       .form-group
       = f.submit 'Register', class: 'btn btn-primary block full-width m-b'
@@ -34,6 +34,7 @@
 
 :javascript
   $(".test_alert").click(function(){
-    $.post('/verification_codes',{mobile: "13011993003"});
+    var mobile = $("input[name='user[mobile]']").val();
+    $.post('/verification_codes',{mobile: mobile});
     return false;
   })

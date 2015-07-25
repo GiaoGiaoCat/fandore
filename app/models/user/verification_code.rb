@@ -7,36 +7,35 @@ class User::VerificationCode < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
+  validates_uniqueness_of :mobile
   # callbacks .................................................................
+  after_create :send_code
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   # class methods .............................................................
   class << self
-    def send_verification_code(mobile)
-      user = User.find_by(mobile: mobile.to_s)
-      code = user.otp_code(time: Time.now + 1200)
-      User::VerificationCode.create(user: user, code: code, mobile: user.mobile)
-      # User::Sms.send_message(mobile,'twMG94',"sms_reg_code : #{code}")
-    end
 
     def registration_code(mobile)
       code = rand(999999)
       User::VerificationCode.create(code: code, mobile: mobile)
-      # User::Sms.send_message(mobile,'twMG94',"sms_reg_code : #{code}")
+      #User::Sms.send_message(mobile,'twMG94',"sms_reg_code : #{code}")
     end
 
-
-    def self.verify(mobile, code)
-      user = User.find_by(mobile: mobile)
-      user && user.authenticate_otp(code, drift: 1200)
+    def verify_code(mobile)
+      verification_code = User::VerificationCode.find_by(mobile: mobile, user_id: nil )
+      if Time.now - verification_code.updated_at < 2.minute
+        verification_code.code 
+      else
+        verification_code.update(code: rand(999999))
+        verification_code.code 
+      end
     end
   end
   # public instance methods ...................................................
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
-
-  def generate_code
-    Time.now.to_i[0..5]
+  def send_code
+    User::VerificationCode.registration_code(self.mobile)
   end
 end

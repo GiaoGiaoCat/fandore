@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
             length: { in: 6..20 },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
-  after_create :send_sms
+  after_create :update_verification
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :profile
@@ -30,9 +30,8 @@ class User < ActiveRecord::Base
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
-
-  def send_sms
-    User::VerificationCode.send_verification_code(self.mobile)
+  def update_verification
+    verification_code = User::VerificationCode.find_by(mobile: self.mobile)
+    verification_code.update(user: self)
   end
-  
 end
