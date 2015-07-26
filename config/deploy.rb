@@ -14,7 +14,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 set :domain, '120.24.180.221'
 set :deploy_to, '/home/deployer/www/fandore.com'
 set :repository, 'git@github.com:wjp2013/fandore.git'
-set :branch, 'feature/puma'
+set :branch, 'develop'
 set :keep_releases, 20
 
 # For system-wide RVM install.
