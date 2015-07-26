@@ -7,12 +7,12 @@ class User::VerificationCode < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
-  # TODO: 验证 120 秒内只能一个手机号只能创建一个验证码
   validates :mobile, presence: true,
             format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
+  validate :validate_time_interval
   # callbacks .................................................................
   before_create :generate_code
-  after_create :send_sms
+  # after_create :send_sms
   # scopes ....................................................................
   default_scope { order("id DESC") }
   # other macros (like devise's) ..............................................
@@ -32,5 +32,12 @@ class User::VerificationCode < ActiveRecord::Base
   def send_sms
     pusher = Submail.pusher('10330', '1f1bc2a6b1689a7ee02695a1967d7322')
     pusher.message_xsend(mobile, 'twMG94', { sms_reg_code: code })
+  end
+
+  def validate_time_interval
+    v_code = User::VerificationCode.find_by_mobile(mobile)
+    if v_code && (Time.now - v_code.created_at) <= 120
+      errors.add(:base, :verify_code_time_interval_error)
+    end
   end
 end

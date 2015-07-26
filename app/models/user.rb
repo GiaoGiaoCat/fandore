@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
             length: { in: 6..20 },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
-  # after_create :update_verification
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :profile, update_only: true
@@ -36,9 +35,4 @@ class User < ActiveRecord::Base
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
-  # private
-  # def update_verification
-  #   verification_code = User::VerificationCode.find_by(mobile: self.mobile)
-  #   verification_code.update(user: self)
-  # end
 end
