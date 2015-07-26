@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :verification_codes
   # validations ...............................................................
+  validates :password,
+            confirmation: true,
+            presence: true,
+            length: { in: 6..20 },
+            allow_blank: true
   validates :mobile, presence: true,
             uniqueness: true,
             format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
@@ -18,10 +23,11 @@ class User < ActiveRecord::Base
             length: { in: 6..20 },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
-  after_create :update_verification
+  # after_create :update_verification
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :profile, update_only: true
+  delegate :name, :gender, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
   def profile
@@ -29,9 +35,9 @@ class User < ActiveRecord::Base
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
-  private
-  def update_verification
-    verification_code = User::VerificationCode.find_by(mobile: self.mobile)
-    verification_code.update(user: self)
-  end
+  # private
+  # def update_verification
+  #   verification_code = User::VerificationCode.find_by(mobile: self.mobile)
+  #   verification_code.update(user: self)
+  # end
 end

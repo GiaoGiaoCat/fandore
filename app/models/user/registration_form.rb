@@ -1,8 +1,6 @@
 class User::RegistrationForm < ActiveType::Record[User]
   # attribute :verification_code, :string
 
-  validates :password, confirmation: true, presence: true, length: { in: 6..20 }
-
   # validates :invitation_code, numericality: true, allow_blank: true
   # validates :verification_code, presence: true
   # validate :validate_verify_code_correct

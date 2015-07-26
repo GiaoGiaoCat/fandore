@@ -7,18 +7,18 @@ module Registerable
 
   def create
     build_user
-    if User::VerificationCode.verify_code(user_params["mobile"]) == verification_code_params[:verification_code]
-      save_user or render 'new'
-    else
-      render 'new'
-    end
-
+    save_user or render :new
   end
 
   private
 
+  def user_scope
+    # Example: redirect_to admin_users_path if @user.save
+    raise NotImplementedError, 'Must be implemented by who mixins me.'
+  end
+
   def build_user
-    @user ||= User::RegistrationForm.new(user_params)
+    @user ||= user_scope.new(user_params)
   end
 
   def save_user

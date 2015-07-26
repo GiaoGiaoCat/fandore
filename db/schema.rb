@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20150725015641) do
     t.boolean  "is_email_actived",             default: false, null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
+    t.string   "avatar",           limit: 255
+    t.string   "name",             limit: 255
+    t.integer  "gender",           limit: 4
+    t.datetime "birthday"
+    t.string   "role",             limit: 255
     t.string   "otp_secret_key",   limit: 255
     t.integer  "otp_counter",      limit: 4
   end

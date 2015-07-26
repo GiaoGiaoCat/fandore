@@ -54,8 +54,8 @@
                 - @users.each do |user|
                   %tr
                     %td
-                      隔壁老王
-                      %small 男
+                      = user.name
+                      %small= user.gender
                     %td= user.mobile
                     %td= user.email
                     %td= user.created_at.to_s(:db)

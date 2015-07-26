@@ -5,7 +5,7 @@ class Backend::UsersController < Backend::ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = User.ransack(params[:q])
+    @q = user_scope.ransack(params[:q])
     @users = @q.result
   end
 
@@ -30,8 +30,12 @@ class Backend::UsersController < Backend::ApplicationController
 
   private
 
+  def user_scope
+    User
+  end
+
   def set_user
-    @user = User.find(params[:id])
+    @user = user_scope.find(params[:id])
   end
 
   def save_user
