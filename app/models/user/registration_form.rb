@@ -1,19 +1,14 @@
 class User::RegistrationForm < ActiveType::Record[User]
-  # attribute :verification_code, :string
+  attribute :verification_code, :string
 
-  # validates :invitation_code, numericality: true, allow_blank: true
-  # validates :verification_code, presence: true
-  # validate :validate_verify_code_correct
+  validates :verification_code, presence: true, numericality: true
+  validate :validate_verify_code_correct
 
-  # def set_invitation_code!(invitation_code)
-  #   return unless invitation_code
-  #   update_column(:invitation_code, invitation_code)
-  # end
+  private
 
-  # private
-  # def validate_verify_code_correct
-  #   v_code = CellphoneVerificationCode.find_by(phone_number: cellphone_number)
-  #   errors.add(:base, :verify_code_error) unless v_code.verify?(verification_code)
-  # end
+  def validate_verify_code_correct
+    v_code = User::VerificationCode.find_by_mobile(mobile)
+    errors.add(:base, :verify_code_error) unless v_code.verify?(verification_code)
+  end
 
 end

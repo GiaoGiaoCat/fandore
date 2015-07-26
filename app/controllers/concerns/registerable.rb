@@ -13,7 +13,6 @@ module Registerable
   private
 
   def user_scope
-    # Example: redirect_to admin_users_path if @user.save
     raise NotImplementedError, 'Must be implemented by who mixins me.'
   end
 
@@ -28,12 +27,6 @@ module Registerable
 
   def user_params
     user_params = params[:user]
-    user_params ? user_params.permit(:email, :mobile, :password, :password_confirmation) : {}
+    user_params ? user_params.permit(:email, :mobile, :password, :password_confirmation, :verification_code) : {}
   end
-
-  def verification_code_params
-    verification_code_params = params[:user]
-    verification_code_params ? verification_code_params.permit(:verification_code) : {}
-  end
-
 end

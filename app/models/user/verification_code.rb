@@ -7,35 +7,30 @@ class User::VerificationCode < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
-  validates_uniqueness_of :mobile
+  # TODO: 验证 120 秒内只能一个手机号只能创建一个验证码
+  validates :mobile, presence: true,
+            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
   # callbacks .................................................................
-  after_create :send_code
+  before_create :generate_code
+  after_create :send_sms
   # scopes ....................................................................
+  default_scope { order("id DESC") }
   # other macros (like devise's) ..............................................
   # class methods .............................................................
-  class << self
-
-    def registration_code(mobile)
-      code = rand(999999)
-      User::VerificationCode.create(code: code, mobile: mobile)
-      #User::Sms.send_message(mobile,'twMG94',"sms_reg_code : #{code}")
-    end
-
-    def verify_code(mobile)
-      verification_code = User::VerificationCode.find_by(mobile: mobile, user_id: nil )
-      if Time.now - verification_code.updated_at < 2.minute
-        verification_code.code 
-      else
-        verification_code.update(code: rand(999999))
-        verification_code.code 
-      end
-    end
-  end
   # public instance methods ...................................................
+  def verify?(code)
+    self.code == code
+  end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
-  def send_code
-    User::VerificationCode.registration_code(self.mobile)
+
+  def generate_code
+    self.code = SecureRandom.random_number.to_s[2, 6]
+  end
+
+  def send_sms
+    pusher = Submail.pusher('10330', '1f1bc2a6b1689a7ee02695a1967d7322')
+    pusher.message_xsend(mobile, 'twMG94', { sms_reg_code: code })
   end
 end
