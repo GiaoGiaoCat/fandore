@@ -7,7 +7,8 @@ class User::VerificationCode < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
-  validates :mobile, presence: true,
+  validates :mobile,
+            presence: true,
             format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
   validate :validate_time_interval
   # callbacks .................................................................

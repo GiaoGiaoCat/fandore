@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
   validates :email,
             presence: true,
             uniqueness: true,
-            length: { in: 6..20 },
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
   # scopes ....................................................................
