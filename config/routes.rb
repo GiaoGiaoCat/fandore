@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   controller 'frontend/users/verification_codes' do
-    post '/verification_codes/create' => :create
+    post 'verification_codes' => :create
   end
 
 

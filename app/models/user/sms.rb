@@ -10,10 +10,10 @@ class User::Sms
         req.url '/message/xsend.json'
         req.headers['Content-Type'] = 'application/json'
         body = '{"appid":"10330", "signature": "1f1bc2a6b1689a7ee02695a1967d7322",
-                 "vars":{"vars_content"},"project":"project_id", "to":"mobile"}'
+                 "vars":{"sms_reg_code": "123232"},"project":"project_id", "to":"mobile"}'
         body = body.gsub("mobile","#{mobile}")
         body = body.gsub("project_id","#{project_id}")
-        body = body.gsub("vars_content","#{vars_content}")
+        # body = body.gsub("vars_content","#{vars_content}")
         puts body
         req.body = body
       end

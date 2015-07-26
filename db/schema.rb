@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724152706) do
+ActiveRecord::Schema.define(version: 20150725015641) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -34,11 +34,6 @@ ActiveRecord::Schema.define(version: 20150724152706) do
     t.boolean  "is_email_actived",             default: false, null: false
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
-    t.string   "avatar",           limit: 255
-    t.string   "name",             limit: 255
-    t.integer  "gender",           limit: 4
-    t.datetime "birthday"
-    t.string   "role",             limit: 255
     t.string   "otp_secret_key",   limit: 255
     t.integer  "otp_counter",      limit: 4
   end
@@ -51,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150724152706) do
     t.datetime "updated_at",            null: false
   end
 
+  add_index "verification_codes", ["mobile"], name: "index_verification_codes_on_mobile", unique: true, using: :btree
   add_index "verification_codes", ["user_id"], name: "index_verification_codes_on_user_id", using: :btree
 
   add_foreign_key "profiles", "users"
