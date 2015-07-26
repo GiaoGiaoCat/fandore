@@ -1,0 +1,28 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    %h3 忘记密码
+    %p 
+    = form_for(@password, url: users_verification_password_path) do |f|
+      %dive.input-group
+        = f.text_field :mobile, autofocues: true, class: 'form-control', placeholder: '手机号', style: 'width: 200px;' 
+        %button.btn.test_alert 发送验证码
+      .form-group
+      .form-group
+        %input{:class => "form-control", :placeholder => "验证码", :name => "user[verification_code]"}
+
+      .form-group
+      = f.submit '重置密码', class: 'btn btn-primary block full-width m-b'
+      %p.text-muted.text-center
+        %small Already have an account?
+
+    %p.m-t
+      %small Inspinia we app framework base on Bootstrap 3 &#169; 2014
+
+:javascript
+  $(".test_alert").click(function(){
+    var mobile = $("input[name='user[mobile]']").val();
+    $.post('/users/get_otp_code',{mobile: mobile});
+    return false;
+  })
