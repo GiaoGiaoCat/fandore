@@ -26,6 +26,7 @@ set :shared_paths, [
   'config/database.yml',
   'config/oneapm.yml',
   'config/secrets.yml',
+  'config/application.yml',
   'public/uploads',
   'tmp',
   'log'
@@ -76,6 +77,9 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/shared/config/oneapm.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/oneapm.yml'."]
+
+  queue! %[touch "#{deploy_to}/shared/config/application.yml"]
+  queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
 end
 
 desc "Deploys the current version to the server."

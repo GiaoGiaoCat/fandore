@@ -20,6 +20,7 @@
 ### 配置
 
 1. 复制 config 文件下 .example 结尾的文件，并删除 .example
+2. 需要发送短信和邮件，要配置 application.yml
 
 * System dependencies
 
