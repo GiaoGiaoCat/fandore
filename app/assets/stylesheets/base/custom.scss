@@ -12,3 +12,10 @@
 .lightBoxGallery img {
   margin: 5px;
 }
+
+/* Fix Form bug */
+.form-group label.file {
+  border: none;
+  padding-right: 15px;
+  margin-right: 0px;
+}

@@ -3,9 +3,6 @@
     %div
       %h1.logo-name IN+
     %h3 Welcome to IN+
-    %p
-      Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-    %p Login in. To see it in action.
     = form_for(@user, url: users_profile_update_path) do |f|
       - if @user.errors.any?
         .error_messages
@@ -19,15 +16,35 @@
       .form-group
         = label :name, "邮箱"
         = f.text_field :email, class: 'form-control'
-      .form-group
-        = label :name, "头像"
-        = f.file_field :avatar, class: 'form-control'
-      .form-group
-        = label :name, "性别"
-        = f.select :gender, User.gender.options, {}, class: 'form-control'
-      .form-group
-        = label :name, "生日"
-        = f.date_field :birthday, class: 'form-control'
+
+      = f.fields_for :profile do |field|
+        .form-group
+          = label :name, "头像"
+          = field.file_field :avatar, class: 'form-control'
+        .form-group
+          = field.label :name
+          = field.text_field :name, class: 'form-control'
+        .form-group
+          = field.label :birthday
+          = field.datetime_field :birthday, class: 'form-control'
+        .form-group
+          = field.label :gender
+          = field.select :gender, User::Profile.gender.options, {}, class: 'form-control'
+
+        .hr-line-dashed
+
+        .form-group
+          = field.label :partner_name
+          = field.text_field :partner_name, class: 'form-control'
+        .form-group
+          = field.label :partner_birthday
+          = field.datetime_field :partner_birthday, class: 'form-control'
+        .form-group
+          = field.label :partner_email
+          = field.email_field :partner_email, class: 'form-control'
+        .form-group
+          = field.label :partner_mobile
+          = field.text_field :partner_mobile, class: 'form-control'
 
       = f.submit '更新', class: 'btn btn-primary block full-width m-b'
     %p.m-t

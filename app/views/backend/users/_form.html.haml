@@ -1,25 +1,35 @@
-= form_for([:admin, @user], html: { class: 'form-horizontal' }) do |f|
-  .form-group
-    = f.label :mobile, class: 'col-sm-2 control-label'
-    .col-sm-10= f.telephone_field :mobile, class: 'form-control'
-  .form-group
-    = f.label :email, class: 'col-sm-2 control-label'
-    .col-sm-10= f.text_field :email, class: 'form-control'
+= simple_form_for([:admin, @user], html: { class: 'form-horizontal' }) do |f|
+  = f.input :mobile, wrapper: :horizontal_form
+  = f.input :email, wrapper: :horizontal_form
   - if @user.new_record?
+    = f.input :password, wrapper: :horizontal_form
+    = f.input :password_confirmation, wrapper: :horizontal_form
+  .hr-line-dashed
+  = f.fields_for :profile, @user.profile do |field|
     .form-group
-      = f.label :password, class: 'col-sm-2 control-label'
-      .col-sm-10= f.password_field :password, class: 'form-control'
-    .form-group
-      = f.label :password_confirmation, class: 'col-sm-2 control-label'
-      .col-sm-10= f.password_field :password_confirmation, class: 'form-control'
+      = field.label :avatar, class: 'col-sm-2 control-label'
+      .col-sm-10= field.file_field :avatar, class: 'form-control'
 
-  = f.fields_for :profile do |field|
-    .form-group
-      = field.label :name, class: 'col-sm-2 control-label'
-      .col-sm-10= field.text_field :name, class: 'form-control'
-    .form-group
-      = field.label :partner_name, class: 'col-sm-2 control-label'
-      .col-sm-10= field.text_field :partner_name, class: 'form-control'
+    = field.input :name, wrapper: :horizontal_form
+    = field.input :birthday,
+      as: :date,
+      start_year: Date.today.year - 60,
+      end_year: Date.today.year,
+      order: [:year, :month, :day],
+      wrapper: :horizontal_select_date
+    = field.input :gender, collection: User::Profile.gender.options, include_blank: false, wrapper: :horizontal_form
+
+    .hr-line-dashed
+
+    = field.input :partner_name, wrapper: :horizontal_form
+    = field.input :partner_birthday,
+      as: :date,
+      start_year: Date.today.year - 60,
+      end_year: Date.today.year,
+      order: [:year, :month, :day],
+      wrapper: :horizontal_select_date
+    = field.input :partner_email, wrapper: :horizontal_form
+    = field.input :partner_mobile, wrapper: :horizontal_form
 
   .hr-line-dashed
   .form-group

@@ -7,7 +7,7 @@
       %li.active
         %strong 会员管理
   .col-lg-2
-.wrapper.wrapper-content.animated.fadeInRight
+.wrapper.wrapper-content
   .row
     .col-lg-12
       .ibox.float-e-margins
@@ -16,6 +16,8 @@
           .ibox-tools
             = link_to '添加会员', new_admin_user_path, class: 'btn btn-primary btn-xs'
         .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
           .row
             .col-sm-8.m-b-xs
               .btn-group{"data-toggle" => "buttons"}

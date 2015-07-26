@@ -19,52 +19,54 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+# Official Sass port of Bootstrap
+gem 'bootstrap-sass'
+# the font-awesome font bundled as an asset for the rails asset pipeline
+gem 'font-awesome-rails'
+# HTML Abstraction Markup Language
+gem 'haml-rails'
+# Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup.
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
-
-# Use Unicorn as the app server
-gem 'puma', group: :production
-
 # Make any Ruby object quack like ActiveRecord
 gem 'active_type'
-
 # Object-based searching.
 gem 'ransack'
+# Simple, but flexible HTTP client library, with support for multiple backends.
+gem 'faraday'
+# ActiveModel::Otp makes adding Two Factor Authentication (TFA) to a model simple.
+gem 'active_model_otp'
+# Enumerated attributes with I18n and ActiveRecord/Mongoid support
+gem 'enumerize'
 
-# 后台模板相关
-gem 'bootstrap-sass'
-gem 'font-awesome-rails'
-
-# HTML Abstraction Markup Language
-gem 'haml-rails'
-
+# Use Puma as the app server
+gem 'puma', group: :production
 # 服务器性能监控
 gem 'oneapm_rpm'
 
-# http请求
-gem 'faraday'
-
-# 验证码
-gem 'active_model_otp'
-
-gem 'enumerize'
+# others
 gem 'colorize'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'cancancan'
 gem 'aasm' #状态机
 
+# others
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', '~> 0.4.0', group: :doc
+
 group :development do
   gem 'pry-rails'
   gem 'pry-nav'
-  gem "quiet_assets"
+  gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'awesome_print'
+  gem 'i18n-debug'
+  # 下面的 gem 会造成 development 环境下日志污染，仅在需要调试 I18N 的时候启用即可
+  # gem 'rails-i18n-debug'
 end
 
 group :development, :test do
