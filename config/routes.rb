@@ -23,6 +23,14 @@ Rails.application.routes.draw do
     post '/verification_codes/create' => :create
   end
 
+  controller 'frontend/users/passwords' do
+    get 'users/forget_password' => :new
+    post 'users/get_otp_code' => :get_otp_code
+    post 'users/verification_password' => :create
+    get 'users/new_password' => :new_password
+    post 'users/password/update' => :update
+  end
+
 
   scope :admin, module: :backend, as: :admin do
     resources :users
