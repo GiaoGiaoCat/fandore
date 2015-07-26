@@ -17,6 +17,9 @@ class Frontend::Users::PasswordsController < Frontend::ApplicationController
   def get_otp_code
     code = User::PasswordRecovery.get_otp_code(params[:mobile])
     #短信发送验证码功能，验证码：code
+    pusher = Submail.pusher('10330', '1f1bc2a6b1689a7ee02695a1967d7322')
+    pusher.message_xsend(params[:mobile], 'twMG94', { sms_reg_code: code })
+    render text: ''
   end
 
   def new_password
@@ -31,7 +34,7 @@ class Frontend::Users::PasswordsController < Frontend::ApplicationController
   def update
     @user = User.find_by(id: new_password_params[:user_id])
     if new_password_params[:password] == new_password_params[:password_confirmation]
-      @user.update(:password => new_password_params[:password]) 
+      @user.update(:password => new_password_params[:password])
       redirect_to root_path
     else
       redirect_to :back

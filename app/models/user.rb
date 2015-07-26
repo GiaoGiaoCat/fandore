@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
             presence: true,
             length: { in: 6..20 },
             allow_blank: true
-  validates :mobile, presence: true,
+  validates :mobile,
+            presence: true,
             uniqueness: true,
             format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
   validates :email,
