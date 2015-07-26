@@ -7,7 +7,12 @@ module Registerable
 
   def create
     build_user
-    save_user or render 'new'
+    if User::VerificationCode.verify_code(user_params["mobile"]) == verification_code_params[:verification_code]
+      save_user or render 'new'
+    else
+      render 'new'
+    end
+
   end
 
   private
@@ -24,6 +29,11 @@ module Registerable
   def user_params
     user_params = params[:user]
     user_params ? user_params.permit(:email, :mobile, :password, :password_confirmation) : {}
+  end
+
+  def verification_code_params
+    verification_code_params = params[:user]
+    verification_code_params ? verification_code_params.permit(:verification_code) : {}
   end
 
 end
