@@ -40,6 +40,8 @@ gem 'faraday'
 gem 'active_model_otp'
 # Enumerated attributes with I18n and ActiveRecord/Mongoid support
 gem 'enumerize'
+# Simple Rails app configuration
+gem 'figaro'
 
 # Use Puma as the app server
 gem 'puma', group: :production

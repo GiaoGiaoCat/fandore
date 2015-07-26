@@ -13,7 +13,7 @@ class User::VerificationCode < ActiveRecord::Base
   validate :validate_time_interval
   # callbacks .................................................................
   before_create :generate_code
-  # after_create :send_sms
+  after_create :send_sms
   # scopes ....................................................................
   default_scope { order("id DESC") }
   # other macros (like devise's) ..............................................
@@ -31,7 +31,7 @@ class User::VerificationCode < ActiveRecord::Base
   end
 
   def send_sms
-    pusher = Submail.pusher('10330', '1f1bc2a6b1689a7ee02695a1967d7322')
+    pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
     pusher.message_xsend(mobile, 'twMG94', { sms_reg_code: code })
   end
 

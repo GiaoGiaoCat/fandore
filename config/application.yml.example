@@ -1,0 +1,10 @@
+message_app_id: 'YOU MESSAGE APP ID'
+message_signature: 'YOU MESSAGE SIGNATURE'
+mail_app_id: 'YOU MAIL APP ID'
+mail_signature: 'YOU MAIL SIGNATURE'
+
+test:
+  message_app_id: 'YOU MESSAGE APP ID'
+  message_signature: 'YOU MESSAGE SIGNATURE'
+  mail_app_id: 'YOU MAIL APP ID'
+  mail_signature: 'YOU MAIL SIGNATURE'
