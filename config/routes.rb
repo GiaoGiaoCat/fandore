@@ -38,6 +38,10 @@ Rails.application.routes.draw do
     post 'users/password/update' => :update
   end
 
+  controller 'frontend/users/safety_questions' do
+    get 'users/profile/set_question' => :new
+    post 'users/profile/set_question/create' => :create
+  end
 
   scope :admin, module: :backend, as: :admin do
     resources :users
