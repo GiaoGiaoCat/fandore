@@ -22,15 +22,12 @@
         = f.password_field :password_confirmation, class: 'form-control', placeholder: '重复密码'
       %dive.input-group
         %input{:class => "form-control", :placeholder => "验证码", :style => 'width: 200px;', :name => "user[verification_code]"}
-        %button.btn.test_alert 发送验证码
+        = link_to '发送验证码', 'javascript:void(0)', class: 'btn test_alert'
       .form-group
-      = f.submit 'Register', class: 'btn btn-primary block full-width m-b'
+      = f.submit '注册', class: 'btn btn-primary block full-width m-b'
 
       %p.text-muted.text-center
-        %small Already have an account?
-      = link_to 'Login', sign_in_path, class: 'btn btn-sm btn-white btn-block'
-      %p.text-muted.text-center
-        %small 忘记密码？
+      = link_to '登录', sign_in_path, class: 'btn btn-sm btn-white btn-block'
       = link_to '密码找回', users_forget_password_path, class: 'btn btn-sm btn-white btn-block'
 
     %p.m-t
@@ -39,6 +36,6 @@
 :javascript
   $(".test_alert").click(function(){
     var mobile = $("input[name='user[mobile]']").val();
-    $.post('/verification_codes',{ v_code: { mobile: mobile }});
+    $.post('/verification_codes',{ v_code: { to: mobile }});
     return false;
   })

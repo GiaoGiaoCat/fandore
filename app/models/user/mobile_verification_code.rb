@@ -1,42 +1,26 @@
-class User::VerificationCode < ActiveRecord::Base
+class User::MobileVerificationCode < User::VerificationCode
   # extends ...................................................................
   # includes ..................................................................
   # constants .................................................................
-  self.table_name = "verification_codes"
   # related macros ............................................................
   # relationships .............................................................
-  belongs_to :user
   # validations ...............................................................
-  validates :to, presence: true
-  validate :validate_time_interval
+  validates :to, format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
   # callbacks .................................................................
-  before_create :generate_code
-  after_create :send_notification
   # scopes ....................................................................
-  default_scope { order("id DESC") }
   # other macros (like devise's) ..............................................
   # class methods .............................................................
   # public instance methods ...................................................
-  def verify?(code)
-    self.code == code
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
 
   def generate_code
-    raise NotImplementedError, 'Must be implemented by subtypes.'
+    self.code = SecureRandom.random_number.to_s[2, 6]
   end
 
   def send_notification
-    raise NotImplementedError, 'Must be implemented by subtypes.'
+    pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
+    pusher.message_xsend(to, 'twMG94', { sms_reg_code: code })
   end
-
-  def validate_time_interval
-    v_code = User::VerificationCode.find_by_to(to)
-    if v_code && (Time.now - v_code.created_at) <= 120
-      errors.add(:base, :verify_code_time_interval_error)
-    end
-  end
-
 end

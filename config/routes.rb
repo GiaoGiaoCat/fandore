@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'account_safe' => 'welcome#account_safe'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
       end
 
       resources :passwords, only: [:new, :create]
+      resources :activations, only: [:new, :create]
     end
   end
 

@@ -1,42 +1,27 @@
-class User::VerificationCode < ActiveRecord::Base
+class User::EmailVerificationCode < User::VerificationCode
   # extends ...................................................................
   # includes ..................................................................
   # constants .................................................................
-  self.table_name = "verification_codes"
   # related macros ............................................................
   # relationships .............................................................
-  belongs_to :user
   # validations ...............................................................
-  validates :to, presence: true
-  validate :validate_time_interval
+  validates :to, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
-  before_create :generate_code
-  after_create :send_notification
   # scopes ....................................................................
-  default_scope { order("id DESC") }
   # other macros (like devise's) ..............................................
   # class methods .............................................................
   # public instance methods ...................................................
-  def verify?(code)
-    self.code == code
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
 
   def generate_code
-    raise NotImplementedError, 'Must be implemented by subtypes.'
+    self.code = SecureRandom.hex
   end
 
   def send_notification
-    raise NotImplementedError, 'Must be implemented by subtypes.'
+    url = Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
+    pusher = Submail.pusher(Figaro.env.mail_app_id, Figaro.env.mail_signature)
+    pusher.mail_xsend(to, '99cVp3', { url: url }, { url: url })
   end
-
-  def validate_time_interval
-    v_code = User::VerificationCode.find_by_to(to)
-    if v_code && (Time.now - v_code.created_at) <= 120
-      errors.add(:base, :verify_code_time_interval_error)
-    end
-  end
-
 end
