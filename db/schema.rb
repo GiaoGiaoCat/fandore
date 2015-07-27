@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150724152706) do
 
   create_table "verification_codes", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.string   "code",       limit: 24
+    t.string   "code",       limit: 255
     t.string   "to",         limit: 100
     t.string   "type",       limit: 100
     t.datetime "created_at",             null: false

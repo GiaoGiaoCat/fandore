@@ -1,11 +1,11 @@
-class User::MobileVerificationCode < User::VerificationCode
+class User::EmailVerificationCode < User::VerificationCode
   # extends ...................................................................
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
   # validations ...............................................................
-  validates :to, format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
+  validates :to, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
@@ -16,11 +16,12 @@ class User::MobileVerificationCode < User::VerificationCode
   private
 
   def generate_code
-    self.code = SecureRandom.random_number.to_s[2, 6]
+    self.code = SecureRandom.hex
   end
 
   def send_notification
-    # pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
-    # pusher.message_xsend(to, 'twMG94', { sms_reg_code: code })
+    url = Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
+    pusher = Submail.pusher(Figaro.env.mail_app_id, Figaro.env.mail_signature)
+    pusher.mail_xsend(to, '99cVp3', { url: url }, { url: url })
   end
 end
