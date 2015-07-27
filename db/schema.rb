@@ -41,12 +41,14 @@ ActiveRecord::Schema.define(version: 20150724152706) do
   create_table "verification_codes", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.string   "code",       limit: 24
-    t.string   "mobile",     limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "to",         limit: 100
+    t.string   "type",       limit: 100
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "verification_codes", ["mobile"], name: "index_verification_codes_on_mobile", using: :btree
+  add_index "verification_codes", ["to"], name: "index_verification_codes_on_to", using: :btree
+  add_index "verification_codes", ["type"], name: "index_verification_codes_on_type", using: :btree
   add_index "verification_codes", ["user_id"], name: "index_verification_codes_on_user_id", using: :btree
 
   add_foreign_key "profiles", "users"
