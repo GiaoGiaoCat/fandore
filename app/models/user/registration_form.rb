@@ -7,7 +7,7 @@ class User::RegistrationForm < ActiveType::Record[User]
   private
 
   def validate_verify_code_correct
-    v_code = User::VerificationCode.find_by_mobile(mobile)
+    v_code = User::VerificationCode.find_by_to(mobile)
     errors.add(:base, :verify_code_error) unless v_code.verify?(verification_code)
   end
 
