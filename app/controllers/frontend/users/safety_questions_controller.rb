@@ -3,14 +3,14 @@ class Frontend::Users::SafetyQuestionsController < Frontend::ApplicationControll
 
   def new
     is_set_question
-    @question = User::SafetyQuestionForm.new
+    @question = question_scope
   end
 
   def create
     build_question
-    save_question_answer or render 'new'
-    
+    save_question_answer or render "new"
   end
+
 
   private
 
@@ -20,7 +20,7 @@ class Frontend::Users::SafetyQuestionsController < Frontend::ApplicationControll
   end
 
   def save_question_answer
-    redirect_to account_safe_path if @question_answer
+    redirect_to account_safe_path if (current_user.profile.question.length > 0 && current_user.profile.question.length > 0)
   end
 
   def build_question
