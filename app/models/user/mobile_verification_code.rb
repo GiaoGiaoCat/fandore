@@ -20,7 +20,7 @@ class User::MobileVerificationCode < User::VerificationCode
   end
 
   def send_notification
-    # pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
-    # pusher.message_xsend(to, 'twMG94', { sms_reg_code: code })
+    pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
+    pusher.message_xsend(to, 'twMG94', { sms_reg_code: code })
   end
 end

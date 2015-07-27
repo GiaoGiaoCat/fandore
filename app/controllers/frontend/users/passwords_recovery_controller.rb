@@ -1,5 +1,4 @@
 class Frontend::Users::PasswordsRecoveryController < Frontend::ApplicationController
-  layout 'empty'
   skip_before_action :authenticate_user!
 
   def new

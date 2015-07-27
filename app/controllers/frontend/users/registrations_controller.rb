@@ -2,7 +2,6 @@ class Frontend::Users::RegistrationsController < Frontend::ApplicationController
   include Registerable
 
   skip_before_action :authenticate_user!
-  layout 'empty'
 
   private
 

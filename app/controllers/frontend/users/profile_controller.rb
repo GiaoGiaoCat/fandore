@@ -1,5 +1,4 @@
 class Frontend::Users::ProfileController < Frontend::ApplicationController
-  layout 'empty'
 
   def show
      load_user

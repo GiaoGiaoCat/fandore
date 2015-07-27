@@ -1,6 +1,5 @@
 class Frontend::Users::PasswordsController < Frontend::ApplicationController
-  layout 'empty'
-
+  
   def new
     build_password
   end
