@@ -9,8 +9,6 @@ class User::MobileVerificationCode < User::VerificationCode
             presence: true,
             format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
   # callbacks .................................................................
-  before_create :generate_code
-  after_create :send_sms
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   # class methods .............................................................
@@ -23,7 +21,7 @@ class User::MobileVerificationCode < User::VerificationCode
     self.code = SecureRandom.random_number.to_s[2, 6]
   end
 
-  def send_sms
+  def send_notification
     pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
     pusher.message_xsend(to, 'twMG94', { sms_reg_code: code })
   end

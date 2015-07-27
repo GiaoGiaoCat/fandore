@@ -9,6 +9,8 @@ class User::VerificationCode < ActiveRecord::Base
   # validations ...............................................................
   validate :validate_time_interval
   # callbacks .................................................................
+  before_create :generate_code
+  after_create :send_notification
   # scopes ....................................................................
   default_scope { order("id DESC") }
   # other macros (like devise's) ..............................................
@@ -21,10 +23,19 @@ class User::VerificationCode < ActiveRecord::Base
   # private instance methods ..................................................
   private
 
+  def generate_code
+    raise NotImplementedError, 'Must be implemented by subtypes.'
+  end
+
+  def send_notification
+    raise NotImplementedError, 'Must be implemented by subtypes.'
+  end
+
   def validate_time_interval
     v_code = User::VerificationCode.find_by_to(to)
     if v_code && (Time.now - v_code.created_at) <= 120
       errors.add(:base, :verify_code_time_interval_error)
     end
   end
+
 end
