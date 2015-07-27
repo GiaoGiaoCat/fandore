@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'account_safe' => 'welcome#account_safe'
+
   scope module: 'frontend' do
     scope module: 'users' do
 
@@ -17,6 +18,11 @@ Rails.application.routes.draw do
       end
 
       resources :passwords, only: [:new, :create]
+
+      controller 'safety_questions' do
+        get 'safety_questions/edit' => :edit
+        patch 'safety_questions/update' => :update
+      end
     end
   end
 
@@ -36,11 +42,6 @@ Rails.application.routes.draw do
     post 'users/verification_password' => :create
     get 'users/new_password' => :new_password
     post 'users/password/update' => :update
-  end
-
-  controller 'frontend/users/safety_questions' do
-    get 'users/profile/set_question' => :new
-    post 'users/profile/set_question/create' => :create
   end
 
   scope :admin, module: :backend, as: :admin do

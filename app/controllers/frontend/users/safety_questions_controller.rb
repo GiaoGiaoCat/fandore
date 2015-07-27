@@ -1,38 +1,34 @@
 class Frontend::Users::SafetyQuestionsController < Frontend::ApplicationController
-  layout 'empty'
 
-  def new
-    is_set_question
-    @question = question_scope
+  def edit
+    load_user
   end
 
-  def create
-    build_question
-    save_question_answer or render "new"
+  def update
+    load_user
+    build_user
+    save_user or render 'edit'
   end
-
 
   private
 
+  def load_user
+    @user = current_user
+  end
+
+  def build_user
+    @user.attributes = user_params
+  end
+
+  def save_user
+    if @user.save
+      redirect_to account_safe_path
+    end
+  end
+
   def user_params
-    user_params = params[:user_profile]
-    user_params ? user_params.permit(:question, :answer) : {}
-  end
-
-  def save_question_answer
-    redirect_to account_safe_path if (current_user.profile.question.length > 0 && current_user.profile.question.length > 0)
-  end
-
-  def build_question
-    @question_answer = question_scope.update(user_params)
-  end
-
-  def is_set_question
-     redirect_to account_safe_path if current_user.profile.question && current_user.profile.question
-  end
-
-  def question_scope
-    current_user.profile
+    user_params = params[:user]
+    user_params ? user_params.permit(profile_attributes: [:question, :question]) : {}
   end
 
 end
