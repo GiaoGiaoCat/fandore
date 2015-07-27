@@ -1,0 +1,22 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    %h3 修改密码
+    %p
+    = form_for(@password, url: passwords_path) do |f|
+      - if @password.errors.any?
+        .error_messages
+          %h2 Form is invalid
+          %ul
+            - for message in @password.errors.full_messages
+              %li= message
+      .form-group
+        = f.password_field :password, class: 'form-control', placeholder: '密码'
+      .form-group
+        = f.password_field :new_password, class: 'form-control', placeholder: '密码'
+      .form-group
+        = f.password_field :password_confirmation, class: 'form-control', placeholder: '密码'
+
+      .form-group
+      = f.submit '保存修改', class: 'btn btn-primary block full-width m-b'

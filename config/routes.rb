@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get 'account_safe' => 'welcome#account_safe'
+  scope module: 'frontend' do
+    scope module: 'users' do
 
-  controller 'frontend/users/registrations' do
-    get 'sign_up' => :new
-    post 'sign_up' => :create
-  end
+      controller 'registrations' do
+        get 'sign_up' => :new
+        post 'sign_up' => :create
+      end
 
-  controller 'frontend/users/sessions' do
-    get 'sign_in' => :new
-    post 'sign_in' => :create
-    delete 'sign_out' => :destroy
+      controller 'sessions' do
+        get 'sign_in' => :new
+        post 'sign_in' => :create
+        delete 'sign_out' => :destroy
+      end
+
+      resources :passwords, only: [:new, :create]
+    end
   end
 
   controller 'frontend/users/profile' do
@@ -23,7 +30,7 @@ Rails.application.routes.draw do
     post 'verification_codes' => :create
   end
 
-  controller 'frontend/users/passwords' do
+  controller 'frontend/users/passwords_recovery' do
     get 'users/forget_password' => :new
     post 'users/get_otp_code' => :get_otp_code
     post 'users/verification_password' => :create
