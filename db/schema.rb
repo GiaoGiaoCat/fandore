@@ -49,9 +49,12 @@ ActiveRecord::Schema.define(version: 20150728142514) do
   create_table "properties", force: :cascade do |t|
     t.string   "name",         limit: 255
     t.string   "presentation", limit: 255, null: false
+    t.integer  "category",     limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "properties", ["category"], name: "index_properties_on_category", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            limit: 100

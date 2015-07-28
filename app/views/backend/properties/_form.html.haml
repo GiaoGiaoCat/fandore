@@ -1,0 +1,9 @@
+= simple_form_for([:admin, @property], html: { class: 'form-horizontal' }) do |f|
+  = f.input :name, wrapper: :horizontal_form
+  = f.input :presentation, wrapper: :horizontal_form
+  = f.input :category, collection: Product::Property.category.options, include_blank: false, wrapper: :horizontal_form
+  .hr-line-dashed
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to 'Cancel', :back, class: 'btn btn-white'
+      = f.submit class: 'btn btn-primary'
