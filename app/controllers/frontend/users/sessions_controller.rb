@@ -19,7 +19,7 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
 private
 
   def build_sign_in
-    @sign_in ||= User::LoginForm.new(sign_in_params)
+    @sign_in ||= User::LoginForm.new(sign_in_params.merge(remote_ip: request.remote_ip))
   end
 
   def save_sign_in

@@ -2,6 +2,7 @@ class User::LoginForm < ActiveType::Object
   attribute :username, :string
   attribute :password, :string
   attribute :remember_me, :boolean
+  attribute :remote_ip, :string
 
   validate :validate_user_exists
   validate :validate_password_correct
@@ -25,7 +26,7 @@ class User::LoginForm < ActiveType::Object
   end
 
   def log_user_sign_in_ip
-    user.update_columns(last_sign_in_at: Time.now, last_sign_in_ip: request.remote_ip)
+    user.update_columns(last_sign_in_at: Time.now, last_sign_in_ip: remote_ip)
   end
 
 end
