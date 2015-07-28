@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150728142514) do
 
-  create_table "product_properties", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "presentation", limit: 255, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.string   "name",             limit: 255,   default: "",   null: false
     t.text     "description",      limit: 65535
@@ -52,6 +45,13 @@ ActiveRecord::Schema.define(version: 20150728142514) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "properties", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "presentation", limit: 255, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            limit: 100
