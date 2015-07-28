@@ -57,14 +57,19 @@ ActiveRecord::Schema.define(version: 20150728142514) do
   add_index "properties", ["category"], name: "index_properties_on_category", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            limit: 100
-    t.string   "mobile",           limit: 50
-    t.string   "password_digest",  limit: 80
-    t.boolean  "is_email_actived",             default: false, null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "otp_secret_key",   limit: 255
-    t.integer  "otp_counter",      limit: 4
+    t.string   "email",              limit: 100
+    t.string   "mobile",             limit: 50
+    t.string   "password_digest",    limit: 80
+    t.boolean  "is_email_actived",               default: false, null: false
+    t.string   "otp_secret_key",     limit: 255
+    t.integer  "otp_counter",        limit: 4
+    t.integer  "sign_in_count",      limit: 4,   default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip", limit: 255
+    t.string   "last_sign_in_ip",    limit: 255
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "verification_codes", force: :cascade do |t|

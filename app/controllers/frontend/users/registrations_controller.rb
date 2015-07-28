@@ -11,6 +11,7 @@ class Frontend::Users::RegistrationsController < Frontend::ApplicationController
 
   def save_user
     if @user.save
+      @user.update_tracked_fields!(request)
       session[:user_id] = @user.id
       redirect_to root_path
     end
