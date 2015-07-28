@@ -1,0 +1,19 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 商品管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li
+        = link_to '属性管理', admin_properties_path
+      %li.active
+        %strong 编辑属性信息
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 编辑属性信息
+        .ibox-content
+          = render 'form'

@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727073803) do
+ActiveRecord::Schema.define(version: 20150728142514) do
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",             limit: 255,   default: "",   null: false
+    t.text     "description",      limit: 65535
+    t.datetime "available_on"
+    t.datetime "deleted_at"
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_keywords",    limit: 255
+    t.text     "meta_description", limit: 65535
+    t.string   "spu",              limit: 255,   default: "",   null: false
+    t.boolean  "promotionable",                  default: true
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "products", ["available_on"], name: "products_available_on", using: :btree
+  add_index "products", ["deleted_at"], name: "products_deleted_at", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -28,6 +45,16 @@ ActiveRecord::Schema.define(version: 20150727073803) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "properties", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "presentation", limit: 255, null: false
+    t.integer  "category",     limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "properties", ["category"], name: "index_properties_on_category", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",            limit: 100
