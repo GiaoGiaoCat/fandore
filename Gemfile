@@ -47,6 +47,8 @@ gem 'figaro'
 gem 'puma', group: :production
 # 服务器性能监控
 gem 'oneapm_rpm'
+#ChinaCity 省市区级联选择
+gem 'china_city'
 
 # others
 gem 'colorize'

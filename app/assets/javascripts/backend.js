@@ -22,7 +22,7 @@
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
 //= require peity/jquery.peity.min.js
-
+//= require 'china_city/jquery.china_city'
 //= require_directory .
 //= require_tree ./backend
 

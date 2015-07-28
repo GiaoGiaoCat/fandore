@@ -1,38 +1,27 @@
-class User < ActiveRecord::Base
+class User::Address < ActiveRecord::Base
   # extends ...................................................................
-  has_secure_password
-  has_one_time_password length: 6
   # includes ..................................................................
   # constants .................................................................
+  self.table_name = 'addresses'
   # related macros ............................................................
   # relationships .............................................................
-  has_one :profile, dependent: :destroy
-  has_many :verification_codes, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  belongs_to :user
   # validations ...............................................................
-  validates :password,
-            confirmation: true,
-            presence: true,
-            length: { in: 6..20 },
-            allow_blank: true
+  validates :full_name, presence: true
   validates :mobile,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+          presence: true,
+          format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
+  validates :address_detail, presence: true
+  validates :province, presence: true
+  validates :city, presence: true
+  validates :district, presence: true
+
+
   # callbacks .................................................................
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  accepts_nested_attributes_for :profile, update_only: true
-  delegate :name, :gender, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
-  def profile
-    super || build_profile
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end
