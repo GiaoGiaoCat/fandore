@@ -6,6 +6,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest, limit: 80
       t.boolean :is_email_actived, null: false, default: false
 
+      t.string :otp_secret_key
+      t.integer :otp_counter
+
       t.timestamps null: false
     end
   end
