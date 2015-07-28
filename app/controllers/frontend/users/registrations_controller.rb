@@ -12,7 +12,7 @@ class Frontend::Users::RegistrationsController < Frontend::ApplicationController
 
   def save_user
     if @user.save
-      @user.update_columns(registe_ip: request.remote_ip)
+       @user.update_columns(registe_ip: request.remote_ip)
       redirect_to root_path
     end
   end

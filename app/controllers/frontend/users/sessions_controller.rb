@@ -24,7 +24,6 @@ private
 
   def save_sign_in
     if @sign_in.save
-      log_user_sign_in_ip
       session[:user_id] = @sign_in.user.id
       redirect_to root_path
     end
@@ -39,10 +38,6 @@ private
   def sign_in_params
     user_params = params[:user_login_form]
     user_params ? user_params.permit(:username, :password) : {}
-  end
-
-  def log_user_sign_in_ip
-    @sign_in.user.update_columns(last_sign_in_at: Time.now, last_sign_in_ip: request.remote_ip)
   end
 
 end

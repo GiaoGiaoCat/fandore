@@ -6,6 +6,8 @@ class User::LoginForm < ActiveType::Object
   validate :validate_user_exists
   validate :validate_password_correct
 
+  after_save :log_user_sign_in_ip
+
   def user
     User.ransack(email_or_mobile_eq: username).result.first
   end
@@ -20,6 +22,10 @@ class User::LoginForm < ActiveType::Object
     if user && !user.authenticate(password)
       errors.add(:password, :incorrect)
     end
+  end
+
+  def log_user_sign_in_ip
+    user.update_columns(last_sign_in_at: Time.now, last_sign_in_ip: request.remote_ip)
   end
 
 end
