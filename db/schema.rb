@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727073803) do
+ActiveRecord::Schema.define(version: 20150728125415) do
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",             limit: 255,   default: "",   null: false
+    t.text     "description",      limit: 65535
+    t.datetime "available_on"
+    t.datetime "deleted_at"
+    t.string   "meta_title",       limit: 255
+    t.string   "meta_keywords",    limit: 255
+    t.text     "meta_description", limit: 65535
+    t.string   "spu",              limit: 255,   default: "",   null: false
+    t.boolean  "promotionable",                  default: true
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "products", ["available_on"], name: "products_available_on", using: :btree
+  add_index "products", ["deleted_at"], name: "products_deleted_at", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
