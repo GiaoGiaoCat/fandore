@@ -20,9 +20,13 @@
           %i.fa.fa-dashboard
           %span.nav-label 仪表面板
       %li
-        = link_to '#' do
+        %a{:href => "javascript:void(0)"}
           %i.fa.fa-cubes
           %span.nav-label 商品管理
+          %span.fa.arrow
+        %ul.nav.nav-second-level{:class => "is_active_controller('backend/properties')"}
+          %li{:class => is_active_action('flot')}= link_to "属性管理", admin_properties_path
+
       %li
         = link_to '#' do
           %i.fa.fa-shopping-cart

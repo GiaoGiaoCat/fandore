@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   scope :admin, module: :backend, as: :admin do
     resources :users
+    resources :properties
   end
 
   # Admin root path
