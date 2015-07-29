@@ -42,6 +42,8 @@ gem 'active_model_otp'
 gem 'enumerize'
 # Simple Rails app configuration
 gem 'figaro'
+# ActiveRecord plugin allowing you to hide and restore records without actually deleting them.
+gem 'paranoia'
 
 # Use Puma as the app server
 gem 'puma', group: :production

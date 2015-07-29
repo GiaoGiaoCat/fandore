@@ -1,39 +1,29 @@
-class User < ActiveRecord::Base
+class Product::Property < ActiveRecord::Base
   # extends ...................................................................
-  has_secure_password
-  has_one_time_password length: 6
+  extend Enumerize
   # includes ..................................................................
-  include Trackable  
   # constants .................................................................
+  self.table_name = 'properties'
   # related macros ............................................................
   # relationships .............................................................
-  has_one :profile, dependent: :destroy
-  has_many :verification_codes, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  # has_many :product_properties, dependent: :delete_all, inverse_of: :property
+  # has_many :products, through: :product_properties
+  #
+  # has_and_belongs_to_many :prototypes
   # validations ...............................................................
-  validates :password,
-            confirmation: true,
-            presence: true,
-            length: { in: 6..20 },
-            allow_blank: true
-  validates :mobile,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :name, :presentation, presence: true
   # callbacks .................................................................
+  # after_touch :touch_all_products
   # scopes ....................................................................
+  scope :sorted, -> { order(:name) }
   # other macros (like devise's) ..............................................
-  accepts_nested_attributes_for :profile, update_only: true
-  delegate :name, :gender, to: :profile
+  enumerize :category, in: { product: 1, variant: 2 }
   # class methods .............................................................
   # public instance methods ...................................................
-  def profile
-    super || build_profile
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
+  private
+    def touch_all_products
+      products.each(&:touch)
+    end
 end

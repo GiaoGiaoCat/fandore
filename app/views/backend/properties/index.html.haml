@@ -1,0 +1,40 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 商品管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 属性管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 属性列表
+          .ibox-tools
+            = link_to '添加属性', new_admin_property_path, class: 'btn btn-primary btn-xs'
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th Name
+                  %th Presentation
+                  %th 类型
+                  %th 添加时间
+                  %th
+              %tbody
+                - @properties.each do |property|
+                  %tr
+                    %td= property.name
+                    %td= property.presentation
+                    %td= property.category
+                    %td= property.created_at.to_s(:db)
+                    %td
+                      .btn-group
+                        = link_to '编辑', edit_admin_property_path(property), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_property_path(property), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }

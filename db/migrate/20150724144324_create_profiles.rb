@@ -12,6 +12,9 @@ class CreateProfiles < ActiveRecord::Migration
       t.datetime :partner_birthday
       t.string :partner_email, limit: 100
       t.string :partner_mobile, limit: 50
+
+      t.string :question
+      t.string :answer
     end
   end
 end

@@ -28,7 +28,7 @@ class Frontend::Users::SafetyQuestionsController < Frontend::ApplicationControll
 
   def user_params
     user_params = params[:user]
-    user_params ? user_params.permit(profile_attributes: [:question, :question]) : {}
+    user_params ? user_params.permit(profile_attributes: [:question, :answer]) : {}
   end
 
 end

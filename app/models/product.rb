@@ -1,39 +1,28 @@
-class User < ActiveRecord::Base
+class Product < ActiveRecord::Base
   # extends ...................................................................
-  has_secure_password
-  has_one_time_password length: 6
+  acts_as_paranoid
   # includes ..................................................................
-  include Trackable  
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
-  has_one :profile, dependent: :destroy
-  has_many :verification_codes, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  # has_many :product_option_types, dependent: :destroy, inverse_of: :product
+  # has_many :option_types, through: :product_option_types
+  # has_many :product_properties, dependent: :destroy, inverse_of: :product
+  # has_many :properties, through: :product_properties
+  # has_many :classifications, dependent: :delete_all, inverse_of: :product
+  # has_many :taxons, through: :classifications
   # validations ...............................................................
-  validates :password,
-            confirmation: true,
-            presence: true,
-            length: { in: 6..20 },
-            allow_blank: true
-  validates :mobile,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :spu, presence: true, uniqueness: true
+  validates :name, presence: true
+  # validates :price, presence: true, if: proc { Spree::Config[:require_master_price] }
+  validates :meta_keywords, length: { maximum: 255 }
+  validates :meta_title, length: { maximum: 255 }
+  # validates :shipping_category_id, presence: true
   # callbacks .................................................................
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  accepts_nested_attributes_for :profile, update_only: true
-  delegate :name, :gender, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
-  def profile
-    super || build_profile
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end
