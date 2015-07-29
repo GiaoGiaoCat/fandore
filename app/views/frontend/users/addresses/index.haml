@@ -10,6 +10,10 @@
       %p
 
       = link_to "更新地址", users_addresses_edit_path(id: address)
-      = link_to "设为默认地址", users_addresses_edit_path(id: address)
+      - if address.is_default
+        ="默认地址"
+      - else
+        = link_to "设为默认地址", users_addresses_update_path(id: address, is_default: true), method: :patch
+        
       = link_to "删除地址", users_address_path(id: address) , method: :delete , data: { confirm: "确认删除?" }
       %hr

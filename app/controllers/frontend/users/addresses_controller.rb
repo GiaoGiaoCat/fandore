@@ -20,7 +20,12 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
 
   def update
     load_address
-    @address.update(address_params)
+    if params[:is_default]
+      @address.update(is_default: true) 
+    else
+      @address.update(address_params)
+    end
+    
     save_address or render "edit"
   end
 
@@ -57,7 +62,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
   def address_params
     address_params = params[:user_address]
     address_params ? address_params.permit(:post_code, :full_name, :mobile, :address_detail, :province, 
-                                            :district, :city, :phone_section, :phone_code, :phone_ext) : {}
+                                            :district, :city, :phone_section, :phone_code, :phone_ext, :is_default) : {}
   end
 
   def address_scope

@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20150728161245) do
     t.text     "address_detail", limit: 65535
     t.string   "province",       limit: 255
     t.string   "district",       limit: 255
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "city",           limit: 255
     t.integer  "user_id",        limit: 4
-    t.boolean  "is_default"
+    t.boolean  "is_default",                   default: false
   end
 
   create_table "profiles", force: :cascade do |t|
