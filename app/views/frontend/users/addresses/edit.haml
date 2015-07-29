@@ -5,29 +5,7 @@
     %h3 收货地址
     %p
     = form_for(@address, url: users_addresses_update_path) do |f|
-      .form-group
-        .city-group
-          %select.city-select{name: "user_address[province]"}
-            %option --省份--
-            = options_for_select(ChinaCity.list)
-          %select.city-select{name: "user_address[city]"}
-            %option --城市--
-          %select.city-select{name: "user_address[district]"}
-            %option --地区--
-      .form-group
-        = f.text_field :address_detail, class: 'form-control', placeholder: '详细地址'
-      .form-group
-        = f.text_field :post_code, class: 'form-control', placeholder: '邮政编码'      
-      .form-group
-        = f.text_field :mobile, autofocues: true, class: 'form-control', placeholder: '手机'
-      .form-group
-        = f.text_field :full_name, class: 'form-control', placeholder: '姓名'
-      .form-group
-        = f.text_field :phone_section, class: 'form-control', placeholder: '区号'
-      .form-group
-        = f.text_field :phone_code, class: 'form-control', placeholder: '电话号码'
-      .form-group
-        = f.text_field :phone_ext, class: 'form-control', placeholder: '分机号'
-        %input{name: "id", value: @address.id, type: "hidden"}
+      = render 'form', f: f
+      %input{name: "id", value: @address.id, type: "hidden"}
       .form-group
       = f.submit '保存修改', class: 'btn btn-primary block full-width m-b'

@@ -7,33 +7,26 @@ class User::Address < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
-  validates :full_name, presence: true
+  validates_presence_of :user_id, :name, :address, :province, :city, :district
   validates :mobile,
-          presence: true,
-          format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :address_detail, presence: true
-  validates :province, presence: true
-  validates :city, presence: true
-  validates :district, presence: true
+            presence: true,
+            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
   # callbacks .................................................................
-  after_create :first_address
-
-
+  after_create :set_default_address
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   # class methods .............................................................
   # public instance methods ...................................................
-  # protected instance methods ................................................
   def province_name
-    ChinaCity.get(self.province)  
+    ChinaCity.get(province)
   end
 
   def city_name
-    ChinaCity.get(self.city)
+    ChinaCity.get(city)
   end
 
   def district_name
-    ChinaCity.get(self.district)
+    ChinaCity.get(district)
   end
 
   def default_address
@@ -42,11 +35,12 @@ class User::Address < ActiveRecord::Base
     end
     self.update(is_default: true)
   end
+  # protected instance methods ................................................
+  # private instance methods ..................................................
+  private
 
-  def first_address
+  def set_default_address
     self.update(is_default: true) if self.user.addresses.count == 1
     default_address if self.is_default
   end
-
-  # private instance methods ..................................................
 end

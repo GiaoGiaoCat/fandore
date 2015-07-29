@@ -44,13 +44,13 @@ gem 'enumerize'
 gem 'figaro'
 # ActiveRecord plugin allowing you to hide and restore records without actually deleting them.
 gem 'paranoia'
+# ChinaCity 省市区级联选择
+gem 'china_city'
 
 # Use Puma as the app server
 gem 'puma', group: :production
 # 服务器性能监控
 gem 'oneapm_rpm'
-#ChinaCity 省市区级联选择
-gem 'china_city'
 
 # others
 gem 'colorize'

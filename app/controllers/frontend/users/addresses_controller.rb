@@ -20,12 +20,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
 
   def update
     load_address
-    if params[:is_default]
-      @address.update(is_default: true) 
-    else
-      @address.update(address_params)
-    end
-    
+    build_address
     save_address or render "edit"
   end
 
@@ -38,7 +33,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
   private
 
   def load_user
-    @user = current_user  
+    @user = current_user
   end
 
   def load_addresses
@@ -50,7 +45,8 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
   end
 
   def build_address
-    @address ||= address_scope.build(address_params) 
+    @address ||= address_scope.new
+    @address.attributes = address_params
   end
 
   def save_address
@@ -61,8 +57,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
 
   def address_params
     address_params = params[:user_address]
-    address_params ? address_params.permit(:post_code, :full_name, :mobile, :address_detail, :province, 
-                                            :district, :city, :phone_section, :phone_code, :phone_ext, :is_default) : {}
+    address_params ? address_params.permit! : {}
   end
 
   def address_scope
