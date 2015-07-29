@@ -23,6 +23,7 @@ private
 
   def save_sign_in
     if @sign_in.save
+      @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
       redirect_to root_path
     end
