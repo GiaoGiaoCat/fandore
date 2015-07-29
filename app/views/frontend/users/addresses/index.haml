@@ -1,0 +1,19 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    = link_to "创建新地址", users_addresses_new_path
+    %h3 收货地址列表
+    - @addresses.each do |address|
+      %p
+      = "邮编：#{address.zipcode}；姓名：#{address.name}；手机：#{address.mobile}；区号#{address.phone_area_code}；电话号码#{address.phone}；分机号#{address.phone_ext_code}；地址#{address.province_name}#{address.city_name}#{address.district_name}；详细地址：#{address.address}"
+      %p
+
+      = link_to "更新地址", users_addresses_edit_path(id: address)
+      - if address.is_default
+        ="默认地址"
+      - else
+        = link_to "设为默认地址", users_addresses_update_path(id: address, user_address: {is_default: true}), method: :patch
+
+      = link_to "删除地址", users_address_path(id: address) , method: :delete , data: { confirm: "确认删除?" }
+      %hr

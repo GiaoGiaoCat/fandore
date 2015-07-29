@@ -1,39 +1,45 @@
-class User < ActiveRecord::Base
+class User::Address < ActiveRecord::Base
   # extends ...................................................................
-  has_secure_password
-  has_one_time_password length: 6
   # includes ..................................................................
-  include Trackable  
   # constants .................................................................
+  self.table_name = 'addresses'
   # related macros ............................................................
   # relationships .............................................................
-  has_one :profile, dependent: :destroy
-  has_many :verification_codes, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  belongs_to :user
   # validations ...............................................................
-  validates :password,
-            confirmation: true,
-            presence: true,
-            length: { in: 6..20 },
-            allow_blank: true
+  validates_presence_of :user_id, :name, :address, :province, :city, :district
   validates :mobile,
             presence: true,
-            uniqueness: true,
             format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   # callbacks .................................................................
+  after_save :set_default_address
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  accepts_nested_attributes_for :profile, update_only: true
-  delegate :name, :gender, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
-  def profile
-    super || build_profile
+  def province_name
+    ChinaCity.get(province) rescue ''
+  end
+
+  def city_name
+    ChinaCity.get(city) rescue ''
+  end
+
+  def district_name
+    ChinaCity.get(district) rescue ''
+  end
+
+  def cancel_default!
+    update_column(:is_default, false)
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
+  private
+
+  def set_default_address
+    if is_default || user.addresses.count == 1
+      user.addresses.each(&:cancel_default!)
+      update_column(:is_default, true)
+    end
+  end
 end

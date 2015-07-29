@@ -44,6 +44,18 @@ Rails.application.routes.draw do
     post 'users/password/update' => :update
   end
 
+  controller 'frontend/users/addresses' do
+    get 'users/addresses' => :index
+    post 'users/addresses/create' => :create
+    get 'users/addresses/new' => :new
+    get 'users/addresses/edit' => :edit
+    patch 'users/addresses/update' => :update
+    delete 'users/address' => :destroy
+  end
+
+  #省市级联
+  mount ChinaCity::Engine => '/china_city'
+
   scope :admin, module: :backend, as: :admin do
     resources :users
 

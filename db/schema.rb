@@ -13,6 +13,25 @@
 
 ActiveRecord::Schema.define(version: 20150729060436) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.string   "name",            limit: 255
+    t.string   "zipcode",         limit: 255
+    t.string   "mobile",          limit: 255
+    t.string   "province",        limit: 255
+    t.string   "district",        limit: 255
+    t.string   "city",            limit: 255
+    t.string   "address",         limit: 255
+    t.string   "phone_area_code", limit: 255
+    t.string   "phone",           limit: 255
+    t.string   "phone_ext_code",  limit: 255
+    t.boolean  "is_default",                  default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name",             limit: 255,   default: "",   null: false
     t.text     "description",      limit: 65535
@@ -99,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150729060436) do
   add_index "verification_codes", ["type"], name: "index_verification_codes_on_type", using: :btree
   add_index "verification_codes", ["user_id"], name: "index_verification_codes_on_user_id", using: :btree
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "properties_prototypes", "properties"
   add_foreign_key "properties_prototypes", "prototypes"

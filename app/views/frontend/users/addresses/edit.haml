@@ -1,0 +1,11 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div{:style => "900px;"}
+    %div
+      %h1.logo-name IN+
+    %h3 收货地址
+    %p
+    = form_for(@address, url: users_addresses_update_path) do |f|
+      = render 'form', f: f
+      %input{name: "id", value: @address.id, type: "hidden"}
+      .form-group
+      = f.submit '保存修改', class: 'btn btn-primary block full-width m-b'
