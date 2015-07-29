@@ -19,13 +19,14 @@
         = link_to "/" do
           %i.fa.fa-dashboard
           %span.nav-label 仪表面板
-      %li{ class: is_active_controller('backend/properties') }
+      %li{ class: is_active_controller('backend/properties', 'backend/prototypes') }
         %a{ href: "javascript:void(0)" }
           %i.fa.fa-cubes
           %span.nav-label 商品管理
           %span.fa.arrow
         %ul.nav.nav-second-level
           %li{ class: is_active_controller('backend/properties') }= link_to "属性管理", admin_properties_path
+          %li{ class: is_active_controller('backend/prototypes') }= link_to "原型管理", admin_prototypes_path
 
       %li
         = link_to '#' do
