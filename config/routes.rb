@@ -46,8 +46,12 @@ Rails.application.routes.draw do
 
   scope :admin, module: :backend, as: :admin do
     resources :users
+
     resources :properties
     resources :product_properties, controller: 'properties'
+
+    resources :prototypes
+    resources :product_prototypes, controller: 'prototypes'
   end
 
   # Admin root path

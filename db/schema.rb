@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20150729030025) do
   add_index "properties", ["category"], name: "index_properties_on_category", using: :btree
 
   create_table "prototypes", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
