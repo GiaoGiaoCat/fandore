@@ -1,7 +1,7 @@
 = simple_form_for([:admin, @prototype], html: { class: 'form-horizontal' }) do |f|
   = f.input :name, wrapper: :horizontal_form
   .form-group
-    %label.col-sm-2.control-label{ for: 'property_ids' } property
+    %label.col-sm-2.control-label{ for: 'product_prototype_property_ids' } Property
     .col-sm-10
       = select_tag "product_prototype[property_ids]", options_from_collection_for_select(Product::Property.all, "id", "name", @prototype.property_ids), multiple: true, class: 'col-xs-12 no-margins no-padding'
 
@@ -12,10 +12,9 @@
       = f.submit class: 'btn btn-primary'
 
 
-
 :javascript
   $(function() {
     $("#product_prototype_property_ids").select2({
-      placeholder: "Select a state"
+      placeholder: "Select a Property"
     });
   })
