@@ -6,5 +6,5 @@
     %p
     - if current_user.is_email_actived
       = "邮箱已经激活"
-    - else 
-      = link_to "发送激活邮件", users_binding_emails_create_path
+    - else
+      = button_to '发送激活邮件', binding_emails_path, method: :post

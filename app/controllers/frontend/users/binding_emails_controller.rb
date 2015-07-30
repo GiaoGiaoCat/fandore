@@ -1,7 +1,5 @@
 class Frontend::Users::BindingEmailsController < Frontend::ApplicationController
-  include Frontend::Users::PasswordsHelper
   def index
-    
   end
 
   def show
@@ -9,7 +7,7 @@ class Frontend::Users::BindingEmailsController < Frontend::ApplicationController
 
   def create
     User::EmailVerificationCode.create(to: current_user.email)
-    redirect_to users_binding_email_to_email_path
+    redirect_to binding_email_path(id: current_user)
   end
 
 end
