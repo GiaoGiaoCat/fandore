@@ -3,13 +3,7 @@
   = f.input :presentation, wrapper: :horizontal_form
   = f.input :position, wrapper: :horizontal_form
 
-  %h4.border-bottom.p-sm 可选值
-
-  #option_values
-    = f.simple_fields_for :option_values do |option_value|
-      = render 'option_values', f: option_value
-      .links
-        = link_to_add_association 'add option value', f, :option_values
+  = render :partial => "option_values", :locals => { :f => f }
 
   .hr-line-dashed
   .form-group
