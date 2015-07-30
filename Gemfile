@@ -46,6 +46,8 @@ gem 'figaro'
 gem 'paranoia'
 # ChinaCity 省市区级联选择
 gem 'china_city'
+# An ActiveRecord plugin for managing lists
+gem 'acts_as_list'
 
 # Use Puma as the app server
 gem 'puma', group: :production
@@ -71,8 +73,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'awesome_print'
   gem 'i18n-debug'
-  # 下面的 gem 会造成 development 环境下日志污染，仅在需要调试 I18N 的时候启用即可
-  # gem 'rails-i18n-debug'
 end
 
 group :development, :test do
