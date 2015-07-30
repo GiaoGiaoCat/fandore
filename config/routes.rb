@@ -55,6 +55,12 @@ Rails.application.routes.draw do
     delete 'users/address' => :destroy
   end
 
+  controller 'frontend/users/binding_emails' do
+    get 'users/binding_emails' => :index
+    post 'users/binding_emails/create' => :create
+    get 'users/binding_email/to_email' => :show
+  end
+
   #省市级联
   mount ChinaCity::Engine => '/china_city'
 
