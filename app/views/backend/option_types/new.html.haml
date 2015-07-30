@@ -1,0 +1,19 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 商品管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li
+        = link_to '可选属性管理', admin_option_types_path
+      %li.active
+        %strong 添加可选属性
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 添加可选属性
+        .ibox-content
+          = render 'form'
