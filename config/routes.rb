@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       end
 
       resources :passwords, only: [:new, :create]
+      resources :activations, only: [:new, :create]
+
       controller 'safety_questions' do
         get 'safety_questions/edit' => :edit
         patch 'safety_questions/update' => :update
