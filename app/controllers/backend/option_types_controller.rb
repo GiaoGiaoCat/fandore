@@ -60,7 +60,8 @@ class Backend::OptionTypesController < Backend::ApplicationController
 
   def option_type_params
     option_type_params = params[:product_option_type]
-    option_type_params ? option_type_params.permit(:name, :presentation, :position, option_values_attributes: [:id, :name, :presentation, :_destroy]) : {}
+    option_values_attributes = [:id, :name, :presentation, :_destroy]
+    option_type_params ? option_type_params.permit(:name, :presentation, :position, option_values_attributes: option_values_attributes) : {}
   end
 
   def option_type_scope

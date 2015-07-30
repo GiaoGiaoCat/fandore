@@ -1,8 +1,8 @@
 .nested-fields
-  .form-inputs
-    = f.input :name
-    = f.input :presentation, label: "Display"
-  .form-group
-    .col-sm-4.col-sm-offset-2
+  .row
+    .col-sm-6
+      = f.input :name, wrapper: :nested_fields_with_btn
+    .col-sm-6
       = link_to_remove_association "remove option value", f, class: 'btn btn-danger'
-  .line.line-dashed.line-lg.pull-in
+
+  = f.input :presentation, wrapper: :nested_fields
