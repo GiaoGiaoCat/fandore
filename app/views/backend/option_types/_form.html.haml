@@ -6,7 +6,6 @@
   %h4.border-bottom.p-sm 可选值
 
   #option_values
-
     = f.simple_fields_for :option_values do |option_value|
       = render 'option_values', f: option_value
       .links
@@ -17,7 +16,6 @@
     .col-sm-4.col-sm-offset-2
       = link_to 'Cancel', :back, class: 'btn btn-white'
       = f.submit class: 'btn btn-primary'
-
 
 :javascript
   $(function() {
