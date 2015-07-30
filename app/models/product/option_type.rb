@@ -1,30 +1,33 @@
-class Product::Property < ActiveRecord::Base
+class Product::OptionType < ActiveRecord::Base
   # table name
-  self.table_name = 'properties'
+  self.table_name = 'option_types'
   # extends ...................................................................
-  extend Enumerize
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
-  # has_many :product_properties, dependent: :delete_all, inverse_of: :property
-  # has_many :products, through: :product_properties
-  #
+  has_many :option_values, -> { order(:position) }, dependent: :destroy, inverse_of: :option_type
+  # has_many :product_option_types, dependent: :destroy, inverse_of: :option_type
+  # has_many :products, through: :product_option_types
   # has_and_belongs_to_many :prototypes
   # validations ...............................................................
   validates :name, :presentation, presence: true
   # callbacks .................................................................
   # after_touch :touch_all_products
   # scopes ....................................................................
-  scope :sorted, -> { order(:name) }
+  default_scope -> { order(:position) }
   # other macros (like devise's) ..............................................
-  enumerize :category, in: { product: 1, variant: 2 }
+  accepts_nested_attributes_for :option_values, allow_destroy: true
   # class methods .............................................................
   # public instance methods ...................................................
+  # after_initialize do |option_type|
+  #   option_type.option_values.new if option_type.option_values.blank?
+  # end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
-    def touch_all_products
-      products.each(&:touch)
-    end
+
+  def touch_all_products
+    products.find_each(&:touch)
+  end
 end

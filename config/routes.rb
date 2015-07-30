@@ -66,6 +66,9 @@ Rails.application.routes.draw do
 
     resources :prototypes
     resources :product_prototypes, controller: 'prototypes'
+
+    resources :option_types
+    resources :product_option_types, controller: 'option_types'
   end
 
   # Admin root path

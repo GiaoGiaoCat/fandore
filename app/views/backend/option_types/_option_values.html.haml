@@ -1,0 +1,8 @@
+%h4.border-bottom.p-sm 可选值
+#option_values
+  = f.simple_fields_for :option_values do |option_value|
+    = render 'option_value', :f => option_value
+  .links
+    .form-group
+      .col-sm-4.col-sm-offset-2
+        = link_to_add_association 'add option value', f, :option_values, partial: 'option_value', class: 'btn btn-primary', "data-association-insertion-node" => "#option_values .links"
