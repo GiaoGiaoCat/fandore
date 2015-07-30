@@ -1,10 +1,10 @@
 class Frontend::Users::BindingEmailsController < Frontend::ApplicationController
+  include Frontend::Users::PasswordsHelper
   def index
     
   end
 
   def show
-    @email_path = "http://mail.#{current_user.email.split('@')[1]}"
   end
 
   def create
