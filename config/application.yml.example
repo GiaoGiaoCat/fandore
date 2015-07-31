@@ -2,6 +2,9 @@ message_app_id: 'YOU MESSAGE APP ID'
 message_signature: 'YOU MESSAGE SIGNATURE'
 mail_app_id: 'YOU MAIL APP ID'
 mail_signature: 'YOU MAIL SIGNATURE'
+message_project_verification: ''
+mail_project_verification: ''
+mail_project_found_password: ''
 
 test:
   message_app_id: 'YOU MESSAGE APP ID'

@@ -19,8 +19,15 @@ class User::MobileVerificationCode < User::VerificationCode
     self.code = SecureRandom.random_number.to_s[2, 6]
   end
 
+  def project_code
+    case method.to_sym
+    when :send_verification
+      Figaro.env.message_project_verification
+    end
+  end
+
   def send_notification
     pusher = Submail.pusher(Figaro.env.message_app_id, Figaro.env.message_signature)
-    pusher.message_xsend(to, 'twMG94', { sms_reg_code: code })
+    pusher.message_xsend(to, project_code, { sms_reg_code: code })
   end
 end

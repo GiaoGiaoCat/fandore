@@ -5,11 +5,12 @@ class User::VerificationCode < ActiveRecord::Base
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
+  attr_accessor :method
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
   validates :to, presence: true
-  validate :validate_time_interval
+  # validate :validate_time_interval
   # callbacks .................................................................
   before_create :generate_code
   after_create :send_notification
@@ -18,6 +19,10 @@ class User::VerificationCode < ActiveRecord::Base
   # other macros (like devise's) ..............................................
   # class methods .............................................................
   # public instance methods ...................................................
+  def after_initialize
+    self.method ||= :send_verification
+  end
+
   def verify?(code)
     self.code == code
   end
@@ -30,6 +35,10 @@ class User::VerificationCode < ActiveRecord::Base
   end
 
   def send_notification
+    raise NotImplementedError, 'Must be implemented by subtypes.'
+  end
+
+  def project_code
     raise NotImplementedError, 'Must be implemented by subtypes.'
   end
 

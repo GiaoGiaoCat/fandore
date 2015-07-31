@@ -19,9 +19,27 @@ class User::EmailVerificationCode < User::VerificationCode
     self.code = SecureRandom.hex
   end
 
+  def package_url
+    case method.to_sym
+    when :send_verification
+      Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
+    when :found_password
+      Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
+    end
+  end
+
+  def project_code
+    case method.to_sym
+    when :send_verification
+      Figaro.env.mail_project_verification
+    when :found_password
+      Figaro.env.mail_project_found_password
+    end
+  end
+
   def send_notification
-    url = Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
+    url = package_url
     pusher = Submail.pusher(Figaro.env.mail_app_id, Figaro.env.mail_signature)
-    pusher.mail_xsend(to, '99cVp3', { url: url }, { url: url })
+    pusher.mail_xsend(to, project_code, { url: url }, { url: url })
   end
 end
