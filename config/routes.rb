@@ -64,6 +64,8 @@ Rails.application.routes.draw do
   scope :admin, module: :backend, as: :admin do
     resources :users
 
+    resources :products
+
     resources :properties
     resources :product_properties, controller: 'properties'
 
