@@ -36,8 +36,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_type'
 # Object-based searching.
 gem 'ransack'
-# Simple, but flexible HTTP client library, with support for multiple backends.
-gem 'faraday'
 # ActiveModel::Otp makes adding Two Factor Authentication (TFA) to a model simple.
 gem 'active_model_otp'
 # Enumerated attributes with I18n and ActiveRecord/Mongoid support
