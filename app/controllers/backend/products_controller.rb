@@ -59,8 +59,8 @@ class Backend::ProductsController < Backend::ApplicationController
   end
 
   def product_params
-    product_params = params[:product_product]
-    product_params ? product_params.permit(:name, :presentation, :category) : {}
+    product_params = params[:product]
+    product_params ? product_params.permit(:name, :description, :spu) : {}
   end
 
   def product_scope
