@@ -1,0 +1,14 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    %h3 安全问题密码重置
+    %p
+    = form_for(@question, url: users_questions_update_path, method: :patch) do |f|
+      %p
+      = "问题：#{@user.profile.question}"
+      .form-group
+        = f.text_field :answer, class: 'form-control', placeholder: '答案'
+        %input{type: "hidden", value: @user.email, name: "user_question[email]"}
+      .form-group
+      = f.submit '提交', class: 'btn btn-primary block full-width m-b'
