@@ -14,8 +14,9 @@
 
       .form-group
       = f.submit '重置密码', class: 'btn btn-primary block full-width m-b'
-      %p.text-muted.text-center
-        %small Already have an account?
+      %p
+      = link_to "安全问题重置密码", users_questions_new_path,class: 'btn btn-primary block full-width m-b'
+      
 
     %p.m-t
       %small Inspinia we app framework base on Bootstrap 3 &#169; 2014

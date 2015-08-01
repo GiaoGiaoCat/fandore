@@ -57,6 +57,13 @@ Rails.application.routes.draw do
     delete 'users/address' => :destroy
   end
 
+  controller 'frontend/users/questions' do
+    get 'users/questions/new' => :new
+    post 'users/questions/create' => :create
+    get 'users/questions/edit' => :edit
+    patch 'users/questions/update' => :update
+  end
+
 
   #省市级联
   mount ChinaCity::Engine => '/china_city'
