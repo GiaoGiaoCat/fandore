@@ -5,6 +5,11 @@
     .col-sm-10
       = select_tag "product_prototype[property_ids]", options_from_collection_for_select(Product::Property.all, "id", "name", @prototype.property_ids), multiple: true, class: 'col-xs-12 no-margins no-padding'
 
+  .form-group
+    %label.col-sm-2.control-label{ for: 'product_prototype_property_ids' } Property
+    .col-sm-10
+      = select_tag "product_prototype[option_type_ids]", options_from_collection_for_select(Product::OptionType.all, "id", "name", @prototype.option_type_ids), multiple: true, class: 'col-xs-12 no-margins no-padding'
+
   .hr-line-dashed
   .form-group
     .col-sm-4.col-sm-offset-2
@@ -16,5 +21,8 @@
   $(function() {
     $("#product_prototype_property_ids").select2({
       placeholder: "Select a Property"
+    });
+    $("#product_prototype_option_type_ids").select2({
+      placeholder: "Select a Option Type"
     });
   })

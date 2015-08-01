@@ -77,6 +77,8 @@ Rails.application.routes.draw do
 
     resources :users
 
+    resources :products
+
     resources :properties
     resources :product_properties, controller: 'properties'
 
