@@ -8,6 +8,4 @@
           %input#top-search.form-control{:name => "top-search", :placeholder => "Search for something...", :type => "text"}/
     %ul.nav.navbar-top-links.navbar-right
       %li
-        %a{:href => "#"}
-          %i.fa.fa-sign-out
-          Log out
+        = link_to content_tag(:i, nil, class: ["fa", "fa-sign-out"]) + "Log out", sign_out_path, method: :delete

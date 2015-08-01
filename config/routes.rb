@@ -71,6 +71,8 @@ Rails.application.routes.draw do
   scope :admin, module: :backend, as: :admin do
     resources :users
 
+    get "sign_in", to: "sessions#new"
+
     resources :properties
     resources :product_properties, controller: 'properties'
 
@@ -95,8 +97,5 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
-
-
 
 end
