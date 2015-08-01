@@ -57,6 +57,11 @@ Rails.application.routes.draw do
     delete 'users/address' => :destroy
   end
 
+  controller 'frontend/users/password_by_emails' do
+    get 'users/passwords/email/new' => :new
+    post 'users/passwords/email/create' => :create
+  end
+
 
   #省市级联
   mount ChinaCity::Engine => '/china_city'
