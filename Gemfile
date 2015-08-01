@@ -49,6 +49,8 @@ gem 'china_city'
 # An ActiveRecord plugin for managing lists
 gem 'acts_as_list'
 
+# patterns to build a simple, robust and scaleable authorization system.
+gem 'pundit'
 # Use Puma as the app server
 gem 'puma', group: :production
 # 服务器性能监控

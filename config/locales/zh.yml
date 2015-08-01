@@ -244,3 +244,8 @@ zh:
       next: "下一页"
       truncate: "..."
     orders:
+
+  pundit:
+    default: '不能执行此方法'
+    user_policy:
+      create?: '不能创建用户'

@@ -11,24 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729060436) do
+ActiveRecord::Schema.define(version: 20150801015949) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "post_code",      limit: 4
-    t.string   "full_name",      limit: 255
-    t.string   "mobile",         limit: 255
-    t.string   "phone_section",  limit: 255
-    t.integer  "phone_code",     limit: 4
-    t.string   "phone_ext",      limit: 255
-    t.text     "address_detail", limit: 65535
-    t.string   "province",       limit: 255
-    t.string   "district",       limit: 255
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "city",           limit: 255
-    t.integer  "user_id",        limit: 4
-    t.boolean  "is_default",                   default: false
+    t.integer  "user_id",         limit: 4
+    t.string   "name",            limit: 255
+    t.string   "zipcode",         limit: 255
+    t.string   "mobile",          limit: 255
+    t.string   "province",        limit: 255
+    t.string   "district",        limit: 255
+    t.string   "city",            limit: 255
+    t.string   "address",         limit: 255
+    t.string   "phone_area_code", limit: 255
+    t.string   "phone",           limit: 255
+    t.string   "phone_ext_code",  limit: 255
+    t.boolean  "is_default",                  default: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
+
+  create_table "option_types", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "presentation", limit: 255
+    t.integer  "position",     limit: 4,   default: 0, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "option_types", ["position"], name: "index_option_types_on_position", using: :btree
+
+  create_table "option_values", force: :cascade do |t|
+    t.string   "name",           limit: 255
+    t.integer  "position",       limit: 4
+    t.string   "presentation",   limit: 255
+    t.integer  "option_type_id", limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id", using: :btree
+  add_index "option_values", ["position"], name: "index_option_values_on_position", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name",             limit: 255,   default: "",   null: false
@@ -57,8 +81,6 @@ ActiveRecord::Schema.define(version: 20150729060436) do
     t.datetime "partner_birthday"
     t.string   "partner_email",    limit: 100
     t.string   "partner_mobile",   limit: 50
-    t.string   "question",         limit: 255
-    t.string   "answer",           limit: 255
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -88,14 +110,19 @@ ActiveRecord::Schema.define(version: 20150729060436) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",            limit: 100
-    t.string   "mobile",           limit: 50
-    t.string   "password_digest",  limit: 80
-    t.boolean  "is_email_actived",             default: false, null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "otp_secret_key",   limit: 255
-    t.integer  "otp_counter",      limit: 4
+    t.string   "email",                limit: 100
+    t.string   "mobile",               limit: 50
+    t.string   "password_digest",      limit: 80
+    t.boolean  "is_email_actived",                 default: false, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "otp_secret_key",       limit: 255
+    t.integer  "otp_counter",          limit: 4
+    t.string   "last_sign_in_ip",      limit: 255
+    t.string   "registe_ip",           limit: 255
+    t.string   "last_sign_in_address", limit: 255
+    t.datetime "last_sign_in_at"
+    t.integer  "role",                 limit: 4,   default: 0
   end
 
   create_table "verification_codes", force: :cascade do |t|
@@ -106,9 +133,10 @@ ActiveRecord::Schema.define(version: 20150729060436) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "verification_codes", ["mobile"], name: "index_verification_codes_on_mobile", unique: true, using: :btree
+  add_index "verification_codes", ["mobile"], name: "index_verification_codes_on_mobile", using: :btree
   add_index "verification_codes", ["user_id"], name: "index_verification_codes_on_user_id", using: :btree
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "properties_prototypes", "properties"
   add_foreign_key "properties_prototypes", "prototypes"
