@@ -1,0 +1,4 @@
+.checkbox
+  %label
+    = check_box_tag("product[option_values_hash[#{option_value.option_type.id}]][]", option_value.id, true)
+    = option_value.presentation

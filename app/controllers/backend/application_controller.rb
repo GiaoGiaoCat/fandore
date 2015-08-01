@@ -1,3 +1,3 @@
 class Backend::ApplicationController < ApplicationController
-  layout 'backend'
+  layout ->(controller) { controller.request.xhr? ? false : 'backend' }
 end

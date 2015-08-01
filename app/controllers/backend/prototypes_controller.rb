@@ -9,6 +9,11 @@ class Backend::PrototypesController < Backend::ApplicationController
 
   def show
     load_prototype
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
