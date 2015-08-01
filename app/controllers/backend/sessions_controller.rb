@@ -4,6 +4,6 @@ class Backend::SessionsController < Backend::ApplicationController
   private
 
   def redirect_to_url
-    redirect_to admin_root_path
+    redirect_to admin_path
   end
 end

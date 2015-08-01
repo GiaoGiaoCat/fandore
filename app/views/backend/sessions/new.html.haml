@@ -6,7 +6,7 @@
     %p
       Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
     %p Login in. To see it in action.
-    = form_for(@sign_in, url: admin_sign_in) do |f|
+    = form_for(@sign_in, url: admin_sign_in_path) do |f|
       - if @sign_in.errors.any?
         .error_messages
           %h2 Form is invalid

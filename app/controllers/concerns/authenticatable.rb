@@ -1,7 +1,9 @@
 module Authenticatable
   extend ActiveSupport::Concern
 
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  included do
+    skip_before_action :authenticate_user!, only: [:new, :create]
+  end
 
   def new
     build_sign_in
