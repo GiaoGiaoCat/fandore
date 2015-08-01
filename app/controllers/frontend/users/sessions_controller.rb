@@ -12,7 +12,6 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
 
   def destroy
     sign_out
-    redirect_to root_path
   end
 
 private
@@ -25,12 +24,21 @@ private
     if @sign_in.save
       @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
-      redirect_to root_path
+      if @sign_in.user.admin?
+        redirect_to admin_path
+      else
+        redirect_to root_path
+      end
     end
   end
 
   def sign_out
     session[:user_id] = nil
+    if @current_user.admin?
+      redirect_to admin_sign_in_path
+    else
+      redirect_to sign_in_path
+    end
     @current_user = nil
   end
 
