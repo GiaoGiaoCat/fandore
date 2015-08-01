@@ -1,19 +1,9 @@
 class Backend::SessionsController < Backend::ApplicationController
-  layout 'empty'
-  skip_before_action :authenticate_user!, only: [:new]
+  include Authenticatable
 
-  def new
-    build_sign_in
-  end
+  private
 
-private
-
-  def build_sign_in
-    @sign_in ||= User::LoginForm.new(sign_in_params)
-  end
-
-  def sign_in_params
-    user_params = params[:user_login_form]
-    user_params ? user_params.permit(:username, :password) : {}
+  def redirect_to_url
+    redirect_to admin_root_path
   end
 end

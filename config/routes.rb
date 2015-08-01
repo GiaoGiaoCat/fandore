@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   get 'account_safe' => 'welcome#account_safe'
 
+  concern :authenticatable do
+    controller :sessions do
+      get 'sign_in' => :new
+      post 'sign_in' => :create
+      delete 'sign_out' => :destroy
+    end
+  end
+
   scope module: 'frontend' do
     scope module: 'users' do
 
@@ -12,11 +20,7 @@ Rails.application.routes.draw do
         post 'sign_up' => :create
       end
 
-      controller 'sessions' do
-        get 'sign_in' => :new
-        post 'sign_in' => :create
-        delete 'sign_out' => :destroy
-      end
+      concerns :authenticatable
 
       resources :passwords, only: [:new, :create]
       resources :activations, only: [:new, :create]
@@ -69,9 +73,9 @@ Rails.application.routes.draw do
   mount ChinaCity::Engine => '/china_city'
 
   scope :admin, module: :backend, as: :admin do
-    resources :users
+    concerns :authenticatable
 
-    get "sign_in", to: "sessions#new"
+    resources :users
 
     resources :properties
     resources :product_properties, controller: 'properties'
@@ -88,14 +92,4 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
 end
