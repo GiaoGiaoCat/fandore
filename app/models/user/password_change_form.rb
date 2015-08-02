@@ -14,6 +14,10 @@ class User::PasswordChangeForm < ActiveType::Object
     User.ransack(email_or_mobile_eq: username).result.first
   end
 
+  def self.answer_set_password(answer_user, new_password)
+    answer_user.update_attribute(:password, new_password)
+  end
+
   private
 
   def validate_user_exists

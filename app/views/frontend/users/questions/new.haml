@@ -1,0 +1,11 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    %h3 安全问题密码重置
+    %p
+    = form_for(@question, url: users_questions_create_path) do |f|
+      .form-group
+        = f.text_field :email, class: 'form-control', placeholder: '邮箱'
+      .form-group
+      = f.submit '提交', class: 'btn btn-primary block full-width m-b'

@@ -9,6 +9,11 @@ class Backend::PrototypesController < Backend::ApplicationController
 
   def show
     load_prototype
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -60,7 +65,7 @@ class Backend::PrototypesController < Backend::ApplicationController
 
   def prototype_params
     prototype_params = params[:product_prototype]
-    prototype_params ? prototype_params.permit(:name, property_ids: []) : {}
+    prototype_params ? prototype_params.permit(:name, property_ids: [], option_type_ids: []) : {}
   end
 
   def prototype_scope
