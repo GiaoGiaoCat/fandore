@@ -77,7 +77,10 @@ Rails.application.routes.draw do
 
     resources :users
 
-    resources :products
+    resources :products do
+      resources :variants
+      resources :product_properties, only: [:index]
+    end
 
     resources :properties
     resources :product_properties, controller: 'properties'

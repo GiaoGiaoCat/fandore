@@ -10,6 +10,12 @@ class CreateVariant < ActiveRecord::Migration
       # t.boolean   :track_inventory, default: true, index: true
       # t.integer   :tax_category_id, index: true
       # t.integer   :stock_items_count, default: 0, null: false
+      t.decimal     :weight, precision: 8, scale: 2
+      t.decimal     :height, precision: 8, scale: 2
+      t.decimal     :width, precision: 8, scale: 2
+      t.decimal     :depth, precision: 8, scale: 2
+      t.decimal     :cost_price, precision: 8, scale: 2
+      t.string      :cost_currency      
 
       t.timestamps null: false
     end
