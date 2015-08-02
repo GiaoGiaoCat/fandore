@@ -24,7 +24,7 @@ class User::EmailVerificationCode < User::VerificationCode
     when :send_verification
       Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
     when :found_password
-      Rails.application.routes.url_helpers.new_activation_url(code: code, host: 'http://fandore.net')
+      Rails.application.routes.url_helpers.new_password_url(email: email, opt_code: opt_code, host: 'http://fandore.net')
     end
   end
 

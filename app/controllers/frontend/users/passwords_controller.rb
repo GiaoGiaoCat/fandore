@@ -1,21 +1,16 @@
 class Frontend::Users::PasswordsController < Frontend::ApplicationController
   skip_before_action :authenticate_user!
   def new
-    build_password
+    if current_user || load_user
+      build_password
+    else
+      redirect_to :back
+    end
   end
 
   def create
-    if current_user
-      build_password
-      save_password or render 'new'
-    else
-      load_user            
-      if User::PasswordChangeForm.answer_set_password(@user,params[:answer]) 
-        redirect_to root_path  
-      else
-        redirect_to :back
-      end
-    end
+    build_password
+    save_password or render 'new'
   end
 
   private
@@ -39,6 +34,6 @@ class Frontend::Users::PasswordsController < Frontend::ApplicationController
 
   def load_user
     @user = User.find_by(email: params[:email])
-    User::Question.is_answer(@user,params[:answer])
+    @user.authenticate_otp(params[:opt_code], drift: 60)
   end
 end
