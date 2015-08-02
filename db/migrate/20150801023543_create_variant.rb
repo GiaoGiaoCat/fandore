@@ -15,7 +15,7 @@ class CreateVariant < ActiveRecord::Migration
       t.decimal     :width, precision: 8, scale: 2
       t.decimal     :depth, precision: 8, scale: 2
       t.decimal     :cost_price, precision: 8, scale: 2
-      t.string      :cost_currency      
+      t.string      :cost_currency
 
       t.timestamps null: false
     end
