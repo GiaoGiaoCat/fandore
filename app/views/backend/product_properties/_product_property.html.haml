@@ -1,0 +1,8 @@
+.nested-fields
+  .row
+    .col-sm-6
+      = f.input :property_name, wrapper: :nested_fields_with_btn
+    .col-sm-6
+      = link_to_remove_association "remove option value", f, class: 'btn btn-danger'
+
+  = f.input :value, wrapper: :nested_fields

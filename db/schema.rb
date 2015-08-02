@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801023543) do
+ActiveRecord::Schema.define(version: 20150802134445) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "post_code",      limit: 4
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20150801023543) do
 
   add_index "option_values", ["option_type_id"], name: "index_option_values_on_option_type_id", using: :btree
   add_index "option_values", ["position"], name: "index_option_values_on_position", using: :btree
+
+  create_table "option_values_variants", id: false, force: :cascade do |t|
+    t.integer "variant_id",      limit: 4
+    t.integer "option_value_id", limit: 4
+  end
+
+  add_index "option_values_variants", ["variant_id", "option_value_id"], name: "index_option_values_variants_on_variant_id_and_option_value_id", using: :btree
+  add_index "option_values_variants", ["variant_id"], name: "index_option_values_variants_on_variant_id", using: :btree
 
   create_table "product_option_types", force: :cascade do |t|
     t.integer  "position",       limit: 4, default: 0
