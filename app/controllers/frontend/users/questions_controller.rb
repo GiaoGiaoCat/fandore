@@ -21,7 +21,7 @@ class Frontend::Users::QuestionsController < Frontend::ApplicationController
   def update
     load_user
     if User::Question.is_answer(@user,answer_params[:answer])
-      redirect_to new_password_path(email: @user.email, answer: @user.profile.answer)
+      redirect_to new_password_path(opt_code: @user.otp_code, email: @user.email)
     else
       redirect_to users_questions_edit_path(question_params)
     end

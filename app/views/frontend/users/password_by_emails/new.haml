@@ -1,0 +1,20 @@
+.middle-box.text-center.loginscreen.animated.fadeInDown
+  %div
+    %div
+      %h1.logo-name IN+
+    %h3 找回密码
+    %p 
+    = form_for(@user, url: users_passwords_email_create_path) do |f|
+      .form-group
+        = f.text_field :email, class: 'form-control', placeholder: '邮箱'
+      .form-group
+      = f.submit '发送邮件', class: 'btn btn-primary block full-width m-b'
+    %p.m-t
+      %small Inspinia we app framework base on Bootstrap 3 &#169; 2014
+
+:javascript
+  $(".test_alert").click(function(){
+    var mobile = $("input[name='user[mobile]']").val();
+    $.post('/users/get_otp_code',{mobile: mobile});
+    return false;
+  })

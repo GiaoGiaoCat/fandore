@@ -61,6 +61,11 @@ Rails.application.routes.draw do
     delete 'users/address' => :destroy
   end
 
+  controller 'frontend/users/password_by_emails' do
+    get 'users/passwords/email/new' => :new
+    post 'users/passwords/email/create' => :create
+  end
+  
   controller 'frontend/users/questions' do
     get 'users/questions/new' => :new
     post 'users/questions/create' => :create
