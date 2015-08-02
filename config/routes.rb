@@ -79,6 +79,7 @@ Rails.application.routes.draw do
 
     resources :products do
       resources :variants
+      resources :product_variants, controller: 'variants'
       resources :product_properties, only: [:index]
     end
 

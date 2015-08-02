@@ -1,0 +1,45 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 商品管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 商品管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-10
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 Listing Variants
+          .ibox-tools
+            = link_to 'Add Variant', new_admin_product_variant_path(@product), class: 'btn btn-primary btn-xs'
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th SKU
+                  %th 添加时间
+                  %th
+              %tbody
+                - @variants.each do |variant|
+                  %tr
+                    %td= variant.sku
+                    %td= variant.created_at.to_s(:db)
+                    %td
+                      .btn-group
+                        = link_to '编辑', edit_admin_product_variant_path(@product, variant), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_product_variant_path(@product, variant), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
+    .col-lg-2
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 高级设置
+        .ibox-content.no-padding
+          %ul.list-group
+            %li.list-group-item= link_to 'PRODUCT ATTRIBUTES', edit_admin_product_path(@product)
+            %li.list-group-item= link_to 'PRODUCT PROPERTIES', admin_product_product_properties_path(@product)
+            %li.list-group-item= link_to 'VARIANTS', admin_product_variants_path(@product)

@@ -42,7 +42,6 @@ class Product < ActiveRecord::Base
 
   def add_associations_from_prototype
     if prototype_id && prototype = Product::Prototype.find_by(id: prototype_id)
-      # binding.pry
       prototype.properties.each { |property| product_properties.create(property: property) }
       self.option_types = prototype.option_types
     end
