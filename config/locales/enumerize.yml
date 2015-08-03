@@ -4,3 +4,8 @@ zh-CN:
       gender:
         male: "男"
         female: "女"
+    variant:
+      status:
+        available: "在售"
+        sold: "已售"
+        unavailable: "不可用"
