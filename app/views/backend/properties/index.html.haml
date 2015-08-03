@@ -24,7 +24,6 @@
                 %tr
                   %th Name
                   %th Presentation
-                  %th 类型
                   %th 添加时间
                   %th
               %tbody
@@ -32,7 +31,6 @@
                   %tr
                     %td= property.name
                     %td= property.presentation
-                    %td= property.category
                     %td= property.created_at.to_s(:db)
                     %td
                       .btn-group
