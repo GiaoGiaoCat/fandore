@@ -1,7 +1,8 @@
 = simple_form_for([:admin, @product], :wrapper => :horizontal_form, html: { class: 'form-horizontal' }) do |f|
   = f.input :name
   = f.input :description
-  = f.input :spu
+  = f.input :sku
+  = f.input :price
 
   - if @product.new_record?
     #property_ids

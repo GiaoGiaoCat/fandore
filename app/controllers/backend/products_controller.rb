@@ -60,8 +60,14 @@ class Backend::ProductsController < Backend::ApplicationController
 
   def product_params
     product_params = params[:product]
+    return Hash.new unless product_params
+
     product_properties_attributes = [:id, :property_name, :value, :_destroy]
-    product_params ? product_params.permit(:name, :description, :spu, :prototype_id, option_values_hash: [], product_properties_attributes: product_properties_attributes) : {}
+    attrs = [:name, :description, :sku, :price, :prototype_id, product_properties_attributes: product_properties_attributes]
+    # https://github.com/rails/rails/issues/9454
+    params.require(:product).permit(attrs).tap do |while_listed|
+      while_listed[:option_values_hash] = params[:product][:option_values_hash]
+    end
   end
 
   def product_scope

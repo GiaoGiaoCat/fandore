@@ -22,13 +22,13 @@
             %table.table.table-striped
               %thead
                 %tr
-                  %th SKU
+                  %th OPTIONS
                   %th 添加时间
                   %th
               %tbody
                 - @variants.each do |variant|
                   %tr
-                    %td= variant.sku
+                    %td= variant.options_text
                     %td= variant.created_at.to_s(:db)
                     %td
                       .btn-group

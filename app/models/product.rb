@@ -13,11 +13,10 @@ class Product < ActiveRecord::Base
   # has_many :classifications, dependent: :delete_all, inverse_of: :product
   # has_many :taxons, through: :classifications
 
-  has_one :master, -> { where(is_master: true) }, class_name: 'Product::Variant', inverse_of: :product
+  has_one :master, -> { where(is_master: true) }, class_name: 'Product::Variant', autosave: true, inverse_of: :product
   has_many :variants, -> { where(is_master: false) }, inverse_of: :product
   has_many :variants_including_master, class_name: 'Product::Variant', dependent: :destroy, inverse_of: :product
   # validations ...............................................................
-  validates :spu, uniqueness: true, allow_blank: true
   validates :name, presence: true
   # validates :price, presence: true, if: proc { Spree::Config[:require_master_price] }
   validates :meta_keywords, length: { maximum: 255 }
@@ -34,6 +33,9 @@ class Product < ActiveRecord::Base
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :product_properties, allow_destroy: true
+
+  # delegate :sku, :price, :currency, :display_amount, :display_price, :weight, :height, :width, :depth, :is_master, :has_default_price?, :cost_currency, :price_in, :amount_in, to: :master
+  delegate :sku, :sku=, :price, :price=, to: :master
   # class methods .............................................................
   # public instance methods ...................................................
   # protected instance methods ................................................
@@ -68,8 +70,15 @@ class Product < ActiveRecord::Base
   # Builds variants from a hash of option types & values
   def build_variants_from_option_values_hash
     ensure_option_types_exist_for_values_hash
-    values = option_values_hash.values.inject(values.shift) { |memo, value| memo.product(value).map(&:flatten) }
-    values.each { |ids| variants.create(option_value_ids: ids, price: master.price) }
+    values = option_values_hash.values
+    values = values.inject(values.shift) { |memo, value| memo.product(value).map(&:flatten) }
+
+    values.each do |ids|
+      variant = variants.create(
+        option_value_ids: ids,
+        price: master.price
+      )
+    end
     save
   end
 end

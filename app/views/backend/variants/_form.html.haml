@@ -6,11 +6,8 @@
       .col-sm-10
         = f.collection_select :option_value_ids, option_type.option_values, :id, :presentation, { prompt: true }, { name: 'product_variant[option_value_ids][]', class: 'select form-control' }
   = f.input :sku
+  = f.input :price
   = f.input :position
-
-  - if @product.new_record?
-    #property_ids
-      = f.input :prototype_id, collection: Product::Prototype.all, include_blank: false, prompt: "Select Prototype", wrapper: :horizontal_form
 
   .hr-line-dashed
   .form-group
