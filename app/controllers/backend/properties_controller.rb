@@ -60,7 +60,7 @@ class Backend::PropertiesController < Backend::ApplicationController
 
   def property_params
     property_params = params[:product_property]
-    property_params ? property_params.permit(:name, :presentation, :category) : {}
+    property_params ? property_params.permit(:name, :presentation) : {}
   end
 
   def property_scope
