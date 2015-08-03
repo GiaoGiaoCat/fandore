@@ -23,12 +23,14 @@
               %thead
                 %tr
                   %th OPTIONS
+                  %th Price
                   %th 添加时间
                   %th
               %tbody
                 - @variants.each do |variant|
                   %tr
                     %td= variant.options_text
+                    %td= number_to_currency variant.price
                     %td= variant.created_at.to_s(:db)
                     %td
                       .btn-group

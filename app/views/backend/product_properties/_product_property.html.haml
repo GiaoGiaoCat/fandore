@@ -5,4 +5,4 @@
     .col-sm-6
       = link_to_remove_association "remove option value", f, class: 'btn btn-danger'
 
-  = f.input :value, wrapper: :nested_fields
+  = dynamic_input(f)

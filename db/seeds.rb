@@ -6,16 +6,17 @@ User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566
 # 戒托属性
 # metal 材质
 # style 款式
-# center_stone 主钻大小
+# center stone 主钻大小
 # size 指圈范围
-# sub_stone_weight 副石重量
-# sub_stone_color 副钻类型
-# sub_stone_quantity 副石数量
+# sub stone style 副石款式
+# sub stone weight 副石重量
+# sub stone color 副钻类型
+# sub stone quantity 副石数量
 
 # property_1 = Product::Property.create(name: 'Metal', presentation: '材质')
-# property_2 = Product::Property.create(name: 'Style', presentation: '款式')
-property_3 = Product::Property.create(name: 'Center Stone', presentation: '主钻大小')
-property_4 = Product::Property.create(name: 'Size', presentation: '指圈范围')
+property_2 = Product::Property.create(name: 'Center Stone', presentation: '主钻大小')
+property_3 = Product::Property.create(name: 'Size', presentation: '指圈范围')
+property_4 = Product::Property.create(name: 'Sub Stone Style', presentation: '款式')
 property_5 = Product::Property.create(name: 'Sub Stone Weight', presentation: '副钻重量')
 property_6 = Product::Property.create(name: 'Sub Stone Color', presentation: '副钻类型')
 property_7 = Product::Property.create(name: 'Sub Stone Quantity', presentation: '副钻数量')
@@ -31,7 +32,7 @@ Product::OptionValue.create(name: 'Custom', presentation: '高级订制款', opt
 
 prototype_1 = Product::Prototype.create(name: '戒托')
 
-prototype_1.properties << [property_3, property_4, property_5, property_6, property_7]
+prototype_1.properties << [property_2, property_3, property_4, property_5, property_6, property_7]
 prototype_1.option_types << [option_type_1, option_type_2]
 
 # 钻石属性
