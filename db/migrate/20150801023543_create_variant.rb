@@ -8,7 +8,7 @@ class CreateVariant < ActiveRecord::Migration
       t.decimal     :display_price, precision: 10, scale: 2
       t.decimal     :cost_price, precision: 10, scale: 2
       t.integer     :position, index: true
-      t.integer     :status
+      t.integer     :status, default: 0
       t.references  :product, index: true
       # t.boolean   :track_inventory, default: true, index: true
       # t.integer   :tax_category_id, index: true

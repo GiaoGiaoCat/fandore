@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 20150802134445) do
     t.decimal  "display_price",             precision: 10, scale: 2
     t.decimal  "cost_price",                precision: 8,  scale: 2
     t.integer  "position",      limit: 4
-    t.integer  "status",        limit: 4
+    t.integer  "status",        limit: 4,                            default: 0
     t.integer  "product_id",    limit: 4
     t.decimal  "weight",                    precision: 8,  scale: 2
     t.decimal  "height",                    precision: 8,  scale: 2
