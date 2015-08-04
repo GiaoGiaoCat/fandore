@@ -16,6 +16,7 @@ module Authenticatable
 
   def destroy
     sign_out
+    build_sign_in and render 'new'
   end
 
   private
@@ -30,20 +31,24 @@ module Authenticatable
   end
 
   def save_sign_in
-    if @sign_in.save
+    if @sign_in.save && authority_verify(@sign_in.user)
       @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
       redirect_to_url
     end
   end
 
+
   def sign_out
     session[:user_id] = nil
     @current_user = nil
-    redirect_to_url
   end
 
   def redirect_to_url
+    raise NotImplementedError, 'Must be implemented by who mixins me.'
+  end
+
+  def authority_verify(user)
     raise NotImplementedError, 'Must be implemented by who mixins me.'
   end
 
