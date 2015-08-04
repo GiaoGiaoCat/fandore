@@ -16,6 +16,11 @@ class Product < ActiveRecord::Base
   has_one :master, -> { where(is_master: true) }, class_name: 'Product::Variant', autosave: true, inverse_of: :product
   has_many :variants, -> { where(is_master: false) }, inverse_of: :product
   has_many :variants_including_master, class_name: 'Product::Variant', dependent: :destroy, inverse_of: :product
+
+  has_many :recommendations
+  has_many :recommend_products, through: :recommendations
+  has_many :inverse_recommendations, class_name: 'Product::Recommendation', foreign_key: 'recommend_product_id'
+  has_many :inverse_recommend_products, through: :inverse_recommendations, source: :product
   # validations ...............................................................
   validates :name, presence: true
   # validates :price, presence: true, if: proc { Spree::Config[:require_master_price] }

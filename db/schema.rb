@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802134445) do
+ActiveRecord::Schema.define(version: 20150804155218) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -149,6 +149,16 @@ ActiveRecord::Schema.define(version: 20150802134445) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer  "product_id",           limit: 4
+    t.integer  "recommend_product_id", limit: 4
+    t.integer  "position",             limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "recommendations", ["position"], name: "index_recommendations_on_position", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",              limit: 100
