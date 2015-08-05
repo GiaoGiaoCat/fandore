@@ -38,8 +38,6 @@ gem 'active_type'
 gem 'ransack'
 # ActiveModel::Otp makes adding Two Factor Authentication (TFA) to a model simple.
 gem 'active_model_otp'
-# Enumerated attributes with I18n and ActiveRecord/Mongoid support
-gem 'enumerize'
 # Simple Rails app configuration
 gem 'figaro'
 # ActiveRecord plugin allowing you to hide and restore records without actually deleting them.

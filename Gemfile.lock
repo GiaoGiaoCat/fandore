@@ -83,8 +83,6 @@ GEM
     colorize (0.7.7)
     columnize (0.9.0)
     debug_inspector (0.0.2)
-    enumerize (0.11.0)
-      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.5.2)
     figaro (1.1.1)
@@ -251,7 +249,6 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.1.0)
   colorize
-  enumerize
   figaro
   font-awesome-rails
   haml-rails
