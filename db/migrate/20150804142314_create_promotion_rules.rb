@@ -1,9 +1,8 @@
 class CreatePromotionRules < ActiveRecord::Migration
   def change
     create_table :promotion_rules do |t|
-      t.integer :promotion_id
-      t.integer :user_id
-      t.integer :product_group_id
+      t.references :promotion, index: true
+      t.references :user, index: true
       t.string :type
       t.text :preferences
 
