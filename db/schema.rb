@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804155218) do
+ActiveRecord::Schema.define(version: 20150805172827) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20150804155218) do
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
+
+  create_table "favorites", force: :cascade do |t|
+    t.string   "note",         limit: 50,  default: ""
+    t.integer  "favable_id",   limit: 4
+    t.string   "favable_type", limit: 191
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["favable_id"], name: "index_favorites_on_favable_id", using: :btree
+  add_index "favorites", ["favable_type"], name: "index_favorites_on_favable_type", using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "option_types", force: :cascade do |t|
     t.string   "name",         limit: 191
