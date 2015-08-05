@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805160122) do
+ActiveRecord::Schema.define(version: 20150805160753) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "post_code",      limit: 4
@@ -157,9 +157,7 @@ ActiveRecord::Schema.define(version: 20150805160122) do
     t.string   "type",                  limit: 191
     t.integer  "usage_limit",           limit: 4
     t.integer  "promotion_category_id", limit: 4
-    t.string   "match_policy",          limit: 191
     t.string   "code",                  limit: 191
-    t.boolean  "advertise"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
