@@ -2,7 +2,6 @@ class CreatePromotionRules < ActiveRecord::Migration
   def change
     create_table :promotion_rules do |t|
       t.references :promotion, index: true
-      t.references :user, index: true
       t.string :type
       t.text :preferences
 

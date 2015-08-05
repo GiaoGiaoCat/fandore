@@ -3,7 +3,7 @@ class CreatePromotionActions < ActiveRecord::Migration
     create_table :promotion_actions do |t|
       t.references :promotion, index: true
       t.string :type
-      t.integer :position, default: 0, null: false, index: true
+      t.text :preferences
 
       t.timestamps null: false
     end
