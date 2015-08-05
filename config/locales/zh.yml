@@ -202,10 +202,7 @@ zh:
       time_only: ! '%H:%M'
     pm: 下午
 
-  enumerize:
-    user/profile:
-      male: 男
-      female: 女
+
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
@@ -218,9 +215,13 @@ zh:
     attributes:
       product:
         name: '名称'
+        description: '简介'
         inventory: '库存数量'
         price: '价格'
         primary_image: '主图'
+        status: '状态'
+        sku: 'SPU'
+        recommend_product_ids: '关联钻石'
       user:
         mobile: '手机'
         email: '邮件'
