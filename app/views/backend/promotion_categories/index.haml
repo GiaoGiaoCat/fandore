@@ -1,0 +1,33 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 促销管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 属性管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 属性列表
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th name
+                  %th code
+              %tbody
+                - @promotion_categories.each do |promotion_categorie|
+                  %tr
+                    %td= promotion_categorie.name
+                    %td= promotion_categorie.code
+                    %td
+                      .btn-group
+                        = link_to '编辑', edit_admin_promotion_category_path(promotion_categorie), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_promotion_category_path(promotion_categorie), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }

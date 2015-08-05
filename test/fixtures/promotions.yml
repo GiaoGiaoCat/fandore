@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  expires_at: 2015-08-04 21:29:49
+  starts_at: 2015-08-04 21:29:49
+  name: MyString
+  type: 
+  usage_limit: 1
+  promotion_category_id: 1
+  match_policy: MyString
+  code: MyString
+  advertise: false
+
+two:
+  description: MyString
+  expires_at: 2015-08-04 21:29:49
+  starts_at: 2015-08-04 21:29:49
+  name: MyString
+  type: 
+  usage_limit: 1
+  promotion_category_id: 1
+  match_policy: MyString
+  code: MyString
+  advertise: false

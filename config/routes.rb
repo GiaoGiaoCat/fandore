@@ -96,6 +96,8 @@ Rails.application.routes.draw do
 
     resources :option_types
     resources :product_option_types, controller: 'option_types'
+    resources :promotion_categories
+
   end
 
   # Admin root path
