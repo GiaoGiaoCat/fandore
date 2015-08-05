@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   end
 
   scope module: 'frontend' do
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      scope module: 'users' do
+        resources :favorites, only: [:create]
+      end
+    end
+
     scope module: 'users' do
 
       controller 'registrations' do
@@ -32,6 +37,8 @@ Rails.application.routes.draw do
       end
 
       resources :binding_emails, only: [:index, :show, :create]
+
+      resources :favorites, only: [:destroy]
     end
   end
 

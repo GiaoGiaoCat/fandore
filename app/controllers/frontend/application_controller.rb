@@ -1,3 +1,3 @@
 class Frontend::ApplicationController < ApplicationController
-  layout 'empty'
+  layout ->(controller) { controller.request.xhr? ? false : 'empty' }
 end
