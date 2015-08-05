@@ -17,7 +17,8 @@
       end_year: Date.today.year,
       order: [:year, :month, :day],
       wrapper: :horizontal_select_date
-    = field.input :gender, collection: User::Profile.genders.keys.map {|g| [t('enumerize.user.gender.' + g), g]}, include_blank: false, wrapper: :horizontal_form
+
+    = field.input :gender, collection: t_options_for_select(User::Profile, :gender), include_blank: false, wrapper: :horizontal_form
 
     .hr-line-dashed
 
