@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :verification_codes, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   # validations ...............................................................
   validates :password,
             confirmation: true,
