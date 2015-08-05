@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804150410) do
+ActiveRecord::Schema.define(version: 20150805160122) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "post_code",      limit: 4
@@ -126,9 +126,15 @@ ActiveRecord::Schema.define(version: 20150804150410) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "promotion_actions", force: :cascade do |t|
+    t.integer  "promotion_id", limit: 4
+    t.string   "type",         limit: 191
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "promotion_categories", force: :cascade do |t|
     t.string   "name",       limit: 191
-    t.string   "code",       limit: 191
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -138,7 +144,6 @@ ActiveRecord::Schema.define(version: 20150804150410) do
     t.integer  "user_id",          limit: 4
     t.integer  "product_group_id", limit: 4
     t.string   "type",             limit: 191
-    t.string   "code",             limit: 191
     t.text     "preferences",      limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
