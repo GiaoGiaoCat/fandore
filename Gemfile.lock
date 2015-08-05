@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/coderxin/acts_as_favable.git
+  revision: 65899a8eb6f608f3b7e8b3ed953847c4fe7526f6
+  specs:
+    acts_as_favable (1.0.1)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -236,6 +242,7 @@ DEPENDENCIES
   aasm
   active_model_otp
   active_type
+  acts_as_favable!
   acts_as_list
   awesome_print
   bcrypt (~> 3.1.7)

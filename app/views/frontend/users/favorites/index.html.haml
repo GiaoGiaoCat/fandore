@@ -1,0 +1,4 @@
+%dl
+  - @favorites.each do |f|
+    %dt= link_to f.favable.name, product_path(f.favable)
+    %dd= button_to '删除', favorite_path(f), method: :delete, remote: true

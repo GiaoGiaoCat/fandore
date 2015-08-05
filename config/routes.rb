@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'account_safe' => 'welcome#account_safe'
+  get 'user_center' => 'welcome#user_center'
+
 
   concern :authenticatable do
     controller :sessions do
@@ -13,7 +15,12 @@ Rails.application.routes.draw do
   end
 
   scope module: 'frontend' do
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      scope module: 'users' do
+        resources :favorites, only: [:create]
+      end
+    end
+
     scope module: 'users' do
 
       controller 'registrations' do
@@ -32,6 +39,8 @@ Rails.application.routes.draw do
       end
 
       resources :binding_emails, only: [:index, :show, :create]
+
+      resources :favorites, only: [:index, :destroy]
     end
   end
 

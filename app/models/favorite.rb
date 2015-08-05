@@ -1,41 +1,22 @@
-class User < ActiveRecord::Base
+class Favorite < ActiveRecord::Base
+  # table name
   # extends ...................................................................
-  has_secure_password
-  has_one_time_password length: 6
   # includes ..................................................................
-  include Trackable
+  include ActsAsFavable::Favorite
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
-  has_one :profile, dependent: :destroy
-  has_many :verification_codes, dependent: :destroy
-  has_many :addresses, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  belongs_to :favable, :polymorphic => true
+  # NOTE: Favorite belongs to a user
+  belongs_to :user
   # validations ...............................................................
-  validates :password,
-            confirmation: true,
-            presence: true,
-            length: { in: 6..20 },
-            allow_blank: true
-  validates :mobile,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates_uniqueness_of :favable_id, scope: [:user_id, :favable_type]
   # callbacks .................................................................
   # scopes ....................................................................
+  default_scope { order('created_at ASC') }
   # other macros (like devise's) ..............................................
-  enum role: [:admin, :member]
-  accepts_nested_attributes_for :profile, update_only: true
-  delegate :name, :gender, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
-  def profile
-    super || build_profile
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end
