@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'frontend' do
+    resources :products, only: [:index, :show]
     scope module: 'users' do
 
       controller 'registrations' do
@@ -65,7 +66,7 @@ Rails.application.routes.draw do
     get 'users/passwords/email/new' => :new
     post 'users/passwords/email/create' => :create
   end
-  
+
   controller 'frontend/users/questions' do
     get 'users/questions/new' => :new
     post 'users/questions/create' => :create
@@ -73,9 +74,10 @@ Rails.application.routes.draw do
     patch 'users/questions/update' => :update
   end
 
-
   #省市级联
   mount ChinaCity::Engine => '/china_city'
+
+
 
   scope :admin, module: :backend, as: :admin do
     concerns :authenticatable

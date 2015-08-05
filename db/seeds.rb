@@ -16,7 +16,7 @@ User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566
 property_1 = Product::Property.create(name: 'Min Center Stone', presentation: '最小主钻')
 property_2 = Product::Property.create(name: 'Max Center Stone', presentation: '最大主钻')
 property_3 = Product::Property.create(name: 'Size', presentation: '指圈范围')
-property_4 = Product::Property.create(name: 'Sub Stone Style', presentation: '款式')
+property_4 = Product::Property.create(name: 'Sub Stone Style', presentation: '副钻款式')
 property_5 = Product::Property.create(name: 'Sub Stone Weight', presentation: '副钻重量')
 property_6 = Product::Property.create(name: 'Sub Stone Color', presentation: '副钻类型')
 property_7 = Product::Property.create(name: 'Sub Stone Quantity', presentation: '副钻数量')

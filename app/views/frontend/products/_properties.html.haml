@@ -1,0 +1,6 @@
+- unless @product_properties.empty?
+  %h4 下面显示属性
+  %dl
+    - @product_properties.each do |product_property|
+      %dt= product_property.property.presentation
+      %dd= product_property.value

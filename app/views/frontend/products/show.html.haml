@@ -1,0 +1,10 @@
+%h2 产品详情
+%h3= @product.name
+
+= render :partial => 'properties'
+
+%h3 变体
+- @product.variants.each do |v|
+  = v.id
+  = v.options_text
+  %br
