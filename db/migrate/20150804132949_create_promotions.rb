@@ -8,9 +8,7 @@ class CreatePromotions < ActiveRecord::Migration
       t.string :type
       t.integer :usage_limit
       t.integer :promotion_category_id
-      t.string :match_policy
       t.string :code
-      t.boolean :advertise
 
       t.timestamps null: false
     end

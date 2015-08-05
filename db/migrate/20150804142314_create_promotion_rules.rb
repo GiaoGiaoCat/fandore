@@ -5,7 +5,6 @@ class CreatePromotionRules < ActiveRecord::Migration
       t.integer :user_id
       t.integer :product_group_id
       t.string :type
-      t.string :code
       t.text :preferences
 
       t.timestamps null: false
