@@ -2,7 +2,6 @@ class Backend::SessionsController < Backend::ApplicationController
   include Authenticatable
   layout "empty"
 
-
   private
 
   def redirect_to_url

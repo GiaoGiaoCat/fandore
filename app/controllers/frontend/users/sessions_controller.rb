@@ -9,6 +9,6 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
   end
 
   def authority_verify(user)
-    !user.admin?
+    true
   end
 end

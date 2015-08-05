@@ -1,6 +1,5 @@
 class Backend::ProductsController < Backend::ApplicationController
 
-  skip_before_action :authenticate_user!
   before_action :load_product, only: [:show, :edit, :update, :destroy]
 
   def index
