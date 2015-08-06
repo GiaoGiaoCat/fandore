@@ -82,3 +82,9 @@ prototype_2.properties << [
   property_08, property_09, property_10, property_11, property_12, property_13, property_14,
   property_15, property_16, property_17, property_18
 ]
+
+# 分类
+Taxonomy.create(name: '求婚钻戒')
+Taxonomy.create(name: '结婚对戒')
+Taxonomy.create(name: '饰品')
+Taxonomy.create(name: '周边礼品')

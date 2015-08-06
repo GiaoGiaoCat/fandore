@@ -107,6 +107,8 @@ Rails.application.routes.draw do
 
     resources :option_types
     resources :product_option_types, controller: 'option_types'
+
+    resources :taxonomies
   end
 
   # Admin root path

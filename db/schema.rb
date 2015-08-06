@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805172827) do
+ActiveRecord::Schema.define(version: 20150806154901) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -124,6 +124,18 @@ ActiveRecord::Schema.define(version: 20150805172827) do
   add_index "products", ["available_on"], name: "products_available_on", using: :btree
   add_index "products", ["deleted_at"], name: "products_deleted_at", using: :btree
 
+  create_table "products_taxons", force: :cascade do |t|
+    t.integer  "taxonomy_id", limit: 4
+    t.integer  "product_id",  limit: 4
+    t.integer  "position",    limit: 4, default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "products_taxons", ["position"], name: "index_products_taxons_on_position", using: :btree
+  add_index "products_taxons", ["product_id"], name: "index_products_taxons_on_product_id", using: :btree
+  add_index "products_taxons", ["taxonomy_id"], name: "index_products_taxons_on_taxonomy_id", using: :btree
+
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
     t.string   "avatar",           limit: 191
@@ -172,6 +184,22 @@ ActiveRecord::Schema.define(version: 20150805172827) do
   end
 
   add_index "recommendations", ["position"], name: "index_recommendations_on_position", using: :btree
+
+  create_table "taxonomies", force: :cascade do |t|
+    t.string   "name",       limit: 191, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "taxons", force: :cascade do |t|
+    t.integer  "taxonomy_id", limit: 4
+    t.string   "name",        limit: 191, null: false
+    t.string   "ancestry",    limit: 191
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "taxons", ["ancestry"], name: "index_taxons_on_ancestry", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",              limit: 100

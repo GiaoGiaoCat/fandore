@@ -48,6 +48,8 @@ gem 'china_city'
 gem 'acts_as_list'
 # Allows for favorite refer to be added to multiple and different models.
 gem 'acts_as_favable', github: 'coderxin/acts_as_favable'
+# Organise ActiveRecord model into a tree structure
+gem 'ancestry'
 
 # Use Puma as the app server
 gem 'puma', group: :production

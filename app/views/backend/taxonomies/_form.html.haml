@@ -1,0 +1,15 @@
+= simple_form_for([:admin, @taxonomy], :wrapper => :horizontal_form, html: { class: 'form-horizontal' }) do |f|
+  = f.input :name
+
+  .hr-line-dashed
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to 'Cancel', :back, class: 'btn btn-white'
+      = f.submit class: 'btn btn-primary'
+
+:javascript
+  $(function() {
+    $("#product_prototype_property_ids").select2({
+      placeholder: "Select a Property"
+    });
+  })
