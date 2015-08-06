@@ -96,10 +96,14 @@ Rails.application.routes.draw do
 
     resources :option_types
     resources :product_option_types, controller: 'option_types'
-    
+
     resources :promotion_categories
 
-    resources :promotions, controller: 'promotions'
+    resources :promotions, controller: 'promotions' 
+
+    resources :promotion_rules, controller: 'promotion_rules', only: [:create, :update, :destroy ]
+
+    resources :promotion_actions, controller: 'promotion_actions', only: [:create, :update, :destroy ]
   end
 
   # Admin root path

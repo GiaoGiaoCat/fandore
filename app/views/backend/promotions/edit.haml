@@ -1,0 +1,22 @@
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 优惠码
+        .ibox-content
+          = render 'form', url: admin_promotion_path
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 Rule
+        .ibox-content
+          = render 'rule_form', url: rule_form_url
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 Action
+        .ibox-content
+          = render 'action_form', url: action_form_url

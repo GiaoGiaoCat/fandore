@@ -18,6 +18,8 @@ class Backend::PromotionsController < Backend::ApplicationController
   def edit
     load_promotion    
     build_promotion
+    build_rule
+    build_action
   end
 
   def update
@@ -67,6 +69,14 @@ class Backend::PromotionsController < Backend::ApplicationController
     if @promotion.save    
       redirect_to admin_promotion_categories_path
     end
+  end
+
+  def build_rule
+    @rule = (@promotion.rules.blank? ? Promotion::PromotionRule.new : @promotion.rules.last)
+  end
+
+  def build_action
+    @action = (@promotion.actions.blank? ? Promotion::PromotionAction.new : @promotion.actions.last)
   end
 
 end

@@ -21,12 +21,10 @@
               %thead
                 %tr
                   %th name
-                  %th code
               %tbody
                 - @promotion_categories.each do |promotion_categorie|
                   %tr
                     %td= promotion_categorie.name
-                    %td= promotion_categorie.code
                     %td
                       .btn-group
                         = link_to '编辑', edit_admin_promotion_category_path(promotion_categorie), class: 'btn btn-white btn-xs'
