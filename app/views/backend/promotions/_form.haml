@@ -1,0 +1,10 @@
+= simple_form_for([:admin, @promotion], url: url, html: { class: 'form-horizontal' }) do |f|
+  = f.input :name
+  = f.input :code
+  = f.input :description
+  = f.input :type_name
+  = f.input :usage_limit
+  = f.input :starts_at
+  = f.select :promotion_category_id, Promotion::PromotionCategory.all.map { |p| [p.name, p.id] }, include_blank: true
+  = f.input :expires_at
+  = f.submit "提交"
