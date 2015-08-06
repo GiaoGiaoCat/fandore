@@ -13,6 +13,9 @@
       .ibox.float-e-margins
         .ibox-title
           %h5 属性列表
+        .ibox-tools
+          = link_to '添加优惠劵', new_admin_promotion_path, class: 'btn btn-primary btn-xs'
+
         .ibox-content
           = render "layouts/flash_messages", flash: flash
 
