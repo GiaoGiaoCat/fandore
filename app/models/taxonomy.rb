@@ -5,8 +5,8 @@ class Taxonomy < ActiveRecord::Base
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
-  has_many :taxons, inverse_of: :taxonomy
-  has_one :root, -> { roots }, class_name: "Taxonomy::Taxon", dependent: :destroy
+  has_many :taxons, dependent: :destroy, inverse_of: :taxonomy
+  has_one :root, -> { roots }, class_name: "Taxonomy::Taxon"
   # validations ...............................................................
   validates :name, presence: true
   # callbacks .................................................................
@@ -25,6 +25,6 @@ class Taxonomy < ActiveRecord::Base
   end
 
   def set_root_taxon_name
-    taxons.root.update_attributes(name: name)
+    root.update_attributes(name: name)
   end
 end
