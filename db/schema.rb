@@ -125,16 +125,16 @@ ActiveRecord::Schema.define(version: 20150806154901) do
   add_index "products", ["deleted_at"], name: "products_deleted_at", using: :btree
 
   create_table "products_taxons", force: :cascade do |t|
-    t.integer  "taxonomy_id", limit: 4
-    t.integer  "product_id",  limit: 4
-    t.integer  "position",    limit: 4, default: 0
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.integer  "taxon_id",   limit: 4
+    t.integer  "product_id", limit: 4
+    t.integer  "position",   limit: 4, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "products_taxons", ["position"], name: "index_products_taxons_on_position", using: :btree
   add_index "products_taxons", ["product_id"], name: "index_products_taxons_on_product_id", using: :btree
-  add_index "products_taxons", ["taxonomy_id"], name: "index_products_taxons_on_taxonomy_id", using: :btree
+  add_index "products_taxons", ["taxon_id"], name: "index_products_taxons_on_taxon_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id",          limit: 4

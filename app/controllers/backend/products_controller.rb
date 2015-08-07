@@ -62,7 +62,7 @@ class Backend::ProductsController < Backend::ApplicationController
     return Hash.new unless product_params
 
     product_properties_attributes = [:id, :property_name, :value, :_destroy]
-    attrs = [:name, :description, :sku, :price, :status, :prototype_id, :recommend_product_ids, product_properties_attributes: product_properties_attributes]
+    attrs = [:name, :description, :sku, :price, :status, :prototype_id, :recommend_product_ids, :taxon_ids, product_properties_attributes: product_properties_attributes]
     # https://github.com/rails/rails/issues/9454
     params.require(:product).permit(attrs).tap do |while_listed|
       while_listed[:option_values_hash] = params[:product][:option_values_hash]

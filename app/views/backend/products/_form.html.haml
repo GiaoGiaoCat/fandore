@@ -6,6 +6,7 @@
   = f.input :status, collection: t_options_for_select(Product::Variant, :status), include_blank: false, wrapper: :horizontal_form
   = hidden_field_tag 'product[recommend_product_ids][]', nil
   = f.input :recommend_product_ids, collection: Product.all, include_blank: true, prompt: "Select Diamond", wrapper: :horizontal_form
+  = f.input :taxon_ids, collection: Taxonomy::Taxon.all, include_blank: true, prompt: "Select Taxon", wrapper: :horizontal_form
 
   - if @product.new_record?
     #property_ids
