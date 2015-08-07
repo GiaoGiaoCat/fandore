@@ -1,0 +1,26 @@
+= simple_form_for([:admin, @product], :wrapper => :horizontal_form, html: { class: 'form-horizontal' }) do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :sku
+  = f.input :price
+  = f.input :status, collection: t_options_for_select(Product::Variant, :status), include_blank: false, wrapper: :horizontal_form
+  = hidden_field_tag 'product[recommend_product_ids][]', nil
+  = f.input :recommend_product_ids, collection: Product.all, include_blank: true, prompt: "Select Diamond", wrapper: :horizontal_form
+  = f.input :taxon_ids, collection: Taxonomy::Taxon.all, include_blank: true, prompt: "Select Taxon", wrapper: :horizontal_form
+
+  - if @product.new_record?
+    #property_ids
+      = f.input :prototype_id, collection: Product::Prototype.all, include_blank: false, prompt: "Select Prototype", wrapper: :horizontal_form
+
+  .hr-line-dashed
+  .form-group
+    .col-sm-4.col-sm-offset-2
+      = link_to 'Cancel', :back, class: 'btn btn-white'
+      = f.submit class: 'btn btn-primary'
+
+:javascript
+  $(function() {
+    $("#product_prototype_property_ids").select2({
+      placeholder: "Select a Property"
+    });
+  })
