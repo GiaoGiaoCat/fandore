@@ -3,5 +3,5 @@
   = f.input :preferences
   - hidden_field_tag 'promotion_promotion_rule_id', @rule.id
   - hidden_field_tag 'promotion_promotion_rule[promotion_id]', @promotion.id
-  = f.submit "提交"
+  = f.submit 
   = link_to '删除', admin_promotion_rule_path(promotion_promotion_rule_id: @rule.id), method: :delete, data: { confirm: "确认删除?" }

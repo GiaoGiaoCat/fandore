@@ -101,9 +101,9 @@ Rails.application.routes.draw do
 
     resources :promotions
 
-    resources :promotion_rules, only: [:create, :update, :destroy ]
+    resources :promotion_rules, only: [:create, :update, :destroy]
 
-    resources :promotion_actions, only: [:create, :update, :destroy ]
+    resources :promotion_actions, only: [:create, :update, :destroy]
   end
 
   # Admin root path
