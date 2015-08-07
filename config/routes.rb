@@ -117,7 +117,6 @@ Rails.application.routes.draw do
 
     resources :promotion_categories
     resources :promotion_promotion_categories, controller: 'promotion_categories'
-
     resources :promotions
     resources :promotion_rules, only: [:create, :update, :destroy]
     resources :promotion_actions, only: [:create, :update, :destroy]
