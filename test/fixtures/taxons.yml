@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parent_id: 1
+  position: 1
+  name: MyString
+  permalink: MyString
+  taxonomy_id: 1
+  lft: 1
+  rgt: 1
+  icon_file_name: MyString
+  icon_content_type: MyString
+  icon_file_size: 1
+  icon_updated_at: 2015-08-04 23:04:10
+  description: MyText
+  meta_title: MyString
+  meta_description: MyString
+  meta_keywords: MyString
+  depth: 1
+
+two:
+  parent_id: 1
+  position: 1
+  name: MyString
+  permalink: MyString
+  taxonomy_id: 1
+  lft: 1
+  rgt: 1
+  icon_file_name: MyString
+  icon_content_type: MyString
+  icon_file_size: 1
+  icon_updated_at: 2015-08-04 23:04:10
+  description: MyText
+  meta_title: MyString
+  meta_description: MyString
+  meta_keywords: MyString
+  depth: 1

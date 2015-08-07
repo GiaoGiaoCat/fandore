@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  promotion_id: 1
+  user_id: 1
+  product_group_id: 1
+  type: 
+  code: MyString
+  preferences: MyText
+
+two:
+  promotion_id: 1
+  user_id: 1
+  product_group_id: 1
+  type: 
+  code: MyString
+  preferences: MyText

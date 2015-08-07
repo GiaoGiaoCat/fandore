@@ -1,0 +1,33 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 优惠劵分类管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 优惠劵分类管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 优惠劵分类列表
+        .ibox-tools
+          = link_to '添加优惠劵分类', new_admin_promotion_category_path, class: 'btn btn-primary btn-xs'
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th name
+              %tbody
+                - @promotion_categories.each do |promotion_categorie|
+                  %tr
+                    %td= promotion_categorie.name
+                    %td
+                      .btn-group
+                        = link_to '编辑', edit_admin_promotion_category_path(promotion_categorie), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_promotion_category_path(promotion_categorie), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
