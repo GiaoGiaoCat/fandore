@@ -1,9 +1,7 @@
 class Backend::PromotionCategoriesController < Backend::ApplicationController
-  skip_before_action :authenticate_user!
-
 
   def index
-    load_promotion_categories    
+    load_promotion_categories
   end
 
   def new
@@ -16,12 +14,12 @@ class Backend::PromotionCategoriesController < Backend::ApplicationController
   end
 
   def edit
-    load_promotion_category    
+    load_promotion_category
     build_promotion_category
   end
 
   def update
-    load_promotion_category    
+    load_promotion_category
     build_promotion_category
     save_promotion_category or render 'edit'
   end
@@ -35,23 +33,22 @@ class Backend::PromotionCategoriesController < Backend::ApplicationController
   private
 
   def load_promotion_categories
-    @promotion_categories = promotion_category_scope.all
+    @promotion_categories ||= promotion_category_scope.all
   end
 
   def load_promotion_category
-    @promotion_category = promotion_category_scope.find(params[:id])
+    @promotion_category ||= promotion_category_scope.find(params[:id])
+  end
+
+  def build_promotion_category
+    @promotion_category ||= promotion_category_scope.new
+    @promotion_category.attributes = promotion_category_params
   end
 
   def save_promotion_category
     if @promotion_category.save
       redirect_to admin_promotion_categories_path
     end
-  end
-
-
-  def build_promotion_category
-    @promotion_category ||= promotion_category_scope.new
-    @promotion_category.attributes = promotion_category_params
   end
 
   def promotion_category_params
@@ -62,11 +59,4 @@ class Backend::PromotionCategoriesController < Backend::ApplicationController
   def promotion_category_scope
     Promotion::PromotionCategory
   end
-
-  def promotion_category_save
-    if @promotion_category.save    
-      redirect_to admin_promotion_categories_path
-    end
-  end
-
 end
