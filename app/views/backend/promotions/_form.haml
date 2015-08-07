@@ -17,6 +17,9 @@
     order: [:year, :month, :day],
     wrapper: :horizontal_select_date
   = f.input :promotion_category_id, collection: Promotion::PromotionCategory.all, include_blank: false, prompt: "Select Prototype", wrapper: :horizontal_form
+
+  = render :partial => "promotion_rules", :locals => { :f => f }
+  = render :partial => "promotion_actions", :locals => { :f => f }
   .hr-line-dashed
   .form-group
     .col-sm-4.col-sm-offset-2

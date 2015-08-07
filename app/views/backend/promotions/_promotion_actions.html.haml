@@ -1,0 +1,9 @@
+%h4.border-bottom.p-sm.m-b Actions
+#actions
+  = f.simple_fields_for :promotion_actions do |action|
+    = render 'promotion_action', :f => action
+
+  .links
+    .form-group
+      .col-sm-4.col-sm-offset-2
+        = link_to_add_association 'add action', f, :promotion_actions, partial: 'promotion_action', class: 'btn btn-primary', "data-association-insertion-node" => "#actions .links"

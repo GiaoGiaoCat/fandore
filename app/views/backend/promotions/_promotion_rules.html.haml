@@ -1,0 +1,9 @@
+%h4.border-bottom.p-sm.m-b Rules
+#rules
+  = f.simple_fields_for :promotion_rules do |rule|
+    = render 'promotion_rule', :f => rule
+
+  .links
+    .form-group
+      .col-sm-4.col-sm-offset-2
+        = link_to_add_association 'add rule', f, :promotion_rules, partial: 'promotion_rule', class: 'btn btn-primary', "data-association-insertion-node" => "#rules .links"

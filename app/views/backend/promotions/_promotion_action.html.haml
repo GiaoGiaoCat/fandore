@@ -1,0 +1,7 @@
+.nested-fields
+  .row
+    .col-sm-6
+      = f.input :type_name, wrapper: :nested_fields_with_btn
+    .col-sm-6
+      = link_to_remove_association "remove rule", f, class: 'btn btn-danger'
+  = f.input :preferences, wrapper: :nested_fields

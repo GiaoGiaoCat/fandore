@@ -1,7 +1,0 @@
-= simple_form_for([:admin, @action], url: url, html: { class: 'form-horizontal' }) do |f|
-  = f.input :type_name
-  = f.input :preferences
-  - hidden_field_tag 'promotion_promotion_action_id', @action.id
-  - hidden_field_tag 'promotion_promotion_action[promotion_id]', @promotion.id
-  = f.submit
-  = link_to '删除', admin_promotion_action_path(promotion_promotion_action_id: @action.id), method: :delete, data: { confirm: "确认删除?" }
