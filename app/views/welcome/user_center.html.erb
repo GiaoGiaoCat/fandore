@@ -1,0 +1,168 @@
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">WEBAPPLAYERS</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to '首页', root_path, class: 'page-scroll' %></li>
+                    <% if current_user %>
+                      <li><a class="page-scroll" href="/account_safe">账户安全</a></li>
+                      <li><a class="page-scroll" href="/user_center">个人中心</a></li>
+                      <li><a class="page-scroll" href="#testimonials">账户资料</a></li>
+                      <li><a class="page-scroll" href="#pricing">售后服务</a></li>
+                      <li><a class="page-scroll" href="#contact">收货地址</a></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+<div class="carousel-inner" role="listbox">
+    <div class="item active">
+        <div class="container">
+            <div class="carousel-caption">
+                <h1>We craft<br/>
+                    brands, web apps,<br/>
+                    and user interfaces<br/>
+                    we are IN+ studio</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing.</p>
+                <p>
+                    <% if current_user %>
+                      <%= link_to '退出', sign_out_path, method: :delete, class: 'btn btn-lg btn-primary' %>
+                    <% else %>
+                      <%= link_to '登录', sign_in_path, class: 'btn btn-lg btn-primary' %>
+                    <% end %>
+                    <a class="caption-link" href="#" role="button">Inspinia Theme</a>
+                </p>
+            </div>
+            <div class="carousel-image wow zoomIn">
+                <img src="<%= image_path('landing/laptop.png') %>" alt="laptop"/>
+            </div>
+        </div>
+        <!-- Set background for slide in css -->
+        <div class="header-back one"></div>
+
+    </div>
+</div>
+
+</div>
+
+
+<section id="features" class="container services">
+<div class="row">
+    <div class="col-sm-3">
+        <h2>我的收藏</h2>
+        <p><a class="navy-link" href="/favorites" role="button">进入 &raquo;</a></p>
+    </div>
+</div>
+</section>
+
+
+
+<section id="contact" class="gray-section contact">
+<div class="container">
+    <div class="row m-b-lg">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>Contact Us</h1>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+        </div>
+    </div>
+    <div class="row m-b-lg">
+        <div class="col-lg-3 col-lg-offset-3">
+            <address>
+                <strong><span class="navy">Company name, Inc.</span></strong><br/>
+                795 Folsom Ave, Suite 600<br/>
+                San Francisco, CA 94107<br/>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+        </div>
+        <div class="col-lg-4">
+            <p class="text-color">
+                Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
+            <p class="m-t-sm">
+                Or follow us on social platform
+            </p>
+            <ul class="list-inline social-icon">
+                <li><a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li><a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+            <p><strong>&copy; 2015 Company Name</strong><br/> consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+        </div>
+    </div>
+</div>
+</section>
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+    $('body').addClass('landing-page');
+    $('body').attr('id', 'page-top');
+
+    $('body').scrollspy({
+        target: '.navbar-fixed-top',
+        offset: 80
+    });
+
+    var cbpAnimatedHeader = (function() {
+        var docElem = document.documentElement,
+                header = document.querySelector( '.navbar-default' ),
+                didScroll = false,
+                changeHeaderOn = 200;
+        function init() {
+            window.addEventListener( 'scroll', function( event ) {
+                if( !didScroll ) {
+                    didScroll = true;
+                    setTimeout( scrollPage, 250 );
+                }
+            }, false );
+        }
+        function scrollPage() {
+            var sy = scrollY();
+            if ( sy >= changeHeaderOn ) {
+                $(header).addClass('navbar-scroll')
+            }
+            else {
+                $(header).removeClass('navbar-scroll')
+            }
+            didScroll = false;
+        }
+        function scrollY() {
+            return window.pageYOffset || docElem.scrollTop;
+        }
+        init();
+
+    })();
+
+
+});
+
+</script>
+
+<% end %>

@@ -1,6 +1,5 @@
 class Backend::VariantsController < Backend::ApplicationController
 
-  skip_before_action :authenticate_user!
   before_action :load_product
   before_action :load_variant, only: [:show, :edit, :update, :destroy]
 

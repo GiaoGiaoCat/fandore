@@ -1,6 +1,5 @@
 class Backend::ProductPropertiesController < Backend::ApplicationController
 
-  skip_before_action :authenticate_user!
   before_action :load_product
 
   def index

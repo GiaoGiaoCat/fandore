@@ -1,0 +1,4 @@
+%h2 产品列表
+%ul
+  - @products.each do |product|
+    %li= link_to product.name, product_path(product)

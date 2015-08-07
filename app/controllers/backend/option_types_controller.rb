@@ -1,6 +1,5 @@
 class Backend::OptionTypesController < Backend::ApplicationController
 
-  skip_before_action :authenticate_user!
   before_action :load_option_type, only: [:show, :edit, :update, :destroy]
 
   def index

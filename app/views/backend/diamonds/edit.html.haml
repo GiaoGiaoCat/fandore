@@ -1,0 +1,28 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 商品管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li
+        = link_to '商品管理', admin_products_path
+      %li.active
+        %strong 编辑商品信息
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-10
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 编辑商品信息
+        .ibox-content
+          = render 'form'
+    .col-lg-2
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 高级设置
+        .ibox-content.no-padding
+          %ul.list-group
+            %li.list-group-item= link_to 'PRODUCT ATTRIBUTES', edit_admin_product_path(@product)
+            %li.list-group-item= link_to 'PRODUCT PROPERTIES', admin_product_product_properties_path(@product)
+            %li.list-group-item= link_to 'VARIANTS', admin_product_variants_path(@product)

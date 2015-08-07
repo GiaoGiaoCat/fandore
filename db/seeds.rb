@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566')
+User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566', role: 0)
 
 # 戒托属性
 # metal 材质
@@ -16,7 +16,7 @@ User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566
 property_1 = Product::Property.create(name: 'Min Center Stone', presentation: '最小主钻')
 property_2 = Product::Property.create(name: 'Max Center Stone', presentation: '最大主钻')
 property_3 = Product::Property.create(name: 'Size', presentation: '指圈范围')
-property_4 = Product::Property.create(name: 'Sub Stone Style', presentation: '款式')
+property_4 = Product::Property.create(name: 'Sub Stone Style', presentation: '副钻款式')
 property_5 = Product::Property.create(name: 'Sub Stone Weight', presentation: '副钻重量')
 property_6 = Product::Property.create(name: 'Sub Stone Color', presentation: '副钻类型')
 property_7 = Product::Property.create(name: 'Sub Stone Quantity', presentation: '副钻数量')
@@ -59,7 +59,7 @@ property_01 = Product::Property.create(name: 'Shape', presentation: '形状')
 property_02 = Product::Property.create(name: 'Weight', presentation: '重量')
 property_03 = Product::Property.create(name: 'Color', presentation: '颜色')
 property_04 = Product::Property.create(name: 'Stock', presentation: '库存地址')
-property_05 = Product::Property.create(name: 'Certificate Number', presentation: '证书编号')
+property_05 = Product::Property.create(name: 'GIA Report Number', presentation: '证书编号')
 property_06 = Product::Property.create(name: 'Certificate', presentation: '证书类型')
 property_07 = Product::Property.create(name: 'Culet', presentation: '底尖')
 property_08 = Product::Property.create(name: 'Girdle Thickness', presentation: '腰围厚度')
@@ -82,3 +82,10 @@ prototype_2.properties << [
   property_08, property_09, property_10, property_11, property_12, property_13, property_14,
   property_15, property_16, property_17, property_18
 ]
+
+# 分类
+Taxonomy.create(name: '求婚钻戒')
+Taxonomy.create(name: '结婚对戒')
+Taxonomy.create(name: '饰品')
+Taxonomy.create(name: '周边礼品')
+Taxonomy.create(name: '钻石')

@@ -38,8 +38,6 @@ gem 'active_type'
 gem 'ransack'
 # ActiveModel::Otp makes adding Two Factor Authentication (TFA) to a model simple.
 gem 'active_model_otp'
-# Enumerated attributes with I18n and ActiveRecord/Mongoid support
-gem 'enumerize'
 # Simple Rails app configuration
 gem 'figaro'
 # ActiveRecord plugin allowing you to hide and restore records without actually deleting them.
@@ -48,6 +46,10 @@ gem 'paranoia'
 gem 'china_city'
 # An ActiveRecord plugin for managing lists
 gem 'acts_as_list'
+# Allows for favorite refer to be added to multiple and different models.
+gem 'acts_as_favable', github: 'coderxin/acts_as_favable'
+# Organise ActiveRecord model into a tree structure
+gem 'ancestry'
 
 # Use Puma as the app server
 gem 'puma', group: :production

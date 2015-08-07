@@ -1,11 +1,11 @@
-zh-CN:
+zh:
   enumerize:
-    user:
+    user/profile:
       gender:
         male: "男"
         female: "女"
-    variant:
+    product/variant:
       status:
-        available: "在售"
-        sold: "已售"
-        unavailable: "不可用"
+        available: '可售'
+        sold: '已售'
+        unavailable: '不可用'

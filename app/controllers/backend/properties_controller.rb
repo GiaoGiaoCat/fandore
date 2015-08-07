@@ -1,6 +1,5 @@
 class Backend::PropertiesController < Backend::ApplicationController
 
-  skip_before_action :authenticate_user!
   before_action :load_property, only: [:show, :edit, :update, :destroy]
 
   def index

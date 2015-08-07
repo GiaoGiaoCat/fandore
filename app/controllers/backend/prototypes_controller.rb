@@ -1,6 +1,5 @@
 class Backend::PrototypesController < Backend::ApplicationController
 
-  skip_before_action :authenticate_user!
   before_action :load_prototype, only: [:show, :edit, :update, :destroy]
 
   def index

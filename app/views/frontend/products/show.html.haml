@@ -1,0 +1,13 @@
+%h2 产品详情
+%h3= @product.name
+
+- if current_user
+  = button_to '收藏', product_favorites_path(@product), remote: true
+
+= render :partial => 'properties'
+
+%h3 变体
+- @product.variants.each do |v|
+  = v.id
+  = v.options_text
+  %br

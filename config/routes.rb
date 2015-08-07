@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'account_safe' => 'welcome#account_safe'
+  get 'user_center' => 'welcome#user_center'
+
 
   concern :authenticatable do
     controller :sessions do
@@ -13,6 +15,12 @@ Rails.application.routes.draw do
   end
 
   scope module: 'frontend' do
+    resources :products, only: [:index, :show] do
+      scope module: 'users' do
+        resources :favorites, only: [:create]
+      end
+    end
+
     scope module: 'users' do
 
       controller 'registrations' do
@@ -31,6 +39,8 @@ Rails.application.routes.draw do
       end
 
       resources :binding_emails, only: [:index, :show, :create]
+
+      resources :favorites, only: [:index, :destroy]
     end
   end
 
@@ -65,7 +75,7 @@ Rails.application.routes.draw do
     get 'users/passwords/email/new' => :new
     post 'users/passwords/email/create' => :create
   end
-  
+
   controller 'frontend/users/questions' do
     get 'users/questions/new' => :new
     post 'users/questions/create' => :create
@@ -73,19 +83,24 @@ Rails.application.routes.draw do
     patch 'users/questions/update' => :update
   end
 
-
   #省市级联
   mount ChinaCity::Engine => '/china_city'
+
+
 
   scope :admin, module: :backend, as: :admin do
     concerns :authenticatable
 
     resources :users
 
-    resources :products do
+    concern :markrtable do
       resources :variants
       resources :product_variants, controller: 'variants'
       resources :product_properties, only: [:index]
+    end
+
+    resources :products, :diamonds do
+      concerns :markrtable
     end
 
     resources :properties
@@ -97,12 +112,14 @@ Rails.application.routes.draw do
     resources :option_types
     resources :product_option_types, controller: 'option_types'
 
+    resources :taxonomies do
+      resources :taxons, shallow: true
+    end
+    resources :taxonomy_taxons, controller: 'taxons'
+
     resources :promotion_categories
-
     resources :promotions
-
     resources :promotion_rules, only: [:create, :update, :destroy]
-
     resources :promotion_actions, only: [:create, :update, :destroy]
   end
 

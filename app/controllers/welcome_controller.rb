@@ -8,4 +8,7 @@ class WelcomeController < ApplicationController
   def account_safe
   end
 
+  def user_center
+  end
+
 end

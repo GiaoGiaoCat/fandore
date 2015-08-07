@@ -8,4 +8,5 @@
           %input#top-search.form-control{:name => "top-search", :placeholder => "Search for something...", :type => "text"}/
     %ul.nav.navbar-top-links.navbar-right
       %li
-        = link_to content_tag(:i, nil, class: ["fa", "fa-sign-out"]) + "Log out", admin_sign_out_path, method: :delete
+        -if current_user
+          = link_to content_tag(:i, nil, class: ["fa", "fa-sign-out"]) + "Log out", admin_sign_out_path, method: :delete

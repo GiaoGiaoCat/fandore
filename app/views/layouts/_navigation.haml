@@ -19,13 +19,15 @@
         = link_to "/" do
           %i.fa.fa-dashboard
           %span.nav-label 仪表面板
-      %li{ class: is_active_controller('backend/products', 'backend/properties', 'backend/option_types', 'backend/prototypes') }
+      %li{ class: is_active_controller('backend/taxonomies', 'backend/taxons', 'backend/products', 'backend/diamonds', 'backend/properties', 'backend/option_types', 'backend/prototypes', 'backend/product_properties') }
         %a{ href: "javascript:void(0)" }
           %i.fa.fa-cubes
           %span.nav-label 商品管理
           %span.fa.arrow
         %ul.nav.nav-second-level
+          %li{ class: is_active_controller('backend/taxonomies', 'backend/taxons') }= link_to "分类管理", admin_taxonomies_path
           %li{ class: is_active_controller('backend/products') }= link_to "商品管理", admin_products_path
+          %li{ class: is_active_controller('backend/diamonds') }= link_to "钻石管理", admin_diamonds_path
           %li{ class: is_active_controller('backend/properties') }= link_to "属性管理", admin_properties_path
           %li{ class: is_active_controller('backend/option_types') }= link_to "可选属性管理", admin_option_types_path
           %li{ class: is_active_controller('backend/prototypes') }= link_to "原型管理", admin_prototypes_path
