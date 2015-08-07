@@ -154,6 +154,45 @@ ActiveRecord::Schema.define(version: 20150806154901) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
+  create_table "promotion_actions", force: :cascade do |t|
+    t.integer  "promotion_id", limit: 4
+    t.string   "type_name",    limit: 191
+    t.text     "preferences",  limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "promotion_actions", ["promotion_id"], name: "index_promotion_actions_on_promotion_id", using: :btree
+
+  create_table "promotion_categories", force: :cascade do |t|
+    t.string   "name",       limit: 191
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "promotion_rules", force: :cascade do |t|
+    t.integer  "promotion_id", limit: 4
+    t.string   "type_name",    limit: 191
+    t.text     "preferences",  limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "promotion_rules", ["promotion_id"], name: "index_promotion_rules_on_promotion_id", using: :btree
+
+  create_table "promotions", force: :cascade do |t|
+    t.string   "description",           limit: 191
+    t.datetime "expires_at"
+    t.datetime "starts_at"
+    t.string   "name",                  limit: 191
+    t.string   "type_name",             limit: 191
+    t.integer  "usage_limit",           limit: 4
+    t.integer  "promotion_category_id", limit: 4
+    t.string   "code",                  limit: 191
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string   "name",         limit: 191
     t.string   "presentation", limit: 191, null: false

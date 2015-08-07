@@ -1,8 +1,17 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 销售管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 优惠劵分类管理
+  .col-lg-2
 .wrapper.wrapper-content
   .row
     .col-lg-12
       .ibox.float-e-margins
         .ibox-title
-          %h5 添加促销分类
+          %h5 优惠劵分类
         .ibox-content
-          = render 'form', url: admin_promotion_category_path
+          = render 'form'

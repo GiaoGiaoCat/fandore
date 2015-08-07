@@ -14,7 +14,7 @@ class Promotion < ActiveRecord::Base
   validates :expires_at, presence: true
   validates :starts_at, presence: true
   validates :name, presence: true
-  validates :usage_limit, presence: true, only_integer: true
+  validates :usage_limit, presence: true, numericality: { only_integer: true }
   validates :code, presence: true, uniqueness: true
   # callbacks .................................................................
   # scopes ....................................................................

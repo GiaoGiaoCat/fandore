@@ -99,9 +99,7 @@ Rails.application.routes.draw do
       resources :product_properties, only: [:index]
     end
 
-    resources :products, :diamonds do
-      concerns :markrtable
-    end
+    resources :products, :diamonds, concerns: :markrtable
 
     resources :properties
     resources :product_properties, controller: 'properties'
@@ -118,6 +116,8 @@ Rails.application.routes.draw do
     resources :taxonomy_taxons, controller: 'taxons'
 
     resources :promotion_categories
+    resources :promotion_promotion_categories, controller: 'promotion_categories'
+
     resources :promotions
     resources :promotion_rules, only: [:create, :update, :destroy]
     resources :promotion_actions, only: [:create, :update, :destroy]
