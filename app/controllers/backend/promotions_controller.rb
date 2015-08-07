@@ -27,7 +27,7 @@ class Backend::PromotionsController < Backend::ApplicationController
   def destroy
     load_promotion
     @promotion.destroy
-    redirect_to admin_promotion_categories_path
+    redirect_to admin_promotions_path
   end
 
   private

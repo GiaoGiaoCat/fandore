@@ -115,11 +115,9 @@ Rails.application.routes.draw do
     end
     resources :taxonomy_taxons, controller: 'taxons'
 
+    resources :promotions
     resources :promotion_categories
     resources :promotion_promotion_categories, controller: 'promotion_categories'
-    resources :promotions
-    resources :promotion_rules, only: [:create, :update, :destroy]
-    resources :promotion_actions, only: [:create, :update, :destroy]
   end
 
   # Admin root path
