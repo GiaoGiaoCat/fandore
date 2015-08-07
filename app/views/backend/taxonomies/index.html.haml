@@ -32,5 +32,6 @@
                     %td= taxonomy.created_at.to_s(:db)
                     %td
                       .btn-group
+                        = link_to '管理子分类', admin_taxonomy_taxons_path(taxonomy), class: 'btn btn-white btn-xs'
                         = link_to '编辑', edit_admin_taxonomy_path(taxonomy), class: 'btn btn-white btn-xs'
                         = link_to '删除', admin_taxonomy_path(taxonomy), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
