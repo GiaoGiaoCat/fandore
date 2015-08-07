@@ -7,11 +7,9 @@ class Promotion < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :promotion_category
 
-  has_many :promotion_actions, dependent: :destroy
-  alias_method :actions, :promotion_actions
+  has_many :actions, class_name: 'PromotionAction', dependent: :destroy
 
-  has_many :promotion_rules, dependent: :destroy
-  alias_method :rules, :promotion_rules
+  has_many :rules, class_name: 'PromotionRule', dependent: :destroy
   # validations ...............................................................
   validates :expires_at, presence: true
   validates :starts_at, presence: true
