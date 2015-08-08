@@ -5,7 +5,8 @@ class CreateOrders < ActiveRecord::Migration
       t.string    :email
       t.integer   :user_id, index: true
       t.text      :special_instructions
-      t.integer   :ship_address_id, index: true
+      t.integer   :shipping_address_id, index: true
+      t.integer   :billing_address_id, index: true
       t.integer   :item_count, default: 0
       t.string    :guest_token, index: true
 
@@ -35,7 +36,6 @@ class CreateOrders < ActiveRecord::Migration
       # 以下字段暂时无用
       # t.decimal   :additional_tax_total, precision: 10, scale: 2, default: 0.0, null: false
       # t.integer   :shipping_method_id, index: true
-      # t.integer   :bill_address_id, index: true
       # t.string    :currency
       # t.string    :channel
       # t.boolean   :considered_risky, default: false, index: true
