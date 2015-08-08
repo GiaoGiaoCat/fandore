@@ -1,34 +1,12 @@
 class Frontend::Users::ProfileController < Frontend::ApplicationController
 
+  include UserUpdateProfileable
+
   def show
      load_user
   end
 
-  def edit
-    load_user
-  end
-
-  def update
-    load_user
-    build_user
-    save_user or render 'edit'
-  end
-
   private
-
-  def load_user
-    @user = current_user
-  end
-
-  def build_user
-    @user.attributes = user_params
-  end
-
-  def save_user
-    if @user.save
-      redirect_to users_profile_path
-    end
-  end
 
   def user_params
     profile_attrs = [
@@ -36,5 +14,9 @@ class Frontend::Users::ProfileController < Frontend::ApplicationController
     ]
     user_params = params[:user]
     user_params ? user_params.permit(:email, :mobile, :password, :password_confirmation, profile_attributes: profile_attrs) : {}
+  end
+
+  def update_success_redirect_to_url
+    redirect_to users_profile_path
   end
 end
