@@ -93,13 +93,12 @@ Rails.application.routes.draw do
 
     resources :users
 
-    concern :markrtable do
+    resources :products do
       resources :variants
       resources :product_variants, controller: 'variants'
       resources :product_properties, only: [:index]
     end
-
-    resources :products, :diamonds, concerns: :markrtable
+    resources :diamonds
 
     resources :properties
     resources :product_properties, controller: 'properties'

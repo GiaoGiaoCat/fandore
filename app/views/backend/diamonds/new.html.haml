@@ -5,15 +5,15 @@
       %li
         = link_to '首页', admin_path
       %li
-        = link_to '商品管理', admin_products_path
+        = link_to '钻石管理', admin_diamonds_path
       %li.active
-        %strong 添加商品
+        %strong 添加钻石
   .col-lg-2
 .wrapper.wrapper-content
   .row
     .col-lg-12
       .ibox.float-e-margins
         .ibox-title
-          %h5 添加商品
+          %h5 添加钻石
         .ibox-content
-          = render 'form'
+          = render 'form', form_url: admin_diamonds_path

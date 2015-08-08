@@ -37,6 +37,8 @@ class Product < ActiveRecord::Base
 
   after_save :save_master
   # scopes ....................................................................
+  scope :goods, -> { joins(:taxons).merge(Taxonomy::Taxon.goods) }
+  scope :diamonds, -> { joins(:taxons).merge(Taxonomy::Taxon.diamond) }
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :product_properties, allow_destroy: true
 
