@@ -11,7 +11,7 @@ class User::Address < ActiveRecord::Base
   validates_presence_of :user_id, :name, :address, :province, :city, :district
   validates :mobile,
             presence: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
+            format: { with: Fandore::Regex::PHONE_REGEX }
   # callbacks .................................................................
   after_save :set_default_address
   # scopes ....................................................................
