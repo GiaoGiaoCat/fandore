@@ -39,7 +39,7 @@ class Backend::ProductsController < Backend::ApplicationController
   private
 
   def load_products
-    @products ||= product_scope.all
+    @products ||= product_scope.goods
   end
 
   def load_product

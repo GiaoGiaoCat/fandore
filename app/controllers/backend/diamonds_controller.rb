@@ -39,7 +39,7 @@ class Backend::DiamondsController < Backend::ApplicationController
   private
 
   def load_products
-    @products ||= product_scope.all
+    @products ||= Taxonomy::Taxon.diamond.products
   end
 
   def load_product
