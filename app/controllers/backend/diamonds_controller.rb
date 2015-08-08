@@ -27,13 +27,13 @@ class Backend::DiamondsController < Backend::ApplicationController
   def update
     load_product
     build_product
-    save_product or render 'edit'
+    update_product or render 'edit'
   end
 
   def destroy
     load_product
     @product.destroy
-    redirect_to admin_products_path
+    redirect_to admin_diamonds_path
   end
 
   private
@@ -52,9 +52,11 @@ class Backend::DiamondsController < Backend::ApplicationController
   end
 
   def save_product
-    if @product.save
-      redirect_to admin_diamonds_path
-    end
+    redirect_to edit_admin_diamond_path(@product, hide_basic_info: true) if @product.save
+  end
+
+  def update_product
+    redirect_to admin_diamonds_path if @product.save
   end
 
   def product_params
