@@ -4,7 +4,7 @@
       %h1.logo-name IN+
     %h3 绑定邮箱
     %p
-    - if current_user.is_email_actived
+    - if current_user.activated_at
       = "邮箱已经激活"
     - else
       = button_to '发送激活邮件', binding_emails_path, method: :post
