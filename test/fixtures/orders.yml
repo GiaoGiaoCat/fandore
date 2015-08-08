@@ -2,104 +2,54 @@
 
 one:
   number: MyString
-  string: MyString
-  item_total: MyString
-  decimal: MyString
-  total: MyString
-  decimal: MyString
+  item_total: 9.99
+  total: 9.99
   state: MyString
-  string: MyString
-  adjustment_total: MyString
-  decimal: MyString
-  user_id: MyString
-  integer: MyString
-  ship_address_id: MyString
-  integer: MyString
-  payment_total: MyString
-  decimal: MyString
-  shipping_method_id: MyString
-  integer: MyString
+  adjustment_total: 9.99
+  user_id: 1
+  ship_address_id: 1
+  payment_total: 9.99
+  shipping_method_id: 1
   shipment_state: MyString
-  string: MyString
   payment_state: MyString
-  string: MyString
   email: MyString
-  string: MyString
-  special_instructions: MyString
-  text: MyString
+  special_instructions: MyText
   currency: MyString
-  string: MyString
   last_ip_address: MyString
-  string: MyString
-  created_by_id: MyString
-  integer: MyString
-  shipment_total: MyString
-  decimal: MyString
-  promo_total: MyString
-  decimal: MyString
+  created_by_id: 1
+  shipment_total: 9.99
+  promo_total: 9.99
   channel: MyString
-  string: MyString
-  item_count: MyString
-  integer: MyString
-  approver_id: MyString
-  integer: MyString
-  approved_at: MyString
-  datetime: MyString
-  confirmation_delivered: MyString
-  boolean: MyString
-  considered_risky: MyString
-  boolean: MyString
-  state_lock_version: MyString
-  integer: MyString
+  item_count: 1
+  approver_id: 1
+  approved_at: 2015-08-08 16:31:36
+  confirmation_delivered: false
+  considered_risky: false
+  state_lock_version: 1
 
 two:
   number: MyString
-  string: MyString
-  item_total: MyString
-  decimal: MyString
-  total: MyString
-  decimal: MyString
+  item_total: 9.99
+  total: 9.99
   state: MyString
-  string: MyString
-  adjustment_total: MyString
-  decimal: MyString
-  user_id: MyString
-  integer: MyString
-  ship_address_id: MyString
-  integer: MyString
-  payment_total: MyString
-  decimal: MyString
-  shipping_method_id: MyString
-  integer: MyString
+  adjustment_total: 9.99
+  user_id: 1
+  ship_address_id: 1
+  payment_total: 9.99
+  shipping_method_id: 1
   shipment_state: MyString
-  string: MyString
   payment_state: MyString
-  string: MyString
   email: MyString
-  string: MyString
-  special_instructions: MyString
-  text: MyString
+  special_instructions: MyText
   currency: MyString
-  string: MyString
   last_ip_address: MyString
-  string: MyString
-  created_by_id: MyString
-  integer: MyString
-  shipment_total: MyString
-  decimal: MyString
-  promo_total: MyString
-  decimal: MyString
+  created_by_id: 1
+  shipment_total: 9.99
+  promo_total: 9.99
   channel: MyString
-  string: MyString
-  item_count: MyString
-  integer: MyString
-  approver_id: MyString
-  integer: MyString
-  approved_at: MyString
-  datetime: MyString
-  confirmation_delivered: MyString
-  boolean: MyString
-  considered_risky: MyString
-  boolean: MyString
-  state_lock_version: MyString
-  integer: MyString
+  item_count: 1
+  approver_id: 1
+  approved_at: 2015-08-08 16:31:36
+  confirmation_delivered: false
+  considered_risky: false
+  state_lock_version: 1

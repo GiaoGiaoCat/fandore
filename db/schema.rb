@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808081718) do
+ActiveRecord::Schema.define(version: 20150808083136) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "post_code",      limit: 4
@@ -83,38 +83,32 @@ ActiveRecord::Schema.define(version: 20150808081718) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "number",                 limit: 191
-    t.string   "string",                 limit: 191
-    t.string   "item_total",             limit: 191
-    t.string   "decimal",                limit: 191
-    t.string   "total",                  limit: 191
+    t.decimal  "item_total",                           precision: 10
+    t.decimal  "total",                                precision: 10
     t.string   "state",                  limit: 191
-    t.string   "adjustment_total",       limit: 191
-    t.string   "user_id",                limit: 191
-    t.string   "integer",                limit: 191
-    t.string   "ship_address_id",        limit: 191
-    t.string   "payment_total",          limit: 191
-    t.string   "shipping_method_id",     limit: 191
+    t.decimal  "adjustment_total",                     precision: 10
+    t.integer  "user_id",                limit: 4
+    t.integer  "ship_address_id",        limit: 4
+    t.decimal  "payment_total",                        precision: 10
+    t.integer  "shipping_method_id",     limit: 4
     t.string   "shipment_state",         limit: 191
     t.string   "payment_state",          limit: 191
     t.string   "email",                  limit: 191
-    t.string   "special_instructions",   limit: 191
-    t.string   "text",                   limit: 191
+    t.text     "special_instructions",   limit: 65535
     t.string   "currency",               limit: 191
     t.string   "last_ip_address",        limit: 191
-    t.string   "created_by_id",          limit: 191
-    t.string   "shipment_total",         limit: 191
-    t.string   "promo_total",            limit: 191
+    t.integer  "created_by_id",          limit: 4
+    t.decimal  "shipment_total",                       precision: 10
+    t.decimal  "promo_total",                          precision: 10
     t.string   "channel",                limit: 191
-    t.string   "item_count",             limit: 191
-    t.string   "approver_id",            limit: 191
-    t.string   "approved_at",            limit: 191
-    t.string   "datetime",               limit: 191
-    t.string   "confirmation_delivered", limit: 191
-    t.string   "boolean",                limit: 191
-    t.string   "considered_risky",       limit: 191
-    t.string   "state_lock_version",     limit: 191
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "item_count",             limit: 4
+    t.integer  "approver_id",            limit: 4
+    t.datetime "approved_at"
+    t.boolean  "confirmation_delivered"
+    t.boolean  "considered_risky"
+    t.integer  "state_lock_version",     limit: 4
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
   create_table "product_option_types", force: :cascade do |t|
