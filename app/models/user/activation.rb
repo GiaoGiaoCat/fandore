@@ -19,8 +19,8 @@ class User::Activation < ActiveType::Object
   private
 
   def activate_user
-    if user && !user.is_email_actived?
-      user.update_attribute(:is_email_actived, true)
+    if user && !user.activated_at
+      user.update_attribute(:activated_at, Time.now)
     end
   end
 

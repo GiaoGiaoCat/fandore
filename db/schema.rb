@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806154901) do
+ActiveRecord::Schema.define(version: 20150808001837) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -244,7 +244,6 @@ ActiveRecord::Schema.define(version: 20150806154901) do
     t.string   "email",              limit: 100
     t.string   "mobile",             limit: 50
     t.string   "password_digest",    limit: 80
-    t.boolean  "is_email_actived",               default: false, null: false
     t.string   "otp_secret_key",     limit: 191
     t.integer  "otp_counter",        limit: 4
     t.integer  "sign_in_count",      limit: 4,   default: 0,     null: false
@@ -255,6 +254,7 @@ ActiveRecord::Schema.define(version: 20150806154901) do
     t.integer  "role",               limit: 4,   default: 1
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.datetime "activated_at"
   end
 
   create_table "variants", force: :cascade do |t|
