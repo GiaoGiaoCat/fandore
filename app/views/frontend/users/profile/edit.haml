@@ -29,7 +29,7 @@
           = field.datetime_field :birthday, class: 'form-control'
         .form-group
           = field.label :gender
-          = field.select :gender, User::Profile.gender.options, {}, class: 'form-control'
+          = field.select :gender, t_options_for_select(User::Profile, :gender), {}, class: 'form-control'
 
         .hr-line-dashed
 
