@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :mobile,
             presence: true,
             uniqueness: true,
-            format: { with: /\A(13[0-9]|15[0-9]|18[7-8])[0-9]{8}\z/ }
+            format: { with: Fandore::Regex::PHONE_REGEX }
   validates :email,
             presence: true,
             uniqueness: true,

@@ -19,7 +19,9 @@ class User::VerificationCode < ActiveRecord::Base
   # other macros (like devise's) ..............................................
   # class methods .............................................................
   # public instance methods ...................................................
-  def after_initialize
+  after_initialize do
+    # after_initialize is rails callback, not ruby builtin method
+    # http://stackoverflow.com/a/23125577/1240067
     self.method ||= :send_verification
   end
 
