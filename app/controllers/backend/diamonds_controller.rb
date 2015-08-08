@@ -53,7 +53,7 @@ class Backend::DiamondsController < Backend::ApplicationController
 
   def save_product
     if @product.save
-      redirect_to admin_products_path
+      redirect_to admin_diamonds_path
     end
   end
 

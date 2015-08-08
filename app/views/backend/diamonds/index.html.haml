@@ -5,16 +5,16 @@
       %li
         = link_to '首页', admin_path
       %li.active
-        %strong 商品管理
+        %strong 钻石管理
   .col-lg-2
 .wrapper.wrapper-content
   .row
     .col-lg-12
       .ibox.float-e-margins
         .ibox-title
-          %h5 商品列表
+          %h5 钻石列表
           .ibox-tools
-            = link_to '添加商品', new_admin_product_path, class: 'btn btn-primary btn-xs'
+            = link_to '添加钻石', new_admin_diamond_path, class: 'btn btn-primary btn-xs'
         .ibox-content
           = render "layouts/flash_messages", flash: flash
 
@@ -22,7 +22,7 @@
             %table.table.table-striped
               %thead
                 %tr
-                  %th 商品名称
+                  %th 钻石名称
                   %th 添加时间
                   %th
               %tbody
@@ -32,5 +32,5 @@
                     %td= product.created_at.to_s(:db)
                     %td
                       .btn-group
-                        = link_to '编辑', edit_admin_product_path(product), class: 'btn btn-white btn-xs'
-                        = link_to '删除', admin_product_path(product), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
+                        = link_to '编辑', edit_admin_diamond_path(product), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_diamond_path(product), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }

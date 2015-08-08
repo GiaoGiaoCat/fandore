@@ -1,0 +1,4 @@
+%h4.border-bottom.p-sm.m-b Product Properties
+#properties
+  = f.simple_fields_for :product_properties do |property|
+    = render 'product_property', :f => property
