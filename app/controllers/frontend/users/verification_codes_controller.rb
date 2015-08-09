@@ -10,11 +10,15 @@ class Frontend::Users::VerificationCodesController < Frontend::ApplicationContro
   private
 
   def builde_v_code
-    @v_code = User::MobileVerificationCode.new(params[:v_code].permit!)
+    @v_code = User::MobileVerificationCode.new(verify_code_params)
   end
 
   def save_v_code
     @v_code.save
+  end
+
+  def verify_code_params
+    {to: params[:v_code], last_ip: request.remote_ip}
   end
 
 end
