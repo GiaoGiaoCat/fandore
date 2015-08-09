@@ -5,8 +5,7 @@ class CreatePromotions < ActiveRecord::Migration
       t.datetime :expires_at
       t.datetime :starts_at
       t.string :name
-      t.string :type_name
-      t.integer :usage_limit
+      t.integer :usage_limit, default: 0
       t.integer :promotion_category_id
       t.string :code
 
