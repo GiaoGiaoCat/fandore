@@ -9,7 +9,7 @@
     / Main javascript files
     = javascript_include_tag 'backend', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body.gray-bg
+  %body.gray-bg{:id => page_id}
     / Main view
     = yield
     / Include javascript per-view
