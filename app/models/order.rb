@@ -1,37 +1,32 @@
-class Product::Variant < ActiveRecord::Base
+class Order < ActiveRecord::Base
   # table name
-  self.table_name = 'variants'
   # extends ...................................................................
-  acts_as_paranoid
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
-  belongs_to :product, touch: true, inverse_of: :variants
-  # belongs_to :tax_category
-  has_many :line_items, class_name: "Order::LineItem", dependent: :destroy
-  has_many :option_value_variants
-  has_many :option_values, through: :option_value_variants
   # relationships .............................................................
+  belongs_to :user
+  belongs_to :created_by, class_name: 'User'
+  belongs_to :approver, class_name: 'User'
+  belongs_to :canceler, class_name: 'User'
+
+  belongs_to :billing_address, class_name: 'User::Address'
+  belongs_to :shipping_address, class_name: 'User::Address'
+
+  has_many :line_items, dependent: :destroy, inverse_of: :order
+  has_many :variants, through: :line_items
+  has_many :products, through: :variants
   # validations ...............................................................
-  validates_uniqueness_of :sku, conditions: -> { where(deleted_at: nil) }, allow_blank: true
   # callbacks .................................................................
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  enum status: [ :available, :sold, :unavailable ]
-
+  accepts_nested_attributes_for :line_items
+  accepts_nested_attributes_for :billing_address
+  accepts_nested_attributes_for :shipping_address
+  # accepts_nested_attributes_for :payments
+  # accepts_nested_attributes_for :shipments
   # class methods .............................................................
   # public instance methods ...................................................
-  def options_text
-    values = self.option_values.sort do |a, b|
-      a.option_type.position <=> b.option_type.position
-    end
-
-    values.to_a.map! do |ov|
-      "#{ov.option_type.presentation}: #{ov.presentation}"
-    end
-
-    values.to_sentence({ words_connector: ", ", two_words_connector: ", " })
-  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end

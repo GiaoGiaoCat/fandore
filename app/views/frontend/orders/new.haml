@@ -1,0 +1,20 @@
+%h2 订单
+- @line_items.each do |line_item|
+  %p
+  = line_item.product.name
+
+%hr
+
+%h2 收货地址
+- if @addresses.blank?
+  = link_to "创建地址", users_addresses_new_path, target: "_blank"
+- else
+  - @addresses.each do |address|
+    = address.province_name
+    = address.city_name
+    = address.district_name
+    = address.address
+    = address.name
+    = address.mobile
+    = address.is_default ? "默认收货地址" : ""
+  

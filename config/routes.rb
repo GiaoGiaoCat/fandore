@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
       resources :favorites, only: [:index, :destroy]
     end
+    resources :carts, only: [:index, :create, :destroy]
+    resources :orders
   end
 
   controller 'frontend/users/profile' do

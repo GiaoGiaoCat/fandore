@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  item_total: 9.99
+  total: 9.99
+  state: MyString
+  adjustment_total: 9.99
+  user_id: 1
+  ship_address_id: 1
+  payment_total: 9.99
+  shipping_method_id: 1
+  shipment_state: MyString
+  payment_state: MyString
+  email: MyString
+  special_instructions: MyText
+  currency: MyString
+  last_ip_address: MyString
+  created_by_id: 1
+  shipment_total: 9.99
+  promo_total: 9.99
+  channel: MyString
+  item_count: 1
+  approver_id: 1
+  approved_at: 2015-08-08 16:31:36
+  confirmation_delivered: false
+  considered_risky: false
+  state_lock_version: 1
+
+two:
+  number: MyString
+  item_total: 9.99
+  total: 9.99
+  state: MyString
+  adjustment_total: 9.99
+  user_id: 1
+  ship_address_id: 1
+  payment_total: 9.99
+  shipping_method_id: 1
+  shipment_state: MyString
+  payment_state: MyString
+  email: MyString
+  special_instructions: MyText
+  currency: MyString
+  last_ip_address: MyString
+  created_by_id: 1
+  shipment_total: 9.99
+  promo_total: 9.99
+  channel: MyString
+  item_count: 1
+  approver_id: 1
+  approved_at: 2015-08-08 16:31:36
+  confirmation_delivered: false
+  considered_risky: false
+  state_lock_version: 1
