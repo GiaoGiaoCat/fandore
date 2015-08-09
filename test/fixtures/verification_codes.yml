@@ -1,9 +1,96 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+email_verify_one:
   user_id: 1
   code: 1
+  type: "User::EmailVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "email@gmail.com"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>
 
-two:
+
+email_verify_two:
   user_id: 1
   code: 1
+  type: "User::EmailVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "email@gmail.com"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>
+
+
+email_verify_three:
+  user_id: 1
+  code: 1
+  type: "User::EmailVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "email@gmail.com"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>
+
+
+email_verify_four:
+  user_id: 1
+  code: 1
+  type: "User::EmailVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "email@gmail.com"
+  updated_at: <%=Time.now%>
+  created_at: <%=Time.now%>
+
+email_verify_five:
+  user_id: 1
+  code: 1
+  type: "User::EmailVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "email@gmail.com"
+  updated_at: <%=Time.now%>
+  created_at: <%=Time.now%>
+
+
+mobile_verify_one:
+  user_id: 1
+  code: 1
+  type: "User::MobileVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "13932011427"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>
+
+
+mobile_verify_two:
+  user_id: 1
+  code: 1
+  type: "User::MobileVerificationCode"
+  last_ip: "127.0.0.1"
+  created_at: <%=Time.now%>
+  to: "13932011427"
+  updated_at: <%=Time.now%>
+
+mobile_verify_three:
+  user_id: 1
+  code: 1
+  type: "User::MobileVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "13932011427"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>
+
+mobile_verify_four:
+  user_id: 1
+  code: 1
+  type: "User::MobileVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "13932011427"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>
+
+mobile_verify_five:
+  user_id: 1
+  code: 1
+  type: "User::MobileVerificationCode"
+  last_ip: "127.0.0.1"
+  to: "13932011427"
+  created_at: <%=Time.now%>
+  updated_at: <%=Time.now%>

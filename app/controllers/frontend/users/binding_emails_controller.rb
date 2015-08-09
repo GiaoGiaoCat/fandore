@@ -6,7 +6,7 @@ class Frontend::Users::BindingEmailsController < Frontend::ApplicationController
   end
 
   def create
-    User::EmailVerificationCode.create(to: current_user.email)
+    User::EmailVerificationCode.create(to: current_user.email, last_ip: request.remote_ip)
     redirect_to binding_email_path(id: current_user)
   end
 
