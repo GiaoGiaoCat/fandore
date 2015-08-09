@@ -1,4 +1,10 @@
 %h2 产品详情
+
+/ 购物车数量。。暂时放在这便于调试
+%p
+  = "购物车："
+  = current_user.cart.line_items.where(order_id: nil).sum(:quantity)
+
 %h3= @product.name
 
 - if current_user
@@ -10,5 +16,5 @@
 - @product.variants.each do |v|
   = v.id
   = v.options_text
-  = link_to '加入购物车', '#'
+  = link_to '加入购物车', carts_path(id: v.id), method: :post
   %br

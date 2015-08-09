@@ -8,7 +8,7 @@ class Product::Variant < ActiveRecord::Base
   # related macros ............................................................
   belongs_to :product, touch: true, inverse_of: :variants
   # belongs_to :tax_category
-
+  has_many :line_items, class_name: "Order::LineItem", dependent: :destroy
   has_many :option_value_variants
   has_many :option_values, through: :option_value_variants
   # relationships .............................................................

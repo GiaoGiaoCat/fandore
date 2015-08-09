@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :verification_codes, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_one :cart, class_name: "Order::Cart"
   # validations ...............................................................
   validates :password,
             confirmation: true,

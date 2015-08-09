@@ -7,7 +7,8 @@ class Order::LineItem < ActiveRecord::Base
   # related macros ............................................................
   # relationships .............................................................
   belongs_to :order, inverse_of: :line_items, touch: true
-  belongs_to :variant, inverse_of: :line_items
+  belongs_to :variant,class_name: "Product::Variant", inverse_of: :line_items
+  belongs_to :cart
   # belongs_to :tax_category
   has_one :product, through: :variant
   # has_many :adjustments, as: :adjustable, dependent: :destroy
@@ -41,8 +42,8 @@ class Order::LineItem < ActiveRecord::Base
   def copy_price
     if variant
       self.price = variant.price if price.nil?
-      self.cost_price = variant.cost_price if cost_price.nil?
-      self.currency = variant.currency if currency.nil?
+      # self.cost_price = variant.cost_price if cost_price.nil?
+      # self.currency = variant.currency if currency.nil?
     end
   end
 end
