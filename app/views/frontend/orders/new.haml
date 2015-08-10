@@ -17,4 +17,10 @@
     = address.name
     = address.mobile
     = address.is_default ? "默认收货地址" : ""
-  
+
+%hr  
+= simple_form_for(@order, :wrapper => :horizontal_form, html: { class: 'form-horizontal' }) do |f|
+  = hidden_field_tag 'line_items', @line_items.ids.join(",")
+  / 地址暂时这样写，选取默认地址为收货地址，以后可以做成check_box选定
+  = hidden_field_tag 'address', @addresses.where(is_default: true).first.id
+  = f.submit

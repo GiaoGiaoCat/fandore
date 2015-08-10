@@ -26,6 +26,16 @@ class Order < ActiveRecord::Base
   # accepts_nested_attributes_for :payments
   # accepts_nested_attributes_for :shipments
   # class methods .............................................................
+  def self.set_order(line_items, user, address)
+    item_count = line_items.sum(:quantity)
+    item_total = 0
+    line_items.each do |line_item|
+      item_total += line_item.price * line_item.quantity
+    end
+    # 缺少优惠价格，调整价格
+    @order = Order.create(item_total: item_total, item_count: item_count, user: user, email: user.email, shipping_address: address)
+    Order::LineItem.to_order(line_items, @order)
+  end
   # public instance methods ...................................................
   # protected instance methods ................................................
   # private instance methods ..................................................
