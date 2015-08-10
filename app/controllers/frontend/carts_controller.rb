@@ -22,7 +22,7 @@ class Frontend::CartsController < Frontend::ApplicationController
   private
 
   def load_carts
-    @carts = current_user.cart.line_items 
+    @carts = current_user.cart.line_items.where(order_id: nil)
   end
 
   def load_cart

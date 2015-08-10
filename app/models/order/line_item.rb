@@ -23,6 +23,11 @@ class Order::LineItem < ActiveRecord::Base
   # other macros (like devise's) ..............................................
   delegate :name, :description, :sku, to: :variant
   # class methods .............................................................
+  def self.to_order(line_items, order)
+    line_items.each do |line_item|
+      line_item.update(order: order)
+    end
+  end
   # public instance methods ...................................................
   def amount
     price * quantity
