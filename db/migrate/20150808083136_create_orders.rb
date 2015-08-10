@@ -12,8 +12,8 @@ class CreateOrders < ActiveRecord::Migration
 
       # 以下字段记录订单状态
       t.string    :state
-      t.string    :shipment_state
-      t.string    :payment_state
+      # t.string    :shipment_state
+      # t.string    :payment_state
 
       # 以下字段记录订单金额
       t.decimal   :item_total, precision: 10, scale: 2, default: 0.0, null: false
