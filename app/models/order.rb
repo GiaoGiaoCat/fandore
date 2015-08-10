@@ -2,6 +2,56 @@ class Order < ActiveRecord::Base
   # table name
   # extends ...................................................................
   # includes ..................................................................
+  include AASM
+  aasm :column => 'state' do
+    state :pending, :initial => true
+    state :paid
+    state :md_ready
+    state :inlaided
+    state :packed
+    state :delivery
+    state :complete
+    state :canceled
+    state :closed
+    state :resume
+
+    event :paid do
+      transitions :from => :pending, :to => :paid
+    end
+
+    event :md_ready do
+      transitions :from => :paid, :to => :md_ready
+    end
+
+    event :inlaided do
+      transitions :from => :md_ready, :to => :inlaided
+    end   
+
+    event :packed do
+      transitions :from => :inlaided, :to => :packed
+    end
+
+    event :delivery do
+      transitions :from => :packed, :to => :delivery
+    end
+
+    event :complete do
+      transitions :from => :delivery, :to => :complete
+    end
+
+    event :canceled do
+      transitions :from => :pending, :to => :canceled
+    end
+
+    event :closed do
+      transitions :from => :complete, :to => :closed
+    end
+
+    event :resume do
+      transitions :from => :closed, :to => :resume
+    end
+
+  end
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
