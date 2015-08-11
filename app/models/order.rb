@@ -80,7 +80,7 @@ class Order < ActiveRecord::Base
     item_count = line_items.sum(:quantity)
     item_total = 0
     line_items.each do |line_item|
-      item_total += line_item.price * line_item.quantity
+      item_total += line_item.amount
     end
     # 缺少优惠价格，调整价格
     @order = Order.create(item_total: item_total, item_count: item_count, user: user, email: user.email, shipping_address: address)
