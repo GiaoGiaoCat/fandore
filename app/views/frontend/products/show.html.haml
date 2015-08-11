@@ -3,7 +3,8 @@
 / 购物车数量。。暂时放在这便于调试
 %p
   = link_to "购物车：", carts_path
-  = current_user.cart.line_items.where(order_id: nil).sum(:quantity)
+  - if current_user.cart
+    = current_user.cart.line_items.where(order_id: nil).sum(:quantity)
 
 %h3= @product.name
 
@@ -13,7 +14,7 @@
 = render :partial => 'properties'
 
 %h3 变体
-- @product.variants.each do |v|
+- @product.variants_including_master.each do |v|
   = v.id
   = v.options_text
   = link_to '加入购物车', carts_path(id: v.id), method: :post
