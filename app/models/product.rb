@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
   has_many :inverse_recommend_products, through: :inverse_recommendations, source: :product
   # validations ...............................................................
   validates :name, presence: true
-  # validates :price, presence: true, if: proc { Spree::Config[:require_master_price] }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :meta_keywords, length: { maximum: 255 }
   validates :meta_title, length: { maximum: 255 }
   # validates :shipping_category_id, presence: true
