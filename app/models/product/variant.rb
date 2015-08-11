@@ -9,10 +9,13 @@ class Product::Variant < ActiveRecord::Base
   belongs_to :product, touch: true, inverse_of: :variants
   # belongs_to :tax_category
   has_many :line_items, class_name: "Order::LineItem", dependent: :destroy
+  has_many :orders, through: :line_items
+
   has_many :option_value_variants
   has_many :option_values, through: :option_value_variants
   # relationships .............................................................
   # validations ...............................................................
+  validates :price, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
   validates_uniqueness_of :sku, conditions: -> { where(deleted_at: nil) }, allow_blank: true
   # callbacks .................................................................
   # scopes ....................................................................
