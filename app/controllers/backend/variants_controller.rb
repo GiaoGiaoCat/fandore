@@ -69,7 +69,7 @@ class Backend::VariantsController < Backend::ApplicationController
   def variant_params
     variant_params = params[:product_variant]
     variant_properties_attributes = [:id, :property_name, :value, :_destroy]
-    variant_params ? variant_params.permit(:sku, :position, option_value_ids: [], variant_properties_attributes: variant_properties_attributes) : {}
+    variant_params ? variant_params.permit(:sku, :price, :position, option_value_ids: [], variant_properties_attributes: variant_properties_attributes) : {}
   end
 
   def variant_scope
