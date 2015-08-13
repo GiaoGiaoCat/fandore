@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20150808150844) do
     t.integer  "billing_address_id",     limit: 4
     t.integer  "item_count",             limit: 4,                              default: 0
     t.string   "guest_token",            limit: 191
-    t.string   "state",                  limit: 191
+    t.integer  "state",                  limit: 4
     t.decimal  "item_total",                           precision: 10, scale: 2, default: 0.0,   null: false
     t.decimal  "total",                                precision: 10, scale: 2, default: 0.0,   null: false
     t.decimal  "adjustment_total",                     precision: 10, scale: 2, default: 0.0,   null: false
