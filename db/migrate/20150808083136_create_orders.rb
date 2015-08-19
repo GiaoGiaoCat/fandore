@@ -11,7 +11,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string    :guest_token, index: true
 
       # 以下字段记录订单状态
-      t.string    :state
+      t.integer   :state
       # t.string    :shipment_state
       # t.string    :payment_state
 
