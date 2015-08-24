@@ -1,6 +1,6 @@
 module Frontend::Users::BindingEmailsHelper
-  def email_path
-    "http://mail.#{current_user.email.split('@')[1]}"
+  def email_path(user)
+    user.email_url
   end
 end
 

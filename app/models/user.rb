@@ -34,6 +34,14 @@ class User < ActiveRecord::Base
   delegate :name, :gender, :avatar, :birthday, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
+  def email_url
+    if email.include?("gmail")
+      "http://gmail.google.com/"
+    else
+      "http://mail.#{email.split('@')[1]}"
+    end
+  end
+
   def profile
     super || build_profile
   end
