@@ -3,9 +3,9 @@
 
 User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566', role: 0)
 
-# 戒托属性
-# metal 材质
-# style 款式
+# 戒托属性和可选属性
+# metal 材质（可选）
+# style 款式（可选）
 # center stone 主钻大小
 # size 指圈范围
 # sub stone style 副石款式
@@ -84,8 +84,32 @@ prototype_2.properties << [
 ]
 
 # 分类
-Taxonomy.create(name: '求婚钻戒')
+taxon_1 = Taxonomy.create(name: '求婚钻戒')
 Taxonomy.create(name: '结婚对戒')
 Taxonomy.create(name: '饰品')
 Taxonomy.create(name: '周边礼品')
-Taxonomy.create(name: '钻石')
+taxon_2 = Taxonomy.create(name: '钻石')
+
+# 添加默认钻石方便测试
+product_1 = Product.new(name: '超小钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_1.price = 100
+product_1.save
+product_1.product_properties.find_by(property_id: property_02.id).update(value: 1)
+
+product_2 = Product.new(name: '小钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_2.price = 100
+product_2.save
+product_2.product_properties.find_by(property_id: property_02.id).update(value: 2)
+
+product_3 = Product.new(name: '钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_3.price = 100
+product_3.save
+product_3.product_properties.find_by(property_id: property_02.id).update(value: 3)
+
+product_4 = Product.new(name: '大钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_4.price = 100
+product_4.save
+product_4.product_properties.find_by(property_id: property_02.id).update(value: 4)
+
+
+# 添加默认戒托方便测试
