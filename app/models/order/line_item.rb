@@ -8,7 +8,7 @@ class Order::LineItem < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :order, inverse_of: :line_items, touch: true
   belongs_to :cart, inverse_of: :line_items, touch: true
-  belongs_to :variant,class_name: "Product::Variant", inverse_of: :line_items
+  belongs_to :variant, class_name: "Product::Variant", inverse_of: :line_items
   # belongs_to :tax_category
   has_one :product, through: :variant
   # has_many :adjustments, as: :adjustable, dependent: :destroy
