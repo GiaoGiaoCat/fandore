@@ -3,3 +3,8 @@
   - @cart.line_items.each do |item|
     %li
       = "#{item.quantity} &times; #{item.product.name}"
+      %br
+      = number_to_currency item.amount
+
+%h3 Total
+%p= number_to_currency @cart.total_price
