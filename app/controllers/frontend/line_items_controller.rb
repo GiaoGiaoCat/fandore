@@ -1,10 +1,17 @@
 class Frontend::LineItemsController < Frontend::ApplicationController
 
-  before_action :load_cart, :load_variant
+  before_action :load_cart
 
   def create
+    load_variant
     build_line_item
     save_line_item or render 'new'
+  end
+
+  def destroy
+    load_line_item
+    @line_item.destroy
+    redirect_to root_path
   end
 
   private
@@ -15,6 +22,10 @@ class Frontend::LineItemsController < Frontend::ApplicationController
 
   def load_variant
     @variant = Product::Variant.find(params[:variant_id])
+  end
+
+  def load_line_item
+    @line_item = @cart.line_items.find(params[:id])
   end
 
   def build_line_item
