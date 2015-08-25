@@ -4,8 +4,12 @@ class Frontend::CartsController < Frontend::ApplicationController
     load_carts
   end
 
+  def show
+    @cart = Cart.find(params[:id])
+  end
+
   def create
-    load_cart    
+    load_cart
     load_variant
     build_quantity
     build_line_item
