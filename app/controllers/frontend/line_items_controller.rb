@@ -18,7 +18,7 @@ class Frontend::LineItemsController < Frontend::ApplicationController
   end
 
   def build_line_item
-    @line_item = @cart.line_items.build(variant: @variant)
+    @line_item = @cart.add_line_item(@variant.id)
   end
 
   def save_line_item
