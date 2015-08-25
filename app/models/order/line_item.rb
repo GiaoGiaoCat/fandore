@@ -33,13 +33,13 @@ class Order::LineItem < ActiveRecord::Base
     price * quantity
   end
 
-  def discounted_amount
-    amount + promo_total
-  end
-
-  def final_amount
-    amount + adjustment_total
-  end
+  # def discounted_amount
+  #   amount + promo_total
+  # end
+  #
+  # def final_amount
+  #   amount + adjustment_total
+  # end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

@@ -22,6 +22,12 @@ class Order::Cart < ActiveRecord::Base
     current_item.quantity += 1 if current_item.persisted?
     current_item
   end
+
+  def total_price
+    # NOTE: amount 并不是最终价格，引入优惠码之后这里需要调整
+    # line_items.to_a.sum { |item| item.amount }
+    line_items.to_a.sum(&:amount)
+  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end

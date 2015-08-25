@@ -17,10 +17,17 @@ class Frontend::CartsController < Frontend::ApplicationController
     redirect_to :back
   end
 
+  # def destroy
+  #   load_line_item
+  #   @line_item.destroy
+  #   redirect_to :back
+  # end
+
   def destroy
-    load_line_item
-    @line_item.destroy
-    redirect_to :back
+    @cart = current_cart
+    @cart.destroy
+    session[:cart_id] = nil
+    redirect_to root_path
   end
 
   private
