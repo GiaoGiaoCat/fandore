@@ -4,9 +4,9 @@ class Frontend::ApplicationController < ApplicationController
   private
 
   def current_cart
-    Cart.find(session[:cart_id])
+    Order::Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
-    cart = Cart.create
+    cart = Order::Cart.create
     session[:cart_id] = cart.id
     cart
   end

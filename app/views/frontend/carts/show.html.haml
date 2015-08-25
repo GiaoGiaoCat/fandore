@@ -2,4 +2,4 @@
 %ul
   - @cart.line_items.each do |item|
     %li
-      = "#{item.quantity} &times; #{item.product.title}"
+      = "#{item.quantity} &times; #{item.product.name}"

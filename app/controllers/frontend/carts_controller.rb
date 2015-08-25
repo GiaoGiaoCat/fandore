@@ -5,7 +5,7 @@ class Frontend::CartsController < Frontend::ApplicationController
   end
 
   def show
-    @cart = Cart.find(params[:id])
+    @cart = Order::Cart.find(params[:id])
   end
 
   def create

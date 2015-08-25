@@ -5,6 +5,7 @@
   = link_to "购物车：", carts_path
   - if current_user.cart
     = current_user.cart.line_items.where(order_id: nil).sum(:quantity)
+%hr
 
 %h3= @product.name
 
@@ -13,9 +14,11 @@
 
 = render :partial => 'properties'
 
+%hr
+
 %h3 变体
 - @product.variants_including_master.each do |v|
   = v.id
   = v.options_text
-  = link_to '加入购物车', carts_path(id: v.id), method: :post
+  = button_to '加入购物车', line_items_path(variant_id: v.id)
   %br

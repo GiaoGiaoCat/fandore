@@ -23,7 +23,7 @@ class Frontend::LineItemsController < Frontend::ApplicationController
 
   def save_line_item
     if @line_item.save
-      redirect_to @line_item.cart
+      redirect_to cart_path(@line_item.cart)
     end
   end
 end
