@@ -1,22 +1,19 @@
 class Orders::BuildController < Frontend::ApplicationController
   include Wicked::Wizard
 
+  # steps :address, :delivery, :payment, :confirm, :complete
+  steps :address, :invoice, :payment, :complete
+
   def show
     load_order
     render_wizard
   end
 
-
   def update
     load_order
     build_order
-    render_wizard @order
-  end
-
-
-  def create
-    build_order
     save_order
+    render_wizard @order
   end
 
   private
@@ -31,10 +28,7 @@ class Orders::BuildController < Frontend::ApplicationController
   end
 
   def save_order
-    @order.add_line_items_from_cart(current_cart)
-    if @order.save
-      redirect_to wizard_path(steps.first, :order_id => @order.id)
-    end
+    @order.save
   end
 
   def order_params

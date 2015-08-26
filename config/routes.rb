@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     # 购物相关
     resources :orders do
       resources :build, controller: 'orders/build'
+      # scope module: 'orders' do
+      #   resources :build
+      # end
     end
     resources :carts, only: [:show, :destroy]
     resources :line_items, only: [:create, :destroy]
