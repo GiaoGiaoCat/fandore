@@ -1,4 +1,4 @@
-class Orders::BuildController < Frontend::ApplicationController
+class Frontend::Orders::BuildController < Frontend::ApplicationController
   include Wicked::Wizard
 
   # steps :address, :delivery, :payment, :confirm, :complete
@@ -19,7 +19,7 @@ class Orders::BuildController < Frontend::ApplicationController
   private
 
   def load_order
-    @order = order_scope.find(params[:id])
+    @order = order_scope.find(params[:order_id])
   end
 
   def build_order
