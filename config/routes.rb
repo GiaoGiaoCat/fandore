@@ -24,10 +24,10 @@ Rails.application.routes.draw do
 
     # 购物相关
     resources :orders do
-      resources :build, controller: 'orders/build'
-      # scope module: 'orders' do
-      #   resources :build
-      # end
+      # resources :build, controller: 'orders/build'
+      scope module: 'orders', only: [:show, :create] do
+        resources :build, only: [:show, :update]
+      end
     end
     resources :carts, only: [:show, :destroy]
     resources :line_items, only: [:create, :destroy]
