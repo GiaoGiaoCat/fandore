@@ -50,6 +50,10 @@ gem 'acts_as_list'
 gem 'acts_as_favable', github: 'coderxin/acts_as_favable'
 # Organise ActiveRecord model into a tree structure
 gem 'ancestry'
+# State machines for Ruby classes (plain Ruby, ActiveRecord, Mongoid, MongoMapper)
+gem 'aasm'
+# Turn your controller into a wizard.
+gem 'wicked'
 
 # Use Puma as the app server
 gem 'puma', group: :production
@@ -61,7 +65,6 @@ gem 'colorize'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'cancancan'
-gem 'aasm' #状态机
 
 # others
 # bundle exec rake doc:rails generates the API under doc/api.

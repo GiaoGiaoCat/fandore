@@ -8,7 +8,7 @@ class Order::LineItem < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :order, inverse_of: :line_items, touch: true
   belongs_to :cart, inverse_of: :line_items, touch: true
-  belongs_to :variant,class_name: "Product::Variant", inverse_of: :line_items
+  belongs_to :variant, class_name: "Product::Variant", inverse_of: :line_items
   # belongs_to :tax_category
   has_one :product, through: :variant
   # has_many :adjustments, as: :adjustable, dependent: :destroy
@@ -23,23 +23,18 @@ class Order::LineItem < ActiveRecord::Base
   # other macros (like devise's) ..............................................
   delegate :name, :description, :sku, to: :variant
   # class methods .............................................................
-  def self.to_order(line_items, order)
-    line_items.each do |line_item|
-      line_item.update(order: order)
-    end
-  end
   # public instance methods ...................................................
   def amount
     price * quantity
   end
 
-  def discounted_amount
-    amount + promo_total
-  end
-
-  def final_amount
-    amount + adjustment_total
-  end
+  # def discounted_amount
+  #   amount + promo_total
+  # end
+  #
+  # def final_amount
+  #   amount + adjustment_total
+  # end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

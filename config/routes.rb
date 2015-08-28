@@ -15,14 +15,25 @@ Rails.application.routes.draw do
   end
 
   scope module: 'frontend' do
+    # 产品相关
     resources :products, only: [:index, :show] do
       scope module: 'users' do
         resources :favorites, only: [:create]
       end
     end
 
-    scope module: 'users' do
+    # 购物相关
+    resources :orders do
+      # resources :build, controller: 'orders/build'
+      scope module: 'orders', only: [:show, :create] do
+        resources :build, only: [:show, :update]
+      end
+    end
+    resources :carts, only: [:show, :destroy]
+    resources :line_items, only: [:create, :destroy]
 
+    # 会员相关
+    scope module: 'users' do
       controller 'registrations' do
         get 'sign_up' => :new
         post 'sign_up' => :create
@@ -39,11 +50,8 @@ Rails.application.routes.draw do
       end
 
       resources :binding_emails, only: [:index, :show, :create]
-
       resources :favorites, only: [:index, :destroy]
     end
-    resources :carts, only: [:index, :create, :destroy]
-    resources :orders
   end
 
   controller 'frontend/users/profile' do
@@ -87,8 +95,6 @@ Rails.application.routes.draw do
 
   #省市级联
   mount ChinaCity::Engine => '/china_city'
-
-
 
   scope :admin, module: :backend, as: :admin do
     concerns :authenticatable

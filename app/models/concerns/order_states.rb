@@ -6,21 +6,26 @@ module OrderStates
     include AASM
 
     enum state: {
-      pending: 0,
-      paid: 10,
-      filtered: 20,
-      inlaided: 30,
-      packed: 40,
-      delivered: 50,
-      completed: 60,
-      canceled: 70,
-      closed: 80,
-      resumed: 90
+      checkout: 0,
+      # addressed: 2,
+      # invoiced: 4,
+      # shipmented: 6,
+      pending: 10,
+      paid: 20,
+      filtered: 30,
+      inlaided: 40,
+      packed: 50,
+      delivered: 60,
+      completed: 70,
+      canceled: 90,
+      closed: 90,
+      resumed: 100
     }
 
     aasm column: :state, enum: true do
 
-      state :pending, initial: true
+      state :checkout, initial: true
+      state :pending
       state :paid
       state :filtered
       state :inlaided

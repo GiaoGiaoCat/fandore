@@ -4,7 +4,7 @@ class CreateLineItems < ActiveRecord::Migration
       t.references :order, index: true
       t.references :cart, index: true
       t.references :variant, index: true
-      t.integer :quantity, null: false
+      t.integer :quantity, null: false, default: 1
       t.decimal :price, precision: 10, scale: 2, null: false
       t.decimal :adjustment_total, precision: 10, scale: 2, default: 0.0
       t.decimal :promo_total, precision: 10, scale: 2, default: 0.0
