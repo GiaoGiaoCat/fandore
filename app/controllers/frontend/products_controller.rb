@@ -1,5 +1,7 @@
 class Frontend::ProductsController < Frontend::ApplicationController
 
+  before_action :load_cart
+
   def index
     load_products
   end
@@ -9,6 +11,10 @@ class Frontend::ProductsController < Frontend::ApplicationController
   end
 
   private
+  
+  def load_cart
+    @cart = current_cart
+  end
 
   def load_products
     @products ||= product_scope.all

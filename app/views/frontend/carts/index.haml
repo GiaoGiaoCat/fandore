@@ -1,9 +1,0 @@
-%h2 购物车
-%form{ :action => "/orders/new", :method => "get"}
-  - @carts.each do |cart|
-    %p
-    = check_box_tag("line_items[]", cart.id)
-    = label_tag("line_items[]", cart.product.name)
-    = "数量：#{cart.quantity}"
-    = link_to "删除", cart_path(cart.id), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
-  = submit_tag

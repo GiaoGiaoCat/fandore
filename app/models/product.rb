@@ -11,12 +11,15 @@ class Product < ActiveRecord::Base
   has_many :option_types, through: :product_option_types
   has_many :product_properties, dependent: :destroy, inverse_of: :product
   has_many :properties, through: :product_properties
+
   has_many :classifications, class_name: 'Taxonomy::Classification', dependent: :delete_all, inverse_of: :product
   has_many :taxons, class_name: 'Taxonomy::Taxon', through: :classifications
 
   has_one :master, -> { where(is_master: true) }, class_name: 'Product::Variant', autosave: true, inverse_of: :product
   has_many :variants, -> { where(is_master: false) }, inverse_of: :product
   has_many :variants_including_master, class_name: 'Product::Variant', dependent: :destroy, inverse_of: :product
+  has_many :line_items, through: :variants_including_master
+  has_many :orders, through: :line_items
 
   has_many :recommendations
   has_many :recommend_products, through: :recommendations
@@ -24,7 +27,7 @@ class Product < ActiveRecord::Base
   has_many :inverse_recommend_products, through: :inverse_recommendations, source: :product
   # validations ...............................................................
   validates :name, presence: true
-  # validates :price, presence: true, if: proc { Spree::Config[:require_master_price] }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :meta_keywords, length: { maximum: 255 }
   validates :meta_title, length: { maximum: 255 }
   # validates :shipping_category_id, presence: true
@@ -36,6 +39,8 @@ class Product < ActiveRecord::Base
   after_initialize :ensure_master
 
   after_save :save_master
+
+  before_destroy :ensure_not_referenced_by_any_line_item
   # scopes ....................................................................
   scope :goods, -> { joins(:taxons).merge(Taxonomy::Taxon.goods) }
   scope :diamonds, -> { joins(:taxons).merge(Taxonomy::Taxon.diamond) }
@@ -88,5 +93,14 @@ class Product < ActiveRecord::Base
       )
     end
     save
+  end
+
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Item present.')
+      return false
+    end
   end
 end

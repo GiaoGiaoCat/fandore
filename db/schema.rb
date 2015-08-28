@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150808150844) do
     t.integer  "cart_id",          limit: 4
     t.integer  "variant_id",       limit: 4
     t.integer  "quantity",         limit: 4,                                        null: false
-    t.decimal  "price",                      precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "price",                      precision: 10, scale: 2,               null: false
     t.decimal  "adjustment_total",           precision: 10, scale: 2, default: 0.0
     t.decimal  "promo_total",                precision: 10, scale: 2, default: 0.0
     t.datetime "created_at",                                                        null: false
@@ -114,9 +114,7 @@ ActiveRecord::Schema.define(version: 20150808150844) do
     t.integer  "billing_address_id",     limit: 4
     t.integer  "item_count",             limit: 4,                              default: 0
     t.string   "guest_token",            limit: 191
-    t.string   "state",                  limit: 191
-    t.string   "shipment_state",         limit: 191
-    t.string   "payment_state",          limit: 191
+    t.integer  "state",                  limit: 4
     t.decimal  "item_total",                           precision: 10, scale: 2, default: 0.0,   null: false
     t.decimal  "total",                                precision: 10, scale: 2, default: 0.0,   null: false
     t.decimal  "adjustment_total",                     precision: 10, scale: 2, default: 0.0,   null: false
@@ -248,12 +246,11 @@ ActiveRecord::Schema.define(version: 20150808150844) do
     t.datetime "expires_at"
     t.datetime "starts_at"
     t.string   "name",                  limit: 191
-    t.string   "type_name",             limit: 191
-    t.integer  "usage_limit",           limit: 4
+    t.integer  "usage_limit",           limit: 4,   default: 0
     t.integer  "promotion_category_id", limit: 4
     t.string   "code",                  limit: 191
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "properties", force: :cascade do |t|

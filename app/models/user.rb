@@ -8,10 +8,11 @@ class User < ActiveRecord::Base
   # related macros ............................................................
   # relationships .............................................................
   has_one :profile, dependent: :destroy
+  has_one :cart, class_name: "Order::Cart"
   has_many :verification_codes, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_one :cart, class_name: "Order::Cart"
+  has_many :orders, dependent: :destroy
   # validations ...............................................................
   validates :password,
             confirmation: true,
