@@ -13,6 +13,12 @@ class Frontend::OrdersController < Frontend::ApplicationController
     save_order
   end
 
+  def update
+    load_order
+    @order.complete!
+    redirect_to order_path(@order)
+  end
+
   private
 
   def load_orders

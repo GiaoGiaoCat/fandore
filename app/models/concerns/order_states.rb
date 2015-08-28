@@ -37,40 +37,40 @@ module OrderStates
       state :resumed
 
       event :pay, after: :notify_to_client do
-        transitions form: :pending, to: :paid
+        transitions from: :pending, to: :paid
       end
 
       event :filter, after: :notify_to_client do
-        transitions form: :paid, to: :filtered
+        transitions from: :paid, to: :filtered
       end
 
       event :inlaid, after: :notify_to_client do
-        transitions form: :filtered, to: :inlaided
+        transitions from: :filtered, to: :inlaided
       end
 
       event :pack, after: :notify_to_client do
-        transitions form: :inlaided, to: :packed
+        transitions from: :inlaided, to: :packed
       end
 
       event :delivery, after: :notify_to_client do
-        transitions form: [:paid, :packed], to: :delivered, guard: :has_payment?
+        transitions from: [:paid, :packed], to: :delivered, guard: :has_payment?
       end
 
       event :complete do
-        transitions form: :delivery, to: :completed
+        transitions from: :delivery, to: :completed
       end
 
       event :cancel do
-        transitions form: :pending, to: :canceled
+        transitions from: :pending, to: :canceled
       end
 
       event :closed do
-        transitions form: [:pending, :completed], to: :closed
+        transitions from: [:pending, :completed], to: :closed
       end
 
       event :resume do
-        # transitions form: :closed, to: :resumed
-        transitions form: :closed, to: :pending
+        # transitions from: :closed, to: :resumed
+        transitions from: :closed, to: :pending
       end
 
     end

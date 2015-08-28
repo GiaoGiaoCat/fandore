@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     # 购物相关
-    resources :orders, only: [:index, :show, :create] do
+    resources :orders, only: [:index, :show, :create, :update] do
       # resources :build, controller: 'orders/build'
       scope module: 'orders', only: [:show, :create] do
         resources :build, only: [:show, :update]
