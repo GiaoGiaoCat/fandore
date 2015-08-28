@@ -1,5 +1,9 @@
 class Frontend::OrdersController < Frontend::ApplicationController
 
+  def index
+    load_orders
+  end
+
   def show
     load_order
   end
@@ -10,6 +14,10 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   private
+
+  def load_orders
+    @orders = order_scope
+  end
 
   def load_order
     @order = order_scope.find(params[:id])
