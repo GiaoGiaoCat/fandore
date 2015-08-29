@@ -1,0 +1,6 @@
+%dl
+  - @orders.each do |order|
+    %dt= order.id
+    %dd= order.email
+    %dd= link_to 'Show', order_path(order)
+    %hr

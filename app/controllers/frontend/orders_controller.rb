@@ -1,5 +1,9 @@
 class Frontend::OrdersController < Frontend::ApplicationController
 
+  def index
+    load_orders
+  end
+
   def show
     load_order
   end
@@ -9,7 +13,17 @@ class Frontend::OrdersController < Frontend::ApplicationController
     save_order
   end
 
+  def update
+    load_order
+    @order.complete!
+    redirect_to order_path(@order)
+  end
+
   private
+
+  def load_orders
+    @orders = order_scope
+  end
 
   def load_order
     @order = order_scope.find(params[:id])
