@@ -1,4 +1,8 @@
 = "ID: #{@order.id}"
+%h2 订单详情
+- @order.line_items.each do |item|
+  = item.sku
+  = item.name
 %br
 = "State: #{@order.state}"
 - if @order.may_complete?
