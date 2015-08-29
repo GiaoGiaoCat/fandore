@@ -13,6 +13,7 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
     load_order
     build_order
     save_order
+    @order.checkout! if step == :address
     render_wizard @order
   end
 
