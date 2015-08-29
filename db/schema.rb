@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808150844) do
+ActiveRecord::Schema.define(version: 20150829151959) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -38,6 +38,21 @@ ActiveRecord::Schema.define(version: 20150808150844) do
 
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "title",            limit: 50,    default: ""
+    t.text     "comment",          limit: 65535
+    t.integer  "commentable_id",   limit: 4
+    t.string   "commentable_type", limit: 191
+    t.integer  "user_id",          limit: 4
+    t.string   "role",             limit: 191,   default: "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "favorites", force: :cascade do |t|
     t.string   "note",         limit: 50,  default: ""
     t.integer  "favable_id",   limit: 4
@@ -55,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150808150844) do
     t.integer  "order_id",         limit: 4
     t.integer  "cart_id",          limit: 4
     t.integer  "variant_id",       limit: 4
-    t.integer  "quantity",         limit: 4,                                        null: false
+    t.integer  "quantity",         limit: 4,                          default: 1,   null: false
     t.decimal  "price",                      precision: 10, scale: 2,               null: false
     t.decimal  "adjustment_total",           precision: 10, scale: 2, default: 0.0
     t.decimal  "promo_total",                precision: 10, scale: 2, default: 0.0

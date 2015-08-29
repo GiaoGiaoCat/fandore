@@ -30,7 +30,11 @@ Rails.application.routes.draw do
       end
     end
     resources :carts, only: [:show, :destroy]
-    resources :line_items, only: [:create, :destroy]
+    resources :line_items, only: [:create, :destroy] do
+      scope module: 'orders', only: [:show, :create] do
+        resources :comments, only: [:new, :create]
+      end
+    end
 
     # 会员相关
     scope module: 'users' do

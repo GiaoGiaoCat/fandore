@@ -54,6 +54,8 @@ gem 'ancestry'
 gem 'aasm'
 # Turn your controller into a wizard.
 gem 'wicked'
+# Provides a single Comment model that can be attached to any model(s) within your app.
+gem 'acts_as_commentable'
 
 # Use Puma as the app server
 gem 'puma', group: :production
