@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :title, :limit => 50, :default => ""
       t.text :comment
       t.references :commentable, :polymorphic => true
-      t.references :user
+      t.references :user, index: true
       t.string :role, :default => "comments"
 
       t.timestamps

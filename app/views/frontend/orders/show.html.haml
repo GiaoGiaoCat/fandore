@@ -3,6 +3,7 @@
 - @order.line_items.each do |item|
   = item.sku
   = item.name
+  = link_to '评价', new_line_item_comment_path(item)
 %br
 = "State: #{@order.state}"
 - if @order.may_complete?
