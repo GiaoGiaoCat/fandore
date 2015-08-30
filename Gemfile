@@ -56,6 +56,8 @@ gem 'aasm'
 gem 'wicked'
 # Provides a single Comment model that can be attached to any model(s) within your app.
 gem 'acts_as_commentable'
+# Classier solution for Multiple file uploads for Multiple file upload.
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 # Use Puma as the app server
 gem 'puma', group: :production
@@ -63,10 +65,6 @@ gem 'puma', group: :production
 gem 'oneapm_rpm'
 
 # others
-gem 'colorize'
-# gem 'carrierwave'
-# for Multiple file upload  s
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'kaminari'
 
 # others
