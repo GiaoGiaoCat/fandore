@@ -68,7 +68,6 @@ gem 'colorize'
 # for Multiple file upload  s
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'kaminari'
-gem 'cancancan'
 
 # others
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -82,6 +81,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'awesome_print'
   gem 'i18n-debug'
+  gem 'colorize'
 end
 
 group :development, :test do
