@@ -34,7 +34,7 @@ class Frontend::Orders::CommentsController < Frontend::ApplicationController
 
   def comment_params
     comment_params = params[:comment]
-    comment_params ? comment_params.permit(:title, :comment, {pictures: []}) : {}
+    comment_params ? comment_params.permit(:title, :comment, { pictures: [] }) : {}
   end
 
   def comment_scope
