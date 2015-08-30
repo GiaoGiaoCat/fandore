@@ -64,7 +64,9 @@ gem 'oneapm_rpm'
 
 # others
 gem 'colorize'
-gem 'carrierwave'
+# gem 'carrierwave'
+# for Multiple file upload  s
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'kaminari'
 gem 'cancancan'
 

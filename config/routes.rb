@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     end
     resources :carts, only: [:show, :destroy]
     resources :line_items, only: [:create, :destroy] do
-      scope module: 'orders', only: [:show, :create] do
-        resources :comments, only: [:new, :create]
+      scope module: 'orders', only: [:show, :create], shallow: true do
+        resources :comments, only: [:new, :create, :show]
       end
     end
 

@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150829151959) do
     t.string   "commentable_type", limit: 191
     t.integer  "user_id",          limit: 4
     t.string   "role",             limit: 191,   default: "comments"
+    t.string   "pictures",         limit: 191
     t.datetime "created_at"
     t.datetime "updated_at"
   end

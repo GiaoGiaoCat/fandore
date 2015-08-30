@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
   # table name
   # extends ...................................................................
   # NOTE: install the acts_as_votable plugin if you
+  serialize :pictures, JSON
+  mount_uploaders :pictures, PhotoUploader
   # want user to vote on the quality of comments.
   #acts_as_voteable
   # includes ..................................................................

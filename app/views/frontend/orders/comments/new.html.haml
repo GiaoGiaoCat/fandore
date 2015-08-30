@@ -3,5 +3,6 @@
     = f.text_field :title, class: 'form-control', placeholder: 'title'
   .form-group
     = f.text_field :comment, class: 'form-control', placeholder: 'comment'
+    = f.file_field :pictures, multiple: true, class: 'form-control', placeholder: 'picture urls'
 
   = f.button
