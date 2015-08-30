@@ -10,7 +10,8 @@ class CreateInvoices < ActiveRecord::Migration
       t.string      :number
       t.integer     :status, default: 0
       t.text        :note
-      t.datetime    :invoice_date
+      t.integer     :invoiced_id
+      t.datetime    :invoiced_at
 
       t.datetime    :period_start_date
       t.datetime    :period_end_date
@@ -20,7 +21,6 @@ class CreateInvoices < ActiveRecord::Migration
       t.decimal     :adjustment_total, precision: 10, scale: 2, default: 0.0, null: false
       t.decimal     :payment_total, precision: 10, scale: 2, default: 0.0
       t.decimal     :promo_total, precision: 10, scale: 2, default: 0.0
-      t.decimal     :shipment_total, precision: 10, scale: 2, default: 0.0, null: false
 
       t.timestamps null: false
     end
