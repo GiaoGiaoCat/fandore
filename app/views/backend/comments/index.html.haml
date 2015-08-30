@@ -1,0 +1,54 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 评论管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 评论管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 评论列表
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .row
+            .col-sm-10.m-b-xs
+              .btn-group{"data-toggle" => "buttons"}
+                %label.btn.btn-sm.btn-white
+                  %input#option1{:name => "options", :type => "radio"}/
+                  Day
+                %label.btn.btn-sm.btn-white.active
+                  %input#option2{:name => "options", :type => "radio"}/
+                  Week
+            .col-sm-2
+              = form_tag admin_comments_path, method: :get do
+                .input-group
+                  = text_field_tag :q, params[:q], class: 'input-sm form-control', placeholder: '评论内容或产品'
+                  %span.input-group-btn
+                    = submit_tag 'Go!', class: 'btn btn-sm btn-primary'
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th 订单 ID
+                  %th 产品
+                  %th 评论
+                  %th 评论时间
+                  %th
+              %tbody
+                - @comments.each do |comment|
+                  %tr
+                    %td= comment.commentable.order.id
+                    %td= comment.commentable.name
+                    %td= comment.comment
+                    %td= comment.created_at.to_s(:db)
+                    %td
+                      .btn-group
+                        = link_to '编辑', edit_admin_comment_path(comment), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_comment_path(comment), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }

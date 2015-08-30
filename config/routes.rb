@@ -129,6 +129,8 @@ Rails.application.routes.draw do
     resources :promotions
     resources :promotion_categories
     resources :promotion_promotion_categories, controller: 'promotion_categories'
+
+    resources :comments
   end
 
   # Admin root path

@@ -4,6 +4,7 @@ module OrderStates
   included do
 
     include AASM
+    include OrderUpdater
 
     enum state: {
       checkout: 0,
@@ -35,6 +36,10 @@ module OrderStates
       state :canceled
       state :closed
       state :resumed
+
+      event :checkout, after: :update_totals do
+        transitions from: :checkout, to: :pending
+      end
 
       event :pay, after: :notify_to_client do
         transitions from: :pending, to: :paid
