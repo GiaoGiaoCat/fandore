@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   # relationships .............................................................
   # belongs_to :store
   belongs_to :user
+  belongs_to :invoice, class_name: "Order::Invoice", foreign_key: "invoice_id"
   belongs_to :created_by, class_name: 'User'
   belongs_to :approver, class_name: 'User'
   belongs_to :canceler, class_name: 'User'
