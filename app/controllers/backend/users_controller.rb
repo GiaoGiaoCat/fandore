@@ -1,7 +1,7 @@
 class Backend::UsersController < Backend::ApplicationController
   include Registerable
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :load_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @q = user_scope.ransack(params[:q])
@@ -29,11 +29,7 @@ class Backend::UsersController < Backend::ApplicationController
 
   private
 
-  def user_scope
-    User
-  end
-
-  def set_user
+  def load_user
     @user = user_scope.find(params[:id])
   end
 
@@ -47,5 +43,9 @@ class Backend::UsersController < Backend::ApplicationController
     ]
     user_params = params[:user]
     user_params ? user_params.permit(:email, :mobile, :password, :password_confirmation, profile_attributes: profile_attrs) : {}
+  end
+
+  def user_scope
+    User
   end
 end

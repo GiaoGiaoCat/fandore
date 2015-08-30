@@ -16,6 +16,22 @@
         .ibox-content
           = render "layouts/flash_messages", flash: flash
 
+          .row
+            .col-sm-10.m-b-xs
+              .btn-group{"data-toggle" => "buttons"}
+                %label.btn.btn-sm.btn-white
+                  %input#option1{:name => "options", :type => "radio"}/
+                  Day
+                %label.btn.btn-sm.btn-white.active
+                  %input#option2{:name => "options", :type => "radio"}/
+                  Week
+            .col-sm-2
+              = form_tag admin_comments_path, method: :get do
+                .input-group
+                  = text_field_tag :q, params[:q], class: 'input-sm form-control', placeholder: '评论内容或产品'
+                  %span.input-group-btn
+                    = submit_tag 'Go!', class: 'btn btn-sm btn-primary'
+
           .table-responsive
             %table.table.table-striped
               %thead
