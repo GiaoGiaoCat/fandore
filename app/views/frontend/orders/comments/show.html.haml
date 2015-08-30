@@ -1,0 +1,21 @@
+%table{width: "1000px"}
+  %thead
+    %tr
+      %th 'columns'
+      %th 'content'
+  %tbody
+    %tr
+      %td "id"
+      %td= @comment.id
+    %tr
+      %td "title"
+      %td= @comment.title
+    %tr
+      %td "comment"
+      %td= @comment.comment
+    %tr
+      %td "图片"
+      %td
+        %ul
+          -@comment.pics.each do |item|
+            %li=image_tag item.url, size: "100x100"

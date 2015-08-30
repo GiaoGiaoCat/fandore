@@ -1,12 +1,17 @@
 class Frontend::Orders::CommentsController < Frontend::ApplicationController
 
-  before_action :load_line_item, :build_comment
+  before_action :load_line_item, :build_comment, only: [:new, :create]
 
   def new
   end
 
   def create
     save_comment or render 'new'
+  end
+
+  def show
+    @comment = Comment.find(params[:id])
+    render 'show'
   end
 
   private
@@ -22,13 +27,14 @@ class Frontend::Orders::CommentsController < Frontend::ApplicationController
 
   def save_comment
     if @comment.save
-      redirect_to order_path(@line_item.order)
+      # redirect_to order_path(@line_item.order)
+      redirect_to comment_path(@comment)
     end
   end
 
   def comment_params
     comment_params = params[:comment]
-    comment_params ? comment_params.permit(:title, :comment) : {}
+    comment_params ? comment_params.permit(:title, :comment, {pictures: []}) : {}
   end
 
   def comment_scope

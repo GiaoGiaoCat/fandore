@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.references :commentable, :polymorphic => true
       t.references :user, index: true
       t.string :role, :default => "comments"
+      t.string :pictures
 
       t.timestamps
     end
