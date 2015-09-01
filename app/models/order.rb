@@ -30,6 +30,7 @@ class Order < ActiveRecord::Base
 
   # has_and_belongs_to_many :promotions, join_table: 'orders_promotions'
   # has_many :shipments, dependent: :destroy, inverse_of: :order
+  belongs_to :promotion
 
   # validations ...............................................................
   # callbacks .................................................................
@@ -56,6 +57,7 @@ class Order < ActiveRecord::Base
       line_items << item
     end
   end
+
 
   # NOTE: 暂时没用上
   # def amount

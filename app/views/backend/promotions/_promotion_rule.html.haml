@@ -1,7 +1,7 @@
 .nested-fields
   .row
     .col-sm-6
-      = f.input :type_name, wrapper: :nested_fields_with_btn
+      = f.select :type_name, "每个用户使用一次": "only_one", "每笔订单使用一次": "every_order"
     .col-sm-6
       = link_to_remove_association "remove rule", f, class: 'btn btn-danger'
-  = f.input :preferences, wrapper: :nested_fields
+  /= f.input :preferences, wrapper: :nested_fields,type: "hidden"

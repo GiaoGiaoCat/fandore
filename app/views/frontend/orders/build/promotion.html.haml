@@ -1,0 +1,6 @@
+= form_for @order, url: wizard_path, method: :put do |f|
+  %h2 填写优惠码
+  = f.fields_for :promotion, @order.promotion do |field|
+    .form-group
+      = field.text_field :code, class: 'form-control', placeholder: '优惠码'
+  = f.button

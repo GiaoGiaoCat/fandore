@@ -9,6 +9,8 @@ class Promotion < ActiveRecord::Base
 
   has_many :promotion_actions, dependent: :destroy
   has_many :promotion_rules, dependent: :destroy
+
+  has_one :order
   # validations ...............................................................
   validates :expires_at, presence: true
   validates :starts_at, presence: true
@@ -23,5 +25,12 @@ class Promotion < ActiveRecord::Base
   # class methods .............................................................
   # public instance methods ...................................................
   # protected instance methods ................................................
+  def usage_promotion(user,order)
+    promotion_amount = self.promotion_rules.last.is_user_usge(user, order)
+    if promotion_amount
+      order.update(promotion: self, promo_total: promotion_amount)
+      self.update(usage_limit: (self.usage_limit - 1))
+    end
+  end
   # private instance methods ..................................................
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829151959) do
+ActiveRecord::Schema.define(version: 20150830130810) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -66,6 +66,32 @@ ActiveRecord::Schema.define(version: 20150829151959) do
   add_index "favorites", ["favable_id"], name: "index_favorites_on_favable_id", using: :btree
   add_index "favorites", ["favable_type"], name: "index_favorites_on_favable_type", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "user_id",            limit: 4
+    t.integer  "billing_address_id", limit: 4
+    t.integer  "payment_type",       limit: 4,                              default: 0
+    t.string   "title",              limit: 191
+    t.string   "mobile",             limit: 191
+    t.string   "code",               limit: 191
+    t.string   "number",             limit: 191
+    t.integer  "status",             limit: 4,                              default: 0
+    t.text     "note",               limit: 65535
+    t.integer  "invoiced_id",        limit: 4
+    t.datetime "invoiced_at"
+    t.datetime "period_start_date"
+    t.datetime "period_end_date"
+    t.decimal  "item_total",                       precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "total",                            precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "adjustment_total",                 precision: 10, scale: 2, default: 0.0, null: false
+    t.decimal  "payment_total",                    precision: 10, scale: 2, default: 0.0
+    t.decimal  "promo_total",                      precision: 10, scale: 2, default: 0.0
+    t.datetime "created_at",                                                              null: false
+    t.datetime "updated_at",                                                              null: false
+  end
+
+  add_index "invoices", ["billing_address_id"], name: "index_invoices_on_billing_address_id", using: :btree
+  add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id",         limit: 4
@@ -145,8 +171,10 @@ ActiveRecord::Schema.define(version: 20150829151959) do
     t.integer  "canceler_id",            limit: 4
     t.datetime "canceled_at"
     t.boolean  "confirmation_delivered",                                        default: false
+    t.integer  "invoice_id",             limit: 4
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
+    t.integer  "promotion_id",           limit: 4
   end
 
   add_index "orders", ["approver_id"], name: "index_orders_on_approver_id", using: :btree
@@ -155,6 +183,7 @@ ActiveRecord::Schema.define(version: 20150829151959) do
   add_index "orders", ["confirmation_delivered"], name: "index_orders_on_confirmation_delivered", using: :btree
   add_index "orders", ["created_by_id"], name: "index_orders_on_created_by_id", using: :btree
   add_index "orders", ["guest_token"], name: "index_orders_on_guest_token", using: :btree
+  add_index "orders", ["invoice_id"], name: "index_orders_on_invoice_id", using: :btree
   add_index "orders", ["number"], name: "index_orders_on_number", using: :btree
   add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id", using: :btree
   add_index "orders", ["user_id", "created_by_id"], name: "index_orders_on_user_id_and_created_by_id", using: :btree
