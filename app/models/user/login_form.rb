@@ -1,4 +1,5 @@
 class User::LoginForm < ActiveType::Object
+  include SimpleCaptchaReloaded::Model
   attribute :username, :string
   attribute :password, :string
   attribute :remember_me, :boolean

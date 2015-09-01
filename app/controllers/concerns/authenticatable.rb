@@ -27,7 +27,7 @@ module Authenticatable
 
   def sign_in_params
     user_params = params[:user_login_form]
-    user_params ? user_params.permit(:username, :password) : {}
+    user_params ? user_params.permit(:username, :password, :captcha, :captcha_key) : {}
   end
 
   def save_sign_in
