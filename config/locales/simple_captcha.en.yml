@@ -1,0 +1,14 @@
+zh:
+  simple_captcha_reloaded:
+    errors:
+      missing_captcha: '没有输入验证码'
+      blank: '请输入验证码'
+      wrong: '验证码错误'
+    refresh_button_html: '点击刷新'
+de:
+  simple_captcha_reloaded:
+    errors:
+      missing_captcha: 'Captcha nicht gefunden'
+      blank: 'Bitte geben Sie den obigen Text ein'
+      wrong: 'Der eingebene Text war leider nicht richtig. Bitte probieren Sie es erneut.'
+    refresh_button_html: 'Neu laden'

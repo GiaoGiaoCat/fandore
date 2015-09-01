@@ -26,8 +26,8 @@ module Authenticatable
   end
 
   def sign_in_params
-    user_params = params[:user_login_form]
-    user_params ? user_params.permit(:username, :password) : {}
+    user_params = params[:user_login_form] && params[:user_login_form].permit(:username, :password) || {}
+    user_params.merge(captcha: params[:captcha], captcha_key: params[:captcha_key])
   end
 
   def save_sign_in
@@ -35,7 +35,14 @@ module Authenticatable
       @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
       redirect_to_url
+    else
+      password_faile_handler(@sign_in)
+      false
     end
+  end
+
+  def password_faile_handler(user)
+    false
   end
 
 

@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   delegate :name, :gender, :avatar, :birthday, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
+  def locked?
+    last_pwd_failed_at.try(:today?) && pwd_failed_count > 5
+  end
 
   def profile
     super || build_profile

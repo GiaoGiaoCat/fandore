@@ -66,6 +66,8 @@ gem 'oneapm_rpm'
 
 # others
 gem 'kaminari'
+# gem "recaptcha", :require => "recaptcha/rails"
+gem 'simple_captcha_reloaded'
 
 # others
 # bundle exec rake doc:rails generates the API under doc/api.

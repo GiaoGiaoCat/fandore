@@ -15,6 +15,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :current_sign_in_ip
       t.string :last_sign_in_ip
       t.integer :role, default: 1
+      t.datetime :last_pwd_failed_at
+      t.integer :pwd_failed_count, default: 0
 
       t.timestamps null: false
     end
