@@ -1,5 +1,7 @@
 class User::LoginForm < ActiveType::Object
+
   include SimpleCaptchaReloaded::Model
+
   attribute :username, :string
   attribute :password, :string
   attribute :remember_me, :boolean
@@ -17,9 +19,7 @@ class User::LoginForm < ActiveType::Object
   private
 
   def validate_user_lock_state
-    if(user && user.last_pwd_failed_at.try(:today?) && (user.pwd_failed_count > 5))
-      errors.add(:base, :locked)
-    end
+    errors.add(:base, :locked) if user && user.locked?
   end
 
   def validate_user_exists
