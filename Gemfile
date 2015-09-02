@@ -68,6 +68,7 @@ gem 'puma', group: :production
 # 服务器性能监控
 gem 'oneapm_rpm'
 
+# others
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
