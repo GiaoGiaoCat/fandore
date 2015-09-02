@@ -1,7 +1,8 @@
 .nested-fields
   .row
     .col-sm-6
-      = f.select :type_name, "每个用户使用一次": "only_one", "每笔订单使用一次": "every_order"
+      %p{style: "padding-left: 35%"}
+        = f.select :type_name, "每个用户使用一次": "only_one", "每笔订单使用一次": "every_order"
     .col-sm-6
       = link_to_remove_association "remove rule", f, class: 'btn btn-danger'
   /= f.input :preferences, wrapper: :nested_fields,type: "hidden"
