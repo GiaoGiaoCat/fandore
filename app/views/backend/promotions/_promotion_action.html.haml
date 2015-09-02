@@ -4,13 +4,20 @@
       / = f.input :type_name, wrapper: :nested_fields_with_btn
     .col-sm-6
       = link_to_remove_association "remove rule", f, class: 'btn btn-danger'
-  = f.input :preferences, wrapper: :nested_fields
-  %p 消费满
-  %input{name: "min", type: "text",id:"min"}
-  %p 优惠额度
-  %input{name: "amount", type: "text"}
+    = f.input :preferences,  wrapper: :nested_fields
+    %p 消费满
+    %input{name: "min", type: "text",id:"min"}
+    %p 优惠额度
+    %input{name: "amount", type: "text",id:"amount"}
 
 :javascript
   $("#min").change(function(){
-    alert("Text: " + $("#min").val());
+    var min = ("min:" + $("#min").val());
+    var amount = (",amount:" + $("#amount").val());
+    $("textarea:last").val(min + amount);
+  });
+  $("#amount").change(function(){
+    var min = ("min:" + $("#min").val());
+    var amount = (",amount:" + $("#amount").val());
+    $("textarea:last").val(min + amount);
   });
