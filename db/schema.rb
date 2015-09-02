@@ -171,7 +171,6 @@ ActiveRecord::Schema.define(version: 20150830114331) do
     t.integer  "canceler_id",            limit: 4
     t.datetime "canceled_at"
     t.boolean  "confirmation_delivered",                                        default: false
-    t.integer  "invoice_id",             limit: 4
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
   end
@@ -182,7 +181,6 @@ ActiveRecord::Schema.define(version: 20150830114331) do
   add_index "orders", ["confirmation_delivered"], name: "index_orders_on_confirmation_delivered", using: :btree
   add_index "orders", ["created_by_id"], name: "index_orders_on_created_by_id", using: :btree
   add_index "orders", ["guest_token"], name: "index_orders_on_guest_token", using: :btree
-  add_index "orders", ["invoice_id"], name: "index_orders_on_invoice_id", using: :btree
   add_index "orders", ["number"], name: "index_orders_on_number", using: :btree
   add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id", using: :btree
   add_index "orders", ["user_id", "created_by_id"], name: "index_orders_on_user_id_and_created_by_id", using: :btree

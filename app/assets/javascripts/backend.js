@@ -2,7 +2,9 @@
 //= require jquery/jquery-2.1.1.js
 
 //=  require jquery_ujs
-//=  require turbolinks
+
+// 后台的 theme 跟 turbolinks 有一些不兼容，边栏菜单不能正确刷新
+//  require turbolinks
 
 //= require cocoon
 //= require bootstrap-sprockets
