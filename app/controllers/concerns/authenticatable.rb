@@ -50,7 +50,7 @@ module Authenticatable
   end
 
   def locked_verify(user)
-    user.should_unlocked? ? user.unlock! : user.unlocked?
+    user.should_unlock? ? user.unlock! : user.unlocked?
   end
 
   def redirect_to_url

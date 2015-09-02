@@ -19,7 +19,7 @@ module Lockable
     reset_pwd_failed_count!
   end
 
-  def should_unlocked?
+  def should_unlock?
     !last_pwd_failed_at.try(:today?)
   end
 
