@@ -3,6 +3,7 @@ module Authenticatable
 
   included do
     skip_before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_locked_user!, only: [:create]
   end
 
   def new
@@ -35,13 +36,16 @@ module Authenticatable
       session[:user_id] = @sign_in.user.id
       redirect_to_url
     else
-      password_faile_handler(@sign_in)
-      false
+      password_faile_handler
     end
   end
 
-  def password_faile_handler(user)
-    false
+  def password_faile_handler
+    @sign_in.user.increment_or_reset_pwd_failed_count! and false
+  end
+
+  def authenticate_locked_user!
+    redirect_to root_url if @sign_in.user.locked?
   end
 
 

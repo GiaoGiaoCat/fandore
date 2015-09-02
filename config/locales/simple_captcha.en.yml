@@ -4,7 +4,7 @@ zh:
       missing_captcha: '没有输入验证码'
       blank: '请输入验证码'
       wrong: '验证码错误'
-    refresh_button_html: '点击刷新'
+    refresh_button_html: '刷新'
 de:
   simple_captcha_reloaded:
     errors:
