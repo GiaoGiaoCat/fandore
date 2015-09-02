@@ -8,19 +8,23 @@ module Lockable
   end
 
   def locked?
-    last_pwd_failed_at.try(:today?) && pwd_failed_count > 5
+    last_pwd_failed_at.try(:today?) && pwd_failed_count > 4
   end
 
   def unlocked?
     !locked?
   end
 
+  def unlock!
+    reset_pwd_failed_count!
+  end
+
+  def should_unlocked?
+    !last_pwd_failed_at.try(:today?)
+  end
+
   def increment_or_reset_pwd_failed_count!
-    if last_pwd_failed_at.try(:today?)
-      increment_pwd_failed_count!
-    else
-      reset_pwd_failed_count!
-    end
+    should_unlocked? ? reset_pwd_failed_count! : increment_pwd_failed_count!
   end
 
 
@@ -31,6 +35,6 @@ module Lockable
   end
 
   def reset_pwd_failed_count!
-    update_columns(last_pwd_failed_at: Time.now, pwd_failed_count: 1)
+    update_columns(last_pwd_failed_at: Time.now, pwd_failed_count: 0)
   end
 end
