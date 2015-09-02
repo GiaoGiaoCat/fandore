@@ -3,7 +3,6 @@ module Authenticatable
 
   included do
     skip_before_action :authenticate_user!, only: [:new, :create]
-    before_action :authenticate_locked_user!, only: [:create]
   end
 
   def new
@@ -27,11 +26,12 @@ module Authenticatable
   end
 
   def sign_in_params
-    user_params = params[:user_login_form] && params[:user_login_form].permit(:username, :password, :captcha, :captcha_key) || {}
+    user_params = params[:user_login_form]
+    user_params ? user_params.permit(:username, :password, :captcha, :captcha_key) : {}
   end
 
   def save_sign_in
-    if @sign_in.save && authority_verify(@sign_in.user)
+    if @sign_in.save && authority_verify(@sign_in.user) && locked_verify(@sign_in.user)
       @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
       redirect_to_url
@@ -44,14 +44,13 @@ module Authenticatable
     @sign_in.user.increment_or_reset_pwd_failed_count! and false
   end
 
-  def authenticate_locked_user!
-    redirect_to root_url if @sign_in.user.locked?
-  end
-
-
   def sign_out
     session[:user_id] = nil
     @current_user = nil
+  end
+
+  def locked_verify(user)
+    user.unlocked?
   end
 
   def redirect_to_url
@@ -61,5 +60,6 @@ module Authenticatable
   def authority_verify(user)
     raise NotImplementedError, 'Must be implemented by who mixins me.'
   end
+
 
 end

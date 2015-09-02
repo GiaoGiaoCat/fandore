@@ -11,6 +11,10 @@ module Lockable
     last_pwd_failed_at.try(:today?) && pwd_failed_count > 5
   end
 
+  def unlocked?
+    !locked?
+  end
+
   def increment_or_reset_pwd_failed_count!
     if last_pwd_failed_at.try(:today?)
       increment_pwd_failed_count!
