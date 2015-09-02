@@ -58,14 +58,15 @@ gem 'wicked'
 gem 'acts_as_commentable'
 # Classier solution for Multiple file uploads for Multiple file upload.
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+# Captcha into a Rails application
+gem 'simple_captcha_reloaded'
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator.
+gem 'kaminari'
 
 # Use Puma as the app server
 gem 'puma', group: :production
 # 服务器性能监控
 gem 'oneapm_rpm'
-
-# others
-gem 'kaminari'
 
 # others
 # bundle exec rake doc:rails generates the API under doc/api.

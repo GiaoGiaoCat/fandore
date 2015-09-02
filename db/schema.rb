@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830114331) do
+ActiveRecord::Schema.define(version: 20150831134547) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -326,6 +326,13 @@ ActiveRecord::Schema.define(version: 20150830114331) do
 
   add_index "recommendations", ["position"], name: "index_recommendations_on_position", using: :btree
 
+  create_table "simple_captcha_reloaded_data", force: :cascade do |t|
+    t.string   "key",        limit: 128
+    t.string   "value",      limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taxonomies", force: :cascade do |t|
     t.string   "name",       limit: 191, null: false
     t.datetime "created_at",             null: false
@@ -356,6 +363,8 @@ ActiveRecord::Schema.define(version: 20150830114331) do
     t.string   "current_sign_in_ip", limit: 191
     t.string   "last_sign_in_ip",    limit: 191
     t.integer  "role",               limit: 4,   default: 1
+    t.datetime "last_pwd_failed_at"
+    t.integer  "pwd_failed_count",   limit: 4,   default: 0
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
   end

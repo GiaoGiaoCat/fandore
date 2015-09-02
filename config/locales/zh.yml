@@ -123,6 +123,7 @@ zh:
       wrong_length: 长度非法（必须为 %{count} 个字符）
       extension_white_list_error: 不是被允许的文件格式或扩展名
       user_not_found: 用户不存在
+      locked: 帐号锁定, 请联系管理员
       incorrect: 不正确
       verify_code_error: 验证码错误
     template:
@@ -212,6 +213,7 @@ zh:
       <<: *errors
     models:
       user: '用户'
+
     attributes:
       product:
         name: '名称'
@@ -236,7 +238,6 @@ zh:
         partner_birthday: 'Ta 的生日'
         partner_email: 'Ta 的邮件'
         partner_mobile: 'Ta 的手机'
-
   views:
     pagination:
       first: "首页"

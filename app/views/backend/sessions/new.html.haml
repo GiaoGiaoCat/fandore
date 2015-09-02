@@ -17,6 +17,7 @@
         = f.text_field :username, autofocues: true, class: 'form-control', placeholder: '手机号/邮件'
       .form-group
         = f.password_field :password, class: 'form-control', placeholder: '密码'
+        = simple_captcha(key: 'user_login_form[captcha_key]', value: 'user_login_form[captcha]', refresh_button: true)
       = f.submit 'Login', class: 'btn btn-primary block full-width m-b'
       = link_to '密码找回', users_forget_password_path, class: 'btn btn-sm btn-white btn-block'
 
