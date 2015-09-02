@@ -35,7 +35,14 @@ module Authenticatable
       @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
       redirect_to_url
+    else
+      password_faile_handler(@sign_in)
+      false
     end
+  end
+
+  def password_faile_handler(user)
+    false
   end
 
 

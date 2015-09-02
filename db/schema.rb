@@ -365,6 +365,8 @@ ActiveRecord::Schema.define(version: 20150831134547) do
     t.string   "current_sign_in_ip", limit: 191
     t.string   "last_sign_in_ip",    limit: 191
     t.integer  "role",               limit: 4,   default: 1
+    t.datetime "last_pwd_failed_at"
+    t.integer  "pwd_failed_count",   limit: 4,   default: 0
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
   end
