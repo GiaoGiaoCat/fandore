@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_one_time_password length: 6
   # includes ..................................................................
   include Trackable
+  include Lockable
   # constants .................................................................
   # related macros ............................................................
   # relationships .............................................................
@@ -37,18 +38,6 @@ class User < ActiveRecord::Base
   delegate :name, :gender, :avatar, :birthday, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
-  def locked?
-    last_pwd_failed_at.try(:today?) && pwd_failed_count > 5
-  end
-
-  def increment_or_reset_pwd_failed_count!
-    if last_pwd_failed_at.try(:today?)
-      increment!(:pwd_failed_count)
-    else
-      update_columns(last_pwd_failed_at: Time.now, pwd_failed_count: 1)
-    end
-  end
-
   def profile
     super || build_profile
   end
