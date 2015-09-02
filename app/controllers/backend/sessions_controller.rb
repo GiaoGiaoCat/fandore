@@ -3,9 +3,7 @@ class Backend::SessionsController < Backend::ApplicationController
   layout "empty"
 
   def create
-    binding.pry
-    build_sign_in.valid_with_captcha?
-    save_sign_in or render 'new'
+    (build_sign_in.valid_with_captcha? &&  save_sign_in) || (render 'new')
   end
 
   private

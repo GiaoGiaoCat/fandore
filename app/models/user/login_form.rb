@@ -3,6 +3,8 @@ class User::LoginForm < ActiveType::Object
   attribute :username, :string
   attribute :password, :string
   attribute :remember_me, :boolean
+  attribute :captcha, :string
+  attribute :captcha_key, :string
 
   validate :validate_user_exists
   validate :validate_password_correct
