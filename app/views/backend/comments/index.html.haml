@@ -33,6 +33,7 @@
                   %th 产品
                   %th 评论
                   %th 评论时间
+                  %th 回复
                   %th
               %tbody
                 - @comments.each do |comment|
@@ -41,6 +42,7 @@
                     %td= comment.commentable.name
                     %td= comment.comment
                     %td= comment.created_at.to_s(:db)
+                    %td= show_reply_status(comment.replied?)
                     %td
                       .btn-group
                         - if comment.comments.empty?
