@@ -62,7 +62,7 @@ module OrderStates
       end
 
       event :complete do
-        transitions from: :delivery, to: :completed
+        transitions from: :delivered, to: :completed
       end
 
       event :cancel do

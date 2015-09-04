@@ -18,13 +18,6 @@
 
           .row
             .col-sm-10.m-b-xs
-              .btn-group{"data-toggle" => "buttons"}
-                %label.btn.btn-sm.btn-white
-                  %input#option1{:name => "options", :type => "radio"}/
-                  Day
-                %label.btn.btn-sm.btn-white.active
-                  %input#option2{:name => "options", :type => "radio"}/
-                  Week
             .col-sm-2
               = form_tag admin_comments_path, method: :get do
                 .input-group
@@ -52,3 +45,5 @@
                       .btn-group
                         = link_to '编辑', edit_admin_comment_path(comment), class: 'btn btn-white btn-xs'
                         = link_to '删除', admin_comment_path(comment), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
+          .text-center
+            = paginate @comments
