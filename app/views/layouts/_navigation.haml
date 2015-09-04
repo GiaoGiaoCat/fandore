@@ -44,8 +44,8 @@
         = link_to '#' do
           %i.fa.fa-fax
           %span.nav-label 售后管理
-          
-      %li{ class: is_active_controller('backend/comments') }
+
+      %li{ class: is_active_controller('backend/comments', 'backend/replies') }
         = link_to admin_comments_path do
           %i.fa.fa-comments
           %span.nav-label 评论管理

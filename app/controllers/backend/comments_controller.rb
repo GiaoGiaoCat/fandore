@@ -42,7 +42,7 @@ class Backend::CommentsController < Backend::ApplicationController
   def load_comments
     # XXX: https://github.com/activerecord-hackery/ransack/wiki/Using-Ransackers
     # 下面的代码很丑陋，可以参考上面的链接重构
-    @comments ||= Comment.search_by_keyword(params[:q]).page params[:page]
+    @comments ||= Comment.for_product.search_by_keyword(params[:q]).page params[:page]
   end
 
   def load_comment
@@ -68,6 +68,6 @@ class Backend::CommentsController < Backend::ApplicationController
   end
 
   def comment_scope
-    Comment
+    Comment.for_product
   end
 end

@@ -130,7 +130,9 @@ Rails.application.routes.draw do
     resources :promotion_categories
     resources :promotion_promotion_categories, controller: 'promotion_categories'
 
-    resources :comments
+    resources :comments do
+      resources :replies, only: [:new, :create, :edit, :update]
+    end
   end
 
   # Admin root path

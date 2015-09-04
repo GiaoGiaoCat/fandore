@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   # table name
   # extends ...................................................................
+  acts_as_commentable
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   #acts_as_voteable
@@ -16,6 +17,7 @@ class Comment < ActiveRecord::Base
   # callbacks .................................................................
   # scopes ....................................................................
   default_scope -> { order('created_at ASC') }
+  scope :for_product, -> { where(commentable_type: 'Order::LineItem') }
   scope :search_by_keyword, ->(keyword) {
     ids = Order::LineItem.ransack(product_name_cont: keyword).result.pluck(:id)
     condition = { commentable_id_in: ids, title_or_comment_cont: keyword }
@@ -23,7 +25,7 @@ class Comment < ActiveRecord::Base
   }
   # other macros (like devise's) ..............................................
   mount_uploaders :pictures, PhotoUploader
-  
+
   serialize :pictures, JSON
   # class methods .............................................................
   # public instance methods ...................................................
