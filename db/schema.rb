@@ -171,6 +171,7 @@ ActiveRecord::Schema.define(version: 20150831134547) do
     t.integer  "canceler_id",            limit: 4
     t.datetime "canceled_at"
     t.boolean  "confirmation_delivered",                                        default: false
+    t.integer  "invoice_id",             limit: 4
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
   end
@@ -181,6 +182,7 @@ ActiveRecord::Schema.define(version: 20150831134547) do
   add_index "orders", ["confirmation_delivered"], name: "index_orders_on_confirmation_delivered", using: :btree
   add_index "orders", ["created_by_id"], name: "index_orders_on_created_by_id", using: :btree
   add_index "orders", ["guest_token"], name: "index_orders_on_guest_token", using: :btree
+  add_index "orders", ["invoice_id"], name: "index_orders_on_invoice_id", using: :btree
   add_index "orders", ["number"], name: "index_orders_on_number", using: :btree
   add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id", using: :btree
   add_index "orders", ["user_id", "created_by_id"], name: "index_orders_on_user_id_and_created_by_id", using: :btree
@@ -351,22 +353,22 @@ ActiveRecord::Schema.define(version: 20150831134547) do
   add_index "taxons", ["taxonomy_id"], name: "index_taxons_on_taxonomy_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",              limit: 100
-    t.string   "mobile",             limit: 50
-    t.string   "password_digest",    limit: 80
-    t.string   "otp_secret_key",     limit: 191
-    t.integer  "otp_counter",        limit: 4
-    t.integer  "sign_in_count",      limit: 4,   default: 0, null: false
+    t.string   "email",                  limit: 100
+    t.string   "mobile",                 limit: 50
+    t.string   "password_digest",        limit: 80
+    t.string   "otp_secret_key",         limit: 191
+    t.integer  "otp_counter",            limit: 4
     t.datetime "activated_at"
+    t.integer  "role",                   limit: 4,   default: 1
+    t.integer  "sign_in_count",          limit: 4,   default: 0, null: false
     t.datetime "current_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 191
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip", limit: 191
-    t.string   "last_sign_in_ip",    limit: 191
-    t.integer  "role",               limit: 4,   default: 1
-    t.datetime "last_pwd_failed_at"
-    t.integer  "pwd_failed_count",   limit: 4,   default: 0
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.string   "last_sign_in_ip",        limit: 191
+    t.datetime "last_failed_sign_in_at"
+    t.integer  "failed_sign_in_count",   limit: 4,   default: 0, null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "variants", force: :cascade do |t|

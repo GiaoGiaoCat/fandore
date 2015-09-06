@@ -8,7 +8,7 @@ module Lockable
   end
 
   def locked?
-    last_pwd_failed_at.try(:today?) && pwd_failed_count > 4
+    last_failed_sign_in_at.try(:today?) && failed_sign_in_count > 4
   end
 
   def unlocked?
@@ -16,25 +16,25 @@ module Lockable
   end
 
   def unlock!
-    reset_pwd_failed_count!
+    reset_failed_sign_in_count!
   end
 
   def should_unlock?
-    !last_pwd_failed_at.try(:today?)
+    !last_failed_sign_in_at.try(:today?)
   end
 
-  def increment_or_reset_pwd_failed_count!
-    should_unlocked? ? reset_pwd_failed_count! : increment_pwd_failed_count!
+  def increment_or_reset_failed_sign_in_count!
+    should_unlocked? ? reset_failed_sign_in_count! : increment_failed_sign_in_count!
   end
 
 
   private
 
-  def increment_pwd_failed_count!
-    increment!(:pwd_failed_count)
+  def increment_failed_sign_in_count!
+    increment!(:failed_sign_in_count)
   end
 
-  def reset_pwd_failed_count!
-    update_columns(last_pwd_failed_at: Time.now, pwd_failed_count: 0)
+  def reset_failed_sign_in_count!
+    update_columns(last_failed_sign_in_at: Time.now, failed_sign_in_count: 0)
   end
 end
