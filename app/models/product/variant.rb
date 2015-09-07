@@ -13,14 +13,19 @@ class Product::Variant < ActiveRecord::Base
 
   has_many :option_value_variants
   has_many :option_values, through: :option_value_variants
+  has_one :price_model, class_name: "Product::Price", dependent: :destroy, autosave: true, validate: true
+  accepts_nested_attributes_for :price_model
   # relationships .............................................................
   # validations ...............................................................
-  validates :price, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
   validates_uniqueness_of :sku, conditions: -> { where(deleted_at: nil) }, allow_blank: true
   # callbacks .................................................................
+  after_initialize :ensure_price_model
+
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   enum status: [ :available, :sold, :unavailable ]
+
+  delegate :price, :price=, to: :price_model
 
   # class methods .............................................................
   # public instance methods ...................................................
@@ -37,4 +42,10 @@ class Product::Variant < ActiveRecord::Base
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
+  private
+
+  def ensure_price_model
+    return unless new_record?
+    self.price_model ||= build_price_model
+  end
 end

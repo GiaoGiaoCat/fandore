@@ -89,7 +89,7 @@ class Product < ActiveRecord::Base
     values.each do |ids|
       variant = variants.create(
         option_value_ids: ids,
-        price: master.price
+        price_model: Product::Price.new(price: master.price)
       )
     end
     save
