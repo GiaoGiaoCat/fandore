@@ -4,7 +4,7 @@ class CreateVariant < ActiveRecord::Migration
       t.string      :sku, default: '', null: false, index: true
       t.datetime    :deleted_at, index: true
       t.boolean     :is_master, default: false, index: true
-      t.decimal     :price, precision: 10, scale: 2
+      # t.decimal     :price, precision: 10, scale: 2
       t.decimal     :display_price, precision: 10, scale: 2
       t.decimal     :cost_price, precision: 10, scale: 2
       t.integer     :position, index: true

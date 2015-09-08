@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831134547) do
+ActiveRecord::Schema.define(version: 20150907143154) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -187,6 +187,16 @@ ActiveRecord::Schema.define(version: 20150831134547) do
   add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id", using: :btree
   add_index "orders", ["user_id", "created_by_id"], name: "index_orders_on_user_id_and_created_by_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "prices", force: :cascade do |t|
+    t.integer  "variant_id", limit: 4
+    t.decimal  "price",                  precision: 10, scale: 2
+    t.string   "currency",   limit: 191
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  add_index "prices", ["variant_id"], name: "index_prices_on_variant_id", using: :btree
 
   create_table "product_option_types", force: :cascade do |t|
     t.integer  "position",       limit: 4, default: 0
@@ -375,7 +385,6 @@ ActiveRecord::Schema.define(version: 20150831134547) do
     t.string   "sku",           limit: 191,                          default: "",    null: false
     t.datetime "deleted_at"
     t.boolean  "is_master",                                          default: false
-    t.decimal  "price",                     precision: 10, scale: 2
     t.decimal  "display_price",             precision: 10, scale: 2
     t.decimal  "cost_price",                precision: 8,  scale: 2
     t.integer  "position",      limit: 4

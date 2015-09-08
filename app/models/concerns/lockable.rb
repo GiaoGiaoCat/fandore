@@ -24,7 +24,7 @@ module Lockable
   end
 
   def increment_or_reset_failed_sign_in_count!
-    should_unlocked? ? reset_failed_sign_in_count! : increment_failed_sign_in_count!
+    should_unlock? ? reset_failed_sign_in_count! : increment_failed_sign_in_count!
   end
 
 
