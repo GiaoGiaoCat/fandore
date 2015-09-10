@@ -1,4 +1,10 @@
 = form_for @order, url: wizard_path, method: :put do |f|
+  - if @order.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @order.errors.full_messages
+          %li= message
   .hr-line-dashed
   = f.fields_for :shipping_address, @order.shipping_address do |field|
     .form-group

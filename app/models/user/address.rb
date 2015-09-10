@@ -12,6 +12,8 @@ class User::Address < ActiveRecord::Base
   validates :mobile,
             presence: true,
             format: { with: Fandore::Regex::PHONE_REGEX }
+
+  validates :province, :city, :district, numericality: true
   # callbacks .................................................................
   after_save :set_default_address
   # scopes ....................................................................
