@@ -9,6 +9,8 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
   end
 
   def authority_verify(user)
-    true
+    unless current_user && (User::FRONTENDROLE.include? current_user.role.to_sym)
+      true
+    end
   end
 end

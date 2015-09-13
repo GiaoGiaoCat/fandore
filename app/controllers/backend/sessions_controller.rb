@@ -14,6 +14,6 @@ class Backend::SessionsController < Backend::ApplicationController
   end
 
   def authority_verify(user)
-    user.admin?
+    User::BACKENDROLE.include? user.role.to_sym
   end
 end
