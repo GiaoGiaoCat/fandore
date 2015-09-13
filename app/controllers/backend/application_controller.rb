@@ -1,10 +1,14 @@
 class Backend::ApplicationController < ApplicationController
   layout ->(controller) { controller.request.xhr? ? false : 'backend' }
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   private
 
   def authenticate_user!
-    unless current_user && current_user.admin?
+    unless current_user && (User::BACKENDROLE.include? current_user.role.to_sym)
       redirect_to admin_sign_in_path
     end
   end

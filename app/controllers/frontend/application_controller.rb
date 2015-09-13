@@ -3,6 +3,13 @@ class Frontend::ApplicationController < ApplicationController
 
   private
 
+
+  def authenticate_user!
+    unless current_user && (User::FRONTENDROLE.include? current_user.role)
+      redirect_to admin_sign_in_path
+    end
+  end
+
   def current_cart
     Order::Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
