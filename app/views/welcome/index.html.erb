@@ -1,3 +1,11 @@
+<% if Rails.env.production? %>
+<style media="screen">
+  body { background-color: #FEF4F2; }
+</style>
+<div>
+  <%= image_tag 'index.jpg' %>
+</div>
+<% else %>
 <div class="navbar-wrapper">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -181,5 +189,7 @@ $(function() {
 });
 
 </script>
+
+<% end %>
 
 <% end %>

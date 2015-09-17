@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   layout "empty"
 
   def index
+    render layout: 'blank'
   end
 
   def account_safe
