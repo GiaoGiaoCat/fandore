@@ -2,7 +2,6 @@ class Backend::SessionsController < Backend::ApplicationController
   include Authenticatable
   layout "empty"
 
-
   private
 
   def save_sign_in
@@ -14,6 +13,6 @@ class Backend::SessionsController < Backend::ApplicationController
   end
 
   def authority_verify(user)
-    user.admin?
+    user.backend_user?
   end
 end

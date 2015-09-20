@@ -62,6 +62,8 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'simple_captcha_reloaded'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator.
 gem 'kaminari'
+# CanCan is an authorization library for Ruby on Rails
+gem 'cancancan', '~> 1.10'
 
 # Use Puma as the app server
 gem 'puma', group: :production
