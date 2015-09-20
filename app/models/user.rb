@@ -33,10 +33,10 @@ class User < ActiveRecord::Base
   # callbacks .................................................................
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
-  BACKEND_ROLE = [:admin, :customer_service, :product_manager]
-  FRONTEND_ROLE = [:member]
-  ROLE = [:admin, :member, :customer_service, :product_manager]
-  enum role: ROLE
+  BACKEND_ROLES = [:admin, :customer_service, :product_manager]
+  FRONTEND_ROLES = [:member]
+  ROLES = [:admin, :member, :customer_service, :product_manager]
+  enum role: ROLES
   accepts_nested_attributes_for :profile, update_only: true
   delegate :name, :gender, :avatar, :birthday, to: :profile
   # class methods .............................................................
@@ -45,14 +45,15 @@ class User < ActiveRecord::Base
     super || build_profile
   end
 
+  # defines: `backend_user?`, `frontend_user?`
   def self.user_role_devise_method_define(*kindles)
     kindles.each do |item|
       define_method "#{item}_user?" do
-        self.class.const_get("#{item.upcase}_ROLE").include? role.to_sym
+        self.class.const_get("#{item.upcase}_ROLES").include? role.to_sym
       end
     end
   end
-  user_role_devise_method_define("backend", "frontend")
+  user_role_devise_method_define('backend', 'frontend')
   # protected instance methods ................................................
   # private instance methods ..................................................
 end

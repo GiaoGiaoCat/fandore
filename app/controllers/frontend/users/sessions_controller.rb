@@ -1,7 +1,6 @@
 class Frontend::Users::SessionsController < Frontend::ApplicationController
   include Authenticatable
 
-
   private
 
   def redirect_to_url
@@ -9,6 +8,6 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
   end
 
   def authority_verify(user)
-    user && user.fronend_user?
+    user.fronend_user?
   end
 end
