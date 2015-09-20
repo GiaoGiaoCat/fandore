@@ -45,13 +45,14 @@ class User < ActiveRecord::Base
     super || build_profile
   end
 
-  def backend_user?
-    BACKENDROLE.include? role.to_sym
+  def self.user_role_devise_method_define(*kindles)
+    kindles.each do |item|
+      define_method "#{item}_user?" do
+        self.class.const_get("#{item.upcase}ROLE").include? role.to_sym
+      end
+    end
   end
-
-  def frontend_user?
-    FRONTENDROLE.include? role.to_sym
-  end
+  user_role_devise_method_define("backend", "frontend")
   # protected instance methods ................................................
   # private instance methods ..................................................
 end
