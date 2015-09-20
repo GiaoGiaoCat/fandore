@@ -44,6 +44,14 @@ class User < ActiveRecord::Base
   def profile
     super || build_profile
   end
+
+  def backend_user?
+    BACKENDROLE.include? role.to_sym
+  end
+
+  def frontend_user?
+    FRONTENDROLE.include? role.to_sym
+  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end

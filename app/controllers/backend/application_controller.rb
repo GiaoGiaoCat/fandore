@@ -8,7 +8,7 @@ class Backend::ApplicationController < ApplicationController
   private
 
   def authenticate_user!
-    unless current_user && (User::BACKENDROLE.include? current_user.role.to_sym)
+    unless current_user && current_user.backend_user?
       redirect_to admin_sign_in_path
     end
   end
