@@ -41,7 +41,7 @@ module Authenticatable
   end
 
   def password_faile_handler
-    @sign_in.user.increment_or_reset_failed_sign_in_count! and false
+    @sign_in.user && @sign_in.user.increment_or_reset_failed_sign_in_count! and false
   end
 
   def sign_out
