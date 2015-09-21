@@ -1,0 +1,53 @@
+@import 'frontend/base';
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-size: 16px;
+  color: $text;
+  background-color: #f8f8f8;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 30px;
+  z-index: 3;
+
+  .logo {
+    float: left;
+    width: 252px;
+    height: 34px;
+    text-indent: -9999px;
+    background: image-url('logo-purple.png') no-repeat;
+  }
+
+  .head-right {
+    float: right;
+
+    .link-wrap a {
+      margin: 0 10px;
+      display: inline-block;
+      color: $text;
+      font-weight: bold;
+      line-height: 48px;
+      font-size: 14px;
+    }
+  }
+}
+
+.footer {
+  padding: 20px 30px;
+}

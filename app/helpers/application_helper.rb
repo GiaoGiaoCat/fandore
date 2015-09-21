@@ -1,17 +1,10 @@
 module ApplicationHelper
   def page_title
     if @page_title
-      title = @page_title
+      "#{@page_title} - Fandore"
     else
-      step_name = params[:step].blank? ? '' : params[:step].underscore
-      controller_names = controller_path.split('/')
-      title = t("#{action_name}.page_title", {
-        :scope => "#{controller_names.join('.')}",
-        :default => [:"#{step_name}.page_title", "#{controller_path}##{action_name}"]
-      })
+      "Fandore"
     end
-
-    "#{title} - Fandore"
   end
 
   def page_id

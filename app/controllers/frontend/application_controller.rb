@@ -1,5 +1,5 @@
 class Frontend::ApplicationController < ApplicationController
-  layout ->(controller) { controller.request.xhr? ? false : 'empty' }
+  layout ->(controller) { controller.request.xhr? ? false : 'frontend' }
 
   private
 

@@ -1,195 +1,146 @@
-<% if Rails.env.production? %>
-<style media="screen">
-  body { background-color: #FEF4F2; }
-</style>
-<div>
-  <%= image_tag 'index.jpg' %>
-</div>
-<% else %>
-<div class="navbar-wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">WEBAPPLAYERS</a>
+<%= render 'layouts/frontend/header' %>
+
+<% if false %>
+<div id="container" class="container">
+    <section class="section">
+        <div class="home-slider">
+            <a class="prev" href="#"><i class="iconfont">&#xe60b;</i></a>
+            <a class="next" href="#"><i class="iconfont">&#xe60a;</i></a>
+            <div class="hd">
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to '首页', root_path, class: 'page-scroll' %></li>
-                    <% if current_user %>
-                      <li><a class="page-scroll" href="/account_safe">账户安全</a></li>
-                      <li><a class="page-scroll" href="/user_center">个人中心</a></li>
-                      <li><a class="page-scroll" href="#testimonials">账户资料</a></li>
-                      <li><a class="page-scroll" href="#pricing">售后服务</a></li>
-                      <li><a class="page-scroll" href="/users/addresses">收货地址</a></li>
-                    <% end %>
+            <div class="bd">
+                <ul>
+                    <li class="animate-active">
+                        <div class="img-box img-box1">
+                            <img class="banner1-txt1" src="<%= asset_path "banner1-txt1.png" %>">
+                            <img class="banner1-txt2" src="<%= asset_path "banner1-txt2.png" %>">
+                            <div class="line animation-delay800"></div>
+                            <img class="banner1-txt3" src="<%= asset_path "banner1-txt3.png" %>">
+                            <div class="con-wrap animation-delay400">
+                                <img class="banner1-con" src="<%= asset_path "banner1-con.png" %>">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box img-box1">
+                            <img class="banner1-txt1" src="<%= asset_path "banner1-txt1.png" %>">
+                            <img class="banner1-txt2" src="<%= asset_path "banner2-txt2.png" %>">
+                            <div class="line animation-delay800"></div>
+                            <img class="banner1-txt3" src="<%= asset_path "banner1-txt3.png" %>">
+                            <div class="con-wrap animation-delay400">
+                                <img class="banner1-con" src="<%= asset_path "banner2-con.png" %>">
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
-</div>
-<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
-<div class="carousel-inner" role="listbox">
-    <div class="item active">
-        <div class="container">
-            <div class="carousel-caption">
-                <h1>We craft<br/>
-                    brands, web apps,<br/>
-                    and user interfaces<br/>
-                    we are IN+ studio</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                <p>
-                    <% if current_user %>
-                      <%= link_to '退出', sign_out_path, method: :delete, class: 'btn btn-lg btn-primary' %>
-                    <% else %>
-                      <%= link_to '登录', sign_in_path, class: 'btn btn-lg btn-primary' %>
-                      <%= link_to '后台登录', admin_sign_in_path, class: 'btn btn-lg btn-primary' %>
-                    <% end %>
-                    <a class="caption-link" href="#" role="button">Inspinia Theme</a>
-                </p>
+    </section>
+
+    <section class="section">
+        <div class="home-pro-left">
+            <a class="prev" href="#"><i class="iconfont">&#xe60b;</i></a>
+            <a class="next" href="#"><i class="iconfont">&#xe60a;</i></a>
+                <div class="hpl-text">
+                    <h2 class="home-pro-title">
+                        <img src="<%= asset_path "home_pro_left.png" %>"/>
+                    </h2>
+                    <a href="product_list.html" class="auto-pro-btn btn-bord-black">浏览全部求婚戒指</a>
+                </div>
+                <div class="bd">
+                    <ul>
+                        <li>
+                            <div class="hpl-img">
+                                <img src="<%= asset_path "pro_img_01.jpg" %>"/>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="hpl-img">
+                                <img src="<%= asset_path "pro_img_01_1.jpg" %>"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <div class="home-pro-right">
+            <div class="home-pro-rtop">
+                    <div class="hprt-text">
+                        <h2 class="home-pro-title">
+                            <img src="<%= asset_path "home_pro_rt.png" %>"/>
+                        </h2>
+                        <a href="product_list.html" class="auto-pro-btn btn-home-purple">浏览全部结婚对戒<i class="iconfont icon-btnarrow"></i></a>
+                    </div>
+                    <div class="home-pro-mask"></div>
+                <div class="bg-animate bg-page3" style="background-image:url(<%= asset_path "pro_img_02.jpg" %>)"></div>
             </div>
-            <div class="carousel-image wow zoomIn">
-                <img src="<%= image_path('landing/laptop.png') %>" alt="laptop"/>
+            <div class="home-pro-rbottom">
+                <div class="hprb-left">
+                    <div class="hprb-l-text">
+                        <h2 class="home-pro-title">
+                            <img src="<%= asset_path "home_pro_bottom.png" %>"/>
+                        </h2>
+                        <a href="product_list.html" class="auto-pro-btn btn-bord-white">浏览新娘套装<i class="iconfont icon-btnarrow"></i></a>
+                    </div>
+                    <div class="home-pro-mask"></div>
+                    <div class="bg-animate bg-page3" style="background-image:url(<%= asset_path "pro_img_03.jpg" %>)"></div>
+                </div>
+                <div class="hprb-right">
+                    <div class="hprb-r-text">
+                        <h2 class="home-pro-title">
+                            <img src="<%= asset_path "home_pro_bottom-right.png" %>"/>
+                        </h2>
+                        <a href="product_list.html" class="auto-pro-btn btn-bord-white">浏览周边商品<i class="iconfont icon-btnarrow"></i></a>
+                    </div>
+                    <div class="home-pro-mask"></div>
+                    <div class="bg-animate bg-page3" style="background-image:url(<%= asset_path "pro_img_04.jpg" %>)"></div>
+                </div>
             </div>
         </div>
-        <!-- Set background for slide in css -->
-        <div class="header-back one"></div>
+    </section>
 
-    </div>
+    <section class="section">
+        <div class="page-warp">
+            <div class="page-box">
+                <div class="page-right-txt page-txt">
+                    <h2 class="title">钻石</h2>
+                    <img class="img-en" src="<%= asset_path "page-txt-en4.png" %>">
+                    <p class="txt">范朵朵以近乎执着的热情让钻石能准确<br>地引导光线，闪亮璀璨</p>
+                </div>
+            </div>
+            <div class="page-bg" style="background-image: url(<%= asset_path "page4-bg.jpg" %>);"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="page-warp">
+            <div class="page-box">
+                <div class="page-left-txt page-txt">
+                    <h2 class="title">工艺</h2>
+                    <img class="img-en" src="<%= asset_path "page-txt-en5.png" %>">
+                    <p class="txt">精美的钻石戒环由公主式车工钻石，营造出一种流畅、简洁又不失华丽的美感 <br>外观线条流畅平滑，分布简洁美观，而且使钻戒显得更加豪华珍贵</p>
+                </div>
+           </div>
+           <div class="page-bg" style="background-image: url(<%= asset_path "page5-bg.jpg" %>);"></div>
+       </div>
+    </section>
+
+    <section class="section">
+        <div class="page-box">
+            <div class="left-package">
+                <img src="<%= asset_path "product-package.png" %>">
+            </div>
+            <div class="page-right-txt page-txt page6-txt">
+                <h2 class="title">包装</h2>
+                <img class="img-en" src="<%= asset_path "page-txt-en6.png" %>">
+                <p class="txt">精致的包装带着优雅的品味，纯白的外壳象征爱情的永恒、纯净</p>
+            </div>
+       </div>
+    </section>
 </div>
-
-</div>
-
-
-<section id="features" class="container services">
-<div class="row">
-    <div class="col-sm-3">
-        <h2>Full responsive</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-    </div>
-    <div class="col-sm-3">
-        <h2>LESS/SASS Files</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-    </div>
-    <div class="col-sm-3">
-        <h2>6 Charts Library</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-    </div>
-    <div class="col-sm-3">
-        <h2>Advanced Forms</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-        <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
-    </div>
-</div>
-</section>
-
-
-
-<section id="contact" class="gray-section contact">
-<div class="container">
-    <div class="row m-b-lg">
-        <div class="col-lg-12 text-center">
-            <div class="navy-line"></div>
-            <h1>Contact Us</h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
-        </div>
-    </div>
-    <div class="row m-b-lg">
-        <div class="col-lg-3 col-lg-offset-3">
-            <address>
-                <strong><span class="navy">Company name, Inc.</span></strong><br/>
-                795 Folsom Ave, Suite 600<br/>
-                San Francisco, CA 94107<br/>
-                <abbr title="Phone">P:</abbr> (123) 456-7890
-            </address>
-        </div>
-        <div class="col-lg-4">
-            <p class="text-color">
-                Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
-            <p class="m-t-sm">
-                Or follow us on social platform
-            </p>
-            <ul class="list-inline social-icon">
-                <li><a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li><a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-          <p><strong>&copy; 2015 Company Name</strong><br/> <a href='http://www.miibeian.gov.cn/' target='_blank'>粤ICP备15062021号</a>.</p>
-        </div>
-    </div>
-</div>
-</section>
-<% content_for :javascript do %>
-
-<script type="text/javascript">
-
-
-$(function() {
-
-    $('body').addClass('landing-page');
-    $('body').attr('id', 'page-top');
-
-    $('body').scrollspy({
-        target: '.navbar-fixed-top',
-        offset: 80
-    });
-
-    var cbpAnimatedHeader = (function() {
-        var docElem = document.documentElement,
-                header = document.querySelector( '.navbar-default' ),
-                didScroll = false,
-                changeHeaderOn = 200;
-        function init() {
-            window.addEventListener( 'scroll', function( event ) {
-                if( !didScroll ) {
-                    didScroll = true;
-                    setTimeout( scrollPage, 250 );
-                }
-            }, false );
-        }
-        function scrollPage() {
-            var sy = scrollY();
-            if ( sy >= changeHeaderOn ) {
-                $(header).addClass('navbar-scroll')
-            }
-            else {
-                $(header).removeClass('navbar-scroll')
-            }
-            didScroll = false;
-        }
-        function scrollY() {
-            return window.pageYOffset || docElem.scrollTop;
-        }
-        init();
-
-    })();
-
-
-});
-
-</script>
-
 <% end %>
 
-<% end %>
+<%= render 'layouts/frontend/footer' %>

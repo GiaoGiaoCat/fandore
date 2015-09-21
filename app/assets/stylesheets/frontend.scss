@@ -1,4 +1,9 @@
 /*
- *= require_self
- *= require_tree ./frontend
+ *= require ./frontend/reset
+ *= require ./frontend/base
+ *= require ./frontend/iconfont
+ *= require ./frontend/layouts
+
+ *= require_tree ./frontend/components
+ *= require_tree ./frontend/pages
  */
