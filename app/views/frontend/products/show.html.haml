@@ -14,8 +14,11 @@
 %h3 变体
 - @product.variants_including_master.each do |v|
   = v.id
-  = v.options_text
   = button_to '加入购物车', line_items_path(variant_id: v.id)
   %br
+= form_tag line_items_path  do
+  = select_tag 'variant_id', options_from_collection_for_select(@product.variants_including_master, "id", "id")
+  = text_field_tag 'remark', nil, placeholder: "填写名言"
+  = submit_tag '加入购物车'
 
 = link_to '购物车', cart_path(@cart)

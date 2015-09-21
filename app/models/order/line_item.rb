@@ -1,5 +1,6 @@
 class Order::LineItem < ActiveRecord::Base
   # table name
+  attr_accessor :remark
   self.table_name = 'line_items'
   # extends ...................................................................
   acts_as_commentable
@@ -26,10 +27,28 @@ class Order::LineItem < ActiveRecord::Base
   delegate :sku, to: :variant
   # class methods .............................................................
   # public instance methods ...................................................
+
   def amount
     price * quantity
   end
 
+  def update_remark_to_order_and_cart
+    order.remark[self.id] = @remark if order
+    cart.remark[self.id] = @remark if cart
+  end
+
+  def remark=(remark)
+    @remark = remark
+    update_remark_to_order_and_cart
+  end
+
+  def remark
+    i_remark = @remark || (order || cart).try(:remark) || {}
+    i_remark[id] || ""
+  end
+
+  #callback ---------------------------------------
+  after_destroy :remove_order_and_cart_remark
   # def discounted_amount
   #   amount + promo_total
   # end
@@ -47,5 +66,11 @@ class Order::LineItem < ActiveRecord::Base
       # self.cost_price = variant.cost_price if cost_price.nil?
       # self.currency = variant.currency if currency.nil?
     end
+  end
+
+  def remove_order_and_cart_remark
+    model = order || cart
+    model.remark.delete(id)
+    model.save()
   end
 end

@@ -37,6 +37,8 @@ class Order < ActiveRecord::Base
   before_validation :clone_shipping_address, if: :use_shipping?
   before_create :create_token
   before_create :link_by_email
+
+  serialize :remark, Hash
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :line_items
@@ -55,6 +57,7 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
+    self.remark, cart.remark = cart.remark, {}
   end
 
   # NOTE: 暂时没用上

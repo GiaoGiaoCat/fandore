@@ -14,12 +14,15 @@ class Order::Cart < ActiveRecord::Base
   # callbacks .................................................................
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
+  serialize :remark, Hash
+
   accepts_nested_attributes_for :line_items
   # class methods .............................................................
   # public instance methods ...................................................
-  def add_line_item(variant_id)
-    current_item = line_items.find_or_initialize_by(variant_id: variant_id)
+  def add_line_item(variant)
+    current_item = line_items.find_or_create_by(variant_id: variant.id)
     current_item.quantity += 1 if current_item.persisted?
+    remark[current_item.id] = (remark[current_item.id] || "") + variant.remark
     current_item
   end
 
