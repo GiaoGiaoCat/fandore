@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get 'account_safe' => 'welcome#account_safe'
-  get 'user_center' => 'welcome#user_center'
+  get 'account_safe' => 'frontend/welcome#account_safe'
+  get 'user_center' => 'frontend/welcome#user_center'
 
 
   concern :authenticatable do
@@ -140,5 +140,5 @@ Rails.application.routes.draw do
   get 'admin', to: 'backend/dashboards#index'
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'frontend/welcome#index'
 end
