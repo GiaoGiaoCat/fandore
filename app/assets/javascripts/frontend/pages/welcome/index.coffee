@@ -1,4 +1,9 @@
 pageId = 'frontend-welcome-index'
 
+$ ->
+  $(document).on 'click', "##{ pageId } .next-arrow", ->
+    $.fn.fullpage.moveSectionDown()
+
 $(document).on "page:load##{pageId}", (e) ->
-  console.log 123
+  $('#container').fullpage
+    navigation: true
