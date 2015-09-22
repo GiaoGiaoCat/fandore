@@ -6,3 +6,10 @@ $link-color: #5AABD7;
 $warn: #D0021B;
 $warn-hover: #E68F8F;
 $success: #64A21D;
+
+
+@mixin transition($x: 300ms, $y: all) {
+  -webkit-transition: $y $x ease-in-out;
+  -moz-transition: $y $x ease-in-out;
+  transition: $y $x ease-in-out;
+}

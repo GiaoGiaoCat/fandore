@@ -1,10 +1,27 @@
+@font-face {
+  font-family: 'iconfont';
+  src: font-url('iconfont.eot'); /* IE9*/
+  src: font-url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    font-url('iconfont.woff') format('woff'), /* chrome、firefox */
+    font-url('iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    font-url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+@font-face {
+  font-family: 'majalla';
+  src: font-url('majalla.eot'); /* IE9*/
+  src: font-url('majalla.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    font-url('majalla.woff') format('woff'), /* chrome、firefox */
+    font-url('majalla.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    font-url('majalla.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
 .iconfont {
-    font-family: iconfont;
-    font-size: 20px;
-    color: #666;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: .2px
+  font-family: iconfont;
+  font-size: 20px;
+  color: #666;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: .2px
 }
 .icon-btnarrow:before { content: "\e620"; }
 .icon-user:before { content: "\e61f"; }

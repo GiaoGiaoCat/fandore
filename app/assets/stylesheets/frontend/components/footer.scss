@@ -1,0 +1,140 @@
+@import 'frontend/base';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  z-index: 3;
+
+  &.active {
+    .two-code a{
+      background-image: image-url('vandodo_code_1.png');
+    }
+
+    .logo-wrap .purple {
+      opacity: 0;
+    }
+
+    .copyright,
+    .footlink a {
+      color: #fff;
+    }
+
+    .next-arrow {
+      color: #fff;
+      border: 1px solid #fff;
+
+      .iconfont {
+        color: #fff;
+      }
+    }
+  }
+
+  .two-code {
+    position: absolute;
+    right: 60px;
+    bottom: 35px;
+
+    a {
+      background-image: image-url('vandodo_code_2.png');
+      display: block;
+      width: 67px;
+      height: 67px;
+    }
+  }
+
+  .two-code-img {
+    background: #fff000;
+    width: 117px;
+    height: 116px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: -32px;
+    opacity: 0;
+    @include transition(500ms);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .logo-wrap {
+    float: left;
+    position: relative;
+    margin-left: 30px;
+    margin-top: 5px;
+  }
+
+  .footlink a {
+    margin-right: 14px;
+    line-height: 18px;
+    font-size: 12px;
+    color: $text;
+  }
+
+  .copyright {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+
+  .next-arrow {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #535353;
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    text-align: center;
+    cursor: pointer;
+    bottom: 30px;
+    @include transition;
+
+    &:hover {
+      background: #735a6f;
+      border-color:#735a6f;
+      color: #fff;
+      -webkit-animation-play-state: paused;
+      -moz-animation-play-state: paused;
+      -o-animation-play-state: paused;
+      animation-play-state: paused;
+
+      .iconfont{
+        color: #fff;
+      }
+    }
+
+    .iconfont {
+      font-size: 22px;
+      line-height: 60px;
+      color: #535353;
+    }
+  }
+
+  .footer-txt {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    -webkit-transform: rotateZ(-90deg) translateY(50px) translateX(60px);
+    -moz-transform: rotateZ(-90deg) translateY(50px) translateX(60px);
+    -o-transform: rotateZ(-90deg) translateY(50px) translateX(60px);
+    transform: rotateZ(-90deg) translateY(50px) translateX(60px);
+    text-transform: uppercase;
+    color: #433b36;
+    font-size: 12px;
+
+    &:after {
+      content: '';
+      position: relative;
+      top: 6px;
+      height: 2px;
+      width: 25px;
+      background-color: #dcdcdc;
+      margin-right: 15px;
+      float: left;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import 'frontend/base';
+
+.btn-wrap {
+  display: inline-block;
+  position: relative;
+  border: 1px solid #eae9e9;
+
+  &.btn-service-wrap {
+    margin-right: 15px;
+  }
+
+  a {
+    width: 48px;
+    height: 48px;
+    float: left;
+    text-align: center;
+    background: #fff;
+
+    .iconfont {
+      font-size: 28px;
+      color: #735a6f;
+      line-height: 48px;
+    }
+
+    &:hover .iconfont {
+      color: #ea547e;
+    }
+  }
+
+  sup {
+    position: absolute;
+    top: -2px;
+    left: 34px;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #ea547e;
+  }
+}
+
