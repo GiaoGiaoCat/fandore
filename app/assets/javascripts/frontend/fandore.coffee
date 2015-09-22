@@ -1,6 +1,5 @@
 Turbolinks.enableTransitionCache()
 
-
 $(document).on 'ready page:load', (e) ->
   # trigger page:load event for specific page
   $(document).trigger "page:load##{fandore.pageId}", [$("##{fandore.pageId}")]

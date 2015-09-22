@@ -7,6 +7,7 @@
   "private": true,
   "dependencies": {
     "jquery": "2.x",
-    "jquery-ujs": "1.x"
+    "jquery-ujs": "1.x",
+    "fullpage.js": "2.7.x"
   }
 }
