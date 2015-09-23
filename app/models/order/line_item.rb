@@ -1,12 +1,12 @@
 class Order::LineItem < ActiveRecord::Base
   # table name
-  attr_accessor :remark
   self.table_name = 'line_items'
   # extends ...................................................................
   acts_as_commentable
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
+  attr_accessor :remark
   # relationships .............................................................
   belongs_to :order, inverse_of: :line_items, touch: true
   belongs_to :cart, inverse_of: :line_items, touch: true
@@ -21,6 +21,8 @@ class Order::LineItem < ActiveRecord::Base
   validates :price, numericality: true
   # callbacks .................................................................
   before_validation :copy_price
+
+  after_commit :update_related_parent_model_remark
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   delegate :name, :description, to: :product
@@ -32,23 +34,9 @@ class Order::LineItem < ActiveRecord::Base
     price * quantity
   end
 
-  def update_remark_to_order_and_cart
-    order.remark[self.id] = @remark if order
-    cart.remark[self.id] = @remark if cart
-  end
-
-  def remark=(remark)
-    @remark = remark
-    update_remark_to_order_and_cart
-  end
-
   def remark
-    i_remark = @remark || (order || cart).try(:remark) || {}
-    i_remark[id] || ""
+    @remark || related_parent_model.find_remark_by_line_item(self)
   end
-
-  #callback ---------------------------------------
-  after_destroy :remove_order_and_cart_remark
   # def discounted_amount
   #   amount + promo_total
   # end
@@ -68,9 +56,11 @@ class Order::LineItem < ActiveRecord::Base
     end
   end
 
-  def remove_order_and_cart_remark
-    model = order || cart
-    model.remark.delete(id)
-    model.save()
+  def update_related_parent_model_remark
+    related_parent_model.update_remark_by_line_item(self)
+  end
+
+  def related_parent_model
+    order || cart
   end
 end

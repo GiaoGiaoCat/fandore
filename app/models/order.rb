@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   # extends ...................................................................
   # includes ..................................................................
   include OrderStates
+  include Remarkable
   # constants .................................................................
   # related macros ............................................................
   attr_accessor :use_shipping
@@ -37,8 +38,6 @@ class Order < ActiveRecord::Base
   before_validation :clone_shipping_address, if: :use_shipping?
   before_create :create_token
   before_create :link_by_email
-
-  serialize :remark, Hash
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :line_items
@@ -48,6 +47,7 @@ class Order < ActiveRecord::Base
   # accepts_nested_attributes_for :shipments
   # class methods .............................................................
   # public instance methods ...................................................
+
   def shipping_address
     super || build_shipping_address(user_id: user_id)
   end
@@ -57,7 +57,7 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
-    self.remark, cart.remark = cart.remark, {}
+    copy_remark_form_cart(cart)
   end
 
   # NOTE: 暂时没用上
@@ -70,6 +70,10 @@ class Order < ActiveRecord::Base
 
   def link_by_email
     self.email = user.email if self.user
+  end
+
+  def copy_remark_form_cart(cart)
+    self.remark, cart.remark = cart.remark, {}
   end
 
   def clone_shipping_address
