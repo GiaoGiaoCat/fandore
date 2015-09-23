@@ -22,7 +22,6 @@ class Frontend::LineItemsController < Frontend::ApplicationController
 
   def load_variant
     @variant = Product::Variant.find(params[:variant_id])
-    @variant.remark = params[:remark]
   end
 
   def load_line_item
@@ -30,11 +29,11 @@ class Frontend::LineItemsController < Frontend::ApplicationController
   end
 
   def build_line_item
-    @line_item = @cart.add_line_item(@variant)
+    @line_item = @cart.add_line_item(@variant, params[:remark])
   end
 
   def save_line_item
-    if @line_item.save && @cart.save
+    if @line_item.save
       redirect_to cart_path(@line_item.cart)
     end
   end
