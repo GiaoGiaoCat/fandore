@@ -6,6 +6,7 @@ class Order::LineItem < ActiveRecord::Base
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
+  attr_accessor :remark
   # relationships .............................................................
   belongs_to :order, inverse_of: :line_items, touch: true
   belongs_to :cart, inverse_of: :line_items, touch: true
@@ -20,16 +21,22 @@ class Order::LineItem < ActiveRecord::Base
   validates :price, numericality: true
   # callbacks .................................................................
   before_validation :copy_price
+
+  after_commit :update_related_parent_model_remark
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   delegate :name, :description, to: :product
   delegate :sku, to: :variant
   # class methods .............................................................
   # public instance methods ...................................................
+
   def amount
     price * quantity
   end
 
+  def remark
+    @remark || related_parent_model.find_remark_by_line_item(self)
+  end
   # def discounted_amount
   #   amount + promo_total
   # end
@@ -47,5 +54,13 @@ class Order::LineItem < ActiveRecord::Base
       # self.cost_price = variant.cost_price if cost_price.nil?
       # self.currency = variant.currency if currency.nil?
     end
+  end
+
+  def update_related_parent_model_remark
+    related_parent_model.update_remark_by_line_item(self)
+  end
+
+  def related_parent_model
+    order || cart
   end
 end

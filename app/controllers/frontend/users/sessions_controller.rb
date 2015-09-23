@@ -8,6 +8,6 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
   end
 
   def authority_verify(user)
-    user.fronend_user?
+    user.frontend_user?
   end
 end

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150907143154) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id", limit: 4
+    t.text    "remark",  limit: 65535
   end
 
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
@@ -172,6 +173,7 @@ ActiveRecord::Schema.define(version: 20150907143154) do
     t.datetime "canceled_at"
     t.boolean  "confirmation_delivered",                                        default: false
     t.integer  "invoice_id",             limit: 4
+    t.text     "remark",                 limit: 65535
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
   end

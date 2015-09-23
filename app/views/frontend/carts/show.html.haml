@@ -5,7 +5,11 @@
       = "#{item.quantity} &times; #{item.product.name}"
       %br
       = number_to_currency item.amount
+      %br 备注
+      = item.remark
       = link_to '删除产品', line_item_path(item), method: :delete, data: { confirm: "确认删除?" }
+  %li
+    = @cart.remark
 
 %h3 Total
 %p= number_to_currency @cart.total_price
