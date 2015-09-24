@@ -2,6 +2,8 @@
 //=  require jquery
 //=  require jquery_ujs
 //=  require fullpage.js/jquery.fullPage
+//=  require SuperSlide
+//=  require JSTween
 
 //=  require ./frontend/fandore
 //
