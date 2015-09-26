@@ -1,9 +1,9 @@
 module ApplicationHelper
   def page_title
     if @page_title
-      "#{@page_title} - Fandore"
+      "#{@page_title} - VANDODO"
     else
-      "Fandore"
+      "VANDODO"
     end
   end
 

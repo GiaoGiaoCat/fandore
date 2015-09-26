@@ -1,5 +1,23 @@
 pageId = 'frontend-welcome-index'
 
+$ ->
+  $(document)
+  .on 'mouseenter', "##{ pageId } .two-code", ->
+    $(@).children('.two-code-img').tween
+      opacity:
+        start: 0
+        stop: 100
+        duration: .1
+    .play()
+
+  .on 'mouseleave', "##{ pageId } .two-code", ->
+    $(@).children('.two-code-img').tween
+      opacity:
+        start: 100
+        stop: 0
+        duration: .3
+    .play()
+
 $(document).on "page:load##{pageId}", (e) ->
   fullPage()
   homeSlide()
@@ -25,13 +43,13 @@ fullPage = ->
     navigation: true
     onLeave: (index, nextIndex, direction) ->
       if nextIndex == 1 or nextIndex == 5
-        header.classList.add 'active'
-        footer.classList.add 'active'
-        login_txt.addClass 'white'
-      else
         header.classList.remove 'active'
         footer.classList.remove 'active'
         login_txt.removeClass 'white'
+      else
+        header.classList.add 'active'
+        footer.classList.add 'active'
+        login_txt.addClass 'white'
 
       if nextIndex == 5
         next_arrow.classList.add 'hide'
