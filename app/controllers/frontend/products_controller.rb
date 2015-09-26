@@ -1,5 +1,5 @@
 class Frontend::ProductsController < Frontend::ApplicationController
-
+  skip_before_action :authenticate_user!
   before_action :load_cart
 
   def index
@@ -7,11 +7,11 @@ class Frontend::ProductsController < Frontend::ApplicationController
   end
 
   def show
-    load_product
+    # load_product
   end
 
   private
-  
+
   def load_cart
     @cart = current_cart
   end
