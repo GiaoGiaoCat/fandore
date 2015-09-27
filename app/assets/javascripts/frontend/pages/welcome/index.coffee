@@ -21,6 +21,9 @@ $ ->
 $(document).on "page:load##{pageId}", (e) ->
   fullPage()
   homeSlide()
+  $(window).load ->
+    $('#loading').fadeOut 'fast', ->
+      $(@).remove()
 
 
 fullPage = ->

@@ -1,3 +1,5 @@
+<div id="loading"></div>
+
 <%= render 'layouts/frontend/header' %>
 
 <div id="container" class="container">
@@ -14,26 +16,30 @@
             <div class="bd">
                 <ul>
                     <li class="animate-active">
-                        <div class="img-box img-box1">
-                            <img class="banner1-txt1" src="<%= asset_path "banner1-txt1.png" %>">
-                            <img class="banner1-txt2" src="<%= asset_path "banner1-txt2.png" %>">
-                            <div class="line animation-delay800"></div>
-                            <img class="banner1-txt3" src="<%= asset_path "banner1-txt3.png" %>">
-                            <div class="con-wrap animation-delay400">
-                                <img class="banner1-con" src="<%= asset_path "banner1-con.png" %>">
+                        <a href="<%= product_path(1) %>">
+                            <div class="img-box img-box1">
+                                <img class="banner1-txt1" src="<%= asset_path "banner1-txt1.png" %>">
+                                <img class="banner1-txt2" src="<%= asset_path "banner1-txt2.png" %>">
+                                <div class="line animation-delay800"></div>
+                                <img class="banner1-txt3" src="<%= asset_path "banner1-txt3.png" %>">
+                                <div class="con-wrap animation-delay400">
+                                    <img class="banner1-con" src="<%= asset_path "banner1-con.png" %>">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                     <li>
-                        <div class="img-box img-box1">
-                            <img class="banner1-txt1" src="<%= asset_path "banner1-txt1.png" %>">
-                            <img class="banner1-txt2" src="<%= asset_path "banner2-txt2.png" %>">
-                            <div class="line animation-delay800"></div>
-                            <img class="banner1-txt3" src="<%= asset_path "banner1-txt3.png" %>">
-                            <div class="con-wrap animation-delay400">
-                                <img class="banner1-con" src="<%= asset_path "banner2-con.png" %>">
+                        <a href="<%= product_path(1) %>">
+                            <div class="img-box img-box1">
+                                <img class="banner1-txt1" src="<%= asset_path "banner1-txt1.png" %>">
+                                <img class="banner1-txt2" src="<%= asset_path "banner2-txt2.png" %>">
+                                <div class="line animation-delay800"></div>
+                                <img class="banner1-txt3" src="<%= asset_path "banner1-txt3.png" %>">
+                                <div class="con-wrap animation-delay400">
+                                    <img class="banner1-con" src="<%= asset_path "banner2-con.png" %>">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>
