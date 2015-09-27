@@ -1,0 +1,115 @@
+<%= render 'layouts/frontend/header' %>
+
+<div class="product-wrap">
+    <div class="product-main">
+        <img src="<%= asset_path "product/product1.png" %>" class="product-image">
+        <a href="javascript:;" class="link-show-image">浏览高清图</a>
+        <div class="product-images">
+            <a href="javascript:;" class="thumb-image active">
+                <img src="<%= asset_path "product/product1.png" %>" width="110">
+            </a>
+            <a href="javascript:;" class="thumb-image">
+                <img src="<%= asset_path "product/product2.png" %>" width="110">
+            </a>
+            <a href="javascript:;" class="thumb-image">
+                <img src="<%= asset_path "product/product3.png" %>" width="110">
+            </a>
+        </div>
+    </div>
+
+    <div class="product-info">
+        <h1>微澜</h1>
+        <p class="subtitle">WHISPER 1610242</p>
+        <p class="product-price">￥19630</p>
+
+        <div class="product-style">
+            <input type="radio" id="product-style-1" name="product_style" value="0" checked>
+            <label class="product-style" for="product-style-1">简约款</label>
+
+            <input type="radio" id="product-style-2" name="product_style" value="1">
+            <label class="product-style" for="product-style-2">轻奢款</label>
+        </div>
+
+        <p class="product-desc">简单的线条脉脉的相对，将一粒美钻含蓄地衔入，透露出轻柔雅致的气息，让你仿佛冷艳的美人，遗世而独立，倾城而倾国。</p>
+
+        <div class="product-information">
+            <div>
+                <b>主钻重量：</b> <span>0.3CT</span>
+            </div>
+
+            <div>
+                <b>主钻切工：</b> <span>3EX</span>
+            </div>
+
+            <div>
+                <b>主钻净度：</b>
+                <input type="radio" id="product-jingdu-1" name="product_jingdu" value="IF" checked>
+                <label class="product-radio" for="product-jingdu-1">IF</label>
+
+                <input type="radio" id="product-jingdu-2" name="product_jingdu" value="VVS1">
+                <label class="product-radio" for="product-jingdu-2">VVS1</label>
+
+                <input type="radio" id="product-jingdu-3" name="product_jingdu" value="VVS2">
+                <label class="product-radio" for="product-jingdu-3">VVS2</label>
+            </div>
+
+            <div>
+                <b>主钻颜色：</b>
+                <input type="radio" id="product-color-1" name="product_color" value="D" checked>
+                <label class="product-radio" for="product-color-1">D</label>
+
+                <input type="radio" id="product-color-2" name="product_color" value="E">
+                <label class="product-radio" for="product-color-2">E</label>
+
+                <input type="radio" id="product-color-3" name="product_color" value="F">
+                <label class="product-radio" for="product-color-3">F</label>
+            </div>
+
+            <div class="product-material">
+                <b>选择材质：</b>
+                <input type="radio" id="product-material-1" name="product_material" value="D" checked>
+                <label class="product-radio" for="product-material-1">18K金</label>
+            </div>
+
+            <div class="product-size">
+                <b>选择手寸：</b>
+                <select name="product_size">
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <span class="desc">港码6号内直径28mm，内周长38mm</span>
+            </div>
+
+            <div class="product-lettering">
+                <b>刻字内容：</b>
+                <input type="text" placeholder="4个汉字或8个字母">
+            </div>
+        </div>
+
+        <a href="javascript:;" class="link-to-car">加入购物车</a>
+        <div class="product-more">
+            <a href="javascript:;" class="link-to-collect">
+                <i class="iconfont icon-collect"></i> 加入收藏
+            </a>
+            <a href="javascript:;" class="link-to-comment">
+                <i class="iconfont icon-message"></i> 历史评价
+            </a>
+        </div>
+    </div>
+
+    <div class="image-preview">
+        <a href="javascript:;" class="link-close-preview"><i class="iconfont icon-close"></i></a>
+        <a href="javascript:;" class="prev"><i class="iconfont icon-arrowleft"></i></a>
+        <a href="javascript:;" class="next"><i class="iconfont icon-arrowright"></i></a>
+        <div class="preview-list">
+            <ul>
+                <li><img src="<%= asset_path "product/product1.png" %>"></li>
+                <li><img src="<%= asset_path "product/product2.png" %>"></li>
+                <li><img src="<%= asset_path "product/product3.png" %>"></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 class Frontend::ApplicationController < ApplicationController
-  layout ->(controller) { controller.request.xhr? ? false : 'empty' }
+  layout ->(controller) { controller.request.xhr? ? false : 'frontend' }
+  before_action :set_gon
 
   private
 
@@ -15,5 +16,13 @@ class Frontend::ApplicationController < ApplicationController
     cart = Order::Cart.create
     session[:cart_id] = cart.id
     cart
+  end
+
+  def set_gon
+    gon.pageId = view_context.page_id
+    gon.controller = controller_name
+    gon.action = action_name
+
+    gon.me = {}
   end
 end

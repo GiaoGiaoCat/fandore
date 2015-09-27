@@ -1,0 +1,24 @@
+@import 'frontend/base';
+
+#frontend-welcome-index {
+
+  section:nth-child(1) {
+    background-image: image-url('page1-bg.jpg');
+  }
+
+  .ddpro .ddTitle span.arrow {
+    background: image-url('select_arrow_pro.png') no-repeat 0 0;
+  }
+
+  .icheckbox_square-blue,
+  .iradio_square-blue {
+    background: image-url('blue.png') no-repeat;
+  }
+
+  @media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
+    .icheckbox_square-blue,
+    .iradio_square-blue {
+        background-image: image-url('blue@2x.png');
+    }
+  }
+}

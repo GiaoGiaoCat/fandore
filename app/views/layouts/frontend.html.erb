@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <title><%= page_title %></title>
+
+    <%= stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
+
+    <%= csrf_meta_tags %>
+</head>
+
+<body id="<%= page_id %>">
+
+    <%= yield %>
+
+    <script type="text/javascript" id="gon">
+        <%= include_gon(:need_tag => false) %>
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "fandore",
+  "authors": [
+    "kshift <kshift.lv@gmail.com>"
+  ],
+  "description": "fandore",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.x",
+    "jquery-ujs": "1.x",
+    "fullpage.js": "2.7.x"
+  }
+}

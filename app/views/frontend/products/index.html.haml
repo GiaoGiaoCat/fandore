@@ -1,7 +1,0 @@
-%h2 产品列表
-%ul
-  - @products.each do |product|
-    %li= link_to product.name, product_path(product)
-
-
-= link_to '购物车', cart_path(@cart)
