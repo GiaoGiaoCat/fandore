@@ -58,6 +58,7 @@ gem 'wicked'
 gem 'acts_as_commentable'
 # Classier solution for Multiple file uploads for Multiple file upload.
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
 # Captcha into a Rails application
 gem 'simple_captcha_reloaded'
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator.

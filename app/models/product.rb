@@ -17,6 +17,7 @@ class Product < ActiveRecord::Base
 
   has_one :master, -> { where(is_master: true) }, class_name: 'Product::Variant', autosave: true, inverse_of: :product
   has_many :variants, -> { where(is_master: false) }, inverse_of: :product
+  has_many :variants_with_master, inverse_of: :product, class_name: "Variant"
   has_many :variants_including_master, class_name: 'Product::Variant', dependent: :destroy, inverse_of: :product
   has_many :line_items, through: :variants_including_master
   has_many :orders, through: :line_items
@@ -25,6 +26,7 @@ class Product < ActiveRecord::Base
   has_many :recommend_products, through: :recommendations
   has_many :inverse_recommendations, class_name: 'Product::Recommendation', foreign_key: 'recommend_product_id'
   has_many :inverse_recommend_products, through: :inverse_recommendations, source: :product
+  has_many :variant_images, -> { order(:position) }, source: :images, through: :variants_with_master
   # validations ...............................................................
   validates :name, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -51,6 +53,15 @@ class Product < ActiveRecord::Base
   delegate :sku, :sku=, :price, :price=, :status, :status=, to: :master
   # class methods .............................................................
   # public instance methods ...................................................
+
+  def product_image
+    variants_with_master.first || Image.default_image
+  end
+
+  def max_variants_images_position
+    variant_images.unscope(:order).order(position: :desc).first.try(:position) || 0
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

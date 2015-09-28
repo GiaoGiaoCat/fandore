@@ -16,6 +16,7 @@ class Product::Variant < ActiveRecord::Base
   has_many :option_value_variants
   has_many :option_values, through: :option_value_variants
   has_many :prices, class_name: 'Product::Price', dependent: :destroy
+  has_many :images, as: :viewable
   # validations ...............................................................
   validates_uniqueness_of :sku, conditions: -> { where(deleted_at: nil) }, allow_blank: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
