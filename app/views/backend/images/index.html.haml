@@ -1,0 +1,42 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 商品图片管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li product
+      %li.active
+        %strong 商品图片管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-10
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 Listing Images
+          .ibox-tools
+            = link_to 'Add Image', new_admin_product_image_path(@product), class: 'btn btn-primary btn-xs'
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th OPTIONS
+                  %th Sku
+                  %th 商品名称
+                  %th position
+                  %th
+              %tbody
+                - @images.each do |image|
+                  %tr
+                    %th=image_tag image.picture.mini.url
+                    %th=image.viewable.is_master ? "All" : image.viewable.sku
+                    %th=image.viewable.product.name
+                    %th=image.position
+                    %td
+                      .btn-group
+                        = link_to '编辑', edit_admin_product_image_path(@product, image), class: 'btn btn-white btn-xs'
+                        = link_to '删除', admin_product_image_path(@product, image), method: :delete, class: 'btn btn-white btn-xs', data: { confirm: "确认删除?" }
+

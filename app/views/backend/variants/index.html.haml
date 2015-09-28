@@ -22,6 +22,7 @@
             %table.table.table-striped
               %thead
                 %tr
+                  %th is master
                   %th OPTIONS
                   %th Price
                   %th 添加时间
@@ -29,6 +30,7 @@
               %tbody
                 - @variants.each do |variant|
                   %tr
+                    %td= variant.is_master ? true : false
                     %td= variant.options_text
                     %td= number_to_currency variant.price
                     %td= variant.created_at.to_s(:db)
