@@ -1,1 +1,1 @@
-Turbolinks.enableTransitionCache()
+# Turbolinks.enableTransitionCache()
