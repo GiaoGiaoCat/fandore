@@ -4,7 +4,7 @@ class Image < ActiveRecord::Base
 
   before_save :init_position
 
-  default_scope ->() {order(:position)}
+  default_scope -> { order(:position) }
 
   def self.default_image
     where(viewable_id: nil, viewable_type: nil).first
