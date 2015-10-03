@@ -17,6 +17,9 @@ class Order::Cart < ActiveRecord::Base
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :line_items
   # class methods .............................................................
+  include EncryptedId
+  encrypted_id key: '5gA6lgr5g3GOg7EOQ1caYQ'
+
   # public instance methods ...................................................
   def add_line_item(variant, remark)
     current_item = line_items.find_or_initialize_by(variant_id: variant.id)
