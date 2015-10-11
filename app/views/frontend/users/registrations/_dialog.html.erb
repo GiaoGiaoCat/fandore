@@ -1,0 +1,48 @@
+<form action="<%= sign_up_path %>" accept-charset="UTF-8" method="post" data-remote="true">
+    <div class="float-title-bar">
+        注册 <span class="t-eng">register</span>
+    </div>
+    <div class="login-form-wrap">
+        <ul class="login-form-box">
+            <li>
+                <label class="login-icon"><i class="iconfont icon-loginphone"></i></label>
+                <b class="area-code">+86</b>
+                <input type="text" name="user[mobile]" placeholder="手机号" class="login-input input-test" />
+            </li>
+            <li>
+                <label class="login-icon"><i class="iconfont icon-verify"></i></label>
+                <input type="text" name="user[verification_code]" placeholder="短信验证码" class="login-input input-test" />
+                <a href="javascript:;" class="login-code">获取验证码</a>
+            </li>
+            <li>
+                <label class="login-icon"><i class="iconfont icon-loginemail"></i></label>
+                <input type="text" name="user[email]" placeholder="邮箱地址" class="login-input input-test" />
+            </li>
+            <li>
+                <label class="login-icon"><i class="iconfont icon-password"></i></label>
+                <input type="password" name="user[password]" placeholder="密码" class="login-input input-test" />
+            </li>
+            <li>
+                <label class="login-icon"><i class="iconfont icon-password"></i></label>
+                <input type="password" name="user[password_confirmation]" placeholder="确认密码" class="login-input  input-test" />
+            </li>
+        </ul>
+
+        <div class="login-btn">
+            <input type="submit" name="commit" value="注册"  class="btn-big-block">
+        </div>
+
+        <div class="text-center font-s14 c-gray">
+            <input type="checkbox" name="" id="" class="icheck" checked="checked" />我已阅并同意遵守
+            <a href="#" target="_blank" class="link-purple">法律声明</a> 和
+            <a href="#" target="_blank" class="link-purple">隐私条款</a>
+        </div>
+    </div>
+</form>
+
+<div class="tips-warp hide">
+    <center>
+        <%= image_tag 'red_right.png' %>
+        <h2 class="tips-tbig ml20">注册成功！</h2>
+    </center>
+</div>
