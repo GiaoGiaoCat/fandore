@@ -1,6 +1,6 @@
 class Backend::ProductsController < Backend::ApplicationController
 
-  load_and_authorize_resource :class => "Product"
+  # load_and_authorize_resource :class => "Product"
   before_action :load_product, only: [:show, :edit, :update, :destroy]
 
   def index
