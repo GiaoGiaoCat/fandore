@@ -114,5 +114,10 @@ product_4.price = 100
 product_4.save
 product_4.product_properties.find_by(property_id: property_02.id).update(value: 4)
 
+# 添加默认图片
+default_image = Image.new
+default_image.picture = Rails.root.join("public/self_name.png").open
+default_image.save
+
 
 # 添加默认戒托方便测试

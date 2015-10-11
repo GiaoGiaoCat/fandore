@@ -106,6 +106,7 @@ Rails.application.routes.draw do
     resources :users
 
     resources :products do
+      resources :images
       resources :variants
       resources :product_variants, controller: 'variants'
       resources :product_properties, only: [:index]

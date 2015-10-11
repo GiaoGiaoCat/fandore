@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907143154) do
+ActiveRecord::Schema.define(version: 20150927025104) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20150907143154) do
   add_index "favorites", ["favable_id"], name: "index_favorites_on_favable_id", using: :btree
   add_index "favorites", ["favable_type"], name: "index_favorites_on_favable_type", using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "picture",       limit: 191
+    t.string   "viewable_type", limit: 191
+    t.integer  "viewable_id",   limit: 4
+    t.integer  "position",      limit: 4,   default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "user_id",            limit: 4
