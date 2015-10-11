@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/carrierwaveuploader/carrierwave.git
-  revision: 7802f70fa581d1a7ca5728b5e5a75e8bd2720d9f
+  revision: 1e4e7b0bf20fee70d8ac3815d0921144f39e14cf
   specs:
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -148,6 +148,7 @@ GEM
       rake
     mina-puma (0.2.0)
       mina
+    mini_magick (4.3.3)
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
@@ -286,6 +287,7 @@ DEPENDENCIES
   kaminari
   mina
   mina-puma
+  mini_magick
   mysql2
   oneapm_rpm
   paranoia

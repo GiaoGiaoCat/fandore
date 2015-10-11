@@ -25,6 +25,7 @@ class Product < ActiveRecord::Base
   has_many :recommend_products, through: :recommendations
   has_many :inverse_recommendations, class_name: 'Product::Recommendation', foreign_key: 'recommend_product_id'
   has_many :inverse_recommend_products, through: :inverse_recommendations, source: :product
+  has_many :variant_images, -> { order(:position) }, source: :images, through: :variants_including_master
   # validations ...............................................................
   validates :name, presence: true
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -51,6 +52,15 @@ class Product < ActiveRecord::Base
   delegate :sku, :sku=, :price, :price=, :status, :status=, to: :master
   # class methods .............................................................
   # public instance methods ...................................................
+
+  def product_image
+    variants_including_master.first || Image.default_image
+  end
+
+  def max_variants_images_position
+    variant_images.unscope(:order).order(position: :desc).first.try(:position) || 0
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
