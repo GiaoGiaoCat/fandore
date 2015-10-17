@@ -18,7 +18,7 @@ class Frontend::Users::VerificationCodesController < Frontend::ApplicationContro
   end
 
   def verify_code_params
-    {to: params[:v_code], last_ip: request.remote_ip}
+    {to: params[:to], last_ip: request.remote_ip}
   end
 
 end

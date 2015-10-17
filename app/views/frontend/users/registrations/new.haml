@@ -36,6 +36,6 @@
 :javascript
   $(".test_alert").click(function(){
     var mobile = $("input[name='user[mobile]']").val();
-    $.post('/verification_codes',{ v_code: { to: mobile }});
+    $.post('/verification_codes', { to: mobile });
     return false;
   })
