@@ -1,0 +1,71 @@
+<div class="shop-cart-wrap">
+    <div class="float-title-bar">
+        <i class="iconfont icon-car"></i>购物车 <span class="t-eng">shopping cart</span>
+    </div>
+
+    <table class="cart-table" border="0" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="5%"></th>
+                <th width="10%">主图</th>
+                <th>名称</th>
+                <th>价格</th>
+                <th>交易状态</th>
+                <th width="10%">交易操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label>
+                        <input class="checkbox icheck pro-checkbox" type="checkbox" />
+                    </label>
+                </td>
+                <td>
+                    <img class="pro-img" src="<%= asset_path('product/product_small_1.png') %>" />
+                </td>
+                <td align="left">
+                    <h3 class="name">THE ROSELAND  简约款</h3>
+                    <p class="del-txt">
+                        克拉总重量：0.23 圆形, 良好切割, J 成色, SI1 净度
+                        <br> 存货编号：LD05989299
+                    </p>
+                </td>
+                <td>
+                    <p class="price">￥<i>19762.24</i></p>
+                </td>
+                <td>
+                    <p class="c-red">等待买家付款</p>
+                </td>
+                <td align="center">
+                    <a class="remove-btn" href="javascript:void(0)"><i class="iconfont">&#xe604;</i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="cart-footer">
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="20%" align="left">
+                <label>
+                    <input type="checkbox" class="checkbox icheck total-checkbox">
+                    <span class="total-checkbox-txt">全选</span>
+                </label>
+            </td>
+            <td>
+                <span class="total-num">已选商品<i>0</i>件</span>
+            </td>
+            <td>
+                <span class="total-price">合计：<b class="c-red">￥<i class="font-s20">0.00</i></b></span>
+            </td>
+            <td align="right">
+                <a href="#" class="payment-btn">付 款</a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>

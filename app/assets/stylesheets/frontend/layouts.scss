@@ -3,6 +3,7 @@
 body {
   color: $text;
   background-color: #fefefe;
+  font-family: "微软雅黑", arial, sans-serif;
 }
 
 a {
@@ -16,4 +17,8 @@ html.turbolinks-progress-bar::before {
 
 #loading{
   background: image-url('loading.gif') #000000 center no-repeat;
+}
+
+.cart-table td {
+  vertical-align: middle;
 }
