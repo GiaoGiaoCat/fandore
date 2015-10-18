@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/carrierwaveuploader/carrierwave.git
-  revision: 1e4e7b0bf20fee70d8ac3815d0921144f39e14cf
+  revision: 49fdad1ec6ca9bb0883b6e193ea64e036e7b48a0
   specs:
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -15,7 +15,6 @@ GIT
     acts_as_favable (1.0.1)
 
 GEM
-  remote: http://ruby.taobao.org/
   specs:
     aasm (4.2.0)
     actionmailer (4.2.3)
