@@ -5,8 +5,13 @@
 
     <div class="head-right">
         <div class="link-wrap">
+          <% if current_user %>
+            <%= link_to '退出', admin_sign_out_path, method: :delete, class: 'show-popup' %>
+          <% else %>
             <a href="<%= sign_up_path %>" class="show-popup" data-size="middle" data-tpl="tpl-registrations-new">注册</a>
             <a href="<%= sign_in_path %>" class="show-popup" data-size="small" data-tpl="tpl-sessions-new">登陆</a>
+          <% end %>
+
         </div>
         <div class="btn-wrap mr15">
             <a class="btn-service">
