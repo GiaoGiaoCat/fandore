@@ -16,7 +16,7 @@ module Authenticatable
 
   def destroy
     sign_out
-    build_sign_in and render 'new'
+    redirect_to_url
   end
 
   private
