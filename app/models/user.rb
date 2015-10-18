@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   validates :email,
             presence: true,
             uniqueness: true,
+            allow_blank: true,
             format: { with: Fandore::Regex::EMAIL_REGEX }
   # callbacks .................................................................
   # scopes ....................................................................
