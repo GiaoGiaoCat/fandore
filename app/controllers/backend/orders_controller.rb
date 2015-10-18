@@ -2,6 +2,10 @@ class Backend::OrdersController < Backend::ApplicationController
 
   load_and_authorize_resource :class => "Order"
 
+  def new
+
+  end
+
   def index
     load_orders
   end
