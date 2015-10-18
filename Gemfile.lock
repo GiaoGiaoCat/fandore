@@ -15,6 +15,7 @@ GIT
     acts_as_favable (1.0.1)
 
 GEM
+  remote: http://rubygems.org/
   specs:
     aasm (4.3.0)
     actionmailer (4.2.3)
