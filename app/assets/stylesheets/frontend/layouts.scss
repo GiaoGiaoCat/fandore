@@ -26,3 +26,23 @@ html.turbolinks-progress-bar::before {
 .sub-headright {
   margin-right: 20px;
 }
+
+.sub-container {
+  padding-top: 70px;
+}
+
+.popwindow {
+  position: absolute;
+  top: -200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 750px;
+  height: 468px;
+}
+
+// TODO
+.sidebar-left a[href='#'] {
+  color: red;
+}

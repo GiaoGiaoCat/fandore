@@ -7,7 +7,7 @@
         <div class="sub-headright">
             <ul>
                 <li class="drop-down">
-                    <a href="user_help_center.html">个人中心<i class="iconfont icon-arrow-down"></i></a>
+                    <a href="#">个人中心<i class="iconfont icon-arrow-down"></i></a>
                     <div class="tnav-child tnav-user">
                         <div class="clearfloat">
                             <div class="user-head-s fl">
@@ -17,40 +17,40 @@
                             </div>
                             <div class="fl">
                                 <h4 class="font-s14">好人阿楚</h4>
-                                <a href="user_account_baseinfo.html" class="c-lilac">个人信息</a>
+                                <a href="<%= users_profile_edit_path %>" class="c-lilac">个人信息</a>
                                 <b class="cut-l-c">|</b>
                                 <%= link_to '退出', sign_out_path, method: :delete, class: 'c-lilac' %>
                             </div>
                         </div>
                         <div class="tnav-link">
-                            <a href="user_order.html">我的订单</a>
-                            <a href="user_collection.html">我的收藏</a>
-                            <a href="user_service_changelist.html">退换货申请</a>
-                            <a href="user_address.html">收货地址</a>
-                            <a href="user_review.html">我的评论</a>
-                            <a href="user_coupon.html">优惠码</a>
+                            <a href="#">我的订单</a>
+                            <a href="<%= favorites_path %>">我的收藏</a>
+                            <a href="#">退换货申请</a>
+                            <a href="<%= users_addresses_path %>">收货地址</a>
+                            <a href="#">我的评论</a>
+                            <a href="#">优惠码</a>
                         </div>
                     </div>
                 </li>
                 <li class="drop-down">
-                    <a href="">服务<i class="iconfont icon-arrow-down"></i></a>
+                    <a href="#">服务<i class="iconfont icon-arrow-down"></i></a>
                     <div class="tnav-child">
-                        <a href="">自助服务</a>
-                        <a href="user_help_center.html">帮助中心</a>
-                        <a href="">常见问题</a>
+                        <a href="#">自助服务</a>
+                        <a href="#">帮助中心</a>
+                        <a href="#">常见问题</a>
                     </div>
                 </li>
-                <li><a href="user_system_message.html">消息</a></li>
+                <li><a href="#">消息</a></li>
                 <li>
                     <div class="btn-wrap ml20">
-                        <a class="btn-service">
+                        <a href="#" class="btn-service">
                             <i class="iconfont icon-service"></i>
                         </a>
                     </div>
                 </li>
                 <li>
                     <div class="btn-wrap clearfloat">
-                        <a href="javascript:void(0)" class="car-btn">
+                        <a href="#" class="car-btn">
                             <i class="iconfont">&#xe603;</i>
                         </a>
                         <sup>3</sup>
