@@ -6,6 +6,7 @@ class Frontend::ApplicationController < ApplicationController
 
   def authenticate_user!
     unless current_user && current_user.frontend_user?
+      self.last_request_url = request.original_url
       redirect_to sign_in_path
     end
   end

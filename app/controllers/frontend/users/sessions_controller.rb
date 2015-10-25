@@ -4,7 +4,7 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
   private
 
   def redirect_to_url
-    redirect_to root_path
+    redirect_to(last_request_url || root_path)
   end
 
   def authority_verify(user)

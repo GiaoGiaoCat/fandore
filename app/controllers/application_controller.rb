@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def last_request_url=(url)
+    session[:last_request_url] = url
+  end
+
+  def last_request_url
+    session[:last_request_url]
+  end
+
   def authenticate_user!
     redirect_to sign_in_path unless current_user
   end

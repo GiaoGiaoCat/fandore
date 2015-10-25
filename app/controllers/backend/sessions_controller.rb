@@ -9,7 +9,7 @@ class Backend::SessionsController < Backend::ApplicationController
   end
 
   def redirect_to_url
-    redirect_to admin_path
+    redirect_to(last_request_url || root_path)
   end
 
   def authority_verify(user)
