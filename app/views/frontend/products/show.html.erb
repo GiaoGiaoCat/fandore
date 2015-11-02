@@ -2,18 +2,13 @@
 
 <div class="product-wrap">
     <div class="product-main">
-        <img src="<%= asset_path "product/product1.png" %>" class="product-image">
+        <%= image_tag @product.master.images.first.picture.middle.url, class: 'product-image' %>
         <a href="javascript:;" class="link-show-image">浏览高清图</a>
         <div class="product-images">
-            <a href="javascript:;" class="thumb-image active">
-                <img src="<%= asset_path "product/product1.png" %>" width="110">
-            </a>
-            <a href="javascript:;" class="thumb-image">
-                <img src="<%= asset_path "product/product2.png" %>" width="110">
-            </a>
-            <a href="javascript:;" class="thumb-image">
-                <img src="<%= asset_path "product/product3.png" %>" width="110">
-            </a>
+            <% @product.master.images.each_with_index do |image, index| %>
+              <% class_name = index == 0 ? 'active' : nil %>
+              <%= link_to image_tag(image.picture.middle.url, width: 110), 'javascript:;', class: "thumb-image #{class_name}" %>
+            <% end %>
         </div>
     </div>
 
@@ -106,9 +101,9 @@
         <a href="javascript:;" class="next"><i class="iconfont icon-arrowright"></i></a>
         <div class="preview-list">
             <ul>
-                <li><img src="<%= asset_path "product/product1.png" %>"></li>
-                <li><img src="<%= asset_path "product/product2.png" %>"></li>
-                <li><img src="<%= asset_path "product/product3.png" %>"></li>
+                <% @product.master.images.each do |image| %>
+                  <li><%= image_tag image.picture.middle.url %></li>
+                <% end %>
             </ul>
         </div>
     </div>
