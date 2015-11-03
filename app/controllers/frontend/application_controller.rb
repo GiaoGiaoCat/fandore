@@ -18,6 +18,10 @@ class Frontend::ApplicationController < ApplicationController
     cart
   end
 
+  def load_cart
+    @cart = current_cart
+  end
+
   def set_gon
     gon.pageId = view_context.page_id
     gon.controller = controller_name

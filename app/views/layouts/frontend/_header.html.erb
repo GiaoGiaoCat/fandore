@@ -50,10 +50,8 @@
                 </li>
                 <li>
                     <div class="btn-wrap clearfloat">
-                        <a href="#" class="car-btn">
-                            <i class="iconfont">&#xe603;</i>
-                        </a>
-                        <sup>3</sup>
+                        <%= link_to content_tag(:i, "&#xe603;".html_safe, class: 'iconfont'), cart_path(@cart), class: 'car-btn' %>
+                        <!-- <sup>3</sup> -->
                     </div>
                 </li>
             </ul>
@@ -70,9 +68,7 @@
                 </a>
             </div>
             <div class="btn-wrap clearfloat">
-                <a href="/carts" class="car-btn">
-                    <i class="iconfont">&#xe603;</i>
-                </a>
+                <%= link_to content_tag(:i, "&#xe603;".html_safe, class: 'iconfont'), sign_in_path, class: 'car-btn' %>
                 <sup>3</sup>
                 <a class="menu-btn" href="javascript:void(0)">
                     <svg class="menu-icon" viewBox="135 100 600 450">

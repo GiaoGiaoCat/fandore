@@ -11,9 +11,4 @@ class Frontend::CartsController < Frontend::ApplicationController
     redirect_to root_path
   end
 
-  private
-
-  def load_cart
-    @cart = current_cart
-  end
 end

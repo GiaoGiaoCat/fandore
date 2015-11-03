@@ -12,10 +12,6 @@ class Frontend::ProductsController < Frontend::ApplicationController
 
   private
 
-  def load_cart
-    @cart = current_cart
-  end
-
   def load_products
     @products ||= product_scope.by_taxon(params[:taxon_name])
   end

@@ -24,11 +24,11 @@ property_5 = Product::Property.create(name: 'Sub Stone Weight', presentation: '�
 property_6 = Product::Property.create(name: 'Sub Stone Color', presentation: '副钻类型')
 property_7 = Product::Property.create(name: 'Sub Stone Quantity', presentation: '副钻数量')
 
-option_type_1 = Product::OptionType.create(name: 'Metal', presentation: '材质')
+option_type_1 = Product::OptionType.create(name: 'Metal', presentation: '材质', position: 0)
 Product::OptionValue.create(name: '18K', presentation: '18K 白金', option_type_id: option_type_1.id)
 Product::OptionValue.create(name: 'PT950', presentation: 'PT950', option_type_id: option_type_1.id)
 
-option_type_2 = Product::OptionType.create(name: 'Style', presentation: '款式')
+option_type_2 = Product::OptionType.create(name: 'Style', presentation: '款式', position: 1)
 Product::OptionValue.create(name: 'Simple', presentation: '简约款', option_type_id: option_type_2.id)
 Product::OptionValue.create(name: 'Luxury', presentation: '轻奢款', option_type_id: option_type_2.id)
 Product::OptionValue.create(name: 'Custom', presentation: '高级订制款', option_type_id: option_type_2.id)

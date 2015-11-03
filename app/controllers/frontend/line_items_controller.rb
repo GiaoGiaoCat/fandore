@@ -16,10 +16,6 @@ class Frontend::LineItemsController < Frontend::ApplicationController
 
   private
 
-  def load_cart
-    @cart = current_cart
-  end
-
   def load_variant
     @variant = Product::Variant.find(params[:variant_id])
   end
