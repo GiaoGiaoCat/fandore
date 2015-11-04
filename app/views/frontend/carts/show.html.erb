@@ -67,7 +67,7 @@
                 <span class="total-price">合计：<b class="c-red">￥<i class="font-s20">0.00</i></b></span>
             </td>
             <td align="right">
-                <a href="#" class="payment-btn">付 款</a>
+                <%= link_to '付 款', orders_path, method: :post, class: 'payment-btn' %>
             </td>
         </tr>
         <tr>
