@@ -56,6 +56,10 @@ Rails.application.routes.draw do
       resources :binding_emails, only: [:index, :show, :create]
       resources :favorites, only: [:index, :destroy]
     end
+
+    namespace :users do
+      resources :address
+    end
   end
 
   controller 'frontend/users/profile' do
@@ -74,15 +78,6 @@ Rails.application.routes.draw do
     post 'users/verification_password' => :create
     get 'users/new_password' => :new_password
     post 'users/password/update' => :update
-  end
-
-  controller 'frontend/users/addresses' do
-    get 'users/addresses' => :index
-    post 'users/addresses/create' => :create
-    get 'users/addresses/new' => :new
-    get 'users/addresses/edit' => :edit
-    patch 'users/addresses/update' => :update
-    delete 'users/address' => :destroy
   end
 
   controller 'frontend/users/password_by_emails' do

@@ -1,0 +1,22 @@
+<%=form_for(address, url: url_path) do |f| %>
+      <li>
+          <%=label_tag 'mobile',  '联系电话'%>
+          <%=f.text_field :mobile,  class: 'input-style input-width input-test', placeholder: '联系电话' %>
+          <%=label_tag 'name',  '收货人'%>
+          <%=f.text_field :name,  class: 'input-style input-width input-test', placeholder: '收货人' %>
+          <%=label_tag 'zipcode',  '邮政编码'%>
+          <%=f.text_field :zipcode,  class: 'input-style input-width input-test', placeholder: '邮政编码' %>
+          </br>
+          <%=label_tag 'phone_area_code',  '区号'%>
+          <%=f.text_field :phone_area_code,  class: 'input-style input-width input-test', placeholder: '区号' %>
+          </br>
+          <%=label_tag 'phone',  '电话号码'%>
+          <%=f.text_field :phone,  class: 'input-style input-width input-test', placeholder: '电话号码' %>
+      </li>
+      <li>
+          <%=f.text_area :address,  class: 'textarea-style', placeholder: '详细地址', style: 'width:600px;', rows: 5, placeholder: "省份，城市，区县，街道编号/名称，楼宇名称"%>
+      </li>
+      <li>
+          <%=f.submit '保存收货地址', class: 'btn-m-purple address-btn'%>
+      </li>
+  <%end%>
