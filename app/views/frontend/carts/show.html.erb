@@ -15,32 +15,38 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <label>
-                        <input class="checkbox icheck pro-checkbox" type="checkbox" />
-                    </label>
-                </td>
-                <td>
-                    <img class="pro-img" src="<%= asset_path('product/product_small_1.png') %>" />
-                </td>
-                <td align="left">
-                    <h3 class="name">THE ROSELAND  简约款</h3>
-                    <p class="del-txt">
-                        克拉总重量：0.23 圆形, 良好切割, J 成色, SI1 净度
-                        <br> 存货编号：LD05989299
-                    </p>
-                </td>
-                <td>
-                    <p class="price">￥<i>19762.24</i></p>
-                </td>
-                <td>
-                    <p class="c-red">等待买家付款</p>
-                </td>
-                <td align="center">
-                    <a class="remove-btn" href="javascript:void(0)"><i class="iconfont">&#xe604;</i></a>
-                </td>
-            </tr>
+            <% @cart.line_items.each do |item| %>
+              <tr>
+                  <td>
+                      <label>
+                          <input class="checkbox icheck pro-checkbox" type="checkbox" />
+                      </label>
+                  </td>
+                  <td>
+                      <%= image_tag item.product.master.images.first.picture.middle.url, class: 'pro-img' %>
+                  </td>
+                  <td align="left">
+                      <h3 class="name">
+                        <%= item.product.name %>
+                        <%= item.variant.options_text %>
+                      </h3>
+                      <p class="del-txt">
+                          <%= item.remark %>
+                          <!-- 克拉总重量：0.23 圆形, 良好切割, J 成色, SI1 净度
+                          <br> 存货编号：LD05989299 -->
+                      </p>
+                  </td>
+                  <td>
+                      <p class="price">￥<i><%= item.amount %></i></p>
+                  </td>
+                  <td>
+                      <p class="c-red">等待买家付款</p>
+                  </td>
+                  <td align="center">
+                      <%= link_to content_tag(:i, "&#xe604;".html_safe, class: 'iconfont'), line_item_path(item), method: :delete, data: { confirm: "确认删除?" }, class: 'remove-btn'  %>
+                  </td>
+              </tr>
+            <% end %>
         </tbody>
     </table>
 </div>
