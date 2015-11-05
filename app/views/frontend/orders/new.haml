@@ -7,7 +7,7 @@
 
 %h2 收货地址
 - if @addresses.blank?
-  = link_to "创建地址", new_users_address_path, target: "_blank"
+  = link_to "创建地址", new_address_path, target: "_blank"
 - else
   - @addresses.each do |address|
     = address.province_name

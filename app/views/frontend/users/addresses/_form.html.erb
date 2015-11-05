@@ -1,5 +1,20 @@
+<%if address.errors.any?%>
+  <div class="error_messages">
+    <h2> Form is invalid</h2>
+    <ul>
+      <%-for message in address.errors.full_messages%>
+        <li><%= message%></li>
+        <%end%>
+    </ul>
+  </div>
+<%end%>
 <%=form_for(address, url: url_path) do |f| %>
       <li>
+          <div class= "city-group">
+          <%=select_tag "user_address[province]", options_for_select(ChinaCity.list), {class: "city-select select-style"}%>
+          <%=select_tag "user_address[city]", nil, {class: "city-select select-style"}%>
+          <%=select_tag "user_address[district]", nil, {class: "city-select select-style"}%>
+        </div>
           <%=label_tag 'mobile',  '联系电话'%>
           <%=f.text_field :mobile,  class: 'input-style input-width input-test', placeholder: '联系电话' %>
           <%=label_tag 'name',  '收货人'%>
