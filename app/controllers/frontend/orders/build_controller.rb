@@ -1,5 +1,8 @@
 class Frontend::Orders::BuildController < Frontend::ApplicationController
+
   include Wicked::Wizard
+  
+  before_action :load_cart
 
   # steps :address, :delivery, :payment, :confirm, :complete
   steps :address, :invoice, :payment, :complete
