@@ -55,10 +55,7 @@ Rails.application.routes.draw do
 
       resources :binding_emails, only: [:index, :show, :create]
       resources :favorites, only: [:index, :destroy]
-    end
-
-    namespace :users do
-      resources :address
+      resources :addresses
     end
   end
 

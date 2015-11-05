@@ -11,7 +11,7 @@
                 </div>
                 <div class="padd30 clearfloat">
 
-                    <%= link_to "创建新地址", new_users_address_path, {class: "btn-purple2 mr15 show-popup", "data-size" => "big"}%>
+                    <%= link_to "创建新地址", new_address_path, {class: "btn-purple2 mr15 show-popup", "data-size" => "big"}%>
                     <span class="c-a0 font-s14">您已创建 2 个收货地址，最多可创建 10 个</span>
                     <div class="clearfloat">
                         <%@addresses.each do |address|%>
@@ -43,9 +43,9 @@
                                 </ul>
                                 <div class="address-tool">
                                     <%unless address.is_default%>
-                                        <%= link_to "设为默认地址", users_address_path(id: address, user_address: {is_default: true}), method: :patch%>
+                                        <%= link_to "设为默认地址", address_path(id: address, user_address: {is_default: true}), method: :patch%>
                                     <%end%>
-                                    <%=link_to '编辑', edit_users_address_path(address)%>
+                                    <%=link_to '编辑', edit_address_path(address)%>
                                 </div>
                             </div>
                         <%end%>
