@@ -1,6 +1,7 @@
 class Frontend::ApplicationController < ApplicationController
   layout ->(controller) { controller.request.xhr? ? false : 'frontend' }
   before_action :set_gon
+  before_action :load_cart
 
   private
 
