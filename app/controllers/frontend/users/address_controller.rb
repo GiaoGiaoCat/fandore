@@ -1,4 +1,4 @@
-class Frontend::Users::AddressesController < Frontend::ApplicationController
+class Frontend::Users::AddressController < Frontend::ApplicationController
 
   def index
     load_addresses
@@ -27,7 +27,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
   def destroy
     load_address
     @address.destroy
-    redirect_to users_addresses_path
+    redirect_to users_address_index_path
   end
 
   private

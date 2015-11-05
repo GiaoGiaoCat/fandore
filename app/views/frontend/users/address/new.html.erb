@@ -1,0 +1,16 @@
+<div class="popwindow">
+    <div class="float-title-bar">
+        新增收货地址
+    </div>
+    <div class="sub-scroll">
+        <div class="padd30">
+            <div class="address-form">
+                <div class="address-box">
+                    <ul class="address-ul">
+                        <%=render partial: 'form', object: @address, as: :address, locals: {url_path: users_address_index_path}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

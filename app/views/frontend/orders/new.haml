@@ -7,7 +7,7 @@
 
 %h2 收货地址
 - if @addresses.blank?
-  = link_to "创建地址", users_addresses_new_path, target: "_blank"
+  = link_to "创建地址", new_users_address_path, target: "_blank"
 - else
   - @addresses.each do |address|
     = address.province_name
@@ -18,7 +18,7 @@
     = address.mobile
     = address.is_default ? "默认收货地址" : ""
 
-%hr  
+%hr
 = simple_form_for(@order, :wrapper => :horizontal_form, html: { class: 'form-horizontal' }) do |f|
   = hidden_field_tag 'line_items', @line_items.ids.join(",")
   / 地址暂时这样写，选取默认地址为收货地址，以后可以做成check_box选定
