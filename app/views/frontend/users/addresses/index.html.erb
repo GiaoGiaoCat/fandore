@@ -12,40 +12,37 @@
                 <div class="padd30 clearfloat">
 
                     <%= link_to "创建新地址", new_address_path, {class: "btn-purple2 mr15 show-popup", "data-size" => "big"}%>
-                    <span class="c-a0 font-s14">您已创建 2 个收货地址，最多可创建 10 个</span>
+                    <span class="c-a0 font-s14">您已创建 <%= @addresses.size %> 个收货地址，最多可创建 10 个</span>
                     <div class="clearfloat">
                         <%@addresses.each do |address|%>
                             <div class="address-list">
-                                <a href="" class="delete"><i class="iconfont icon-close01"></i></a>
-                                <h3 class="address-tit">李小明大坪核心商圈
-                                    <%if address.is_default%>
+                                <%= link_to content_tag(:i, nil, class: 'iconfont icon-close01'), address_path(address), method: :delete, data: { confirm: "确认删除?" }, class: 'delete' %>
+                                <h3 class="address-tit"><%= address.name %>
+                                    <% if address.is_default %>
                                         <sup class="default-tag">默认地址</sup>
-                                    <%end%>
+                                    <% end %>
                                 </h3>
                                 <ul>
                                     <li><span class="a-span">收货人： </span>
-                                        <%=address.name%>
+                                        <%= address.name %>
                                     </li>
                                     <li><span class="a-span">所在地区： </span>
-                                        <%=address.district_name%>
+                                        <%= address.district_name %>
                                     </li>
                                     <li><span class="a-span">地址： </span>
-                                        <%=address.address%>
+                                        <%= address.address %>
                                     </li>
                                     <li><span class="a-span">手机： </span>
-                                        <%=address.mobile%>
+                                        <%= address.mobile %>
                                     </li>
-                                    <li><span class="a-span">固定电话： </span>
-                                        <%=address.phone%>
-                                    </li>
-                                    <li><span class="a-span">电子邮箱： </span>46*****25@qq.com
+                                    <li><span class="a-span">电子邮箱：</span> <%= current_user.email %>
                                     </li>
                                 </ul>
                                 <div class="address-tool">
-                                    <%unless address.is_default%>
-                                        <%= link_to "设为默认地址", address_path(id: address, user_address: {is_default: true}), method: :patch%>
-                                    <%end%>
-                                    <%=link_to '编辑', edit_address_path(address)%>
+                                    <% unless address.is_default %>
+                                        <%= link_to "设为默认地址", address_path(id: address, user_address: {is_default: true}), method: :patch %>
+                                    <% end %>
+                                    <%= link_to '编辑', edit_address_path(address) %>
                                 </div>
                             </div>
                         <%end%>

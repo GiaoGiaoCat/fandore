@@ -51,7 +51,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
 
   def save_address
     if @address.save
-      redirect_to root_path
+      redirect_to addresses_path
     end
   end
 

@@ -8,12 +8,15 @@ class User::Address < ActiveRecord::Base
   # relationships .............................................................
   belongs_to :user
   # validations ...............................................................
-  validates_presence_of :user_id, :name, :address, :province, :city, :district
+  # TODO：前端无法做好地址传递，暂时取消验证省市区参数
+  # validates_presence_of :user_id, :name, :address, :province, :city, :district
+  validates_presence_of :user_id, :name, :address
+  # validates :province, :city, :district, numericality: true
+
   validates :mobile,
             presence: true,
             format: { with: Fandore::Regex::PHONE_REGEX }
 
-  validates :province, :city, :district, numericality: true
   # callbacks .................................................................
   after_save :set_default_address
   # scopes ....................................................................

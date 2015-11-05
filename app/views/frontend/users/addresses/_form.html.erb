@@ -1,4 +1,4 @@
-<%if address.errors.any?%>
+<% if address.errors.any? %>
   <div class="error_messages">
     <h2> Form is invalid</h2>
     <ul>
@@ -7,31 +7,29 @@
         <%end%>
     </ul>
   </div>
-<%end%>
-<%=form_for(address, url: url_path) do |f| %>
+<% end %>
+<%= form_for(address, url: url_path) do |f| %>
       <li>
-          <div class= "city-group">
-          <%=select_tag "user_address[province]", options_for_select(ChinaCity.list), {class: "city-select select-style"}%>
-          <%=select_tag "user_address[city]", nil, {class: "city-select select-style"}%>
-          <%=select_tag "user_address[district]", nil, {class: "city-select select-style"}%>
+        <%= label :name, '省市区' %>
+        <div class="city-group">
+          <%= select_tag "user_address[province]", options_for_select(ChinaCity.list), { class: "city-select select-style" } %>
+          <%= select_tag "user_address[city]", params[:city], { class: "city-select select-style" }%>
+          <%= select_tag "user_address[district]", params[:district], { class: "city-select select-style" }%>
         </div>
-          <%=label_tag 'mobile',  '联系电话'%>
-          <%=f.text_field :mobile,  class: 'input-style input-width input-test', placeholder: '联系电话' %>
-          <%=label_tag 'name',  '收货人'%>
-          <%=f.text_field :name,  class: 'input-style input-width input-test', placeholder: '收货人' %>
-          <%=label_tag 'zipcode',  '邮政编码'%>
-          <%=f.text_field :zipcode,  class: 'input-style input-width input-test', placeholder: '邮政编码' %>
-          </br>
-          <%=label_tag 'phone_area_code',  '区号'%>
-          <%=f.text_field :phone_area_code,  class: 'input-style input-width input-test', placeholder: '区号' %>
-          </br>
-          <%=label_tag 'phone',  '电话号码'%>
-          <%=f.text_field :phone,  class: 'input-style input-width input-test', placeholder: '电话号码' %>
       </li>
       <li>
-          <%=f.text_area :address,  class: 'textarea-style', placeholder: '详细地址', style: 'width:600px;', rows: 5, placeholder: "省份，城市，区县，街道编号/名称，楼宇名称"%>
+        <%= label :mobile, '联系电话' %>
+        <%= f.text_field :mobile,  class: 'input-style input-width input-test', placeholder: '联系电话' %>
       </li>
       <li>
-          <%=f.submit '保存收货地址', class: 'btn-m-purple address-btn'%>
+        <%= label :name, '收货人' %>
+        <%= f.text_field :name,  class: 'input-style input-width input-test', placeholder: '收货人' %>
+      </li>
+      <li>
+          <%= label :address, '详细地址' %>
+          <%= f.text_area :address,  class: 'textarea-style', placeholder: '详细地址', style: 'width:600px;', rows: 5, placeholder: "省份，城市，区县，街道编号/名称，楼宇名称" %>
+      </li>
+      <li>
+          <%= f.submit '保存收货地址', class: 'btn-m-purple address-btn' %>
       </li>
   <%end%>
