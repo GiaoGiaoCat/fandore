@@ -9,6 +9,12 @@
         </ul>
     </div>
 
+    <%= form_for @order, url: wizard_path, method: :put do |f| %>
+    <% if @order.errors.any? %>
+      <% for message in @order.errors.full_messages %>
+        <%= message %>
+      <% end %>
+    <% end %>
     <div class="box-border">
         <div class="t-bar-gray clearfloat">
             <div class="fl">收货人信息</div>
@@ -20,13 +26,15 @@
             <div class="address-form">
                 <div class="address-box">
                     <ul class="address-ul">
+                      <%= f.fields_for :shipping_address, @order.shipping_address do |field| %>
                         <li>
-                            <input type="text" name="" id="" value="" placeholder="收货人" class="input-style  input-width" />
-                            <input type="text" name="" id="" placeholder="联系电话" class="input-style input-width" />
+                            <%= field.text_field :name, class: 'input-style input-width', placeholder: '收货人' %>
+                            <%= field.text_field :mobile, class: 'input-style input-width', placeholder: '联系电话' %>
                         </li>
                         <li>
-                            <textarea name="" rows="5" cols="" placeholder="省份，城市，区县，街道编号/名称，楼宇名称" class="textarea-style" style="width:668px;"></textarea>
+                          <%= field.text_area :address, class: 'textarea-style', style: 'width:668px;', rows: '5', placeholder: '省份，城市，区县，街道编号/名称，楼宇名称' %>
                         </li>
+                      <% end %>
                     </ul>
                 </div>
             </div>
@@ -37,7 +45,7 @@
         <div class="t-bar-gray clearfloat">
             <div class="fl">支付选项</div>
         </div>
-        <div class="padd30">
+        <!-- <div class="padd30">
             <h3 class="font-s14 c-3a">使用优惠码</h3>
             <p>
                 <input type="checkbox" name="" id="coupon" value="" class="icheck" /><label for="coupon">使用优惠码</label>
@@ -46,15 +54,15 @@
                 <input type="" name="" id="" value="" size="80" class="form-input-style2 m0" style="vertical-align: middle;" />
                 <input type="button" name="" id="" value="立即使用" class="btn-red2 m0" style="vertical-align: middle;" />
             </div>
-        </div>
+        </div> -->
         <div class="line-dot"></div>
         <div class="padd30">
             <h3 class="font-s14 c-3a">预付定金</h3>
             <div class="pay-select mt20">
                 <ul>
-                    <li><a href="" class="">预付40%定金</a></li>
+                    <!-- <li><a href="" class="">预付40%定金</a></li> -->
                     <li class="selected"><a href="" class="">全款支付</a></li>
-                    <li><span class="font-s14 c-gray">使用优惠码必须全额付款</span></li>
+                    <!-- <li><span class="font-s14 c-gray">使用优惠码必须全额付款</span></li> -->
                 </ul>
             </div>
         </div>
@@ -73,17 +81,19 @@
                         <th>名称</th>
                         <th>价格</th>
                     </tr>
-                    <tr>
-                        <td align="center">
-                            <div class="table-imgbox">
-                                <a href="">
-                                    <img src="<%= asset_path('product/product1.png') %>" />
-                                </a>
-                            </div>
-                        </td>
-                        <td align="center"><a href="" class="c-3a">THE ROSELAND  简约款</a></td>
-                        <td align="center">￥19762.00</td>
-                    </tr>
+                    <% @order.line_items.each do |item| %>
+                      <tr>
+                          <td align="center">
+                              <div class="table-imgbox">
+                                <%= link_to image_tag(item.product.master.images.first.picture.middle.url), product_path(item.product) %>
+                              </div>
+                          </td>
+                          <td align="center">
+                            <%= link_to "#{item.product.name} #{item.variant.options_text}", product_path(item.product), class: 'c-3a' %>
+                          </td>
+                          <td align="center"><%= number_to_currency item.amount %></td>
+                      </tr>
+                    <% end %>
                 </table>
             </div>
         </div>
@@ -118,9 +128,9 @@
     </div>
 
     <div class="order-btnbox">
-        <input type="button" name="" id="" value="确认订单" class="btn-m-purple" onclick="window.location.href= 'pay_step_order_2.html'" />
-        <p class="font-s14 c-3a">商品总金额： ￥19762.00<span class="ml20">优惠金额： -￥0</span><span class="ml20">应付金额：<b class="c-red font-s20">￥19762.00</b></span></p>
+        <%= f.button '确认订单', class: 'btn-m-purple' %>
+        <p class="font-s14 c-3a">商品总金额： <%= number_to_currency @order.amount %> <span class="ml20">优惠金额： -￥0</span><span class="ml20">应付金额：<b class="c-red font-s20"><%= number_to_currency @order.amount %></b></span></p>
     </div>
-
+    <% end %>
     <%= render 'layouts/frontend/footer' %>
 </div>
