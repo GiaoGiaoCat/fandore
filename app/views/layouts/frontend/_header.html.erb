@@ -1,37 +1,90 @@
 <header class="home-header">
-    <a href="/" data-no-turbolink>
+    <a href="/">
         <h1 class="logo">VANDODO</h1>
     </a>
 
-    <div class="head-right">
-        <div class="link-wrap">
-            <a href="javascript:;" class="show-popup" data-size="middle" data-tpl="tpl-registrations-new">注册</a>
-            <a href="javascript:;" class="show-popup" data-size="small" data-tpl="tpl-sessions-new">登陆</a>
+    <% if current_user %>
+        <div class="sub-headright">
+            <ul>
+                <li class="drop-down">
+                    <a href="#">个人中心<i class="iconfont icon-arrow-down"></i></a>
+                    <div class="tnav-child tnav-user">
+                        <div class="clearfloat">
+                            <div class="user-head-s fl">
+                                <a href="">
+                                    <img src="<%= asset_path('user_head.jpg') %>" />
+                                </a>
+                            </div>
+                            <div class="fl">
+                                <h4 class="font-s14">好人阿楚</h4>
+                                <a href="<%= users_profile_edit_path %>" class="c-lilac">个人信息</a>
+                                <b class="cut-l-c">|</b>
+                                <%= link_to '退出', sign_out_path, method: :delete, class: 'c-lilac' %>
+                            </div>
+                        </div>
+                        <div class="tnav-link">
+                            <a href="#">我的订单</a>
+                            <a href="<%= favorites_path %>">我的收藏</a>
+                            <a href="#">退换货申请</a>
+                            <a href="<%= addresses_path %>">收货地址</a>
+                            <a href="#">我的评论</a>
+                            <a href="#">优惠码</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="drop-down">
+                    <a href="#">服务<i class="iconfont icon-arrow-down"></i></a>
+                    <div class="tnav-child">
+                        <a href="#">自助服务</a>
+                        <a href="#">帮助中心</a>
+                        <a href="#">常见问题</a>
+                    </div>
+                </li>
+                <li><a href="#">消息</a></li>
+                <li>
+                    <div class="btn-wrap ml20">
+                        <a href="#" class="btn-service">
+                            <i class="iconfont icon-service"></i>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-wrap clearfloat">
+                        <%= link_to content_tag(:i, "&#xe603;".html_safe, class: 'iconfont'), cart_path(current_cart), class: 'car-btn' %>
+                        <!-- <sup>3</sup> -->
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="btn-wrap mr15">
-            <a class="btn-service">
-                <i class="iconfont icon-service"></i>
-            </a>
+    <% else %>
+        <div class="head-right">
+            <div class="link-wrap">
+                    <a href="<%= sign_up_path %>" class="show-popup" data-size="middle" data-tpl="tpl-registrations-new">注册</a>
+                    <a href="<%= sign_in_path %>" class="show-popup" data-size="small" data-tpl="tpl-sessions-new">登陆</a>
+            </div>
+            <div class="btn-wrap mr15">
+                <a class="btn-service">
+                    <i class="iconfont icon-service"></i>
+                </a>
+            </div>
+            <div class="btn-wrap clearfloat">
+                <%= link_to content_tag(:i, "&#xe603;".html_safe, class: 'iconfont'), sign_in_path, class: 'car-btn' %>
+                <sup>3</sup>
+                <a class="menu-btn" href="javascript:void(0)">
+                    <svg class="menu-icon" viewBox="135 100 600 450">
+                        <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+                        <path d="M300,320 L540,320" id="middle"></path>
+                        <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                    </svg>
+                </a>
+            </div>
         </div>
-        <div class="btn-wrap clearfloat">
-            <a href="javascript:void(0)" class="car-btn">
-                <i class="iconfont">&#xe603;</i>
-            </a>
-            <sup>3</sup>
-            <a class="menu-btn" href="javascript:void(0)">
-                <svg class="menu-icon" viewBox="135 100 600 450">
-                    <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
-                    <path d="M300,320 L540,320" id="middle"></path>
-                    <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
-                </svg>
-            </a>
-        </div>
-    </div>
+    <% end %>
 </header>
 
 
 <div id="floatmask"></div>
-<nav id="home-nav" data-no-turbolink>
+<nav id="home-nav">
     <div class="home-nav-warp">
         <div id="close-nav">
             <i class="iconfont icon-close01"></i>CLOSE
@@ -75,11 +128,3 @@
     </div>
     <div id="popupbox-content"></div>
 </div>
-
-<script type="text/html" id="tpl-registrations-new">
-    <%= render 'frontend/users/registrations/dialog' %>
-</script>
-
-<script type="text/html" id="tpl-sessions-new">
-    <%= render 'frontend/users/sessions/dialog' %>
-</script>

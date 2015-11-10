@@ -7,17 +7,13 @@ class Frontend::ProductsController < Frontend::ApplicationController
   end
 
   def show
-    # load_product
+    load_product
   end
 
   private
 
-  def load_cart
-    @cart = current_cart
-  end
-
   def load_products
-    @products ||= product_scope.all
+    @products ||= product_scope.by_taxon(params[:taxon_name])
   end
 
   def load_product

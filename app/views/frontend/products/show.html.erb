@@ -2,38 +2,48 @@
 
 <div class="product-wrap">
     <div class="product-main">
-        <img src="<%= asset_path "product/product1.png" %>" class="product-image">
+        <%= image_tag @product.master.images.first.picture.middle.url, class: 'product-image' %>
         <a href="javascript:;" class="link-show-image">浏览高清图</a>
         <div class="product-images">
-            <a href="javascript:;" class="thumb-image active">
-                <img src="<%= asset_path "product/product1.png" %>" width="110">
-            </a>
-            <a href="javascript:;" class="thumb-image">
-                <img src="<%= asset_path "product/product2.png" %>" width="110">
-            </a>
-            <a href="javascript:;" class="thumb-image">
-                <img src="<%= asset_path "product/product3.png" %>" width="110">
-            </a>
+            <% @product.master.images.each_with_index do |image, index| %>
+              <% class_name = index == 0 ? 'active' : nil %>
+              <%= link_to image_tag(image.picture.middle.url, width: 110), 'javascript:;', class: "thumb-image #{class_name}" %>
+            <% end %>
         </div>
     </div>
 
     <div class="product-info">
-        <h1>微澜</h1>
+      <%= form_tag line_items_path, id: 'add-to-cat' do %>
+        <h1><%= @product.name %></h1>
         <p class="subtitle">WHISPER 1610242</p>
-        <p class="product-price">￥19630</p>
+        <p class="product-price" id="product-price"><%= number_to_currency(@product.price, unit: '￥') %></p>
 
-        <div class="product-style">
-            <input type="radio" id="product-style-1" name="product_style" value="0" checked>
-            <label class="product-style" for="product-style-1">简约款</label>
-
+        <div>
+          <% @product.variants.each_with_index do |variant, index| %>
+            <span>
+              <% checked = index == 0 %>
+              <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
+              <%= label_tag dom_id(variant), variant.options_text, class: 'product-style' %>
+              <%= content_tag(:span, number_to_currency(variant.price, unit: '￥'), style: 'display:none;') %>
+              <br />
+            </span>
+          <% end %>
+        </div>
+        <!-- <div class="product-style">
             <input type="radio" id="product-style-2" name="product_style" value="1">
             <label class="product-style" for="product-style-2">轻奢款</label>
-        </div>
+        </div> -->
 
-        <p class="product-desc">简单的线条脉脉的相对，将一粒美钻含蓄地衔入，透露出轻柔雅致的气息，让你仿佛冷艳的美人，遗世而独立，倾城而倾国。</p>
-
+        <p class="product-desc"><%= @product.description %></p>
         <div class="product-information">
+          <% @product_properties.each do |product_property| %>
             <div>
+              <b><%= product_property.property.presentation %>：</b>
+              <span><%= product_property.value %></span>
+            <%=  %>
+            </div>
+          <% end %>
+            <!-- <div>
                 <b>主钻重量：</b> <span>0.3CT</span>
             </div>
 
@@ -81,15 +91,16 @@
                     <option value="10">10</option>
                 </select>
                 <span class="desc">港码6号内直径28mm，内周长38mm</span>
-            </div>
+            </div> -->
 
             <div class="product-lettering">
                 <b>刻字内容：</b>
-                <input type="text" placeholder="4个汉字或8个字母">
+                <%= text_field_tag 'remark', nil, placeholder: "4个汉字或8个字母" %>
             </div>
         </div>
 
-        <a href="javascript:;" class="link-to-car">加入购物车</a>
+        <!-- <%= submit_tag '加入购物车', class: 'link-to-car' %> -->
+        <a href="javascript:;" id='link-to-car' class="link-to-car">加入购物车</a>
         <div class="product-more">
             <a href="javascript:;" class="link-to-collect">
                 <i class="iconfont icon-collect"></i> 加入收藏
@@ -98,6 +109,7 @@
                 <i class="iconfont icon-message"></i> 历史评价
             </a>
         </div>
+      <% end %>
     </div>
 
     <div class="image-preview">
@@ -106,10 +118,21 @@
         <a href="javascript:;" class="next"><i class="iconfont icon-arrowright"></i></a>
         <div class="preview-list">
             <ul>
-                <li><img src="<%= asset_path "product/product1.png" %>"></li>
-                <li><img src="<%= asset_path "product/product2.png" %>"></li>
-                <li><img src="<%= asset_path "product/product3.png" %>"></li>
+                <% @product.master.images.each do |image| %>
+                  <li><%= image_tag image.picture.middle.url %></li>
+                <% end %>
             </ul>
         </div>
     </div>
 </div>
+
+
+<script type="text/javascript">
+  $('.variant_radio').click(function() {
+    var price = $(this).parent("span").find("span").text();
+    $('#product-price').html(price);
+  });
+  $('#link-to-car').click(function() {
+    $(this).parent("form").submit();
+  })
+</script>

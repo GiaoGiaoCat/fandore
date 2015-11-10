@@ -3,6 +3,7 @@
 body {
   color: $text;
   background-color: #fefefe;
+  font-family: "微软雅黑", arial, sans-serif;
 }
 
 a {
@@ -16,4 +17,32 @@ html.turbolinks-progress-bar::before {
 
 #loading{
   background: image-url('loading.gif') #000000 center no-repeat;
+}
+
+.cart-table td {
+  vertical-align: middle;
+}
+
+.sub-headright {
+  margin-right: 20px;
+}
+
+.sub-container {
+  padding-top: 70px;
+}
+
+.popwindow {
+  position: absolute;
+  top: -200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 750px;
+  height: 468px;
+}
+
+// TODO
+.sidebar-left a[href='#'] {
+  color: red;
 }

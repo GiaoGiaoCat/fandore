@@ -480,7 +480,7 @@ a:focus {
     color: #ec517d;
 }
 
-.sub-headright ul li .icon-arrow-down:{
+.sub-headright ul li .icon-arrow-down{
     color: #a4a4a4;
     font-size: 16px;
 }
@@ -1256,7 +1256,7 @@ a:focus {
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
-  appearance: none
+  appearance: none;
   position: relative;
   width:20px;
   height: 20px;

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     # 购物相关
-    resources :orders, only: [:index, :show, :create, :update] do
+    resources :orders, only: [:new, :index, :show, :create, :update] do
       # resources :build, controller: 'orders/build'
       scope module: 'orders', only: [:show, :create] do
         resources :build, only: [:show, :update]
@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 
       resources :binding_emails, only: [:index, :show, :create]
       resources :favorites, only: [:index, :destroy]
+      resources :addresses
     end
   end
 
@@ -74,15 +75,6 @@ Rails.application.routes.draw do
     post 'users/verification_password' => :create
     get 'users/new_password' => :new_password
     post 'users/password/update' => :update
-  end
-
-  controller 'frontend/users/addresses' do
-    get 'users/addresses' => :index
-    post 'users/addresses/create' => :create
-    get 'users/addresses/new' => :new
-    get 'users/addresses/edit' => :edit
-    patch 'users/addresses/update' => :update
-    delete 'users/address' => :destroy
   end
 
   controller 'frontend/users/password_by_emails' do

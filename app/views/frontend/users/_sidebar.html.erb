@@ -1,0 +1,35 @@
+<div class="sidebar-left">
+    <dl>
+        <dt>个人中心</dt>
+        <dd>
+            <a href="#">我的订单</a>
+            <a href="<%= favorites_path %>">我的收藏</a>
+            <a href="#">我的评价</a>
+            <a href="#">优惠码</a>
+            <a href="#">我的积分</a>
+            <a href="#">我的礼品</a>
+            <a href="#">系统消息</a>
+        </dd>
+        <dt>账户资料</dt>
+        <dd>
+            <a href="user_account_baseinfo.html">基础资料</a>
+            <a href="user_account_info.html">TA的资料</a>
+        </dd>
+        <dt>账户安全</dt>
+        <dd>
+            <a href="<%= new_password_path %>">修改密码</a>
+            <a href="<%= users_questions_new_path %>">安全问题</a>
+            <a href="#">绑定手机</a>
+            <a href="<%= binding_emails_path %>">绑定邮箱</a>
+        </dd>
+        <dt>售后服务</dt>
+        <dd>
+            <a href="#">换货单</a>
+            <a href="#">退货单</a>
+        </dd>
+        <dt>收货地址</dt>
+        <dd>
+            <a href="<%= addresses_path %>">增删改收货地址</a>
+        </dd>
+    </dl>
+</div>

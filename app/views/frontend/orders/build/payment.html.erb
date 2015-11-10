@@ -1,0 +1,125 @@
+<%= render 'layouts/frontend/header' %>
+
+<div class="pay-container">
+    <div class="step-number">
+        <ul>
+            <li class="step-pass"><b class="step-circle">01</b>购物车</li>
+            <li class="step-pass"><b class="step-circle">02</b>填写订单</li>
+            <li class="step-on"><b class="step-circle">03</b>确认支付</li>
+        </ul>
+    </div>
+
+    <div class="box-border font-s14">
+        <div class="t-bar-gray clearfloat">
+            <div class="fl">订单状态</div>
+            <!-- <div class="fr font-s14 c-gray mr25">
+                <i class="iconfont icon-timer"></i><span class="ml10">剩余支付时间：<b class="c-red">03：23：11</b></span>
+            </div> -->
+        </div>
+        <div class="padd30">
+            <h3 class="font-s14 c-3a">订单信息</h3>
+            <p class="c-gray">
+                订单编号：<%= @order.number %>
+                <br> <%= @order.shipping_address.address %>
+                <br> 联系电话：<%= @order.shipping_address.mobile %>
+                <br> 联系人：<%= @order.shipping_address.name %>
+            </p>
+        </div>
+        <div class="line-dot"></div>
+        <div class="padd30">
+            <h3 class="font-s14 c-3a">商品详情</h3>
+            <div class="table-style mt20">
+                <table width="100%" border="0" cellspacing="0">
+                    <tr>
+                        <th width="20%">主图</th>
+                        <th>名称</th>
+                        <th>价格</th>
+                    </tr>
+                    <% @order.line_items.each do |item| %>
+                      <tr>
+                          <td align="center">
+                              <div class="table-imgbox">
+                                <%= link_to image_tag(item.product.master.images.first.picture.middle.url), product_path(item.product) %>
+                              </div>
+                          </td>
+                          <td align="center">
+                            <%= link_to "#{item.product.name} #{item.variant.options_text}", product_path(item.product), class: 'c-3a' %>
+                          </td>
+                          <td align="center"><span class="c-red"><%= number_to_currency item.amount %></span></td>
+                      </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-border">
+        <div class="t-bar-gray clearfloat">
+            <div class="fl">支付方式</div>
+        </div>
+        <div id="pay-banklist" class="padd30">
+            <p>
+                <h3 class="font-s14 c-3a">平台支付</h3>
+            </p>
+            <div class="paylogo-col3">
+                <ul class="clearfloat">
+                    <li class="selected">
+                        <a href=""><img src="<%= asset_path('bank/logo_alipay.jpg') %>" /></a>
+                    </li>
+                    <!-- <li>
+                        <a href=""><img src="<%= asset_path('bank/logo_weixin.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/logo_onlinebank.jpg') %>" /></a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- <div class="line-dot"></div>
+            <p>
+                <h3 class="font-s14 c-3a">网银支付</h3>
+            </p>
+            <div class="paylogo-col4">
+                <ul class="clearfloat">
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_01.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_02.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_03.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_04.jpg') %>" /></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="line-dot"></div>
+            <p>
+                <h3 class="font-s14 c-3a">信用卡分期支付</h3>
+            </p>
+            <div class="paylogo-col4">
+                <ul class="clearfloat">
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_01.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_02.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_03.jpg') %>" /></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="<%= asset_path('bank/bank_04.jpg') %>" /></a>
+                    </li>
+                </ul>
+            </div> -->
+            <div class="line-dot"></div>
+        </div>
+    </div>
+
+    <div class="order-btnbox">
+        <input type="button" name="" id="" value="确认支付" class="btn-m-purple" />
+    </div>
+    <%= render 'layouts/frontend/footer' %>
+</div>

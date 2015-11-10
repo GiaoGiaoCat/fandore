@@ -1,6 +1,7 @@
 class Frontend::ApplicationController < ApplicationController
   layout ->(controller) { controller.request.xhr? ? false : 'frontend' }
-  before_action :set_gon
+  before_action :set_gon, :load_cart
+  helper_method :current_cart
 
   private
 
@@ -16,6 +17,10 @@ class Frontend::ApplicationController < ApplicationController
     cart = Order::Cart.create
     session[:cart_id] = cart.id
     cart
+  end
+
+  def load_cart
+    @cart = current_cart
   end
 
   def set_gon

@@ -1,0 +1,55 @@
+= form_for(@user, url: sign_up_path) do |f|
+  .float-title-bar
+    注册
+    %span.t-eng register
+  - if @user.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @user.errors.full_messages
+          %li= message
+  .login-form-wrap
+    %ul.login-form-box
+      %li
+        %label.login-icon
+          %i.iconfont.icon-loginphone
+        %b.area-code +86
+        = f.text_field :mobile, autofocues: true, class: 'login-input input-test', placeholder: '手机号'
+
+      %li
+        %label.login-icon
+          %i.iconfont.icon-verify
+        = f.text_field :verification_code, class: 'login-input input-test', placeholder: '短信验证码'
+        = link_to '获取验证码', 'javascript:;', class: 'login-code'
+
+      %li
+        %label.login-icon
+          %i.iconfont.icon-loginemail
+        = f.text_field :email, class: 'login-input input-test', placeholder: '邮箱地址'
+
+      %li
+        %label.login-icon
+          %i.iconfont.icon-password
+        = f.password_field :password, class: 'login-input input-test', placeholder: '密码'
+
+      %li
+        %label.login-icon
+          %i.iconfont.icon-password
+        = f.password_field :password_confirmation, class: 'login-input input-test', placeholder: '确认密码'
+
+    .login-btn
+      = f.submit '注册', class: 'btn-big-block'
+    .text-center.font-s14.c-gray
+      = check_box_tag 'accept', 'yes', true, class: 'icheck'
+      我已阅并同意遵守
+      = link_to '法律声明', '#', target: '_blank', class: 'link-purple'
+      和
+      = link_to '隐私条款', '#', target: '_blank', class: 'link-purple'
+
+    -# = link_to '登录', sign_in_path, class: 'btn btn-sm btn-white btn-block'
+    -# = link_to '密码找回', users_forget_password_path, class: 'btn btn-sm btn-white btn-block'
+
+.tips-warp.hide
+  %center
+    = image_tag 'red_right.png'
+    %h2.tips-tbig.ml20 注册成功！

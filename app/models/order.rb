@@ -61,9 +61,9 @@ class Order < ActiveRecord::Base
   end
 
   # NOTE: 暂时没用上
-  # def amount
-  #   line_items.inject(0.0) { |sum, li| sum + li.amount }
-  # end
+  def amount
+    line_items.inject(0.0) { |sum, li| sum + li.amount }
+  end
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

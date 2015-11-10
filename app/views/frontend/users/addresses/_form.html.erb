@@ -1,0 +1,35 @@
+<% if address.errors.any? %>
+  <div class="error_messages">
+    <h2> Form is invalid</h2>
+    <ul>
+      <%-for message in address.errors.full_messages%>
+        <li><%= message%></li>
+        <%end%>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(address, url: url_path) do |f| %>
+      <li>
+        <%= label :name, '省市区' %>
+        <div class="city-group">
+          <%= select_tag "user_address[province]", options_for_select(ChinaCity.list), { class: "city-select select-style" } %>
+          <%= select_tag "user_address[city]", params[:city], { class: "city-select select-style" }%>
+          <%= select_tag "user_address[district]", params[:district], { class: "city-select select-style" }%>
+        </div>
+      </li>
+      <li>
+        <%= label :mobile, '联系电话' %>
+        <%= f.text_field :mobile,  class: 'input-style input-width input-test', placeholder: '联系电话' %>
+      </li>
+      <li>
+        <%= label :name, '收货人' %>
+        <%= f.text_field :name,  class: 'input-style input-width input-test', placeholder: '收货人' %>
+      </li>
+      <li>
+          <%= label :address, '详细地址' %>
+          <%= f.text_area :address,  class: 'textarea-style', placeholder: '详细地址', style: 'width:600px;', rows: 5, placeholder: "省份，城市，区县，街道编号/名称，楼宇名称" %>
+      </li>
+      <li>
+          <%= f.submit '保存收货地址', class: 'btn-m-purple address-btn' %>
+      </li>
+  <%end%>

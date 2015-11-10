@@ -1,0 +1,28 @@
+<%= render 'layouts/frontend/header' %>
+
+<div class="sub-container">
+    <div class="clearfloat">
+        <%= render 'frontend/users/sidebar' %>
+
+        <div class="sub-mainright">
+            <div class="box-white min-h820">
+                <div class="user-title-bar clearfloat">
+                    <div class="t-left">新增收货地址</div>
+                </div>
+                <div class="padd30 clearfloat">
+
+                  <div class="address-form">
+                      <div class="address-box">
+                          <ul class="address-ul">
+                              <%= render partial: 'form', object: @address, as: :address, locals: { url_path: addresses_path } %>
+                          </ul>
+                      </div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%= render 'layouts/frontend/footer' %>
+</div>

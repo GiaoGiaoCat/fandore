@@ -25,47 +25,47 @@ $ ->
     $('#floatmask').fadeOut 'fast'
     $.fn.fullpage.setAllowScrolling(false)  if $('.section').length
 
-  .on 'click', '.show-popup', (e) ->
-    $.fn.fullpage.setAllowScrolling(false)  if $('.section').length
-    $link = $(@)
-    $popupbox = $('#popupbox')
-    $popupbox.addClass $link.data('size')
-    $popupbox.find('#popupbox-content').append $("##{ $link.data('tpl') }").html()
-    $popupbox.show().tween(
-      opacity:
-        start: 0
-        stop: 100
-        time: 0
-        duration: 0.7
-        effect: 'easeOut'
-      top:
-        start: 55
-        stop: 50
-        time: 0
-        units: '%'
-        duration: 0.7
-        effect: 'easeOut').play()
-    $('#floatmask').fadeIn 'fast'
+  # .on 'click', '.show-popup', (e) ->
+  #   $.fn.fullpage.setAllowScrolling(false)  if $('.section').length
+  #   $link = $(@)
+  #   $popupbox = $('#popupbox')
+  #   $popupbox.addClass $link.data('size')
+  #   $popupbox.find('#popupbox-content').append $("##{ $link.data('tpl') }").html()
+  #   $popupbox.show().tween(
+  #     opacity:
+  #       start: 0
+  #       stop: 100
+  #       time: 0
+  #       duration: 0.7
+  #       effect: 'easeOut'
+  #     top:
+  #       start: 55
+  #       stop: 50
+  #       time: 0
+  #       units: '%'
+  #       duration: 0.7
+  #       effect: 'easeOut').play()
+  #   $('#floatmask').fadeIn 'fast'
 
-  .on 'click', '#popupbox .close-popup', ->
-    $.fn.fullpage.setAllowScrolling(true)  if $('.section').length
-    $popupbox = $('#popupbox')
-    $popupbox.tween(
-      opacity:
-        start: 100
-        stop: 0
-        time: 0
-        duration: 0.7
-        effect: 'easeInOut'
-      top:
-        start: 50
-        stop: 55
-        time: 0
-        units: '%'
-        duration: 0.7
-        effect: 'easeInOut'
-      onStop: (element) ->
-        $popupbox.hide()
-        $popupbox.find('#popupbox-content').empty()
-    ).play()
-    $('#floatmask').fadeOut 'fast'
+  # .on 'click', '#popupbox .close-popup', ->
+  #   $.fn.fullpage.setAllowScrolling(true)  if $('.section').length
+  #   $popupbox = $('#popupbox')
+  #   $popupbox.tween(
+  #     opacity:
+  #       start: 100
+  #       stop: 0
+  #       time: 0
+  #       duration: 0.7
+  #       effect: 'easeInOut'
+  #     top:
+  #       start: 50
+  #       stop: 55
+  #       time: 0
+  #       units: '%'
+  #       duration: 0.7
+  #       effect: 'easeInOut'
+  #     onStop: (element) ->
+  #       $popupbox.hide()
+  #       $popupbox.find('#popupbox-content').empty()
+  #   ).play()
+  #   $('#floatmask').fadeOut 'fast'
