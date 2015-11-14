@@ -29,7 +29,7 @@ module Backend::ProductPropertiesHelper
     when 'Symmetry'
       dynamic_collection_select(f, ['EX', 'VG', 'GD'], label)
     when 'Clarity'
-      dynamic_collection_select(f, ['FL', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2'], label)
+      dynamic_collection_select(f, ['IF', 'FL', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2'], label)
     else
       f.input :value, wrapper: :nested_fields, label: label
     end
