@@ -23,12 +23,14 @@
               %thead
                 %tr
                   %th 钻石名称
+                  %th 价格
                   %th 添加时间
                   %th
               %tbody
                 - @products.each do |product|
                   %tr
                     %td= product.name
+                    %td= number_to_currency product.price
                     %td= product.created_at.to_s(:db)
                     %td
                       .btn-group
