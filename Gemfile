@@ -68,6 +68,8 @@ gem 'simple_captcha_reloaded'
 gem 'kaminari'
 # CanCan is an authorization library for Ruby on Rails
 gem 'cancancan', '~> 1.10'
+# An unofficial alipay ruby gem
+gem 'alipay', github: 'chloerei/alipay'
 
 # Use Puma as the app server
 gem 'puma', group: :production

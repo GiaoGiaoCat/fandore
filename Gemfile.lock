@@ -9,6 +9,12 @@ GIT
       mime-types (>= 1.16)
 
 GIT
+  remote: git://github.com/chloerei/alipay.git
+  revision: 37b6f79dbdde8ca777e488a83dc44e5d1e752ff9
+  specs:
+    alipay (0.10.0)
+
+GIT
   remote: git://github.com/coderxin/acts_as_favable.git
   revision: 65899a8eb6f608f3b7e8b3ed953847c4fe7526f6
   specs:
@@ -262,6 +268,7 @@ DEPENDENCIES
   acts_as_commentable
   acts_as_favable!
   acts_as_list
+  alipay!
   ancestry
   awesome_print
   bcrypt (~> 3.1.7)
