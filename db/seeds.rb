@@ -93,27 +93,169 @@ Taxonomy.create(name: '饰品')
 Taxonomy.create(name: '周边礼品')
 taxon_2 = Taxonomy.create(name: '钻石')
 
-# 添加默认钻石方便测试
-product_1 = Product.new(name: '超小钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
-product_1.price = 100
-product_1.save
-product_1.product_properties.find_by(property_id: property_02.id).update(value: 1)
+# 添加默认钻石模板
+# 第一组
+product_011 = Product.new(name: '0.3Ct-D-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_011.price = 12900
+product_011.save
+product_011.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_011.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
 
-product_2 = Product.new(name: '小钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
-product_2.price = 100
-product_2.save
-product_2.product_properties.find_by(property_id: property_02.id).update(value: 2)
+product_012 = Product.new(name: '0.3Ct-E-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_012.price = 9880
+product_012.save
+product_012.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_012.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
 
-product_3 = Product.new(name: '钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
-product_3.price = 100
-product_3.save
-product_3.product_properties.find_by(property_id: property_02.id).update(value: 3)
+product_013 = Product.new(name: '0.3Ct-F-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_013.price = 8789
+product_013.save
+product_013.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_013.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
 
-product_4 = Product.new(name: '大钻石', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
-product_4.price = 100
-product_4.save
-product_4.product_properties.find_by(property_id: property_02.id).update(value: 4)
+product_021 = Product.new(name: '0.3Ct-D-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_021.price = 9660
+product_021.save
+product_021.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_021.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
 
+product_022 = Product.new(name: '0.3Ct-E-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_022.price = 8890
+product_022.save
+product_022.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_022.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_023 = Product.new(name: '0.3Ct-F-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_023.price = 8670
+product_023.save
+product_023.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_023.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_031 = Product.new(name: '0.3Ct-D-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_031.price = 8780
+product_031.save
+product_031.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_031.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+
+product_032 = Product.new(name: '0.3Ct-E-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_032.price = 8670
+product_032.save
+product_032.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_032.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+
+product_033 = Product.new(name: '0.3Ct-F-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_033.price = 8060
+product_033.save
+product_033.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_033.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+# 第二组
+product_111 = Product.new(name: '0.5Ct-D-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_111.price = 40160
+product_111.save
+product_111.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_111.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
+
+product_112 = Product.new(name: '0.5Ct-E-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_112.price = 29800
+product_112.save
+product_112.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_112.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
+
+product_113 = Product.new(name: '0.5Ct-F-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_113.price = 26600
+product_113.save
+product_113.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_113.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
+
+product_121 = Product.new(name: '0.5Ct-D-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_121.price = 29500
+product_121.save
+product_121.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_121.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_122 = Product.new(name: '0.5Ct-E-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_122.price = 25200
+product_122.save
+product_122.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_122.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_123 = Product.new(name: '0.5Ct-F-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_123.price = 23500
+product_123.save
+product_123.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_123.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_131 = Product.new(name: '0.5Ct-D-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_131.price = 25000
+product_131.save
+product_131.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_131.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+
+product_132 = Product.new(name: '0.5Ct-E-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_132.price = 21380
+product_132.save
+product_132.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_132.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+
+product_133 = Product.new(name: '0.5Ct-F-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_133.price = 20480
+product_133.save
+product_133.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_133.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+# 第三组
+product_211 = Product.new(name: '1Ct-D-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_211.price = 168600
+product_211.save
+product_211.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_211.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
+
+product_212 = Product.new(name: '1Ct-E-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_212.price = 119800
+product_212.save
+product_212.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_212.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
+
+product_213 = Product.new(name: '1Ct-F-IF', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_213.price = 9800
+product_213.save
+product_213.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_213.product_properties.find_by(property_id: property_18.id).update(value: 'IF')
+
+product_221 = Product.new(name: '1Ct-D-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_221.price = 139500
+product_221.save
+product_221.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_221.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_222 = Product.new(name: '1Ct-E-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_222.price = 115000
+product_222.save
+product_222.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_222.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_223 = Product.new(name: '1Ct-F-VVS1', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_223.price = 97000
+product_223.save
+product_223.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_223.product_properties.find_by(property_id: property_18.id).update(value: 'VVS1')
+
+product_231 = Product.new(name: '1Ct-D-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_231.price = 116200
+product_231.save
+product_231.product_properties.find_by(property_id: property_03.id).update(value: 'D')
+product_231.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+
+product_232 = Product.new(name: '1Ct-E-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_232.price = 98700
+product_232.save
+product_232.product_properties.find_by(property_id: property_03.id).update(value: 'E')
+product_232.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
+
+product_233 = Product.new(name: '1Ct-F-VVS2', prototype_id: prototype_2.id, taxon_ids: taxon_2.id)
+product_233.price = 88000
+product_233.save
+product_233.product_properties.find_by(property_id: property_03.id).update(value: 'F')
+product_233.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
 # 添加默认图片
 default_image = Image.new
 default_image.picture = Rails.root.join("public/self_name.png").open
