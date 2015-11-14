@@ -9,6 +9,7 @@
         </ul>
     </div>
 
+    <%= form_for @order, url: wizard_path, method: :put do |f| %>
     <div class="box-border font-s14">
         <div class="t-bar-gray clearfloat">
             <div class="fl">订单状态</div>
@@ -119,7 +120,8 @@
     </div>
 
     <div class="order-btnbox">
-        <input type="button" name="" id="" value="确认支付" class="btn-m-purple" />
+        <%= f.button '确认支付', class: 'btn-m-purple' %>
     </div>
+    <% end %>
     <%= render 'layouts/frontend/footer' %>
 </div>

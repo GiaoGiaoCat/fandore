@@ -64,6 +64,26 @@ class Order < ActiveRecord::Base
   def amount
     line_items.inject(0.0) { |sum, li| sum + li.amount }
   end
+
+  def pay_url
+    Alipay::Service.create_partner_trade_by_buyer_url(
+      :out_trade_no      => id.to_s,
+      :price             => total,
+      :quantity          => item_count,
+      :discount          => promo_total,
+      :subject           => "钻戒订单",
+      :logistics_type    => 'DIRECT',
+      :logistics_fee     => '0',
+      :logistics_payment => 'SELLER_PAY',
+      :return_url        => Rails.application.routes.url_helpers.order_url(self, :host => 'writings.io'),
+      :notify_url        => Rails.application.routes.url_helpers.alipay_notify_orders_url(:host => 'writings.io'),
+      :receive_name      => 'none', # 这里填写了收货信息，用户就不必填写
+      :receive_address   => 'none',
+      :receive_zip       => '100000',
+      :receive_mobile    => '100000000000'
+    )
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
