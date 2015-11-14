@@ -23,6 +23,7 @@ set :keep_releases, 20
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, [
+  'config/initializers/alipay.rb',
   'config/database.yml',
   'config/oneapm.yml',
   'config/secrets.yml',
@@ -80,6 +81,9 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/shared/config/application.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
+
+  queue! %[touch "#{deploy_to}/shared/initializers/alipay.rb"]
+  queue  %[echo "-----> Be sure to edit 'shared/initializers/alipay.rb'."]
 end
 
 desc "Deploys the current version to the server."
