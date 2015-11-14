@@ -257,9 +257,9 @@ product_233.save
 product_233.product_properties.find_by(property_id: property_03.id).update(value: 'F')
 product_233.product_properties.find_by(property_id: property_18.id).update(value: 'VVS2')
 # 添加默认图片
-default_image = Image.new
-default_image.picture = Rails.root.join("public/self_name.png").open
-default_image.save
+# default_image = Image.new
+# default_image.picture = Rails.root.join("public/self_name.png").open
+# default_image.save
 
 
 # 添加默认戒托方便测试
