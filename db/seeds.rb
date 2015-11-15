@@ -262,4 +262,71 @@ product_233.product_properties.find_by(property_id: property_18.id).update(value
 # default_image.save
 
 
-# 添加默认戒托方便测试
+# 添加默认戒托模板
+product_01 = Product.new(name: 'Roseland', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
+product_01.price = 2500
+product_01.status = 'available'
+product_01.description = '用心才能真正看得清。你的美丽与善良，众所周知，但你的特别，只有我才知道，因为你是我的玫瑰。庄园里有很多叫rose的花，对我而言，你才是最重要的，经得起终身承诺，一生陪伴。'
+product_01.save
+v1 = product_01.variants.new(option_value_ids: ["1", "3"], price: 2500) # 18K金 简约款
+v1.save
+v2 = product_01.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金 轻奢款
+v2.save
+master = product_01.master
+img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_1.picture = Rails.root.join('db', 'images', 'roseland', 'p1.png').open
+img_1.save
+img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_2.picture = Rails.root.join('db', 'images', 'roseland', 'p2.png').open
+img_2.save
+
+product_02 = Product.new(name: '微澜', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
+product_02.price = 3000
+product_02.status = 'available'
+product_02.description = '总有些意想不到的惊喜，不刻意为之，怦然于心。相遇的瞬间就已触动，窃窃的喜悦弥漫心间，那一丝波澜，想要一辈子珍藏。因为你我，爱才存在，相濡以沫或归于平静，偶有的涟漪，希望如初见般甜蜜温暖。'
+product_02.save
+v1 = product_02.variants.new(option_value_ids: ["1", "3"], price: 3000) # 18K金 简约款
+v1.save
+v2 = product_02.variants.new(option_value_ids: ["1", "4"], price: 3000) # 18K金 轻奢款
+v2.save
+master = product_02.master
+img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_1.picture = Rails.root.join('db', 'images', 'whispper', 'p1.png').open
+img_1.save
+img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_2.picture = Rails.root.join('db', 'images', 'whispper', 'p2.png').open
+img_2.save
+
+product_03 = Product.new(name: '简爱', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
+product_03.price = 2000
+product_03.status = 'available'
+product_03.description = '轻简是一种姿态，不凡的爱情正在延绵。说不上为什么，我变得很主动，这很真实，你就是我要找的。褪去繁复，淬炼菁华，心意凝然于指，爱意久远于心，简单却是最完整。'
+product_03.save
+v1 = product_03.variants.new(option_value_ids: ["1", "3"], price: 2000) # 18K金 简约款
+v1.save
+v2 = product_03.variants.new(option_value_ids: ["1", "4"], price: 2000) # 18K金 轻奢款
+v2.save
+master = product_03.master
+img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_1.picture = Rails.root.join('db', 'images', 'jianai', 'p1.png').open
+img_1.save
+img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_2.picture = Rails.root.join('db', 'images', 'jianai', 'p2.png').open
+img_2.save
+
+product_04 = Product.new(name: '花冠', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
+product_04.price = 2500
+product_04.status = 'available'
+product_04.description = '从触目可及的美好中给予最好的只是一个开始。你以一朵花的姿态自由行走，惊艳了时光，惹醉了岁月，悠然入我心。那不染尘俗的美，在我心间静静绽放，凝固成最永恒的爱恋。'
+product_04.save
+v1 = product_04.variants.new(option_value_ids: ["1", "3"], price: 2500) # 18K金 简约款
+v1.save
+v2 = product_04.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金 轻奢款
+v2.save
+master = product_04.master
+img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_1.picture = Rails.root.join('db', 'images', 'thecrown', 'p1.png').open
+img_1.save
+img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_2.picture = Rails.root.join('db', 'images', 'thecrown', 'p2.png').open
+img_2.save
