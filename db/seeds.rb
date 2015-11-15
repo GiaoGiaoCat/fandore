@@ -274,10 +274,10 @@ v2 = product_01.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金
 v2.save
 master = product_01.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_1.picture = Rails.root.join('db', 'images', 'roseland', 'p1.png').open
+img_1.picture = File.new(Rails.root.join('db', 'images', 'roseland', 'p1.png'))
 img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_2.picture = Rails.root.join('db', 'images', 'roseland', 'p2.png').open
+img_2.picture = File.new(Rails.root.join('db', 'images', 'roseland', 'p2.png'))
 img_2.save
 
 product_02 = Product.new(name: '微澜', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
@@ -291,10 +291,10 @@ v2 = product_02.variants.new(option_value_ids: ["1", "4"], price: 3000) # 18K金
 v2.save
 master = product_02.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_1.picture = Rails.root.join('db', 'images', 'whispper', 'p1.png').open
+img_1.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'p1.png'))
 img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_2.picture = Rails.root.join('db', 'images', 'whispper', 'p2.png').open
+img_2.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'p2.png'))
 img_2.save
 
 product_03 = Product.new(name: '简爱', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
@@ -308,10 +308,10 @@ v2 = product_03.variants.new(option_value_ids: ["1", "4"], price: 2000) # 18K金
 v2.save
 master = product_03.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_1.picture = Rails.root.join('db', 'images', 'jianai', 'p1.png').open
+img_1.picture = File.new(Rails.root.join('db', 'images', 'jianai', 'p1.png'))
 img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_2.picture = Rails.root.join('db', 'images', 'jianai', 'p2.png').open
+img_2.picture = File.new(Rails.root.join('db', 'images', 'jianai', 'p2.png'))
 img_2.save
 
 product_04 = Product.new(name: '花冠', prototype_id: prototype_1.id, taxon_ids: taxon_1.id)
@@ -325,8 +325,8 @@ v2 = product_04.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金
 v2.save
 master = product_04.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_1.picture = Rails.root.join('db', 'images', 'thecrown', 'p1.png').open
+img_1.picture = File.new(Rails.root.join('db', 'images', 'thecrown', 'p1.png'))
 img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
-img_2.picture = Rails.root.join('db', 'images', 'thecrown', 'p2.png').open
+img_2.picture = File.new(Rails.root.join('db', 'images', 'thecrown', 'p2.png'))
 img_2.save
