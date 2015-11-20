@@ -23,7 +23,9 @@
                                   <i class="iconfont icon-zoom"></i>
                               </div>
                           </div>
-                          <%= image_tag product.master.images.first.picture.middle.url %>
+                          <% if product.master.images.first %>
+                            <%= image_tag product.master.images.first.picture.middle.url %>
+                          <% end %>
                       </a>
                   </div>
                   <h2 class="pro-title">
