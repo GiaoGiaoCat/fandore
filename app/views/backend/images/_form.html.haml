@@ -1,5 +1,5 @@
 = simple_form_for(@image, url: admin_product_images_path(@product), :wrapper => :horizontal_form,  html: {  multipart: true, class: 'form-horizontal' }) do |f|
   = f.file_field :picture
-  = f.association :viewable, collection: @product.variants << @product.master, label_method: ->(infer){ infer.is_master ? "All": infer.sku}, value_method: :id
+  = f.association :viewable, collection: @product.variants_including_master, label_method: ->(infer) { infer.is_master ? "All": infer.options_text }, value_method: :id
   = link_to 'Cancel', :back, class: 'btn btn-white'
   = f.submit class: 'btn btn-primary'
