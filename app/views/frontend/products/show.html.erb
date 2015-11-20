@@ -15,35 +15,23 @@
     <div class="product-info">
       <%= form_tag line_items_path, id: 'add-to-cat' do %>
         <h1><%= @product.name %></h1>
-        <p class="subtitle">WHISPER 1610242</p>
+        <!-- <p class="subtitle">WHISPER 1610242</p> -->
         <p class="product-price" id="product-price"><%= number_to_currency(@product.price, unit: '￥') %></p>
 
-        <div>
+        <div class="product-style">
           <% @product.variants.each_with_index do |variant, index| %>
-            <span>
-              <% checked = index == 0 %>
-              <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
-              <%= label_tag dom_id(variant), variant.options_text, class: 'product-style' %>
-              <%= content_tag(:span, number_to_currency(variant.price, unit: '￥'), style: 'display:none;') %>
-              <br />
-            </span>
+              <span>
+                <% checked = index == 0; variant_name = index == 0 ? '简约款' : '轻奢款' %>
+                <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
+                <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant) %>
+                <%= content_tag(:span, number_to_currency(variant.price, unit: '￥'), class: 'variant-price', style: 'display:none;') %>
+              </span>
           <% end %>
         </div>
-        <!-- <div class="product-style">
-            <input type="radio" id="product-style-2" name="product_style" value="1">
-            <label class="product-style" for="product-style-2">轻奢款</label>
-        </div> -->
 
         <p class="product-desc"><%= @product.description %></p>
         <div class="product-information">
-          <% @product_properties.each do |product_property| %>
             <div>
-              <b><%= product_property.property.presentation %>：</b>
-              <span><%= product_property.value %></span>
-            <%=  %>
-            </div>
-          <% end %>
-            <!-- <div>
                 <b>主钻重量：</b> <span>0.3CT</span>
             </div>
 
@@ -75,6 +63,7 @@
                 <label class="product-radio" for="product-color-3">F</label>
             </div>
 
+          <!--
             <div class="product-material">
                 <b>选择材质：</b>
                 <input type="radio" id="product-material-1" name="product_material" value="D" checked>
@@ -128,8 +117,8 @@
 
 
 <script type="text/javascript">
-  $('.variant_radio').click(function() {
-    var price = $(this).parent("span").find("span").text();
+  $('label.product-style').click(function() {
+    var price = $(this).parent("span").find(".variant-price").text();
     $('#product-price').html(price);
   });
   $('#link-to-car').click(function() {
