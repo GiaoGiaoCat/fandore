@@ -63,6 +63,12 @@
                 <label class="product-radio" for="product-color-3">F</label>
             </div>
 
+            <ul>
+              <% @diamonds.each do |diamond| %>
+                <li><%= diamond.id %> <%= diamond.name %> <%= diamond.price %></li>
+              <% end %>
+            </ul>
+
           <!--
             <div class="product-material">
                 <b>选择材质：</b>

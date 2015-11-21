@@ -1,7 +1,5 @@
 class Frontend::LineItemsController < Frontend::ApplicationController
 
-  before_action :load_cart
-
   def create
     load_variant
     build_line_item
