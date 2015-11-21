@@ -16,23 +16,20 @@
       <%= form_tag line_items_path, id: 'add-to-cat' do %>
         <h1><%= @product.name %></h1>
         <!-- <p class="subtitle">WHISPER 1610242</p> -->
-        <p class="product-price" id="product-price"><%= number_to_currency(@product.price, unit: '￥') %></p>
+        <p class="product-price" id="product-price"></p>
 
-        <div class="product-style">
+        <div class="product-styles">
           <% @product.variants.each_with_index do |variant, index| %>
-              <span>
-                <% checked = index == 0; variant_name = index == 0 ? '简约款' : '轻奢款' %>
-                <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
-                <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant) %>
-                <%= content_tag(:span, number_to_currency(variant.price, unit: '￥'), class: 'variant-price', style: 'display:none;') %>
-              </span>
+            <% checked = index == 0; variant_name = index == 0 ? '简约款' : '轻奢款' %>
+            <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
+            <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant) %>
           <% end %>
         </div>
 
         <p class="product-desc"><%= @product.description %></p>
         <div class="product-information">
             <div>
-                <b>主钻重量：</b> <span>0.3CT</span>
+                <b>主钻重量：</b> <span class="diamond-weight">0.3CT</span>
             </div>
 
             <div>
@@ -40,34 +37,30 @@
             </div>
 
             <div>
-                <b>主钻净度：</b>
-                <input type="radio" id="product-jingdu-1" name="product_jingdu" value="IF" checked>
-                <label class="product-radio" for="product-jingdu-1">IF</label>
-
-                <input type="radio" id="product-jingdu-2" name="product_jingdu" value="VVS1">
-                <label class="product-radio" for="product-jingdu-2">VVS1</label>
-
-                <input type="radio" id="product-jingdu-3" name="product_jingdu" value="VVS2">
-                <label class="product-radio" for="product-jingdu-3">VVS2</label>
-            </div>
-
-            <div>
                 <b>主钻颜色：</b>
-                <input type="radio" id="product-color-1" name="product_color" value="D" checked>
+                <input type="radio" id="product-color-1" name="product_color" value="D">
                 <label class="product-radio" for="product-color-1">D</label>
 
                 <input type="radio" id="product-color-2" name="product_color" value="E">
                 <label class="product-radio" for="product-color-2">E</label>
 
-                <input type="radio" id="product-color-3" name="product_color" value="F">
+                <input type="radio" id="product-color-3" name="product_color" value="F" checked>
                 <label class="product-radio" for="product-color-3">F</label>
             </div>
 
-            <ul>
-              <% @diamonds.each do |diamond| %>
-                <li><%= diamond.id %> <%= diamond.name %> <%= diamond.price %></li>
-              <% end %>
-            </ul>
+            <div>
+                <b>主钻净度：</b>
+                <input type="radio" id="product-jingdu-1" name="product_jingdu" value="IF">
+                <label class="product-radio" for="product-jingdu-1">IF</label>
+
+                <input type="radio" id="product-jingdu-2" name="product_jingdu" value="VVS1">
+                <label class="product-radio" for="product-jingdu-2">VVS1</label>
+
+                <input type="radio" id="product-jingdu-3" name="product_jingdu" value="VVS2" checked>
+                <label class="product-radio" for="product-jingdu-3">VVS2</label>
+            </div>
+
+            <input type="hidden" name="diamond_id">
 
           <!--
             <div class="product-material">
@@ -121,13 +114,8 @@
     </div>
 </div>
 
-
-<script type="text/javascript">
-  $('label.product-style').click(function() {
-    var price = $(this).parent("span").find(".variant-price").text();
-    $('#product-price').html(price);
-  });
-  $('#link-to-car').click(function() {
-    $(this).parent("form").submit();
-  })
-</script>
+<ul style="display:none;">
+    <% @diamonds.each do |diamond| %>
+        <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
+    <% end %>
+</ul>
