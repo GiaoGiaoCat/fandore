@@ -8,9 +8,14 @@ class Frontend::ProductsController < Frontend::ApplicationController
 
   def show
     load_product
+    load_diamonds
   end
 
   private
+
+  def load_diamonds
+    @diamonds ||= product_scope.diamonds
+  end
 
   def load_products
     @products ||= product_scope.by_taxon(params[:taxon_name])
