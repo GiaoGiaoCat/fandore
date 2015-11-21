@@ -85,7 +85,6 @@
                       <tr>
                           <td align="center">
                               <div class="table-imgbox">
-                                <%= link_to image_tag(item.product.master.images.first.picture.middle.url), product_path(item.product) %>
                               </div>
                           </td>
                           <td align="center">
@@ -123,7 +122,7 @@
         <div class="line-dot"></div>
         <div class="padd30">
             <h3 class="font-s14 c-3a">添加订单备注</h3>
-            <textarea name="" rows="5" cols="" class="textarea-style mt20" placeholder="备注内容" style="width: 98%;"></textarea>
+            <%=f.text_area :remark, {rows:5, class: "textarea-style mt20", placeholder: "备注内容" , style: "width: 98%;"} %>
         </div>
     </div>
 

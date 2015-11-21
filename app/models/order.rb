@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   # extends ...................................................................
   # includes ..................................................................
   include OrderStates
-  include Remarkable
+  # include Remarkable
   # constants .................................................................
   # related macros ............................................................
   attr_accessor :use_shipping
@@ -57,7 +57,6 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
-    copy_remark_form_cart(cart)
   end
 
   # NOTE: 暂时没用上
@@ -90,10 +89,6 @@ class Order < ActiveRecord::Base
 
   def link_by_email
     self.email = user.email if self.user
-  end
-
-  def copy_remark_form_cart(cart)
-    self.remark, cart.remark = cart.remark, {}
   end
 
   def clone_shipping_address

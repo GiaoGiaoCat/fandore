@@ -8,5 +8,7 @@
     = link_to '评价', new_line_item_comment_path(item)
 %br
 = "State: #{@order.state}"
+%br
+= "remark: #{@order.remark}"
 - if @order.may_complete?
   = link_to 'Complete', order_path(@order), method: :put
