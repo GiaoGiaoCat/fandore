@@ -16,6 +16,7 @@ $(document).on 'page:change', (e) ->
 
 # trigger page:before-unload event for specific page
 $(document).on 'page:before-unload', (e) ->
+  $('html').attr 'style', ''
   $(document).trigger "page:before-unload##{fandore.pageId}"
 
 

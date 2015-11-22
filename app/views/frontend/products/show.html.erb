@@ -93,7 +93,7 @@
             <a href="javascript:;" class="link-to-collect">
                 <i class="iconfont icon-collect"></i> 加入收藏
             </a>
-            <a href="javascript:;" class="link-to-comment">
+            <a href="javascript:;" class="link-to-comment show-popup" data-tpl="tpl-reviews" data-size="big">
                 <i class="iconfont icon-message"></i> 历史评价
             </a>
         </div>
@@ -119,3 +119,73 @@
         <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
     <% end %>
 </ul>
+
+<script type="text/html" id="tpl-reviews">
+    <div class="float-title-bar">
+        商品评价 <span class="t-eng">Product reviews</span>
+    </div>
+    <div class="sub-scroll">
+        <div class="pro-review-wrap">
+            <dl>
+                <dt>
+                    <div class="user-head-s fl">
+                        <a href="#">
+                            <img src="<%= asset_path('user_head.jpg') %>" />
+                        </a>
+                    </div>
+                    <h3 class="text-center">tx****2</h3>
+                </dt>
+                <dd>
+                    <div class="pro-review-txt">
+                        尺寸刚刚好 设计大方 用料很好 细节也做得很精巧 店家服务很好 咨询下单配送一条龙 ,客服态度很好, 耐心回答解决每一个问题 给TA点32个赞！ 忒滴很，额喜欢 ！ </div>
+                    <div class="review-other">2015年06月23日 10:19
+                        <span>主钻重量:0.3ct</span>
+                        <span>主钻净度：FL</span>
+                        <span>主钻颜色：D </span>
+                        <span>主钻工切：3EX</span>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <div class="user-head-s fl">
+                        <a href="#">
+                            <img src="<%= asset_path('user_head.jpg') %>" />
+                        </a>
+                    </div>
+                    <h3 class="text-center">tx****2</h3>
+                </dt>
+                <dd>
+                    <div class="pro-review-txt">
+                        尺寸刚刚好 设计大方 用料很好 细节也做得很精巧 店家服务很好 咨询下单配送一条龙 ,客服态度很好, 耐心回答解决每一个问题 给TA点32个赞！ 忒滴很，额喜欢 ！ </div>
+                    <div class="review-other">2015年06月23日 10:19
+                        <span>主钻重量:0.3ct</span>
+                        <span>主钻净度：FL</span>
+                        <span>主钻颜色：D </span>
+                        <span>主钻工切：3EX</span>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <div class="user-head-s fl">
+                        <a href="#">
+                            <img src="<%= asset_path('user_head.jpg') %>" />
+                        </a>
+                    </div>
+                    <h3 class="text-center">tx****2</h3>
+                </dt>
+                <dd>
+                    <div class="pro-review-txt">
+                        尺寸刚刚好 设计大方 用料很好 细节也做得很精巧 店家服务很好 咨询下单配送一条龙 ,客服态度很好, 耐心回答解决每一个问题 给TA点32个赞！ 忒滴很，额喜欢 ！ </div>
+                    <div class="review-other">2015年06月23日 10:19
+                        <span>主钻重量:0.3ct</span>
+                        <span>主钻净度：FL</span>
+                        <span>主钻颜色：D </span>
+                        <span>主钻工切：3EX</span>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</script>
