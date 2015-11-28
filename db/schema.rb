@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121112911) do
+ActiveRecord::Schema.define(version: 20150927025104) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(version: 20151121112911) do
     t.decimal  "price",                        precision: 10, scale: 2,               null: false
     t.decimal  "adjustment_total",             precision: 10, scale: 2, default: 0.0
     t.decimal  "promo_total",                  precision: 10, scale: 2, default: 0.0
+    t.string   "remark",           limit: 191
     t.datetime "created_at",                                                          null: false
     t.datetime "updated_at",                                                          null: false
-    t.string   "remark",           limit: 191
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree

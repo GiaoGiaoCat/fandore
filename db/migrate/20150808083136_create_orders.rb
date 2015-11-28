@@ -34,7 +34,7 @@ class CreateOrders < ActiveRecord::Migration
       t.boolean   :confirmation_delivered, default: false, index: true
 
       t.integer   :invoice_id, index: true
-      t.text :remark
+      t.text      :remark
       # 以下字段暂时无用
       # t.decimal   :additional_tax_total, precision: 10, scale: 2, default: 0.0, null: false
       # t.integer   :shipping_method_id, index: true

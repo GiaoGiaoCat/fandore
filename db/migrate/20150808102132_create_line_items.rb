@@ -15,6 +15,7 @@ class CreateLineItems < ActiveRecord::Migration
       # t.decimal :included_tax_total, precision: 10, scale: 2, default: 0.0, null: false
       # t.decimal :pre_tax_amount, precision: 10, scale: 2, default: 0.0
       # t.integer :tax_category_id
+      t.string :remark
 
       t.timestamps null: false
     end
