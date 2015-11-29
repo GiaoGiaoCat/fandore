@@ -32,4 +32,4 @@ renderPrice = ->
   name = "#{ $('.diamond-weight').text() }-#{ $('[name=product_color]:checked').val() }-#{ $('[name=product_jingdu]:checked').val() }".toLowerCase()
   diamond = $("[data-name='#{ name }']")
   $('.product-price').text "￥#{ diamond.text() }"
-  $('[diamond_id]').val "#{ diamond.attr 'id' }"
+  $('#diamond_id').val "#{ diamond.attr 'id' }"

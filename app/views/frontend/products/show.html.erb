@@ -60,7 +60,7 @@
                 <label class="product-radio" for="product-jingdu-3">VVS2</label>
             </div>
 
-            <input type="hidden" name="diamond_id">
+            <input type="hidden" id="diamond_id" name="diamond_id">
 
           <!--
             <div class="product-material">
@@ -87,7 +87,7 @@
             </div>
         </div>
 
-        <!-- <%= submit_tag '加入购物车', class: 'link-to-car' %> -->
+        <!-- <%= submit_tag '加入购物车', class: 'link-to-car', id: 'link-to-car' %> -->
         <a href="javascript:;" id='link-to-car' class="link-to-car">加入购物车</a>
         <div class="product-more">
             <a href="javascript:;" class="link-to-collect">
@@ -119,6 +119,16 @@
         <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
     <% end %>
 </ul>
+
+<script type="text/javascript">
+  $('label.product-style').click(function() {
+    var price = $(this).parent("span").find(".variant-price").text();
+    $('#product-price').html(price);
+  });
+  $('#link-to-car').click(function() {
+    $(this).parent("form").submit();
+  })
+</script>
 
 <script type="text/html" id="tpl-reviews">
     <div class="float-title-bar">
