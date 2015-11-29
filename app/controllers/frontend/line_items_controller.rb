@@ -28,7 +28,16 @@ class Frontend::LineItemsController < Frontend::ApplicationController
 
   def save_line_item
     if @line_item.save
+      save_diamond
       redirect_to cart_path(@line_item.cart)
+    end
+  end
+
+  def save_diamond
+    if params[:diamond_id]
+      diamond = Product::Variant.find(params[:diamond_id])
+      line_item = @cart.add_line_item(diamond)
+      line_item.save
     end
   end
 end

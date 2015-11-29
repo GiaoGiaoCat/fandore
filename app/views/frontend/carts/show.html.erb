@@ -23,12 +23,21 @@
                       </label>
                   </td>
                   <td>
-                      <%= image_tag item.product.master.images.first.picture.middle.url, class: 'pro-img' %>
+                      <% if item.product.master.images.first %>
+                        <%= image_tag item.product.master.images.first.picture.middle.url, class: 'pro-img' %>
+                      <% else %>
+                        搭配钻石
+                        <%# image_tag item.product.master.images.first.picture.middle.url, class: 'pro-img' %>
+                      <% end %>
                   </td>
                   <td align="left">
                       <h3 class="name">
-                        <%= item.product.name %>
-                        <%= item.variant.options_text %>
+                        <% if item.product.taxons.pluck(:name).include? "钻石" %>
+                          <%= show_diamond_info(item) %>
+                        <% else %>
+                          <%= item.product.name %>
+                          <%= item.variant.options_text %>
+                        <% end %>
                       </h3>
                       <p class="del-txt">
                           <%= item.remark %>
