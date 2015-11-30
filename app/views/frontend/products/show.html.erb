@@ -2,12 +2,12 @@
 
 <div class="product-wrap">
     <div class="product-main">
-        <%= image_tag @product.master.images.first.picture.middle.url, class: 'product-image' %>
+        <%= image_tag @product.master.images.first.picture.url, class: 'product-image' %>
         <a href="javascript:;" class="link-show-image">浏览高清图</a>
         <div class="product-images">
             <% @product.master.images.each_with_index do |image, index| %>
               <% class_name = index == 0 ? 'active' : nil %>
-              <%= link_to image_tag(image.picture.middle.url, width: 110), 'javascript:;', class: "thumb-image #{class_name}" %>
+              <%= link_to image_tag(image.picture.url, width: 110), 'javascript:;', class: "thumb-image #{class_name}" %>
             <% end %>
         </div>
     </div>
@@ -68,7 +68,7 @@
                 <input type="radio" id="product-material-1" name="product_material" value="D" checked>
                 <label class="product-radio" for="product-material-1">18K金</label>
             </div>
-
+          -->
             <div class="product-size">
                 <b>选择手寸：</b>
                 <select name="product_size">
@@ -79,7 +79,7 @@
                     <option value="10">10</option>
                 </select>
                 <span class="desc">港码6号内直径28mm，内周长38mm</span>
-            </div> -->
+            </div>
 
             <div class="product-lettering">
                 <b>刻字内容：</b>
