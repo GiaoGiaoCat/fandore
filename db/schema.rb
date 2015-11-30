@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927025104) do
+ActiveRecord::Schema.define(version: 20151130154222) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -118,6 +118,19 @@ ActiveRecord::Schema.define(version: 20150927025104) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["variant_id"], name: "index_line_items_on_variant_id", using: :btree
+
+  create_table "line_items_properties", force: :cascade do |t|
+    t.string   "value",        limit: 191
+    t.integer  "line_item_id", limit: 4
+    t.integer  "property_id",  limit: 4
+    t.integer  "position",     limit: 4,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "line_items_properties", ["line_item_id"], name: "index_line_items_properties_on_line_item_id", using: :btree
+  add_index "line_items_properties", ["position"], name: "index_line_items_properties_on_position", using: :btree
+  add_index "line_items_properties", ["property_id"], name: "index_line_items_properties_on_property_id", using: :btree
 
   create_table "option_types", force: :cascade do |t|
     t.string   "name",         limit: 191
