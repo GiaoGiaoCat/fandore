@@ -14,7 +14,7 @@ $ ->
   .on 'click', "##{ pageId } .link-show-image", ->
     $('.image-preview').fadeIn()
 
-  .on 'click', "##{ pageId } .product-radio", renderPrice
+  .on 'change', "##{ pageId } input[type=radio]", renderPrice
   .on 'click', "##{ pageId } .product-style", ->
     $weight = $('.diamond-weight')
     if $(@).is('.product-styles :last') then $weight.text '0.5CT' else $weight.text '0.3CT'
