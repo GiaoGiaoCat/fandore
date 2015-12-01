@@ -23,6 +23,7 @@
             <% checked = index == 0; variant_name = index == 0 ? '简约款' : '轻奢款' %>
             <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
             <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant) %>
+            <%= content_tag :span, variant.price, style: 'display: none;' %>
           <% end %>
         </div>
 
