@@ -13,6 +13,7 @@ class Order::LineItem < ActiveRecord::Base
   belongs_to :variant, class_name: "Product::Variant", inverse_of: :line_items
   # belongs_to :tax_category
   has_one :product, through: :variant
+  has_one :diamond, class_name: "Order::LineItem"
   # has_many :adjustments, as: :adjustable, dependent: :destroy
   # has_many :inventory_units, inverse_of: :line_item
   has_many :line_items_properties, class_name: "Order::LineItemProperty", dependent: :destroy, inverse_of: :line_item

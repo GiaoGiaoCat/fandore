@@ -106,13 +106,13 @@ ActiveRecord::Schema.define(version: 20151130154222) do
     t.integer  "order_id",         limit: 4
     t.integer  "cart_id",          limit: 4
     t.integer  "variant_id",       limit: 4
-    t.integer  "quantity",         limit: 4,                            default: 1,   null: false
-    t.decimal  "price",                        precision: 10, scale: 2,               null: false
-    t.decimal  "adjustment_total",             precision: 10, scale: 2, default: 0.0
-    t.decimal  "promo_total",                  precision: 10, scale: 2, default: 0.0
-    t.string   "remark",           limit: 191
-    t.datetime "created_at",                                                          null: false
-    t.datetime "updated_at",                                                          null: false
+    t.integer  "quantity",         limit: 4,                          default: 1,   null: false
+    t.decimal  "price",                      precision: 10, scale: 2,               null: false
+    t.decimal  "adjustment_total",           precision: 10, scale: 2, default: 0.0
+    t.decimal  "promo_total",                precision: 10, scale: 2, default: 0.0
+    t.integer  "diamond_id",       limit: 4
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
