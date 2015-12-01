@@ -31,6 +31,7 @@ class Order::LineItem < ActiveRecord::Base
   after_destroy :destroy_diamond
   # after_commit :update_related_parent_model_remark
   # scopes ....................................................................
+  scope :rings, -> { where(type: nil) }
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :line_items_properties, allow_destroy: true
 
@@ -43,13 +44,19 @@ class Order::LineItem < ActiveRecord::Base
     price * quantity
   end
 
+  def diamond_amount
+    diamond.amount if diamond
+  end
+
   # def discounted_amount
   #   amount + promo_total
   # end
   #
-  # def final_amount
-  #   amount + adjustment_total
-  # end
+  def final_amount
+    # amount + adjustment_total
+    amount + diamond_amount
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

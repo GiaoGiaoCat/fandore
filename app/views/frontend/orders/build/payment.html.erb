@@ -36,25 +36,19 @@
                         <th>名称</th>
                         <th>价格</th>
                     </tr>
-                    <% @order.line_items.each do |item| %>
+                    <% @order.line_items.rings.each do |item| %>
                       <tr>
                           <td align="center">
                               <div class="table-imgbox">
                                 <% if item.product.master.images.first %>
                                   <%= link_to image_tag(item.product.master.images.first.picture.middle.url), product_path(item.product) %>
-                                <% else %>
-                                  搭配钻石
                                 <% end %>
                               </div>
                           </td>
                           <td align="center">
-                            <% if item.product.taxons.pluck(:name).include? "钻石" %>
-                              <%= show_diamond_info(item) %>
-                            <% else %>
                               <%= link_to "#{item.product.name} #{item.variant.options_text}", product_path(item.product), class: 'c-3a' %>
-                            <% end %>
                           </td>
-                          <td align="center"><span class="c-red"><%= number_to_currency item.amount %></span></td>
+                          <td align="center"><span class="c-red"><%= number_to_currency item.final_amount %></span></td>
                       </tr>
                     <% end %>
                 </table>
