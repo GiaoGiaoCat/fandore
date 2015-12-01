@@ -11,9 +11,11 @@ class Order::LineItem < ActiveRecord::Base
   belongs_to :order, inverse_of: :line_items, touch: true
   belongs_to :cart, inverse_of: :line_items, touch: true
   belongs_to :variant, class_name: "Product::Variant", inverse_of: :line_items
+
+  # belongs_to :item_resource, :polymorphic => true
   # belongs_to :tax_category
   has_one :product, through: :variant
-  has_one :diamond, class_name: "Order::LineItem"
+  has_one :diamond
   # has_many :adjustments, as: :adjustable, dependent: :destroy
   # has_many :inventory_units, inverse_of: :line_item
   has_many :line_items_properties, class_name: "Order::LineItemProperty", dependent: :destroy, inverse_of: :line_item
@@ -26,7 +28,7 @@ class Order::LineItem < ActiveRecord::Base
   before_create :set_prototype
   after_create :add_associations_from_prototype
   before_validation :copy_price
-
+  after_destroy :destroy_diamond
   # after_commit :update_related_parent_model_remark
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
@@ -70,6 +72,10 @@ class Order::LineItem < ActiveRecord::Base
       # self.cost_price = variant.cost_price if cost_price.nil?
       # self.currency = variant.currency if currency.nil?
     end
+  end
+
+  def destroy_diamond
+    diamond.destroy if diamond
   end
 
   # def update_related_parent_model_remark

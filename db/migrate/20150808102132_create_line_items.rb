@@ -16,7 +16,8 @@ class CreateLineItems < ActiveRecord::Migration
       # t.decimal :pre_tax_amount, precision: 10, scale: 2, default: 0.0
       # t.integer :tax_category_id
 
-      t.integer :diamond_id
+      t.integer :line_item_id
+      t.string :type
 
       t.timestamps null: false
     end

@@ -45,8 +45,9 @@ class Frontend::LineItemsController < Frontend::ApplicationController
     if params[:diamond_id]
       diamond = Product::Variant.find(params[:diamond_id])
       line_item = @cart.add_line_item(diamond)
+      line_item.type = "Order::Diamond"
+      line_item.line_item_id = @line_item.id
       line_item.save
-      @line_item.update_column(:diamond_id, line_item.id)
     end
   end
 end
