@@ -22,8 +22,9 @@
           <% @product.variants.each_with_index do |variant, index| %>
             <% checked = index == 0; variant_name = index == 0 ? '简约款' : '轻奢款' %>
             <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
-            <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant) %>
-            <%= content_tag :span, variant.price, style: 'display: none;' %>
+            <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant), data: {
+                price: variant.price
+                } %>
           <% end %>
         </div>
 
@@ -120,16 +121,6 @@
         <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
     <% end %>
 </ul>
-
-<script type="text/javascript">
-  $('label.product-style').click(function() {
-    var price = $(this).parent("span").find(".variant-price").text();
-    $('#product-price').html(price);
-  });
-  $('#link-to-car').click(function() {
-    $(this).parent("form").submit();
-  })
-</script>
 
 <script type="text/html" id="tpl-reviews">
     <div class="float-title-bar">

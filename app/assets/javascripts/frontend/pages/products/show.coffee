@@ -20,6 +20,8 @@ $ ->
     if $(@).is('.product-styles :last') then $weight.text '0.5CT' else $weight.text '0.3CT'
     $('[for=product-color-3], [for=product-jingdu-3]').click()
 
+  .on 'click', "##{ pageId } #link-to-car", ->
+    $(@).parent('form').submit()
 
 $(document).on "page:load##{pageId}", (e) ->
   renderPrice()
@@ -31,5 +33,6 @@ $(document).on "page:load##{pageId}", (e) ->
 renderPrice = ->
   name = "#{ $('.diamond-weight').text() }-#{ $('[name=product_color]:checked').val() }-#{ $('[name=product_jingdu]:checked').val() }".toLowerCase()
   diamond = $("[data-name='#{ name }']")
-  $('.product-price').text "￥#{ diamond.text() }"
+  price = diamond.text() * 1 + $('input[type=radio]:checked + .product-style').data('price') * 1
+  $('.product-price').text "￥#{ price }"
   $('#diamond_id').val "#{ diamond.attr 'id' }"
