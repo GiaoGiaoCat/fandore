@@ -23,14 +23,22 @@ class Frontend::LineItemsController < Frontend::ApplicationController
   end
 
   def build_line_item
-    @line_item = @cart.add_line_item(@variant, params[:remark])
+    @line_item = @cart.add_line_item(@variant)
   end
 
   def save_line_item
     if @line_item.save
+      save_properties
       save_diamond
       redirect_to cart_path(@line_item.cart)
     end
+  end
+
+  def save_properties
+    size = Product::Property.find_by(name: 'Size')
+    lettering = Product::Property.find_by(name: 'Lettering')
+    @line_item.line_items_properties.find_by(property_id: size.id).update(value: params[:size])
+    @line_item.line_items_properties.find_by(property_id: lettering.id).update(value: params[:lettering])
   end
 
   def save_diamond

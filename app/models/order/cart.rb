@@ -21,10 +21,9 @@ class Order::Cart < ActiveRecord::Base
   encrypted_id key: '5gA6lgr5g3GOg7EOQ1caYQ'
 
   # public instance methods ...................................................
-  def add_line_item(variant, remark = '')
+  def add_line_item(variant)
     current_item = line_items.find_or_initialize_by(variant_id: variant.id)
     current_item.quantity += 1 if current_item.persisted?
-    current_item.remark = remark
     current_item
   end
 

@@ -22,6 +22,7 @@ class Order::LineItem < ActiveRecord::Base
   validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :price, numericality: true
   # callbacks .................................................................
+  before_create :set_prototype
   after_create :add_associations_from_prototype
   before_validation :copy_price
 
@@ -49,6 +50,11 @@ class Order::LineItem < ActiveRecord::Base
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
+  def set_prototype
+    if product.taxons.pluck(:name).include? "求婚钻戒"
+      self.prototype_id = Product::Prototype.find_by(name: "求婚钻戒订单项")
+    end
+  end
 
   def add_associations_from_prototype
     if prototype_id && prototype = Product::Prototype.find_by(id: prototype_id)
