@@ -38,6 +38,7 @@
           %span.nav-label 销售管理
           %span.fa.arrow
         %ul.nav.nav-second-level
+          %li{ class: is_active_controller('backend/orders') }= link_to "订单管理", admin_orders_path
           %li{ class: is_active_controller('backend/promotion_categories') }= link_to "优惠劵分类管理", admin_promotion_categories_path
           %li{ class: is_active_controller('backend/promotions') }= link_to "优惠劵管理", admin_promotions_path
       %li
