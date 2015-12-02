@@ -1,13 +1,5 @@
 class Frontend::OrdersController < Frontend::ApplicationController
 
-  def index
-    load_orders
-  end
-
-  def show
-    load_order
-  end
-
   def create
     build_order
     save_order

@@ -2,8 +2,16 @@
     <dl>
         <dt>个人中心</dt>
         <dd>
-            <a href="#">我的订单</a>
-            <a href="<%= favorites_path %>">我的收藏</a>
+            <%=
+              link_to_unless_current("我的订单", orders_path) do
+                 link_to("我的订单", orders_path, class: 'side-active')
+              end
+            %>
+            <%=
+              link_to_unless_current("我的收藏", favorites_path) do
+                 link_to("我的收藏", favorites_path, class: 'side-active')
+              end
+            %>
             <a href="#">我的评价</a>
             <a href="#">优惠码</a>
             <a href="#">我的积分</a>
@@ -12,15 +20,35 @@
         </dd>
         <dt>账户资料</dt>
         <dd>
-            <a href="<%= users_profile_edit_path %>">基础资料</a>
-            <a href="<%= users_profile_edit_path %>">TA的资料</a>
+            <%=
+              link_to_unless_current("基础资料", users_profile_edit_path) do
+                 link_to("基础资料", users_profile_edit_path, class: 'side-active')
+              end
+            %>
+            <%#
+              link_to_unless_current("TA的资料", users_profile_edit_path) do
+                 link_to("TA的资料", users_profile_edit_path, class: 'side-active')
+              end
+            %>
         </dd>
         <dt>账户安全</dt>
         <dd>
-            <a href="<%= new_password_path %>">修改密码</a>
-            <a href="<%= users_questions_new_path %>">安全问题</a>
+            <%=
+              link_to_unless_current("修改密码", new_password_path) do
+                 link_to("修改密码", new_password_path, class: 'side-active')
+              end
+            %>
+            <%=
+              link_to_unless_current("安全问题", users_questions_new_path) do
+                 link_to("安全问题", users_questions_new_path, class: 'side-active')
+              end
+            %>
             <a href="#">绑定手机</a>
-            <a href="<%= binding_emails_path %>">绑定邮箱</a>
+            <%=
+              link_to_unless_current("绑定邮箱", binding_emails_path) do
+                 link_to("绑定邮箱", binding_emails_path, class: 'side-active')
+              end
+            %>
         </dd>
         <dt>售后服务</dt>
         <dd>
@@ -29,7 +57,11 @@
         </dd>
         <dt>收货地址</dt>
         <dd>
-            <a href="<%= addresses_path %>">增删改收货地址</a>
+            <%=
+              link_to_unless_current("增删改收货地址", addresses_path) do
+                 link_to("增删改收货地址", addresses_path, class: 'side-active')
+              end
+            %>
         </dd>
     </dl>
 </div>

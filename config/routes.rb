@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     # 购物相关
-    resources :orders, only: [:new, :index, :show, :create, :update] do
+    resources :orders, only: [:new, :create, :update] do
       # resources :build, controller: 'orders/build'
       scope module: 'orders', only: [:show, :create] do
         resources :build, only: [:show, :update]
@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       resources :binding_emails, only: [:index, :show, :create]
       resources :favorites, only: [:index, :destroy]
       resources :addresses
+      resources :orders, only: [:index]
     end
   end
 
