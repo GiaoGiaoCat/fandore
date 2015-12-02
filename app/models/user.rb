@@ -37,8 +37,11 @@ class User < ActiveRecord::Base
   BACKEND_ROLES = [:admin, :customer_service, :product_manager]
   FRONTEND_ROLES = [:member]
   ROLES = [:admin, :member, :customer_service, :product_manager]
+
   enum role: ROLES
+
   accepts_nested_attributes_for :profile, update_only: true
+
   delegate :name, :gender, :avatar, :birthday, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................

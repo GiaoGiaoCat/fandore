@@ -46,6 +46,8 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :shipping_address
   # accepts_nested_attributes_for :payments
   # accepts_nested_attributes_for :shipments
+  delegate :name, to: :shipping_address
+  alias_method :customer_name, :name
   # class methods .............................................................
   # public instance methods ...................................................
 

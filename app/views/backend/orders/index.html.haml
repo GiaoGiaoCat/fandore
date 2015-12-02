@@ -1,6 +1,41 @@
-%dl
-  - @orders.each do |order|
-    %dt= order.id
-    %dd= order.email
-    %dd= link_to 'Show', admin_order_path(order)
-    %hr
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 订单管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li.active
+        %strong 订单管理
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 订单列表
+        .ibox-content
+          = render "layouts/flash_messages", flash: flash
+
+          .table-responsive
+            %table.table.table-striped
+              %thead
+                %tr
+                  %th 订单号
+                  %th 客户
+                  %th 订单总价
+                  %th 创建日期
+                  %th 更新日期
+                  %th 状态
+                  %th
+              %tbody
+                - @orders.each do |order|
+                  %tr
+                    %td= order.number
+                    %td= order.customer_name
+                    %td= number_to_currency order.total
+                    %td= order.created_at.to_s(:db)
+                    %td= order.updated_at.to_s(:db)
+                    %td= order.state
+                    %td
+                      .btn-group
+                        = link_to '查看', admin_order_path(order), class: 'btn btn-white btn-xs'

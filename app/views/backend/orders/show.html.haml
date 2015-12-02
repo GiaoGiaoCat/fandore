@@ -3,7 +3,6 @@
 - @order.line_items.each do |item|
   = item.sku
   = item.name
-  = item.remark
   - if @order.completed? && item.comments.empty?
     = link_to '评价', new_line_item_comment_path(item)
 %br
