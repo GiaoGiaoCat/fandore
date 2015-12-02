@@ -109,7 +109,7 @@
         <div class="preview-list">
             <ul>
                 <% @product.master.images.each do |image| %>
-                  <li><%= image_tag image.picture.middle.url %></li>
+                  <li><%= image_tag image.picture.url %></li>
                 <% end %>
             </ul>
         </div>
