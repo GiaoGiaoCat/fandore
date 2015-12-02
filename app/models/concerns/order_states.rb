@@ -20,6 +20,7 @@ module OrderStates
       completed: 70,
       canceled: 90,
       closed: 90,
+      refunded: 95,
       resumed: 100
     }
 
@@ -35,6 +36,7 @@ module OrderStates
       state :completed
       state :canceled
       state :closed
+      state :refunded
       state :resumed
 
       event :checkout, after: :update_totals do
@@ -69,8 +71,12 @@ module OrderStates
         transitions from: :pending, to: :canceled
       end
 
-      event :closed do
+      event :close do
         transitions from: [:pending, :completed], to: :closed
+      end
+
+      event :refund do
+        transitions from: [:completed], to: :refunded
       end
 
       event :resume do

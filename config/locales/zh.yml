@@ -246,3 +246,15 @@ zh:
       next: "下一页"
       truncate: "..."
     orders:
+      states:
+        pending: '等待客户付款'
+        paid: '客户已付款等待发货'
+        filtered: 'filtered'
+        inlaided: '钻石已镶嵌'
+        packed: '已打包'
+        delivered: '已发货等待确认'
+        completed: '已收货'
+        canceled: '已取消'
+        closed: '已关闭'
+        refunded: '已退款'
+        resumed: '已恢复'

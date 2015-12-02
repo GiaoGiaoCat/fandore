@@ -21,20 +21,18 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
       @order.checkout!
     end
     if step == :payment
-      @order.pay!
+      # @order.pay!
       alipay_url = Alipay::Service.create_direct_pay_by_user_url(
-              out_trade_no: "TEST20150401000-#{@order.id.to_s}",
-              subject: 'Order Name',
-              total_fee: 0.01,
-              return_url: 'https://example.com/orders/20150401000-0001',
-              notify_url: 'https://example.com/orders/20150401000-0001/notify'
-            )
+        out_trade_no: @order.number,
+        subject: 'Order Name',
+        total_fee: 0.01,
+        return_url: 'https://example.com/orders/20150401000-0001',
+        notify_url: 'https://example.com/orders/20150401000-0001/notify'
+      )
       redirect_to alipay_url and return
     end
     render_wizard @order
   end
-
-
 
   private
 

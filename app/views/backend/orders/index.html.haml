@@ -35,7 +35,7 @@
                     %td= number_to_currency order.total
                     %td= order.created_at.to_s(:db)
                     %td= order.updated_at.to_s(:db)
-                    %td= order.state
+                    %td= I18n.t("views.orders.states.#{order.state}")
                     %td
                       .btn-group
                         = link_to '查看', admin_order_path(order), class: 'btn btn-white btn-xs'
