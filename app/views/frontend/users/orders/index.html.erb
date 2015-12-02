@@ -1,0 +1,101 @@
+<%= render 'layouts/frontend/header' %>
+
+<div class="sub-container">
+    <div class="clearfloat">
+        <%= render 'frontend/users/sidebar' %>
+
+        <div class="sub-mainright">
+            <div class="box-white padd30">
+                <div class="table-style2">
+                    <table width="100%" border="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <th>产品图片</th>
+                                <th>名称</th>
+                                <th>价格</th>
+                                <th>时间</th>
+                                <th>交易状态<i class="iconfont icon-arrow-down"></i></th>
+                                <th>交易操作</th>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div class="table-imgbox">
+                                        <a href="">
+                                            <img src="<%= asset_path('product/product1.png') %>" />
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><a href="" class="c-3a">THE ROSELAND  简约款</a>
+                                    <p class="c-a0">克拉总重量：0.23
+                                        <br> 圆形, 良好切割, J 成色, SI1 净度
+                                        <br> 存货编号：LD05989299
+                                    </p>
+                                </td>
+                                <td>￥19762.00</td>
+                                <td align="center"><span class="c-gray">2015-08-20<br>13:58:47</span></td>
+                                <td align="center"><span class="c-red">等待买家付款</span>
+                                    <a href="#" class="link-line block">取消订单</a>
+                                </td>
+                                <td align="center">
+                                    <input type="button" id="" value="付 款" class="btn-red">
+                                    <p><a href="#" class="link-line">取消订单</a></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div class="table-imgbox">
+                                        <a href="">
+                                            <img src="<%= asset_path('product/product1.png') %>" />
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><a href="" class="c-3a">THE ROSELAND  简约款</a>
+                                    <p class="c-a0">克拉总重量：0.23
+                                        <br> 圆形, 良好切割, J 成色, SI1 净度
+                                        <br> 存货编号：LD05989299
+                                    </p>
+                                </td>
+                                <td>￥19762.00</td>
+                                <td align="center"><span class="c-gray">2015-08-20<br>
+                                  13:58:47</span></td>
+                                <td align="center"><span class="c-gray">已付款待处理</span>
+                                    <a href="#" class="link-line block">申请退款</a>
+                                </td>
+                                <td align="center">
+                                    <input type="button" id="" value="确认收货" class="btn-gray">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <div class="table-imgbox">
+                                        <a href="">
+                                            <img src="<%= asset_path('product/product1.png') %>" />
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><a href="" class="c-3a">THE ROSELAND  简约款</a>
+                                    <p class="c-a0">克拉总重量：0.23
+                                        <br> 圆形, 良好切割, J 成色, SI1 净度
+                                        <br> 存货编号：LD05989299
+                                    </p>
+                                </td>
+                                <td>￥19762.00</td>
+                                <td align="center"><span class="c-gray">2015-08-20<br>
+                                  13:58:47</span></td>
+                                <td align="center"><span class="c-gray">已付款待处理</span>
+                                    <a href="#" class="link-line block">申请退款</a>
+                                </td>
+                                <td align="center">
+                                    <input type="button" id="" value="确认收货" class="btn-purple">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <%= render 'layouts/frontend/footer' %>
+</div>

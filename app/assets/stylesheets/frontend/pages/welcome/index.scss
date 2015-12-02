@@ -1,6 +1,9 @@
 @import 'frontend/base';
 
 #frontend-welcome-index {
+  .home-header {
+    width: 100%;
+  }
 
   section:nth-child(1) {
     background-image: image-url('page1-bg.jpg');
