@@ -15,11 +15,12 @@ module OrderStates
       paid: 20,
       filtered: 30,
       inlaided: 40,
+      quality_checked: 45,
       packed: 50,
       delivered: 60,
       completed: 70,
       canceled: 90,
-      closed: 90,
+      closed: 93,
       refunded: 95,
       resumed: 100
     }
@@ -31,6 +32,7 @@ module OrderStates
       state :paid
       state :filtered
       state :inlaided
+      state :quality_checked
       state :packed
       state :delivered
       state :completed
@@ -53,6 +55,10 @@ module OrderStates
 
       event :inlaid, after: :notify_to_client do
         transitions from: :filtered, to: :inlaided
+      end
+
+      event :quality_check do
+        transitions from: :inlaided, to: :quality_checked
       end
 
       event :pack, after: :notify_to_client do

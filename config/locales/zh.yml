@@ -249,8 +249,9 @@ zh:
       states:
         pending: '等待客户付款'
         paid: '客户已付款等待发货'
-        filtered: 'filtered'
+        filtered: '选钻已完成'
         inlaided: '钻石已镶嵌'
+        quality_checked: '质量审核已完成'
         packed: '已打包'
         delivered: '已发货等待确认'
         completed: '已收货'
