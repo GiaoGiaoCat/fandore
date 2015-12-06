@@ -2,9 +2,10 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566', role: "admin")
-User.create(email: 'lishaohua2013@gmail.com', mobile: '13269259372', password: 'db5566', role: "member")
+member = User.create(email: 'lishaohua2013@gmail.com', mobile: '13269259372', password: 'db5566', role: "member")
 User.create(email: 'li2013@gmail.com', mobile: '13269259371', password: 'db5566', role: "customer_service")
 User.create(email: 'ls2013@gmail.com', mobile: '13269259370', password: 'db5566', role: "product_manager")
+address = User::Address.create(user_id: member.id, province:"河北区", zipcode:"610116", city: "石家庄", district: "长安区", name: "lishaohua", mobile: "13932011432", is_default: true, address: "shuizidao ")
 
 # 戒托属性和可选属性
 # metal 材质（可选）
@@ -335,3 +336,12 @@ img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
 img_2.picture = File.new(Rails.root.join('db', 'images', 'thecrown', 'pic2.png'))
 img_2.save
+
+order = Order.new(user: member)
+line1 = Order::LineItem.create(variant: v1, quantity: 1, price: 100.0)
+line2 = Order::LineItem.create(variant: v2, quantity: 2, price: 1000.0)
+order.line_items << line1
+order.line_items << line2
+order.shipping_address = address
+order.state = "checkout"
+order.save
