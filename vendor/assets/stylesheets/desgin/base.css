@@ -456,15 +456,15 @@
     width: 63%;
     top: 0;
     z-index: 999;
-    right: -100%;
-    -webkit-transition: right .8s 0s ease-in-out;
-    -moz-transition: right .8s 0s ease-in-out;
-    -o-transition: right .8s 0s ease-in-out;
-    transition: right .8s 0s ease-in-out;
+    left: -100%;
+    -webkit-transition: left .8s 0s ease-in-out;
+    -moz-transition: left .8s 0s ease-in-out;
+    -o-transition: left .8s 0s ease-in-out;
+    transition: left .8s 0s ease-in-out;
 }
 
 #iframebox-left.open {
-    right: 0;
+    left: 0;
 }
 
 #iframebox-left .close-popup,
@@ -543,13 +543,13 @@
 
 #home-nav {
     background: #b777ae;
-    right: -100%;
+    left: -100%;
     width: 43.5%;
     color: #813c77;
 }
 
 #home-nav.open {
-    right: 0;
+    left: 0;
 }
 
 .home-nav-warp {

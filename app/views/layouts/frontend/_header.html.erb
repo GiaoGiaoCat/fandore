@@ -1,7 +1,13 @@
 <header class="home-header">
-    <a href="/">
-        <h1 class="logo">VANDODO</h1>
+    <a class="menu-btn" href="javascript:void(0)">
+        <svg class="menu-icon" viewBox="135 100 600 450">
+            <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
+            <path d="M300,320 L540,320" id="middle"></path>
+            <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+        </svg>
     </a>
+
+    <h1 class="logo">VANDODO</h1>
 
     <% if current_user %>
         <div class="sub-headright">
@@ -69,14 +75,6 @@
             </div>
             <div class="btn-wrap clearfloat">
                 <%= link_to content_tag(:i, "&#xe603;".html_safe, class: 'iconfont'), sign_in_path, class: 'car-btn' %>
-                <sup>3</sup>
-                <a class="menu-btn" href="javascript:void(0)">
-                    <svg class="menu-icon" viewBox="135 100 600 450">
-                        <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
-                        <path d="M300,320 L540,320" id="middle"></path>
-                        <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
-                    </svg>
-                </a>
             </div>
         </div>
     <% end %>
@@ -91,25 +89,30 @@
         </div>
         <div class="home-nav-ul">
             <ul>
-                <li data-menuanchor="page1">
+                <li>
                     <a href="/#page1">首页<span class="nav-eng">home</span></a>
                 </li>
-                <li data-menuanchor="page2">
-                    <a href="/#page2">产品<span class="nav-eng">product</span></a>
+                <li>
+                    <a href="/products?taxon_name=求婚钻戒">婚戒<span class="nav-eng">engagement ring</span></a>
                 </li>
-                <li data-menuanchor="page3">
-                    <a href="/#page3">钻石<span class="nav-eng">diamond</span></a>
+                <li>
+                    <a href="/products?taxon_name=结婚对戒">对戒<span class="nav-eng">weeding ring</span></a>
                 </li>
-                <li data-menuanchor="page4">
-                    <a href="/#page4">工艺<span class="nav-eng">technology</span></a>
+                <li>
+                    <a href="#">品牌<span class="nav-eng">band</span></a>
                 </li>
-                <li data-menuanchor="page5">
-                    <a href="/#page5">包装<span class="nav-eng">packing</span></a>
+                <li>
+                    <a href="#">服务<span class="nav-eng">service</span></a>
+                </li>
+                <li>
+                    <a href="#">博客<span class="nav-eng">blog</span></a>
                 </li>
             </ul>
         </div>
         <div class="home-nav-bottom">
-            <i class="iconfont icon-phone"></i><b class="mr15 font-s14">400-820-8820 </b> 地址：深圳市深南大道与彩田路交汇处东南角(深南大道南侧岗厦公交站旁)
+            <span class="qrcode"></span>
+           <p>客服服务：400-7757-188 kf@vandodo.com</p>
+           <p>工作时间：9:00 至 18:00，法定节假日休息</p>
         </div>
     </div>
     <div class="home-nav-child">
