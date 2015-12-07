@@ -1,7 +1,36 @@
-.two-code a{
-  background-image: image-url('vandodo_code_1.png');
-}
+footer.footer {
+  position: relative;
+  width: 920px;
+  margin: auto;
+  padding-top: 80px;
+  text-align: center;
 
-.home-footer.active .two-code a{
-  background-image: image-url('vandodo_code_2.png');
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 467px;
+    height: 78px;
+    background-image: image-url('footer.png');
+    background-repeat: no-repeat;
+  }
+
+  p {
+    margin: 0;
+    line-height: 2;
+  }
+
+  .more-info {
+    margin: 10px 0;
+    padding: 10px 0;
+    color: #777;
+    border-top: 1px solid #ddd;
+
+    a {
+      color: #777;
+    }
+  }
 }

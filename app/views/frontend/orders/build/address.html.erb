@@ -134,5 +134,6 @@
         <p class="font-s14 c-3a">商品总金额： <%= number_to_currency @order.amount %> <span class="ml20">优惠金额： -￥0</span><span class="ml20">应付金额：<b class="c-red font-s20"><%= number_to_currency @order.amount %></b></span></p>
     </div>
     <% end %>
-    <%= render 'layouts/frontend/footer' %>
 </div>
+
+<%= render 'layouts/frontend/footer' %>

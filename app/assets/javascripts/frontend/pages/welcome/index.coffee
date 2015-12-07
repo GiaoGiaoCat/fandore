@@ -1,23 +1,5 @@
 pageId = 'frontend-welcome-index'
 
-$ ->
-  $(document)
-  .on 'mouseenter', "##{ pageId } .two-code", ->
-    $(@).children('.two-code-img').tween
-      opacity:
-        start: 0
-        stop: 100
-        duration: .1
-    .play()
-
-  .on 'mouseleave', "##{ pageId } .two-code", ->
-    $(@).children('.two-code-img').tween
-      opacity:
-        start: 100
-        stop: 0
-        duration: .3
-    .play()
-
 $(document).on "page:load##{pageId}", (e) ->
   fullPage()
   homeSlide()
@@ -25,7 +7,7 @@ $(document).on "page:load##{pageId}", (e) ->
 
 fullPage = ->
   header = document.querySelector('header')
-  footer = document.querySelector('footer')
+  footer = document.querySelector('.home-footer')
   next_arrow = footer.querySelector('.next-arrow')
   slide_obj = document.querySelectorAll('.slide')
   slide_obj_length = slide_obj.length
