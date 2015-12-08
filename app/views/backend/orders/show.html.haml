@@ -1,13 +1,79 @@
-= "ID: #{@order.id}"
-%h2 订单详情
-- @order.line_items.each do |item|
-  = item.sku
-  = item.name
-  - if @order.completed? && item.comments.empty?
-    = link_to '评价', new_line_item_comment_path(item)
-%br
-= "State: #{@order.state}"
-%br
-= "remark: #{@order.remark}"
-- if @order.may_complete?
-  = link_to 'Complete', order_path(@order), method: :put
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 订单管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li
+        = link_to '订单管理', admin_orders_path
+      %li.active
+        %strong 订单详情
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .wrapper.wrapper-content
+        .ibox-content.p-xl
+          = render "layouts/flash_messages", flash: flash
+          .row
+            .col-sm-6
+              %h4 收货人信息
+              %address
+                = show_shipping_address(@order.shipping_address)
+              %h4 客户留言
+              = @order.remark
+            .col-sm-6.text-right
+              %h4 订单号
+              %h4.text-navy= @order.number
+              %p
+                %span
+                  %strong 下单日期
+                  = @order.created_at.to_s(:db)
+
+          .table-responsive.m-t
+            %table.table.invoice-table
+              %thead
+                %tr
+                  %th 商品
+                  %th 数量
+                  %th 单价
+                  %th 总价
+              %tbody
+                - @order.line_items.each do |item|
+                  %tr
+                    %td
+                      - if item.is_ring?
+                        %div
+                          %string= item.product.name
+                          = item.variant.options_text
+                        %small
+                          = show_properties(item)
+                      - else
+                        %div
+                          %string= item.product.name
+                          = item.product.sku
+                        %small
+                          = show_diamond_info(item)
+
+                    %td= item.quantity
+                    %td= number_to_currency item.price
+                    %td= number_to_currency item.amount
+
+          %table.table.invoice-total
+            %tbody
+              %tr
+                %td
+                  %strong 优惠
+                %td= number_to_currency 0
+              %tr
+                %td
+                  %strong 总价
+                %td= number_to_currency @order.total
+
+          .text-right
+            %button.btn.btn-primary
+              %i.fa.fa-dollar
+              Make A Payment
+          .well.m-t
+            %strong Comments
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less

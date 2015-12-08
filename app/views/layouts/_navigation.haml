@@ -32,7 +32,7 @@
           %li{ class: is_active_controller('backend/option_types') }= link_to "可选属性管理", admin_option_types_path
           %li{ class: is_active_controller('backend/prototypes') }= link_to "原型管理", admin_prototypes_path
 
-      %li{ class: is_active_controller('backend/promotion_categories', 'backend/promotions') }
+      %li{ class: is_active_controller('backend/orders', 'backend/promotion_categories', 'backend/promotions') }
         = link_to 'javascript:void(0)' do
           %i.fa.fa-shopping-cart
           %span.nav-label 销售管理

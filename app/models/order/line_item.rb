@@ -45,7 +45,7 @@ class Order::LineItem < ActiveRecord::Base
   end
 
   def diamond_amount
-    diamond.amount if diamond
+    diamond.present? ? diamond.amount : 0
   end
 
   # def discounted_amount
@@ -55,6 +55,10 @@ class Order::LineItem < ActiveRecord::Base
   def final_amount
     # amount + adjustment_total
     amount + diamond_amount
+  end
+
+  def is_ring?
+    type.blank?
   end
 
   # protected instance methods ................................................
