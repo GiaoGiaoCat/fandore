@@ -67,6 +67,8 @@ class Order::LineItem < ActiveRecord::Base
   def set_prototype
     if product.taxons.pluck(:name).include? "求婚钻戒"
       self.prototype_id = Product::Prototype.find_by(name: "求婚钻戒订单项")
+    elsif product.taxons.pluck(:name).include? "钻石"
+      self.prototype_id = Product::Prototype.find_by(name: "钻石订单项")
     end
   end
 

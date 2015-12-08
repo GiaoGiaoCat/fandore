@@ -59,6 +59,7 @@ prototype_1.option_types << [option_type_1, option_type_2]
 # symmetry 对称性
 # clarity 净度
 # Lettering 刻字
+# Certificate No 钻石证书编号
 
 property_01 = Product::Property.create(name: 'Shape', presentation: '形状')
 property_02 = Product::Property.create(name: 'Weight', presentation: '重量')
@@ -79,6 +80,7 @@ property_16 = Product::Property.create(name: 'Cut', presentation: '切工')
 property_17 = Product::Property.create(name: 'Symmetry', presentation: '对称性')
 property_18 = Product::Property.create(name: 'Clarity', presentation: '净度')
 property_19 = Product::Property.create(name: 'Lettering', presentation: '刻字内容')
+property_20 = Product::Property.create(name: 'Certificate No', presentation: '钻石证书编号')
 
 
 prototype_2 = Product::Prototype.create(name: '钻石')
@@ -91,6 +93,9 @@ prototype_2.properties << [
 
 prototype_3 = Product::Prototype.create(name: '求婚钻戒订单项')
 prototype_3.properties << [property_3, property_19]
+
+prototype_3 = Product::Prototype.create(name: '钻石订单项')
+prototype_3.properties << [property_20]
 
 # 分类
 taxon_1 = Taxonomy.create(name: '求婚钻戒')

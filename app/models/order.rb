@@ -39,6 +39,7 @@ class Order < ActiveRecord::Base
   before_validation :clone_shipping_address, if: :use_shipping?
   before_create :create_token
   before_create :link_by_email
+  after_create :initial_totals
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :line_items

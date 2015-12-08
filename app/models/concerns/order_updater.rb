@@ -7,6 +7,11 @@ module OrderUpdater
   module ClassMethods
   end
 
+  def initial_totals
+    update_totals
+    save
+  end
+
   # Updates the following Order total values:
   #
   # +payment_total+      The total value of all finalized Payments (NOTE: non-finalized Payments are excluded)

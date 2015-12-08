@@ -247,6 +247,7 @@ zh:
       truncate: "..."
     orders:
       states:
+        checkout: '等待客户下单'
         pending: '等待客户付款'
         paid: '客户已付款等待发货'
         filtered: '选钻已完成'

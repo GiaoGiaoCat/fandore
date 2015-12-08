@@ -91,7 +91,9 @@
                               </div>
                           </td>
                           <td align="center">
-                              <%= link_to "#{item.product.name} #{item.variant.options_text}", product_path(item.product), class: 'c-3a' %>
+                              <%= link_to "#{item.product.name} #{item.variant.options_text}", product_path(item.product), class: 'c-3a' %><br>
+                              <%= show_properties(item) %><br>                              
+                              <%= show_diamond_info(item.diamond) %>
                           </td>
                           <td align="center"><%= number_to_currency item.final_amount %></td>
                       </tr>
