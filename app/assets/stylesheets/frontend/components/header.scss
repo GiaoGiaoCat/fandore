@@ -1,21 +1,20 @@
 @import 'frontend/base';
 
-.home-header {
-  padding: 10px 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+header.header {
+  height: 60px;
+  line-height: 60px;
+  background-color: #fff;
 
-  .menu-btn {
-    margin-left: 20px;
-    border: none;
+  .container {
+    position: relative;
   }
 
   .logo {
     position: absolute;
-    top: 10px;
-    left: 0;
+    top: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
     margin: auto;
     width: 176px;
     height: 50px;
@@ -23,68 +22,35 @@
     background: image-url('logo.png') no-repeat center;
   }
 
-  .avatar {
+  .link {
+    display: inline-block;
+    width: 44px;
+    font-size: 20px;
+    color: $text;
+    text-align: center;
+
+    &:hover {
+      color: $ui-color;
+    }
+  }
+
+  .toolbar {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 50%;
-  }
-}
 
-#close-nav {
-  left: auto;
-  right: 30px;
-}
-
-.home-nav-ul > ul {
-  padding-top: 0;
-}
-
-.home-nav-ul .nav-eng,
-.home-nav-child .nav-eng {
-  font-size: 26px;
-}
-
-.home-nav-bottom {
-  left: 0;
-  width: 100%;
-  color: #fff;
-  line-height: 1;
-  text-align: center;
-
-  .qrcode {
-    position: absolute;
-    top: -150px;
-    right: 0;
-    left: 0;
-    margin: auto;
-    width: 135px;
-    height: 135px;
-    background-image: image-url('icon-qrcode.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    -moz-transition: all 200ms ease-out 0s;
-    -webkit-transition: all 200ms ease-out 0s;
-    -o-transition: all 200ms ease-out 0s;
-    transition: all 200ms ease-out 0s;
-
-    &:hover {
-      background-image: image-url('qrcode.png');
+    .btn-group {
+      vertical-align: top;
     }
-  }
-}
 
-.btn-wrap {
-  border: none;
+    .link-shopping-cart {
+      margin-right: 10px;
+    }
 
-  a {
-    background-color: transparent;
+    .dropdown-menu {
+      text-align: center;
+      box-shadow: none;
+      border-radius: 0;
+    }
   }
 }

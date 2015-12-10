@@ -1,6 +1,7 @@
 Turbolinks.enableTransitionCache()
 
 $(document).on 'ready page:load', (e) ->
+  fandore.initNav()
   # trigger page:load event for specific page
   $(document).trigger "page:load##{fandore.pageId}", [$("##{fandore.pageId}")]
 
@@ -16,7 +17,8 @@ $(document).on 'page:change', (e) ->
 
 # trigger page:before-unload event for specific page
 $(document).on 'page:before-unload', (e) ->
-  $('html').attr 'style', ''
+  $link = $('.link-toggle-nav')
+  $link.click()  if $link.length
   $(document).trigger "page:before-unload##{fandore.pageId}"
 
 
@@ -42,6 +44,12 @@ $(document).on 'page:before-unload', (e) ->
       date = moment.tz(date, fandore.me.tz)
       str = date.readableTime() || ''
       el.text(str)
+
+  initNav: ->
+    $('.link-toggle-nav').bigSlide
+      menu: $('#global-nav')
+      push: $('.wrapper')
+      menuWidth: '50%'
 
 
 $ ->

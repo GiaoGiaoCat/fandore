@@ -1,13 +1,10 @@
 @import 'frontend/base';
 
 body {
-  color: $text;
-  background-color: #f8f8f8;
   font-family: "微软雅黑", arial, sans-serif;
-}
-
-a {
-  text-decoration: none;
+  font-size: 16px;
+  color: $text;
+  overflow-x: hidden;
 }
 
 html.turbolinks-progress-bar::before {
@@ -15,34 +12,29 @@ html.turbolinks-progress-bar::before {
   height: 5px !important;
 }
 
-#loading{
-  background: image-url('loading.gif') #000000 center no-repeat;
+a {
+  @include transition(300ms, color);
+
+  &:hover {
+    color: $ui-color;
+    text-decoration: none;
+  }
 }
 
-.cart-table td {
-  vertical-align: middle;
+.wrapper {
+  position: relative;
 }
 
-.sub-headright {
-  margin-right: 20px;
+.page {
+  min-height: 900px;
 }
 
-.sub-container {
-  padding-top: 70px;
-}
-
-.popwindow {
+#mask {
   position: absolute;
-  top: -200px;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  margin: auto;
-  width: 750px;
-  height: 468px;
-}
-
-// TODO
-.sidebar-left a[href='#'] {
-  color: red;
+  display: none;
+  background-color: rgba(0,0,0,0.7);
 }

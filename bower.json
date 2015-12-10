@@ -8,6 +8,8 @@
   "dependencies": {
     "jquery": "2.x",
     "jquery-ujs": "1.x",
-    "fullpage.js": "2.7.x"
+    "fullpage.js": "2.7.x",
+    "bootstrap": "3.3.6",
+    "bigSlide": "0.9.3"
   }
 }
