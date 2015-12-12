@@ -4,10 +4,10 @@
             <a href="/" class="<%= 'active' if @channel == 'home' %>">首页 Home</a>
         </li>
         <li>
-            <a href="/products?taxon_name=求婚钻戒">求婚钻戒 Engagement</a>
+            <a href="/products?taxon_name=求婚钻戒" class="<%= 'active' if params[:taxon_name] == '求婚钻戒' %>">求婚钻戒 Engagement</a>
         </li>
         <li>
-            <a href="/products?taxon_name=结婚对戒">结婚对戒 Wedding</a>
+            <a href="/products?taxon_name=结婚对戒" class="<%= 'active' if params[:taxon_name] == '结婚对戒' %>">结婚对戒 Wedding</a>
         </li>
         <li>
             <a href="#">品牌 Brand</a>

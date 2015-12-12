@@ -57,7 +57,7 @@
   }
 
   .section-jumbotron {
-    background: image-url('redesign/jumbotron.jpg') top center;
+    background: image-url('redesign/jumbotron.jpg') top center no-repeat;
   }
 
   .section-one {
@@ -125,7 +125,7 @@
   }
 
   .section-three {
-    background: image-url('redesign/section-3.jpg') top center;
+    background: image-url('redesign/section-3.jpg') top center no-repeat;
     background-size: cover;
     background-position-y: -150px;
 

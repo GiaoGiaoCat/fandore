@@ -8,7 +8,7 @@
 
         <div class="toolbar">
             <% if current_user %>
-                <a href="javascript:;" class="link link-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="javascript:;" class="link link-shopping-cart">
                     <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
                 </a>
 
@@ -24,11 +24,11 @@
                     </ul>
                 </div>
             <% else %>
-                <a href="javascript:;" class="link link-signin">注册</a>
-                <a href="javascript:;" class="link link-signup">登录</a>
-                <a href="javascript:;" class="link link-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="javascript:;" class="link link-shopping-cart">
                     <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
                 </a>
+                <a href="javascript:;" class="link link-signin">注册</a>
+                <a href="javascript:;" class="link link-signup">登录</a>
             <% end %>
         </div>
     </div>
