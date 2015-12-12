@@ -1,0 +1,19 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    %h2 订单管理
+    %ol.breadcrumb
+      %li
+        = link_to '首页', admin_path
+      %li
+        = link_to '订单管理', admin_orders_path
+      %li.active
+        %strong 编辑订单信息
+  .col-lg-2
+.wrapper.wrapper-content
+  .row
+    .col-lg-12
+      .ibox.float-e-margins
+        .ibox-title
+          %h5 编辑订单信息
+        .ibox-content
+          = render 'form'

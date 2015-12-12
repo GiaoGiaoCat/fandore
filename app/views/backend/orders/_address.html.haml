@@ -1,0 +1,6 @@
+%h4.border-bottom.p-sm.m-b 收货人信息
+#address
+  = f.simple_fields_for :shipping_address do |address|
+    = address.input :name, wrapper: :horizontal_form
+    = address.input :mobile, wrapper: :horizontal_form
+    = address.input :address, wrapper: :horizontal_form

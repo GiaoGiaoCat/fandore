@@ -123,7 +123,7 @@ Rails.application.routes.draw do
     resources :promotions
     resources :promotion_categories
     resources :promotion_promotion_categories, controller: 'promotion_categories'
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :edit, :update]
 
     resources :comments do
       resources :replies, only: [:new, :create, :edit, :update]
