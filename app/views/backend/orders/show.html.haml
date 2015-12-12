@@ -13,8 +13,8 @@
   .row
     .col-lg-12
       .wrapper.wrapper-content
+        = render "layouts/flash_messages", flash: flash
         .ibox-content.p-xl
-          = render "layouts/flash_messages", flash: flash
           .row
             .col-sm-6
               %h4 收货人信息
@@ -25,6 +25,10 @@
             .col-sm-6.text-right
               %h4 订单号
               %h4.text-navy= @order.number
+              %p
+                %span
+                  %strong 状态
+                  = I18n.t("views.orders.states.#{@order.state}")
               %p
                 %span
                   %strong 下单日期
