@@ -1,4 +1,4 @@
-Turbolinks.enableTransitionCache()
+Turbolinks.pagesCached(0)
 
 $(document).on 'ready page:load', (e) ->
   fandore.initNav()
@@ -17,8 +17,6 @@ $(document).on 'page:change', (e) ->
 
 # trigger page:before-unload event for specific page
 $(document).on 'page:before-unload', (e) ->
-  $link = $('.link-toggle-nav')
-  $link.click()  if $link.length
   $(document).trigger "page:before-unload##{fandore.pageId}"
 
 

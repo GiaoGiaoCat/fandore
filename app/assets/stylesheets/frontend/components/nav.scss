@@ -26,9 +26,16 @@
       display: block;
       padding-right: 10px;
       color: #fff;
+      @include transition(300ms);
 
       &:hover {
         background-color: #E88489;
+      }
+
+      &.active {
+        margin-right: -5px;
+        pointer-events: none;
+        border-right: 5px solid #fff;
       }
     }
   }

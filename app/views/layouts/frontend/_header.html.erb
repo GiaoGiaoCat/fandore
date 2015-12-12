@@ -7,18 +7,14 @@
         </a>
 
         <div class="toolbar">
-            <a href="javascript:;" class="link link-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
-            </a>
-
             <% if current_user %>
-                <a href="javascript:;" class="link link-signin">
-                    <img src="<%= current_user.avatar.url %>" class="avatar">
+                <a href="javascript:;" class="link link-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
                 </a>
-            <% else %>
+
                 <div class="btn-group">
-                    <a href="javascript:;" class="link link-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon glyphicon-user"></span>
+                    <a href="javascript:;" class="link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="<%= current_user.avatar.url %>" class="avatar">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a href="/orders">用户中心</a></li>
@@ -27,6 +23,12 @@
                         <li><a href="/passwords/new">安全设置</a></li>
                     </ul>
                 </div>
+            <% else %>
+                <a href="javascript:;" class="link link-signin">注册</a>
+                <a href="javascript:;" class="link link-signup">登录</a>
+                <a href="javascript:;" class="link link-shopping-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
+                </a>
             <% end %>
         </div>
     </div>

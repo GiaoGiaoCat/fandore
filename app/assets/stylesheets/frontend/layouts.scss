@@ -7,6 +7,11 @@ body {
   overflow-x: hidden;
 }
 
+html.fp-enabled {
+  overflow: hidden;
+  height: 100%;
+}
+
 html.turbolinks-progress-bar::before {
   background-color: #74596F !important;
   height: 5px !important;

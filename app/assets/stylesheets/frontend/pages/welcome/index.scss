@@ -1,27 +1,118 @@
 @import 'frontend/base';
 
 #frontend-welcome-index {
-  .home-header {
-    width: 100%;
+  .header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: transparent;
+
+    .link {
+      color: #fff;
+
+      &:hover {
+        color: $ui-color;
+      }
+    }
   }
 
-  section:nth-child(1) {
-    background-image: image-url('page1-bg.jpg');
+  .section {
+    position: relative;
+
+    .horizontal {
+      height: 50%;
+
+      &.bottom {
+        font-size: 0;
+      }
+    }
+
+    .vertical {
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+    }
   }
 
-  .ddpro .ddTitle span.arrow {
-    background: image-url('select_arrow_pro.png') no-repeat 0 0;
+  .section-jumbotron {
+    background: image-url('redesign/jumbotron.jpg') top center;
   }
 
-  .icheckbox_square-blue,
-  .iradio_square-blue {
-    background: image-url('blue.png') no-repeat;
+  .section-one {
+    .top {
+      background: image-url('redesign/section-1-header.png') center no-repeat;
+    }
+
+    .left {
+      background: #FCFCFC image-url('redesign/section-1-left.png') center no-repeat;
+    }
+
+    .right {
+      background: #FCFCFC image-url('redesign/section-1-right.png') center no-repeat;
+    }
+
+    .vertical {
+      position: relative;
+      background-size: 100%;
+      background-position-y: 65%;
+      border: 3px solid #FCFCFC;
+      @include transition(300ms, border-color);
+
+      &:hover {
+        border-color: #EFEFEF;
+
+        .tip {
+          opacity: 1;
+        }
+      }
+
+      .tip {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 150px;
+        height: 30px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        opacity: 0;
+        background-color: $ui-color;
+        @include transition(300ms, opacity);
+      }
+    }
   }
 
-  @media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
-    .icheckbox_square-blue,
-    .iradio_square-blue {
-        background-image: image-url('blue@2x.png');
+  .section-two {
+    .top {
+      background: image-url('redesign/section-2-header.png') center no-repeat;
+    }
+
+    .left {
+      background: image-url('redesign/section-2-left.jpg') center no-repeat;
+      background-size: cover;
+    }
+
+    .right {
+      background: image-url('redesign/section-2-right.jpg') center no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .section-three {
+    background: image-url('redesign/section-3.jpg') top center;
+    background-size: cover;
+    background-position-y: -150px;
+
+    .footer {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
   }
 }

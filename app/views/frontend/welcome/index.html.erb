@@ -1,8 +1,38 @@
-<%= render 'layouts/frontend/header' %>
 
 <div class="page">
-</div>
+    <section class="section section-jumbotron">
+        <%= render 'layouts/frontend/header' %>
+    </section>
 
-<%= render 'layouts/frontend/footer' %>
+    <section class="section section-one">
+        <div class="horizontal top"></div>
+        <div class="horizontal bottom">
+            <a href="/products?taxon_name=求婚钻戒" class="vertical left">
+                <span class="tip">
+                    <span class="glyphicon glyphicon-search"></span>
+                    查看所有求婚钻戒
+                </span>
+            </a>
+            <a href="/products?taxon_name=结婚对戒" class="vertical right">
+                <span class="tip">
+                    <span class="glyphicon glyphicon-search"></span>
+                    查看所有结婚对戒
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <section class="section section-two">
+        <div class="horizontal top"></div>
+        <div class="horizontal bottom">
+            <div class="vertical left"></div>
+            <div class="vertical right"></div>
+        </div>
+    </section>
+
+    <section class="section section-three">
+        <%= render 'layouts/frontend/footer' %>
+    </section>
+</div>
 
 <div id="mask"></div>
