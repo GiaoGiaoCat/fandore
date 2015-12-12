@@ -17,6 +17,27 @@
     }
   }
 
+  .link-show-all {
+    position: absolute;
+    top: 550px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 180px;
+    height: 50px;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #fff;
+    @include transition(300ms);
+
+    &:hover {
+      border-color: $ui-color;
+      background-color: $ui-color;
+    }
+  }
+
   .section {
     position: relative;
 
