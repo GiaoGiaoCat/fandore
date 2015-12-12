@@ -15,6 +15,11 @@
       .wrapper.wrapper-content
         = render "layouts/flash_messages", flash: flash
         .ibox-content.p-xl
+          .text-right.m-b-lg
+            = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑', edit_admin_order_path(@order), class: 'btn btn-white'
+            %button.btn.btn-primary
+              %i.fa.fa-dollar
+              Make A Payment
           .row
             .col-sm-6
               %h4 收货人信息
@@ -27,12 +32,16 @@
               %h4.text-navy= @order.number
               %p
                 %span
-                  %strong 状态
+                  %strong 当前状态
                   = I18n.t("views.orders.states.#{@order.state}")
               %p
                 %span
-                  %strong 下单日期
+                  %strong 创建时间
                   = @order.created_at.to_s(:db)
+              %p
+                %span
+                  %strong 更新时间
+                  = @order.updated_at.to_s(:db)
 
           .table-responsive.m-t
             %table.table.invoice-table
@@ -67,17 +76,25 @@
             %tbody
               %tr
                 %td
+                  %strong 商品总价
+                %td= number_to_currency @order.total
+              %tr
+                %td
                   %strong 优惠
                 %td= number_to_currency 0
               %tr
                 %td
-                  %strong 总价
+                  %strong 订单总价
                 %td= number_to_currency @order.total
 
-          .text-right
-            %button.btn.btn-primary
-              %i.fa.fa-dollar
-              Make A Payment
-          .well.m-t
-            %strong Comments
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+          .row.m-t-lg.p-sm
+            %h4 系统记录
+            #vertical-timeline.vertical-container.dark-timeline
+              .vertical-timeline-block
+                .vertical-timeline-icon.gray-bg
+                  = content_tag(:i, nil, class: 'fa fa-check')
+                .vertical-timeline-content
+                  %p Conference on the sales results for the previous year.
+          -# .well.m-t
+          -#   %strong Comments
+          -#   It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
