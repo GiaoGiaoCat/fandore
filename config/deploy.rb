@@ -12,9 +12,15 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, '120.24.180.221'
-set :deploy_to, '/home/deployer/www/fandore.com'
 set :repository, 'git@github.com:wjp2013/fandore.git'
-set :branch, 'develop'
+case ENV['to']
+when 'demo'
+  set :branch, 'redesign'
+  set :deploy_to, '/home/deployer/www/demo.fandore.com'
+else
+  set :branch, 'develop'
+  set :deploy_to, '/home/deployer/www/fandore.com'
+end
 set :keep_releases, 20
 
 # For system-wide RVM install.
@@ -82,7 +88,8 @@ task :setup => :environment do
   queue! %[touch "#{deploy_to}/shared/config/application.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
 
-  queue! %[touch "#{deploy_to}/shared/initializers/alipay.rb"]
+  queue! %[mkdir -p "#{deploy_to}/shared/config/initializers"]
+  queue! %[touch "#{deploy_to}/shared/config/initializers/alipay.rb"]
   queue  %[echo "-----> Be sure to edit 'shared/initializers/alipay.rb'."]
 end
 
@@ -104,8 +111,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      # invoke :'puma:start'
-      invoke :'puma:phased_restart'
+      invoke :'puma:start'
+      # invoke :'puma:phased_restart'
     end
   end
 end
