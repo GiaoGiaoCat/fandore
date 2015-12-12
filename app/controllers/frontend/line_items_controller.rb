@@ -1,4 +1,5 @@
 class Frontend::LineItemsController < Frontend::ApplicationController
+  skip_before_action :authenticate_user!
 
   def create
     load_variant

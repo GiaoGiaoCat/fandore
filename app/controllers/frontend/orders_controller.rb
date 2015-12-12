@@ -1,5 +1,6 @@
 class Frontend::OrdersController < Frontend::ApplicationController
-
+  skip_before_action :authenticate_user!
+  
   def create
     build_order
     save_order

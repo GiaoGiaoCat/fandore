@@ -1,6 +1,5 @@
 class Frontend::ProductsController < Frontend::ApplicationController
   skip_before_action :authenticate_user!
-  before_action :load_cart
 
   def index
     load_products
