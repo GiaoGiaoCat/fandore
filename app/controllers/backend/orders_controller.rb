@@ -14,12 +14,15 @@ class Backend::OrdersController < Backend::ApplicationController
     load_order
   end
 
+  def edit
+    load_order
+    build_order
+  end
+
   def update
     load_order
     build_order
-    save_order
-    @order.checkout! if step == :address
-    render_wizard @order
+    save_order or render 'edit'
   end
 
   private
@@ -38,7 +41,7 @@ class Backend::OrdersController < Backend::ApplicationController
   end
 
   def save_order
-    @order.save
+    redirect_to admin_order_path(@order) if @order.save
   end
 
   def order_params
