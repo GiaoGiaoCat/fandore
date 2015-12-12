@@ -111,8 +111,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      invoke :'puma:start'
-      # invoke :'puma:phased_restart'
+      # invoke :'puma:start'
+      invoke :'puma:phased_restart'
     end
   end
 end
