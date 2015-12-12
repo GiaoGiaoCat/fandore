@@ -37,10 +37,10 @@ state_path File.join(tmp_path, 'sockets', 'puma.state')
 stdout_redirect File.join(log_path, 'puma.out.log'), File.join(log_path, 'puma.err.log'), true
 
 # Bind the server.
-bind "unix:///home/deployer/www/fandore.com/shared/tmp/sockets/puma.sock"
+bind "unix:///home/deployer/www/demo.fandore.com/shared/tmp/sockets/puma.sock"
 
 preload_app! #utilizing copy-on-write
-activate_control_app 'unix:///home/deployer/www/fandore.com/shared/tmp/sockets/pumactl.sock'
+activate_control_app 'unix:///home/deployer/www/demo.fandore.com/shared/tmp/sockets/pumactl.sock'
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+
