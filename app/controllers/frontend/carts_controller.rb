@@ -1,6 +1,5 @@
 class Frontend::CartsController < Frontend::ApplicationController
-
-  before_action :load_cart
+  skip_before_action :authenticate_user!
 
   def show
   end
