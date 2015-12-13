@@ -1,0 +1,16 @@
+.nested-fields
+  - unless f.object.is_ring?
+    .form-group
+      %label.col-sm-2.control-label 钻石类型
+      .col-sm-4
+        %span.input_info= f.object.product.name
+    .form-group
+      %label.col-sm-2.control-label 钻石信息
+      .col-sm-4
+        %span.input_info= show_diamond_info(f.object)
+    .form-group
+      %label.col-sm-2.control-label 钻石价格
+      .col-sm-4
+        %span.input_info= number_to_currency f.object.price
+    = f.simple_fields_for :line_items_properties do |property|
+      = property.input :value, label: '钻石证书', wrapper: :nested_fields

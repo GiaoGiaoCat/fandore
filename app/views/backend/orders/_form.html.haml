@@ -1,6 +1,9 @@
 = simple_form_for([:admin, @order], html: { class: 'form-horizontal' }) do |f|
+  = f.input :number, wrapper: :horizontal_form, disabled: true
+  / f.input :special_instructions, wrapper: :horizontal_form
 
-  = render :partial => "address", :locals => { :f => f }
+  / render :partial => "address", :locals => { :f => f }
+  = render :partial => "line_items", :locals => { :f => f }
 
   .hr-line-dashed
   .form-group

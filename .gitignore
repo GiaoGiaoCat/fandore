@@ -50,3 +50,4 @@ config/application.yml
 # Ignore pow environment settings
 .powenv
 config/initializers/alipay.rb
+.byebug_history
