@@ -16,7 +16,7 @@
         = render "layouts/flash_messages", flash: flash
         .ibox-content.p-xl
           .text-right.m-b-lg
-            = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑', edit_admin_order_path(@order), class: 'btn btn-white'
+            = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑钻石证书', edit_admin_order_path(@order), class: 'btn btn-white'
             %button.btn.btn-primary
               %i.fa.fa-dollar
               Make A Payment
@@ -67,6 +67,7 @@
                           = item.product.sku
                         %small
                           = show_diamond_info(item)
+                          = show_certificate_no(item)
 
                     %td= item.quantity
                     %td= number_to_currency item.price

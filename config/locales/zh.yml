@@ -213,6 +213,7 @@ zh:
       <<: *errors
     models:
       user: '用户'
+      order: '订单'
 
     attributes:
       product:
@@ -229,6 +230,10 @@ zh:
         email: '邮件'
         password: '密码'
         password_confirmation: '确认密码'
+      user/address:
+        name: '收件人姓名'
+        mobile: '电话号码'
+        address: '详细地址'
       user/profile:
         avatar: '头像'
         name: '姓名'
@@ -238,6 +243,12 @@ zh:
         partner_birthday: 'Ta 的生日'
         partner_email: 'Ta 的邮件'
         partner_mobile: 'Ta 的手机'
+      order:
+        number: '订单编号'
+        state: '订单状态'
+        special_instructions: '客户留言'
+      order/line_item:
+        price: '价格'
   views:
     pagination:
       first: "首页"
