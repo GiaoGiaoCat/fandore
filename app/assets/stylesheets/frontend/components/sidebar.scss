@@ -1,0 +1,84 @@
+@import 'frontend/base';
+
+#sidebar {
+  position: fixed;
+  right: -460px;
+  background-color: #fff;
+  z-index: 99;
+}
+
+.form-sign {
+  margin: auto;
+  padding: 60px 50px;
+  width: 460px;
+  text-align: center;
+
+
+  .title {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .form-control {
+    height: 50px;
+  }
+
+  .input-group-addon {
+    font-size: 18px;
+    color: $text-secondary;
+  }
+
+  .btn {
+    height: 50px;
+    color: #fff;
+    font-size: 16px;
+    background-color: $ui-color;
+    border: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .links {
+    margin-top: 40px;
+    font-size: 14px;
+    color: $text-secondary;
+
+    .link {
+      padding: 0 5px;
+      color: $text-secondary;
+
+      &:hover {
+        color: $ui-color;
+      }
+    }
+
+    .link-page {
+      color: $text;
+
+      &:hover {
+        color: $ui-color;
+      }
+    }
+  }
+
+  .signin {
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    color: $text-secondary;
+
+    .link-signin {
+      color: $text;
+
+      &:hover {
+        color: $ui-color;
+      }
+    }
+  }
+}

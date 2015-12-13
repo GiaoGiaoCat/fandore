@@ -1,7 +1,7 @@
 Turbolinks.pagesCached(0)
 
 $(document).on 'ready page:load', (e) ->
-  fandore.initNav()
+  fandore.initSlide()
   # trigger page:load event for specific page
   $(document).trigger "page:load##{fandore.pageId}", [$("##{fandore.pageId}")]
 
@@ -43,11 +43,16 @@ $(document).on 'page:before-unload', (e) ->
       str = date.readableTime() || ''
       el.text(str)
 
-  initNav: ->
+  initSlide: ->
     $('.link-toggle-nav').bigSlide
       menu: $('#global-nav')
       push: $('.wrapper')
       menuWidth: '50%'
+
+    $('.link-sign').bigSlide
+      menu: $('#sidebar')
+      side: 'right'
+      menuWidth: '460px'
 
 
 $ ->

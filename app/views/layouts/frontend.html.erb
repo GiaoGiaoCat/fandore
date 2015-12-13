@@ -14,8 +14,22 @@
 
 <body id="<%= page_id %>">
 
-    <div class="wrapper"><%= yield %></div>
+    <div class="wrapper">
+        <%= yield %>
+        <div id="mask"></div>
+    </div>
     <%= render 'layouts/frontend/nav' %>
+
+    <% unless current_user %>
+        <div id="sidebar">
+            <div id="sidebar-signup">
+                <%= render 'frontend/users/registrations/form' %>
+            </div>
+            <div id="sidebar-signin">
+                <%= render 'frontend/users/sessions/form' %>
+            </div>
+        </div>
+    <% end %>
 
     <script type="text/javascript" id="gon">
         <%= include_gon(:need_tag => false) %>

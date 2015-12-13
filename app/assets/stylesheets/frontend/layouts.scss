@@ -19,7 +19,7 @@ html.fp-enabled {
 }
 
 html.turbolinks-progress-bar::before {
-  background-color: #74596F !important;
+  background-color: $ui-color !important;
   height: 5px !important;
 }
 
@@ -48,4 +48,5 @@ a {
   left: 0;
   display: none;
   background-color: rgba(0,0,0,0.7);
+  z-index: 9;
 }
