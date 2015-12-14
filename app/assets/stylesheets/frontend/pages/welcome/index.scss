@@ -19,7 +19,7 @@
 
   .link-show-all {
     position: absolute;
-    top: 550px;
+    top: 60%;
     right: 0;
     left: 0;
     margin: auto;
@@ -58,6 +58,13 @@
 
   .section-jumbotron {
     background: #000 image-url('redesign/jumbotron.jpg') top center no-repeat;
+    background-size: cover;
+    @include transition(1000ms, background);
+
+    &.bg-2 {
+      background: #000 image-url('redesign/jumbotron-2.jpg') top center no-repeat;
+      background-size: cover;
+    }
   }
 
   .section-one {

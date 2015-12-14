@@ -2,7 +2,16 @@ pageId = 'frontend-welcome-index'
 
 $(document).on "page:load##{pageId}", (e) ->
   $('.page').fullpage()  unless $('.page').hasClass('fullpage-wrapper')
+  fandore.utils.preloadImages [
+    "<%= asset_path 'redesign/jumbotron-2.jpg' %>"
+  ]
+
+  setInterval ->
+    $('.section-jumbotron').toggleClass('bg-2')
+  , 10000
+
 
 .on "page:before-unload##{pageId}", (e) ->
   $.fn.fullpage.destroy()
   $('html').removeClass('fp-enabled').attr 'style', ''
+
