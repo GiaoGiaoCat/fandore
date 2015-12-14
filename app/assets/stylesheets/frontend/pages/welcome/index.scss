@@ -1,6 +1,17 @@
 @import 'frontend/base';
 
 #frontend-welcome-index {
+  #fp-nav {
+    .active span {
+      background-color: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+    }
+
+    span {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
   .header {
     position: absolute;
     top: 0;

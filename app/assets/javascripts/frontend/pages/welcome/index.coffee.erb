@@ -1,7 +1,10 @@
 pageId = 'frontend-welcome-index'
 
 $(document).on "page:load##{pageId}", (e) ->
-  $('.page').fullpage()  unless $('.page').hasClass('fullpage-wrapper')
+  unless $('.page').hasClass('fullpage-wrapper')
+    $('.page').fullpage
+      navigation: true
+
   fandore.utils.preloadImages [
     "<%= asset_path 'redesign/jumbotron-2.jpg' %>"
   ]
