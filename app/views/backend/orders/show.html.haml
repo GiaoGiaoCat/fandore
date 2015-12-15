@@ -17,9 +17,7 @@
         .ibox-content.p-xl
           .text-right.m-b-lg
             = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑钻石证书', edit_admin_order_path(@order), class: 'btn btn-white'
-            %button.btn.btn-primary
-              %i.fa.fa-dollar
-              Make A Payment
+            = next_state_btn(@order)
           .row
             .col-sm-6
               %h4 收货人信息
@@ -31,17 +29,16 @@
               %h4 订单号
               %h4.text-navy= @order.number
               %p
-                %span
-                  %strong 当前状态
+                %span.badge
                   = I18n.t("views.orders.states.#{@order.state}")
               %p
                 %span
                   %strong 创建时间
-                  = @order.created_at.to_s(:db)
+                  = format_datetime @order.created_at
               %p
                 %span
                   %strong 更新时间
-                  = @order.updated_at.to_s(:db)
+                  = format_datetime @order.updated_at
 
           .table-responsive.m-t
             %table.table.invoice-table

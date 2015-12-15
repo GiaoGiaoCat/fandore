@@ -257,6 +257,15 @@ zh:
       next: "下一页"
       truncate: "..."
     orders:
+      state_btn:
+        close: '关闭订单'
+        pay: '支付订单'
+        filter: '选钻'
+        inlaid: '镶嵌'
+        quality_check: '质量审核'
+        pack: '包装'
+        delivery: '发货'
+        complete: '完成订单'
       states:
         checkout: '等待客户下单'
         pending: '等待客户付款'

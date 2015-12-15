@@ -3,7 +3,6 @@ class Backend::OrdersController < Backend::ApplicationController
   load_and_authorize_resource :class => "Order"
 
   def new
-
   end
 
   def index
@@ -23,6 +22,11 @@ class Backend::OrdersController < Backend::ApplicationController
     load_order
     build_order
     save_order or render 'edit'
+  end
+
+  def update_state
+    load_order
+    @order.try(params[:event]) and save_order
   end
 
   private
