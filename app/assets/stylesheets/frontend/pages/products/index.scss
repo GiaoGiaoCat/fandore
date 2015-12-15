@@ -1,0 +1,38 @@
+@import 'frontend/base';
+
+#frontend-products-index {
+  .header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: transparent;
+  }
+
+  .product-group {
+    font-size: 0;
+    &:nth-child(odd) .link-product:nth-child(odd) {
+      background-color: #F5F5F5;
+    }
+
+    &:nth-child(even) .link-product:nth-child(even) {
+      background-color: #F5F5F5;
+    }
+  }
+
+  .link-product {
+    display: inline-block;
+    width: 50%;
+    border: 15px solid transparent;
+    height: 450px;
+    font-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 300px auto;
+    background-color: #fff;
+
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+}

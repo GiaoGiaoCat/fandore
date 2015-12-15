@@ -2,38 +2,23 @@
 
 <%= render 'layouts/frontend/header' %>
 
-<div class="mainbox">
-    <div class="product-cate">
-        <ul class="clearfix">
-            <li><%= products_nav('ring', ' 对戒', '结婚对戒', params[:taxon_name]) %></li>
-            <li><%= products_nav('Diamond ring', ' 钻戒', '求婚钻戒', params[:taxon_name]) %></li>
-            <li><%= products_nav('Peripheral', ' 周边产品', '周边礼品', params[:taxon_name]) %></li>
-            <li><%= products_nav('bridal sets', '', '饰品', params[:taxon_name]) %></li>
-        </ul>
-    </div>
-
+<div class="page">
     <div class="product-list">
-        <ul>
-            <% @products.each do |product| %>
-              <li>
-                  <div class="pro-imgbox">
-                      <a href="<%= product_path(product) %>" class="hover-zoom">
-                          <div class="mask-zoom">
-                              <div class="red-zoom">
-                                  <i class="iconfont icon-zoom"></i>
-                              </div>
-                          </div>
-                          <% if product.master.images.first %>
-                            <%= image_tag product.master.images.first.picture.middle.url %>
-                          <% end %>
-                      </a>
-                  </div>
-                  <h2 class="pro-title">
-                    <%= link_to product.name, product_path(product) %>
-                  </h2>
-                  <p class="pro-price"><%= number_to_currency(product.price, unit: '￥') %></p>
-              </li>
-            <% end %>
-        </ul>
+        <% @products.each_slice(2) do |a, b| %>
+            <div class="product-group">
+                <a href="<%= product_path(a) %>" class="link-product" style="background-image: url('<%= a.master.images.first.picture.middle.url %>');">
+                    <%= a.name %>
+                    <%= number_to_currency(a.price, unit: '￥') %>
+                </a>
+                <% if b %>
+                    <a href="<%= product_path(b) %>" class="link-product" style="background-image: url('<%= b.master.images.first.picture.middle.url %>');">
+                        <%= b.name %>
+                        <%= number_to_currency(a.price, unit: '￥') %>
+                    </a>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>
+
+<%= render 'layouts/frontend/footer' %>
