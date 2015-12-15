@@ -3,6 +3,11 @@ class Frontend::Users::SessionsController < Frontend::ApplicationController
 
   layout false
 
+  def create
+    build_sign_in
+    save_sign_in
+  end
+
   private
 
   def redirect_to_url

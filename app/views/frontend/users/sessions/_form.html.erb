@@ -1,4 +1,5 @@
-<form class="form-sign form-signin" action="<%= sign_in_path %>" accept-charset="UTF-8" method="post">
+<form class="form-sign form-signin" action="<%= sign_in_path %>" accept-charset="UTF-8" method="post" data-remote="true">
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
     <div class="form-group">
         <p class="title">账号登录</p>
     </div>
