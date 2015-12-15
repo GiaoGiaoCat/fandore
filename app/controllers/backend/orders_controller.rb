@@ -26,7 +26,8 @@ class Backend::OrdersController < Backend::ApplicationController
 
   def update_state
     load_order
-    @order.try(params[:event]) and save_order
+    @order.update_state(params[:event], current_user)
+    save_order
   end
 
   private
