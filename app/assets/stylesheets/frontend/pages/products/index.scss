@@ -31,7 +31,7 @@
     &:hover {
       .product-bg {
         opacity: 0.3;
-        border-color: #ccc;
+        border-color: #999;
       }
 
       .product-info {
@@ -98,6 +98,7 @@
         }
 
         .glyphicon {
+          margin-right: 3px;
           font-size: 14px;
         }
       }
