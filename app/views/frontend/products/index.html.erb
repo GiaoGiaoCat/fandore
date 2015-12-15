@@ -6,15 +6,38 @@
     <div class="product-list">
         <% @products.each_slice(2) do |a, b| %>
             <div class="product-group">
-                <a href="<%= product_path(a) %>" class="link-product" style="background-image: url('<%= a.master.images.first.picture.middle.url %>');">
-                    <%= a.name %>
-                    <%= number_to_currency(a.price, unit: '￥') %>
-                </a>
+                <div class="product">
+                    <div class="product-bg" style="background-image: url('<%= a.master.images.first.picture.middle.url %>');"></div>
+                    <div class="product-info">
+                        <p class="price"><%= number_to_currency(a.price, unit: '￥') %></p>
+                        <p class="name"><%= a.name %></p>
+                        <div class="link-group">
+                            <a href="<%= product_path(a) %>">
+                                <span class="glyphicon glyphicon-search"></span> 查看
+                            </a>
+                            <a href="javascript:;">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> 购买
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <% if b %>
-                    <a href="<%= product_path(b) %>" class="link-product" style="background-image: url('<%= b.master.images.first.picture.middle.url %>');">
-                        <%= b.name %>
-                        <%= number_to_currency(a.price, unit: '￥') %>
-                    </a>
+                    <div class="product">
+                        <div class="product-bg" style="background-image: url('<%= b.master.images.first.picture.middle.url %>');"></div>
+                        <div class="product-info">
+                            <p class="price"><%= number_to_currency(b.price, unit: '￥') %></p>
+                            <p class="name"><%= b.name %></p>
+                            <div class="link-group">
+                                <a href="<%= product_path(b) %>">
+                                    <span class="glyphicon glyphicon-search"></span> 查看
+                                </a>
+                                <a href="javascript:;">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> 购买
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 <% end %>
             </div>
         <% end %>
