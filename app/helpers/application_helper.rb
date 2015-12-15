@@ -22,7 +22,7 @@ module ApplicationHelper
 
   def format_datetime(datetime, format = "%Y-%m-%d %H:%M:%S")
     if datetime
-      datetime.strftime(format)
+      datetime.localtime.strftime(format)
     end
   end
 
