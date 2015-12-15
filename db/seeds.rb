@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566', role: "admin")
+admin = User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password: 'db5566', role: "admin")
 member = User.create(email: 'lishaohua2013@gmail.com', mobile: '13269259372', password: 'db5566', role: "member")
 User.create(email: 'li2013@gmail.com', mobile: '13269259371', password: 'db5566', role: "customer_service")
 User.create(email: 'ls2013@gmail.com', mobile: '13269259370', password: 'db5566', role: "product_manager")

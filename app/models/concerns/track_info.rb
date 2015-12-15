@@ -9,14 +9,18 @@ module TrackInfo
   module ClassMethods
   end
 
-  def add_track_info(content, operator_name = nil, note = nil)
-    self.track_info ||= []
-
-    info = {time: Time.now, content: content}
-    info[:operator_name] = operator_name if operator_name
+  def add_track_info(event, operator_id = nil, note = nil)
+    init_track_info
+    info = { time: Time.now, event: event }
+    info[:operator_id] = operator_id if operator_id
     info[:note] = note if note
-
     self.track_info << info
+  end
+
+
+  def update_state(event, operator)
+    self.try(event)
+    self.add_track_info(event, operator.id)
   end
 
   private
