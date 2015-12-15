@@ -1,6 +1,8 @@
 class Frontend::Users::SessionsController < Frontend::ApplicationController
   include Authenticatable
 
+  layout false
+
   private
 
   def redirect_to_url

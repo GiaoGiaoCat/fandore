@@ -6,7 +6,7 @@
     </a>
 
     <div class="toolbar">
-        <% if current_user %>
+        <% if current_user && current_user.frontend_user? %>
             <a href="javascript:;" class="link link-shopping-cart">
                 <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
             </a>
@@ -26,6 +26,8 @@
             <a href="javascript:;" class="link link-shopping-cart">
                 <span class="glyphicon glyphicon glyphicon-shopping-cart"></span>
             </a>
+            <%= link_to 'Login', sign_in_path, class: 'link link-sign', remote: true, data: { 'big-slide' => 'signup' } %>
+            <%= link_to 'SignUp', sign_up_path, class: 'link link-sign', remote: true, data: { 'big-slide' => 'signin' } %>
             <a href="javascript:;" class="link link-sign" data-big-slide="signup">注册</a>
             <a href="javascript:;" class="link link-sign" data-big-slide="signin">登录</a>
         <% end %>

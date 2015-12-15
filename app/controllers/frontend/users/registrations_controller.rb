@@ -3,6 +3,8 @@ class Frontend::Users::RegistrationsController < Frontend::ApplicationController
 
   skip_before_action :authenticate_user!
 
+  layout false
+  
   private
 
   def user_scope
