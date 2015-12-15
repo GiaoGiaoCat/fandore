@@ -62,7 +62,7 @@ module OrderStates
       end
 
       event :pack, after: :notify_to_client do
-        transitions from: :inlaided, to: :packed
+        transitions from: :quality_checked, to: :packed
       end
 
       event :delivery, after: :notify_to_client do
@@ -78,7 +78,7 @@ module OrderStates
       end
 
       event :close do
-        transitions from: [:pending, :completed], to: :closed
+        transitions from: [:checkout, :pending], to: :closed
       end
 
       event :refund do

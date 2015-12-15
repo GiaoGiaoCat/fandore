@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   # includes ..................................................................
   include OrderStates
   include NumberGenerator
+  include TrackInfo
   # include Remarkable
   # constants .................................................................
   # related macros ............................................................
@@ -37,8 +38,7 @@ class Order < ActiveRecord::Base
   # validations ...............................................................
   # callbacks .................................................................
   before_validation :clone_shipping_address, if: :use_shipping?
-  before_create :create_token
-  before_create :link_by_email
+  before_create :create_token, :link_by_email
   after_create :initial_totals
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
@@ -115,5 +115,4 @@ class Order < ActiveRecord::Base
     # @use_shipping == true || @use_shipping == 'true' || @use_shipping == '1'
     @use_shipping == true
   end
-
 end
