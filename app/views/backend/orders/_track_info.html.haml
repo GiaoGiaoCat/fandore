@@ -1,0 +1,6 @@
+.vertical-timeline-block
+  .vertical-timeline-icon.gray-bg
+    = content_tag(:i, nil, class: 'fa fa-check')
+  .vertical-timeline-content
+    %p= I18n.t("views.orders.trackinfos.#{track_info[:event]}")
+    %span.vertical-date.small.text-muted= show_track_info_operator_and_time(track_info)

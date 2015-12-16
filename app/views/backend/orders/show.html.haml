@@ -86,13 +86,9 @@
                 %td= number_to_currency @order.total
 
           .row.m-t-lg.p-sm
-            %h4 系统记录
-            #vertical-timeline.vertical-container.dark-timeline
-              .vertical-timeline-block
-                .vertical-timeline-icon.gray-bg
-                  = content_tag(:i, nil, class: 'fa fa-check')
-                .vertical-timeline-content
-                  %p Conference on the sales results for the previous year.
+            %h4.m-b-lg 系统记录
+            #track-timeline.vertical-container.dark-timeline
+              = render partial: "track_info", collection: @order.track_info
           -# .well.m-t
           -#   %strong Comments
           -#   It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
