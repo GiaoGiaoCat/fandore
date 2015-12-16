@@ -16,7 +16,8 @@
         = render "layouts/flash_messages", flash: flash
         .ibox-content.p-xl
           .text-right.m-b-lg
-            = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑钻石证书', edit_admin_order_path(@order), class: 'btn btn-white'
+            - unless @order.diamonds.size.zero?
+              = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑钻石证书', edit_admin_order_path(@order), class: 'btn btn-white'
             = next_state_btn(@order)
           .row
             .col-sm-6
