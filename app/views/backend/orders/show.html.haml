@@ -65,7 +65,7 @@
                           = item.product.sku
                         %small
                           = show_diamond_info(item)
-                          = show_certificate_no(item)
+                          %span.badge= show_certificate_no(item)
 
                     %td= item.quantity
                     %td= number_to_currency item.price
