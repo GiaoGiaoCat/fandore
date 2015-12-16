@@ -1,0 +1,35 @@
+zh:
+  views:
+    orders:
+      trackinfos:
+        close: '关闭了订单'
+        pay: '手动支付了订单'
+        filter: '正在选钻'
+        inlaid: '正在镶嵌'
+        quality_check: '正在质量审核'
+        pack: '正在包装'
+        delivery: '正在发货'
+        complete: '订单完成'
+      state_btn:
+        close: '关闭'
+        pay: '支付'
+        filter: '选钻'
+        inlaid: '镶嵌'
+        quality_check: '质量审核'
+        pack: '包装'
+        delivery: '发货'
+        complete: '完成'
+      states:
+        checkout: '等待客户下单'
+        pending: '等待客户付款'
+        paid: '客户已付款等待发货'
+        filtered: '选钻已完成'
+        inlaided: '钻石已镶嵌'
+        quality_checked: '质量审核已完成'
+        packed: '已打包'
+        delivered: '已发货等待确认'
+        completed: '已收货'
+        canceled: '已取消'
+        closed: '已关闭'
+        refunded: '已退款'
+        resumed: '已恢复'

@@ -38,7 +38,14 @@ module Backend::OrdersHelper
         ['', '']
         # ['fa fa-send', 'quality_check']
       end
+    return if event_name.blank?
     btn_name = ' ' + I18n.t("views.orders.state_btn.#{event_name}")
     link_to content_tag(:i, nil, class: class_name) + btn_name, update_state_admin_order_path(@order, event: event_name), method: :put, class: 'btn btn-primary'
+  end
+
+  def show_track_info_operator_and_time(track_info)
+    return unless track_info
+    # operator
+    format_datetime track_info[:time]
   end
 end
