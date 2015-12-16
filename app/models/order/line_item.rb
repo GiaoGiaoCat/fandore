@@ -61,6 +61,10 @@ class Order::LineItem < ActiveRecord::Base
     type.blank?
   end
 
+  def is_diamond?
+    type == 'Order::Diamond'
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
