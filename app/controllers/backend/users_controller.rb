@@ -34,7 +34,11 @@ class Backend::UsersController < Backend::ApplicationController
   end
 
   def save_user
-    redirect_to admin_users_path if @user.save
+    @user.save
+  end
+
+  def redirect_to_url
+    redirect_to admin_users_path
   end
 
   def user_params

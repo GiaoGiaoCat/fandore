@@ -7,7 +7,16 @@ module Registerable
 
   def create
     build_user
-    save_user or render :new
+
+    respond_to do |format|
+      if save_user
+        format.html { redirect_to_url, notice: 'User was successfully sign up.' }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
+    end
   end
 
   private
@@ -21,7 +30,10 @@ module Registerable
   end
 
   def save_user
-    # Example: redirect_to admin_users_path if @user.save
+    raise NotImplementedError, 'Must be implemented by who mixins me.'
+  end
+
+  def redirect_to_url
     raise NotImplementedError, 'Must be implemented by who mixins me.'
   end
 

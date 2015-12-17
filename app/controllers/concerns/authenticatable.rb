@@ -14,7 +14,7 @@ module Authenticatable
 
     respond_to do |format|
       if save_sign_in
-        format.html { redirect_to redirect_to_url, notice: 'User was successfully sign in.' }
+        format.html { redirect_to_url, notice: 'User was successfully sign in.' }
         format.js
       else
         format.html { render :new }

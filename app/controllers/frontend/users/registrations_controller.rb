@@ -5,11 +5,6 @@ class Frontend::Users::RegistrationsController < Frontend::ApplicationController
 
   layout false
 
-  def create
-    build_user
-    save_user
-  end
-
   private
 
   def user_scope
@@ -20,8 +15,10 @@ class Frontend::Users::RegistrationsController < Frontend::ApplicationController
     if @user.save
       @user.update_tracked_fields!(request)
       session[:user_id] = @user.id
-      redirect_to root_path
     end
   end
 
+  def redirect_to_url
+    redirect_to root_path
+  end
 end
