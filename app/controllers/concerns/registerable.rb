@@ -10,7 +10,7 @@ module Registerable
 
     respond_to do |format|
       if save_user
-        format.html { redirect_to_url, notice: 'User was successfully sign up.' }
+        format.html { redirect_to_url }
         format.js
       else
         format.html { render :new }
