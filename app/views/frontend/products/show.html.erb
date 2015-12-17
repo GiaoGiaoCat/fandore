@@ -1,193 +1,134 @@
-<%= render 'layouts/frontend/header' %>
+<% @page_title = @product.name %>
 
-<div class="product-wrap">
-    <div class="product-main">
-        <%= image_tag @product.master.images.first.picture.url, class: 'product-image' %>
-        <a href="javascript:;" class="link-show-image">浏览高清图</a>
-        <div class="product-images">
-            <% @product.master.images.each_with_index do |image, index| %>
-              <% class_name = index == 0 ? 'active' : nil %>
-              <%= link_to image_tag(image.picture.url, width: 110), 'javascript:;', class: "thumb-image #{class_name}" %>
-            <% end %>
-        </div>
-    </div>
 
-    <div class="product-info">
-      <%= form_tag line_items_path, id: 'add-to-cat' do %>
-        <h1><%= @product.name %></h1>
-        <!-- <p class="subtitle">WHISPER 1610242</p> -->
-        <p class="product-price" id="product-price"></p>
+<div class="page">
+    <section class="section section-jumbotron">
+        <%= render 'layouts/frontend/header' %>
 
-        <div class="product-styles">
-          <% @product.variants.each_with_index do |variant, index| %>
-            <% checked = index == 0; variant_name = index == 0 ? '简约款' : '轻奢款' %>
-            <%= radio_button_tag(:variant_id, variant.id, checked, id: dom_id(variant), class: 'variant_radio') %>
-            <%= content_tag :label, variant_name, class: 'product-style', for: dom_id(variant), data: {
-                price: variant.price
-                } %>
-          <% end %>
-        </div>
-
-        <p class="product-desc"><%= @product.description %></p>
-        <div class="product-information">
-            <div>
-                <b>主钻重量：</b> <span class="diamond-weight">0.3CT</span>
-            </div>
-
-            <div>
-                <b>主钻切工：</b> <span>3EX</span>
-            </div>
-
-            <div>
-                <b>主钻颜色：</b>
-                <input type="radio" id="product-color-1" name="product_color" value="D">
-                <label class="product-radio" for="product-color-1">D</label>
-
-                <input type="radio" id="product-color-2" name="product_color" value="E">
-                <label class="product-radio" for="product-color-2">E</label>
-
-                <input type="radio" id="product-color-3" name="product_color" value="F" checked>
-                <label class="product-radio" for="product-color-3">F</label>
-            </div>
-
-            <div>
-                <b>主钻净度：</b>
-                <input type="radio" id="product-jingdu-1" name="product_jingdu" value="IF">
-                <label class="product-radio" for="product-jingdu-1">IF</label>
-
-                <input type="radio" id="product-jingdu-2" name="product_jingdu" value="VVS1">
-                <label class="product-radio" for="product-jingdu-2">VVS1</label>
-
-                <input type="radio" id="product-jingdu-3" name="product_jingdu" value="VVS2" checked>
-                <label class="product-radio" for="product-jingdu-3">VVS2</label>
-            </div>
-
-            <input type="hidden" id="diamond_id" name="diamond_id">
-
-          <!--
-            <div class="product-material">
-                <b>选择材质：</b>
-                <input type="radio" id="product-material-1" name="product_material" value="D" checked>
-                <label class="product-radio" for="product-material-1">18K金</label>
-            </div>
-          -->
-            <div class="product-size">
-                <b>选择手寸：</b>
-                <select name="size">
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <span class="desc">港码6号内直径28mm，内周长38mm</span>
-            </div>
-
-            <div class="product-lettering">
-                <b>刻字内容：</b>
-                <%= text_field_tag 'lettering', nil, placeholder: "4个汉字或8个字母" %>
-            </div>
-        </div>
-
-        <!-- <%= submit_tag '加入购物车', class: 'link-to-car', id: 'link-to-car' %> -->
-        <a href="javascript:;" id='link-to-car' class="link-to-car">加入购物车</a>
-        <div class="product-more">
-            <a href="javascript:;" class="link-to-collect">
-                <i class="iconfont icon-collect"></i> 加入收藏
-            </a>
-            <a href="javascript:;" class="link-to-comment show-popup" data-tpl="tpl-reviews" data-size="big">
-                <i class="iconfont icon-message"></i> 历史评价
-            </a>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="image-preview">
-        <a href="javascript:;" class="link-close-preview"><i class="iconfont icon-close"></i></a>
-        <a href="javascript:;" class="prev"><i class="iconfont icon-arrowleft"></i></a>
-        <a href="javascript:;" class="next"><i class="iconfont icon-arrowright"></i></a>
-        <div class="preview-list">
-            <ul>
-                <% @product.master.images.each do |image| %>
-                  <li><%= image_tag image.picture.url %></li>
+        <div id="main-slide" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <% @product.master.images.each_with_index do |image, index| %>
+                <div class="item <%= 'active' if index == 0 %>">
+                    <img src="<%= image.picture.url %>">
+                </div>
                 <% end %>
-            </ul>
+            </div>
+
+            <a class="left carousel-control" href="#main-slide" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+
+            <a class="right carousel-control" href="#main-slide" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </section>
+
+    <div class="section section-product">
+        <div class="col-sm-6 hidden-xs">
+            <div id="product-slide" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <% @product.master.images.each_with_index do |image, index| %>
+                        <li data-target="#product-slide" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+                    <% end %>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <% @product.master.images.each_with_index do |image, index| %>
+                    <div class="item <%= 'active' if index == 0 %>">
+                        <img src="<%= image.picture.url %>">
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <%= form_tag line_items_path, id: 'add-to-cat', class: 'form-inline' do %>
+                <h3 class="price"></h3>
+                <p class="name"><%= @product.name %></p>
+
+                <div class="form-group" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        <input type="radio" name="options" autocomplete="off" checked> 简约款
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" autocomplete="off"> 轻奢款
+                    </label>
+                </div>
+
+                <hr>
+
+                <p class="description"><%= @product.description %></p>
+
+                <hr>
+
+                <div class="form-group product-information">
+                    <div class="col-xs-6">
+                        <label class="col-sm-6 control-label">主钻重量</label>
+                        <p class="col-sm-6 diamond-weight">0.3CT</p>
+
+                        <label for="product-color" class="col-sm-6 control-label">主钻颜色</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="product-color" name="product_color">
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <label class="col-sm-6 control-label">主钻切工</label>
+                        <p class="col-sm-6 diamond-weight">3EX</p>
+
+                        <label for="product-color" class="col-sm-6 control-label">主钻颜色</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="product-color" name="product_color">
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-group">
+                    <label for="product-size" class="col-sm-4 control-label">选择手寸</label>
+                    <p class="col-sm-8">
+                        <select class="form-control" id="product-size" name="size">
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <a href="javascript:;" class="link-table" data-toggle="modal" data-target="#table">查看中国区戒指手寸对照表</a>
+                    </p>
+                    <label for="lettering" class="col-sm-4 control-label">刻字内容</label>
+                    <p class="col-sm-8">
+                        <input type="text" class="form-control" name="lettering" id="lettering" placeholder="4个汉字或8个字母">
+                    </p>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
 
-<ul style="display:none;">
-    <% @diamonds.each do |diamond| %>
-        <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
-    <% end %>
-</ul>
-
-<script type="text/html" id="tpl-reviews">
-    <div class="float-title-bar">
-        商品评价 <span class="t-eng">Product reviews</span>
-    </div>
-    <div class="sub-scroll">
-        <div class="pro-review-wrap">
-            <dl>
-                <dt>
-                    <div class="user-head-s fl">
-                        <a href="#">
-                            <img src="<%= asset_path('user_head.jpg') %>" />
-                        </a>
-                    </div>
-                    <h3 class="text-center">tx****2</h3>
-                </dt>
-                <dd>
-                    <div class="pro-review-txt">
-                        尺寸刚刚好 设计大方 用料很好 细节也做得很精巧 店家服务很好 咨询下单配送一条龙 ,客服态度很好, 耐心回答解决每一个问题 给TA点32个赞！ 忒滴很，额喜欢 ！ </div>
-                    <div class="review-other">2015年06月23日 10:19
-                        <span>主钻重量:0.3ct</span>
-                        <span>主钻净度：FL</span>
-                        <span>主钻颜色：D </span>
-                        <span>主钻工切：3EX</span>
-                    </div>
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <div class="user-head-s fl">
-                        <a href="#">
-                            <img src="<%= asset_path('user_head.jpg') %>" />
-                        </a>
-                    </div>
-                    <h3 class="text-center">tx****2</h3>
-                </dt>
-                <dd>
-                    <div class="pro-review-txt">
-                        尺寸刚刚好 设计大方 用料很好 细节也做得很精巧 店家服务很好 咨询下单配送一条龙 ,客服态度很好, 耐心回答解决每一个问题 给TA点32个赞！ 忒滴很，额喜欢 ！ </div>
-                    <div class="review-other">2015年06月23日 10:19
-                        <span>主钻重量:0.3ct</span>
-                        <span>主钻净度：FL</span>
-                        <span>主钻颜色：D </span>
-                        <span>主钻工切：3EX</span>
-                    </div>
-                </dd>
-            </dl>
-            <dl>
-                <dt>
-                    <div class="user-head-s fl">
-                        <a href="#">
-                            <img src="<%= asset_path('user_head.jpg') %>" />
-                        </a>
-                    </div>
-                    <h3 class="text-center">tx****2</h3>
-                </dt>
-                <dd>
-                    <div class="pro-review-txt">
-                        尺寸刚刚好 设计大方 用料很好 细节也做得很精巧 店家服务很好 咨询下单配送一条龙 ,客服态度很好, 耐心回答解决每一个问题 给TA点32个赞！ 忒滴很，额喜欢 ！ </div>
-                    <div class="review-other">2015年06月23日 10:19
-                        <span>主钻重量:0.3ct</span>
-                        <span>主钻净度：FL</span>
-                        <span>主钻颜色：D </span>
-                        <span>主钻工切：3EX</span>
-                    </div>
-                </dd>
-            </dl>
+<div class="modal fade" id="table" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">中国区戒指手寸对照表</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
         </div>
     </div>
-</script>
+</div>
