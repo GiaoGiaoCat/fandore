@@ -11,7 +11,16 @@ module Authenticatable
 
   def create
     build_sign_in
-    save_sign_in or render 'new'
+
+    respond_to do |format|
+      if save_sign_in
+        format.html { redirect_to redirect_to_url, notice: 'User was successfully sign in.' }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
+    end
   end
 
   def destroy
@@ -34,7 +43,6 @@ module Authenticatable
     if @sign_in.save && authority_verify(@sign_in.user) && locked_verify(@sign_in.user)
       @sign_in.user.update_tracked_fields!(request)
       session[:user_id] = @sign_in.user.id
-      redirect_to_url
     else
       password_faile_handler
     end
