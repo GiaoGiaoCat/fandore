@@ -49,7 +49,7 @@ $(document).on 'page:before-unload', (e) ->
       push: $('.wrapper')
       menuWidth: '50%'
 
-    $('.link-sign').bigSlide
+    $('.link-toggle-right-nav').bigSlide
       menu: $('#sidebar')
       side: 'right'
       menuWidth: '460px'

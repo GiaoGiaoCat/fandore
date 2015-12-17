@@ -25,9 +25,6 @@ $ ->
 
 $(document).on "page:load##{pageId}", (e) ->
   renderPrice()
-  $('.image-preview').slide
-    mainCell: '.preview-list ul'
-    autoPlay: false
 
 
 renderPrice = ->

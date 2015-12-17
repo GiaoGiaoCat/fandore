@@ -20,15 +20,15 @@ $ ->
     $(@).fadeOut('fast').data('big-slide').click()
 
   .on 'click', '#sidebar .link-signup', ->
-    $('.link-sign[data-big-slide="signin"]').click()
+    $('.link[data-big-slide="signin"]').click()
     setTimeout ->
-      $('.link-sign[data-big-slide="signup"]').click()
+      $('.link[data-big-slide="signup"]').click()
     , 300
     return false
 
   .on 'click', '#sidebar .link-signin', ->
-    $('.link-sign[data-big-slide="signup"]').click()
+    $('.link[data-big-slide="signup"]').click()
     setTimeout ->
-      $('.link-sign[data-big-slide="signin"]').click()
+      $('.link[data-big-slide="signin"]').click()
     , 300
     return false
