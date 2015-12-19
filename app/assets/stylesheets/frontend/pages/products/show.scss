@@ -67,4 +67,16 @@
     margin-left: 10px;
     font-size: 12px;
   }
+
+  .table {
+    text-align: center;
+
+    td {
+      vertical-align: middle;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
 }
