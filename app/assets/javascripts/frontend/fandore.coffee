@@ -19,6 +19,17 @@ $(document).on 'page:change', (e) ->
 $(document).on 'page:before-unload', (e) ->
   $(document).trigger "page:before-unload##{fandore.pageId}"
 
+# global ajax event
+$(document).ajaxSend (e, xhr, settings) ->
+  if settings.type != 'GET'
+    token = $('meta[name=csrf-token]').attr('content')
+    xhr.setRequestHeader 'X-CSRF-Token', token
+
+.ajaxComplete (e, xhr, settings) ->
+  token = xhr.getResponseHeader('X-CSRF-Token')
+  $('meta[name=csrf-token]').attr content: token if token
+
+
 # global namespace
 @fandore =
   back: (refresh) ->
@@ -44,6 +55,7 @@ $(document).on 'page:before-unload', (e) ->
 
   handleErrors: (errors) ->
     errorsWithoutFiled = []
+    $('p.error').remove()
 
     for key, msg of errors
       $field = $("form [name='#{ key }']")
@@ -53,7 +65,11 @@ $(document).on 'page:before-unload', (e) ->
         continue
 
       msg.splice(1)
-      $("<p class='error'>#{msg}</p>").insertAfter $field
+      $group = $field.closest('.form-group')
+      if $group.length
+        $("<p class='error'>#{msg}</p>").appendTo $group
+      else
+        $("<p class='error'>#{msg}</p>").insertAfter $field
 
     if errorsWithoutFiled.length > 0
       fandore.dialog '出错了', errorsWithoutFiled.join('<br>')

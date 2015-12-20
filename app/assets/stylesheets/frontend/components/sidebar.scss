@@ -110,4 +110,17 @@
       }
     }
   }
+
+  .btn[disabled] {
+    opacity: 0.65;
+    background-color: $ui-color;
+  }
+}
+
+#sidebar-signup .form-signup .form-control {
+  border-radius: 0 4px 4px 0;
+
+  &[name='user[verification_code]'] {
+    border-radius: 0;
+  }
 }

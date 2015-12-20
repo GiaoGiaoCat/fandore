@@ -51,9 +51,26 @@ a {
   z-index: 9;
 }
 
-.form-group p.error {
-  margin-top: 5px;
-  text-align: left;
-  font-size: 14px;
-  color: #c9302c;
+// 表单
+.form-group {
+  // position: relative;
+
+  p.error {
+    margin-top: 5px;
+    text-align: left;
+    font-size: 14px;
+    color: #c9302c;
+  }
+
+  // .form-control:not(:focus):valid + span::after {
+  //   content: '✓';
+  //   position: absolute;
+  //   right: -25px;
+  //   top: 0;
+  //   bottom: 0;
+  //   margin: auto;
+  //   width: 20px;
+  //   height: 20px;
+  //   color: #3c763d;
+  // }
 }
