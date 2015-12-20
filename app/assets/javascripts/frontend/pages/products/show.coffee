@@ -24,5 +24,5 @@ $(document).on "page:load##{pageId}", (e) ->
 renderPrice = ->
   name = "#{ $('#diamond-weight').text() }-#{ $('#product-color').val() }-#{ $('#product-jingdu').val() }".toLowerCase()
   diamond = $("#product-prices li[data-name='#{ name }']")
-  $('#price').text "￥#{ diamond.text() * 1 + $('input[name=variants]').data('price') * 1 }"
+  $('#price').text "￥#{ diamond.text() * 1 + $('input[name=variant_id]:checked').data('price') * 1 }"
   $('#diamond_id').val "#{ diamond.attr 'id' }"
