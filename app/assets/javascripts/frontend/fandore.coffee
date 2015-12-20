@@ -19,7 +19,6 @@ $(document).on 'page:change', (e) ->
 $(document).on 'page:before-unload', (e) ->
   $(document).trigger "page:before-unload##{fandore.pageId}"
 
-
 # global namespace
 @fandore =
   back: (refresh) ->
@@ -42,6 +41,40 @@ $(document).on 'page:before-unload', (e) ->
       date = moment.tz(date, fandore.me.tz)
       str = date.readableTime() || ''
       el.text(str)
+
+  handleErrors: (errors) ->
+    errorsWithoutFiled = []
+
+    for key, msg of errors
+      $field = $("form [name='#{ key }']")
+
+      if $field.length is 0
+        errorsWithoutFiled.push msg
+        continue
+
+      msg.splice(1)
+      $("<p class='error'>#{msg}</p>").insertAfter $field
+
+    if errorsWithoutFiled.length > 0
+      fandore.dialog '出错了', errorsWithoutFiled.join('<br>')
+
+  dialog: (title, content) ->
+    $('#error-dialog').remove()
+    $("""<div class="modal fade" id="error-dialog" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">#{ title }</h4>
+            </div>
+            <div class="modal-body">#{ content }</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+          </div>
+        </div>
+      </div>""").appendTo $(document.body)
+    $('#error-dialog').modal('show')
 
   initSlide: ->
     $('.link-toggle-nav').bigSlide

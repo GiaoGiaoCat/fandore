@@ -50,3 +50,10 @@ a {
   background-color: rgba(0,0,0,0.7);
   z-index: 9;
 }
+
+.form-group p.error {
+  margin-top: 5px;
+  text-align: left;
+  font-size: 14px;
+  color: #c9302c;
+}
