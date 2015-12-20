@@ -33,8 +33,51 @@
     }
   }
 
-  .form-group {
-    line-height: 35px;
+  .form-inline {
+    .price {
+      margin-top: 80px;
+      font-weight: bold;
+      font-size: 28px;
+    }
+
+    .name {
+      font-size: 24px;
+      margin: 15px 0;
+    }
+
+    .product-variants .btn {
+      color: $text;
+      border-color: #EFEFEF;
+      background-color: #FCFCFC;
+      box-shadow: none;
+
+      &.active {
+        color: #fff;
+        border-color: $ui-color;
+        background-color: $ui-color;
+      }
+    }
+
+    .form-buttons {
+      margin-top: 50px;
+    }
+
+    .btn-shopping {
+      margin-right: 20px;
+      color: #fff;
+      font-size: 16px;
+      background-color: $ui-color;
+      border-color: $ui-color;
+    }
+
+    .btn-collect {
+      font-size: 16px;
+      color: $text;
+    }
+  }
+
+  .product-information {
+    line-height: 30px;
 
     .col-sm-4,
     .col-xs-6 {
@@ -53,7 +96,8 @@
 
     .form-control {
       width: 70px;
-      height: 30px;
+      height: 28px;
+      vertical-align: top;
     }
 
     #lettering {

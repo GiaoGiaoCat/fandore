@@ -196,7 +196,6 @@ ActiveRecord::Schema.define(version: 20151130154222) do
     t.datetime "canceled_at"
     t.boolean  "confirmation_delivered",                                        default: false
     t.integer  "invoice_id",             limit: 4
-    t.text     "remark",                 limit: 65535
     t.text     "track_info",             limit: 65535
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
