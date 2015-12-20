@@ -43,10 +43,10 @@
         </div>
 
         <div class="col-sm-6">
-            <% if true #婚戒 %>
-                <%= render 'engaement' %>
-            <% else %>
+            <% if @product.is_wedding? %>
                 <%= render 'wedding' %>
+            <% else %>
+                <%= render 'engaement' %>
             <% end %>
         </div>
     </div>
