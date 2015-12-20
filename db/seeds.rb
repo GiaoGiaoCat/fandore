@@ -17,13 +17,15 @@ address = User::Address.create(user_id: member.id, province:"河北区", zipcode
 # sub stone color 副钻类型
 # sub stone quantity 副石数量
 
-property_1 = Product::Property.create(name: 'Min Center Stone', presentation: '最小主钻')
-property_2 = Product::Property.create(name: 'Max Center Stone', presentation: '最大主钻')
-property_3 = Product::Property.create(name: 'Size', presentation: '指圈范围')
-property_4 = Product::Property.create(name: 'Sub Stone Style', presentation: '副钻款式')
-property_5 = Product::Property.create(name: 'Sub Stone Weight', presentation: '副钻重量')
-property_6 = Product::Property.create(name: 'Sub Stone Color', presentation: '副钻类型')
-property_7 = Product::Property.create(name: 'Sub Stone Quantity', presentation: '副钻数量')
+property_001 = Product::Property.create(name: 'Min Center Stone', presentation: '最小主钻')
+property_002 = Product::Property.create(name: 'Max Center Stone', presentation: '最大主钻')
+property_003 = Product::Property.create(name: 'Size', presentation: '指圈范围')
+property_013 = Product::Property.create(name: 'Male Size', presentation: '男款指圈范围')
+property_023 = Product::Property.create(name: 'Female Size', presentation: '女款指圈范围')
+property_004 = Product::Property.create(name: 'Sub Stone Style', presentation: '副钻款式')
+property_005 = Product::Property.create(name: 'Sub Stone Weight', presentation: '副钻重量')
+property_006 = Product::Property.create(name: 'Sub Stone Color', presentation: '副钻类型')
+property_007 = Product::Property.create(name: 'Sub Stone Quantity', presentation: '副钻数量')
 
 option_type_1 = Product::OptionType.create(name: 'Metal', presentation: '材质', position: 0)
 Product::OptionValue.create(name: '18K', presentation: '18K 白金', option_type_id: option_type_1.id)
@@ -35,10 +37,16 @@ Product::OptionValue.create(name: 'Luxury', presentation: '轻奢款', option_ty
 Product::OptionValue.create(name: 'Custom', presentation: '高级订制款', option_type_id: option_type_2.id)
 
 prototype_1 = Product::Prototype.create(name: '戒托')
-
-prototype_1.properties << [property_1, property_2, property_3, property_4, property_5, property_6, property_7]
+prototype_1.properties << [property_001, property_002, property_003, property_004, property_005, property_006, property_007]
 prototype_1.option_types << [option_type_1, option_type_2]
 
+option_type_3 = Product::OptionType.create(name: 'Style', presentation: '款式', position: 3)
+Product::OptionValue.create(name: 'Couples', presentation: '男女对戒', option_type_id: option_type_3.id)
+Product::OptionValue.create(name: 'Male', presentation: '单男款', option_type_id: option_type_3.id)
+Product::OptionValue.create(name: 'Female', presentation: '单女款', option_type_id: option_type_3.id)
+
+prototype_02 = Product::Prototype.create(name: '对戒')
+prototype_02.option_types << [option_type_1, option_type_3]
 # 钻石属性
 # shape 形状
 # weight 重量
@@ -79,8 +87,10 @@ property_15 = Product::Property.create(name: 'Polish', presentation: '抛光')
 property_16 = Product::Property.create(name: 'Cut', presentation: '切工')
 property_17 = Product::Property.create(name: 'Symmetry', presentation: '对称性')
 property_18 = Product::Property.create(name: 'Clarity', presentation: '净度')
-property_19 = Product::Property.create(name: 'Lettering', presentation: '刻字内容')
 property_20 = Product::Property.create(name: 'Certificate No', presentation: '钻石证书编号')
+property_19 = Product::Property.create(name: 'Lettering', presentation: '刻字内容')
+property_21 = Product::Property.create(name: 'Male Lettering', presentation: '男款刻字内容')
+property_22 = Product::Property.create(name: 'Female Lettering', presentation: '女款刻字内容')
 
 
 prototype_2 = Product::Prototype.create(name: '钻石')
@@ -92,17 +102,20 @@ prototype_2.properties << [
 ]
 
 prototype_3 = Product::Prototype.create(name: '求婚钻戒订单项')
-prototype_3.properties << [property_3, property_19]
+prototype_3.properties << [property_003, property_19]
 
 prototype_3 = Product::Prototype.create(name: '钻石订单项')
 prototype_3.properties << [property_20]
 
+prototype_3 = Product::Prototype.create(name: '结婚对戒订单项')
+prototype_3.properties << [property_013, property_023, property_21, property_22]
+
 # 分类
 taxon_1 = Taxonomy.create(name: '求婚钻戒')
-Taxonomy.create(name: '结婚对戒')
+taxon_2 = Taxonomy.create(name: '钻石')
+taxon_3 = Taxonomy.create(name: '结婚对戒')
 Taxonomy.create(name: '饰品')
 Taxonomy.create(name: '周边礼品')
-taxon_2 = Taxonomy.create(name: '钻石')
 
 # 添加默认钻石模板
 # 第一组
@@ -341,6 +354,33 @@ img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
 img_2.picture = File.new(Rails.root.join('db', 'images', 'thecrown', 'pic2.png'))
 img_2.save
+
+# 对戒
+product_05 = Product.new(name: '微澜对戒', prototype_id: prototype_02.id, taxon_ids: taxon_3.id)
+product_05.price = 3000
+product_05.status = 'available'
+product_05.description = '总有些意想不到的惊喜，不刻意为之，怦然于心。相遇的瞬间就已触动，窃窃的喜悦弥漫心间，那一丝波澜，想要一辈子珍藏。因为你我，爱才存在，相濡以沫或归于平静，偶有的涟漪，希望如初见般甜蜜温暖。'
+product_05.save
+v1 = product_05.variants.new(option_value_ids: ["1", "6"], price: 13000) # 18K金 男女
+v1.save
+v2 = product_05.variants.new(option_value_ids: ["1", "7"], price: 6000) # 18K金 男
+v2.save
+v1 = product_05.variants.new(option_value_ids: ["1", "8"], price: 7000) # 18K金 女
+v1.save
+v2 = product_05.variants.new(option_value_ids: ["2", "6"], price: 12000) # PT950 男女
+v2.save
+v1 = product_05.variants.new(option_value_ids: ["2", "7"], price: 5500) # PT950 男
+v1.save
+v2 = product_05.variants.new(option_value_ids: ["2", "8"], price: 6500) # PT950 女
+v2.save
+master = product_05.master
+img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_1.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'pic1.png'))
+img_1.save
+img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_2.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'pic2.png'))
+img_2.save
+
 
 order = Order.new(user: member)
 line1 = Order::LineItem.create(variant: v1, quantity: 1, price: 100.0)
