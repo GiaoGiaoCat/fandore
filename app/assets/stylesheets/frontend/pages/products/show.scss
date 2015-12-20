@@ -35,7 +35,7 @@
 
   .form-inline {
     .price {
-      margin-top: 80px;
+      margin-top: 50px;
       font-weight: bold;
       font-size: 28px;
     }
@@ -76,21 +76,43 @@
     }
   }
 
-  .product-information {
-    line-height: 30px;
-
-    .col-sm-4,
+  .form-engaement-ring .product-information {
     .col-xs-6 {
-      padding-left: 0;
+      padding: 0;
       max-width: 200px;
     }
 
-    .col-sm-8 {
-      margin-left: -42px;
+    label[for='product-size'],
+    label[for='lettering'] {
+      width: 100px;
+    }
+
+    .link-table {
+      position: absolute;
+      margin-left: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .form-wedding-rings .product-information {
+    label {
+      text-align: right;
+    }
+
+    .link-table {
+      font-size: 14px;
+    }
+  }
+
+  .product-information {
+    width: 100%;
+    line-height: 30px;
+
+    .row {
+      margin: 0 0 10px;
     }
 
     label {
-      padding-left: 0;
       font-weight: normal;
     }
 
@@ -103,13 +125,6 @@
     #lettering {
       width: 200px;
     }
-  }
-
-  .link-table {
-    position: absolute;
-
-    margin-left: 10px;
-    font-size: 12px;
   }
 
   .table {
