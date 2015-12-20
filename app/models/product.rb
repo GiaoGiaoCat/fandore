@@ -52,7 +52,16 @@ class Product < ActiveRecord::Base
   # delegate :sku, :price, :currency, :display_amount, :display_price, :weight, :height, :width, :depth, :is_master, :has_default_price?, :cost_currency, :price_in, :amount_in, to: :master
   delegate :sku, :sku=, :price, :price=, :status, :status=, to: :master
   # class methods .............................................................
+
   # public instance methods ...................................................
+  # defines: `is_wedding?`, `is_engaement?`
+  [:wedding, :engaement].each do |type|
+    define_method "is_#{type}?" do
+      name = Taxonomy::Taxon.const_get("NAMES")[type]
+      taxon = Taxonomy::Taxon.by_name(name).first
+      taxons.include?(taxon)
+    end
+  end
 
   def product_image
     variants_including_master.first || Image.default_image
