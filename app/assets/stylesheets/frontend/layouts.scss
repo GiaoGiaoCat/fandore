@@ -11,6 +11,10 @@ body {
   font-size: 16px;
   color: $text;
   overflow-x: hidden;
+
+  > .hidden-xs ~ * {
+    display: none;
+  }
 }
 
 html.fp-enabled {
@@ -29,6 +33,25 @@ a {
   &:hover {
     color: $ui-color;
     text-decoration: none;
+  }
+}
+
+.phone-tips {
+  position: absolute;
+  top: -80px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 100px;
+  font-size: 20px;
+  color: $ui-color;
+  text-align: center;
+  line-height: 1.5;
+
+  span {
+    margin-bottom: 10px;
+    font-size: 48px;
   }
 }
 
