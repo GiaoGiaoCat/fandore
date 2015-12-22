@@ -16,7 +16,6 @@ class Order::LineItem < ActiveRecord::Base
   # belongs_to :item_resource, :polymorphic => true
   # belongs_to :tax_category
   has_one :product, through: :variant
-  has_one :diamond
   # has_many :adjustments, as: :adjustable, dependent: :destroy
   # has_many :inventory_units, inverse_of: :line_item
   has_many :line_items_properties, class_name: "Order::LineItemProperty", dependent: :destroy, inverse_of: :line_item
@@ -42,6 +41,9 @@ class Order::LineItem < ActiveRecord::Base
   delegate :sku, to: :variant
   # class methods .............................................................
   # public instance methods ...................................................
+  def diamond
+    children.first
+  end
 
   def amount
     price * quantity
@@ -86,7 +88,6 @@ class Order::LineItem < ActiveRecord::Base
     line_items_properties.find_by(property_id: female_size.id).update(value: params[:female_size])
     line_items_properties.find_by(property_id: female_lettering.id).update(value: params[:female_lettering])
   end
-
 
   # protected instance methods ................................................
   # private instance methods ..................................................
