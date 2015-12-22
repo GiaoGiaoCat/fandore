@@ -83,6 +83,6 @@
 
 <ul id="product-prices" style="display:none!important;">
     <% @product.variants.each do |variant| %>
-        <li data-name="<%= variant.options_text %>" id="<%= variant.id %>"><%= variant.price %></li>
+        <li data-name="<%= variant.sku %>" id="<%= variant.id %>"><%= variant.price %></li>
     <% end %>
 </ul>
