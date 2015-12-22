@@ -33,7 +33,7 @@
             <label for="product-size" class="col-sm-3 control-label">男款</label>
             <div class="col-sm-9">
                 <select class="form-control" id="product-size" name="male_size">
-                    <% (16..24).each do |index| %>
+                    <% (11..22).each do |index| %>
                         <option value="<%= index %>"><%= "#{ index }号" %></option>
                     <% end %>
                 </select>
@@ -44,7 +44,7 @@
             <label for="product-size" class="col-sm-3 control-label">女款</label>
             <div class="col-sm-9">
                 <select class="form-control" id="product-size" name="female_size">
-                    <% (7..15).each do |index| %>
+                    <% (8..15).each do |index| %>
                         <option value="<%= index %>"><%= "#{ index }号" %></option>
                     <% end %>
                 </select>
@@ -80,3 +80,9 @@
         <a href="javascript:;" class="btn btn-default btn-lg btn-collect">加入收藏</a>
     </div>
 <% end %>
+
+<ul id="product-prices" style="display:none!important;">
+    <% @product.variants.each do |variant| %>
+        <li data-name="<%= variant.options_text %>" id="<%= variant.id %>"><%= variant.price %></li>
+    <% end %>
+</ul>
