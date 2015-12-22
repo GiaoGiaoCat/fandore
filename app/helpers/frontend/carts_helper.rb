@@ -15,10 +15,25 @@ module Frontend::CartsHelper
 
   def show_properties(item)
     return unless item
-    size = Product::Property.find_by(name: 'Size')
-    lettering = Product::Property.find_by(name: 'Lettering')
-    size_value = item.line_items_properties.find_by(property_id: size.id).value
-    lettering_value = item.line_items_properties.find_by(property_id: lettering.id).value
-    "手寸：#{size_value}, 刻字：#{lettering_value}"
+    if item.is_wedding?
+      m_size = Product::Property.find_by(name: 'Male Size')
+      m_lettering = Product::Property.find_by(name: 'Male Lettering')
+      m_size_value = item.line_items_properties.find_by(property_id: m_size.id).try(:value)
+      m_lettering_value = item.line_items_properties.find_by(property_id: m_lettering.id).try(:value)
+      m_text = "男款手寸：#{m_size_value}, 刻字：#{m_lettering_value}"
+
+      f_size = Product::Property.find_by(name: 'Female Size')
+      f_lettering = Product::Property.find_by(name: 'Female Lettering')
+      f_size_value = item.line_items_properties.find_by(property_id: f_size.id).try(:value)
+      f_lettering_value = item.line_items_properties.find_by(property_id: f_lettering.id).try(:value)
+      f_text = "女款手寸：#{f_size_value}, 刻字：#{f_lettering_value}"
+      [m_text, f_text].join(' ')
+    elsif item.is_engaement?
+      size = Product::Property.find_by(name: 'Size')
+      lettering = Product::Property.find_by(name: 'Lettering')
+      size_value = item.line_items_properties.find_by(property_id: size.id).value
+      lettering_value = item.line_items_properties.find_by(property_id: lettering.id).value
+      "手寸：#{size_value}, 刻字：#{lettering_value}"
+    end
   end
 end

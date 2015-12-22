@@ -55,7 +55,7 @@ class Product < ActiveRecord::Base
 
   # public instance methods ...................................................
   # defines: `is_wedding?`, `is_engaement?`
-  [:wedding, :engaement].each do |type|
+  [:wedding, :engaement, :diamond].each do |type|
     define_method "is_#{type}?" do
       name = Taxonomy::Taxon.const_get("NAMES")[type]
       taxon = Taxonomy::Taxon.by_name(name).first

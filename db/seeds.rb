@@ -343,10 +343,10 @@ product_04.price = 2500
 product_04.status = 'available'
 product_04.description = '从触目可及的美好中给予最好的只是一个开始。你以一朵花的姿态自由行走，惊艳了时光，惹醉了岁月，悠然入我心。那不染尘俗的美，在我心间静静绽放，凝固成最永恒的爱恋。'
 product_04.save
-v1 = product_04.variants.new(option_value_ids: ["1", "3"], price: 2500) # 18K金 简约款
-v1.save
-v2 = product_04.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金 轻奢款
-v2.save
+v01 = product_04.variants.new(option_value_ids: ["1", "3"], price: 2500) # 18K金 简约款
+v01.save
+v02 = product_04.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金 轻奢款
+v02.save
 master = product_04.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
 img_1.picture = File.new(Rails.root.join('db', 'images', 'thecrown', 'pic1.png'))
@@ -361,6 +361,7 @@ product_05.price = 3000
 product_05.status = 'available'
 product_05.description = '总有些意想不到的惊喜，不刻意为之，怦然于心。相遇的瞬间就已触动，窃窃的喜悦弥漫心间，那一丝波澜，想要一辈子珍藏。因为你我，爱才存在，相濡以沫或归于平静，偶有的涟漪，希望如初见般甜蜜温暖。'
 product_05.save
+
 v1 = product_05.variants.new(option_value_ids: ["1", "6"], price: 13000) # 18K金 男女
 v1.save
 v2 = product_05.variants.new(option_value_ids: ["1", "7"], price: 6000) # 18K金 男
@@ -382,11 +383,36 @@ img_2.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'pic2.png')
 img_2.save
 
 
+# 添加求婚戒指订单
 order = Order.new(user: member)
-line1 = Order::LineItem.create(variant: v1, quantity: 1, price: 100.0)
-line2 = Order::LineItem.create(variant: v2, quantity: 2, price: 1000.0)
-order.line_items << line1
-order.line_items << line2
+line_item_1 = Order::LineItem.create(variant: v01, quantity: 1)
+item_size = Product::Property.find_by(name: 'Size')
+item_lettering = Product::Property.find_by(name: 'Lettering')
+line_item_1.line_items_properties.find_by(property_id: item_size.id).update(value: '7')
+line_item_1.line_items_properties.find_by(property_id: item_lettering.id).update(value: 'Love')
+
+line_item_2 = Order::LineItem.create(variant: product_122.master, quantity: 1)
+line_item_2.parent_id = line_item_1.id
+
+order.line_items << line_item_1
+order.line_items << line_item_2
+
+order.shipping_address = address
+order.state = "checkout"
+order.save
+
+# 添加结婚对戒订单
+order = Order.new(user: member)
+line_item_1 = Order::LineItem.create(variant: v1, quantity: 1)
+male_size = Product::Property.find_by(name: 'Male Size')
+male_lettering = Product::Property.find_by(name: 'Male Lettering')
+female_size = Product::Property.find_by(name: 'Female Size')
+female_lettering = Product::Property.find_by(name: 'Female Lettering')
+line_item_1.line_items_properties.find_by(property_id: male_size.id).update(value: '7')
+line_item_1.line_items_properties.find_by(property_id: male_lettering.id).update(value: 'Boy')
+line_item_1.line_items_properties.find_by(property_id: female_size.id).update(value: '5')
+line_item_1.line_items_properties.find_by(property_id: female_lettering.id).update(value: 'Girl')
+order.line_items << line_item_1
 order.shipping_address = address
 order.state = "checkout"
 order.save
