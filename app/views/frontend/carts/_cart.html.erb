@@ -1,0 +1,82 @@
+<div class="shop-cart-wrap">
+    <div class="float-title-bar">
+        <i class="iconfont icon-car"></i>购物车 <span class="t-eng">shopping cart</span>
+    </div>
+
+    <table class="cart-table" border="0" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th width="5%"></th>
+                <th width="10%">主图</th>
+                <th>名称</th>
+                <th>价格</th>
+                <th>交易状态</th>
+                <th width="10%">交易操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cart.line_items.rings.each do |item| %>
+              <tr>
+                  <td>
+                      <label>
+                          <input class="checkbox icheck pro-checkbox" type="checkbox" />
+                      </label>
+                  </td>
+                  <td>
+                      <% if item.product.master.images.first %>
+                        <%= image_tag item.product.master.images.first.picture.middle.url, class: 'pro-img' %>
+                      <% end %>
+                  </td>
+                  <td align="left">
+                      <h3 class="name">
+                          <%= item.product.name %>
+                          <%= item.variant.options_text %>
+                      </h3>
+                      <p class="del-txt">
+                          <%= show_properties(item) %>
+                          <br>
+                          <%= show_diamond_info(item.diamond) %>
+                          <%# item.remark %>
+                          <!-- 克拉总重量：0.23 圆形, 良好切割, J 成色, SI1 净度
+                          <br> 存货编号：LD05989299 -->
+                      </p>
+                  </td>
+                  <td>
+                      <p class="price">￥<i><%= item.final_amount %></i></p>
+                  </td>
+                  <td>
+                      <p class="c-red">等待买家付款</p>
+                  </td>
+                  <td align="center">
+                      <%= link_to content_tag(:i, "&#xe604;".html_safe, class: 'iconfont'), line_item_path(item), method: :delete, data: { confirm: "确认删除?" }, class: 'remove-btn'  %>
+                  </td>
+              </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<div class="cart-footer">
+    <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="20%" align="left">
+                <label>
+                    <input type="checkbox" class="checkbox icheck total-checkbox">
+                    <span class="total-checkbox-txt">全选</span>
+                </label>
+            </td>
+            <td>
+                <span class="total-num">已选商品<i>0</i>件</span>
+            </td>
+            <td>
+                <span class="total-price">合计：<b class="c-red">￥<i class="font-s20">0.00</i></b></span>
+            </td>
+            <td align="right">
+                <%= link_to '付 款', orders_path, method: :post, class: 'payment-btn' %>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>
