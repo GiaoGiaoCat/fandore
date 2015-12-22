@@ -53,20 +53,20 @@
                 - @order.line_items.each do |item|
                   %tr
                     %td
-                      - if item.is_ring?
-                        %div
-                          %string= item.product.name
-                          = item.variant.options_text
-                        %small
-                          = show_properties(item)
-                      - else
+                      - if item.is_diamond?
                         %div
                           %string= item.product.name
                           = item.product.sku
                         %small
                           = show_diamond_info(item)
                           %span.badge= show_certificate_no(item)
-
+                      - else
+                        %div
+                          %string= item.product.name
+                          = item.variant.options_text
+                        %small
+                          = show_properties(item)
+                          
                     %td= item.quantity
                     %td= number_to_currency item.price
                     %td= number_to_currency item.amount

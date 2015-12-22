@@ -3,6 +3,7 @@ class Order::LineItem < ActiveRecord::Base
   self.table_name = 'line_items'
   # extends ...................................................................
   acts_as_commentable
+  has_ancestry
   # includes ..................................................................
   # constants .................................................................
   # related macros ............................................................
@@ -31,11 +32,13 @@ class Order::LineItem < ActiveRecord::Base
   after_destroy :destroy_diamond
   # after_commit :update_related_parent_model_remark
   # scopes ....................................................................
-  scope :rings, -> { where(type: nil) }
+  # TODO: 这里方法用来判断是否是戒指，需要重构
+  scope :rings, -> { where(ancestry: nil) }
   # other macros (like devise's) ..............................................
   accepts_nested_attributes_for :line_items_properties, allow_destroy: true
 
   delegate :name, :description, to: :product
+  delegate :is_diamond?, :is_wedding?, :is_engaement?, to: :product
   delegate :sku, to: :variant
   # class methods .............................................................
   # public instance methods ...................................................
@@ -58,12 +61,32 @@ class Order::LineItem < ActiveRecord::Base
   end
 
   def is_ring?
-    type.blank?
+    is_wedding? || is_engaement?
   end
 
-  def is_diamond?
-    type == 'Order::Diamond'
+  def save_engaement_properties(params)
+    return unless is_engaement?
+    size = Product::Property.find_by(name: 'Size')
+    lettering = Product::Property.find_by(name: 'Lettering')
+    line_items_properties.find_by(property_id: size.id).update(value: params[:size])
+    line_items_properties.find_by(property_id: lettering.id).update(value: params[:lettering])
   end
+
+  def save_wedding_properties(params)
+    return unless is_wedding?
+    male_size = Product::Property.find_by(name: 'Male Size')
+    male_lettering = Product::Property.find_by(name: 'Male Lettering')
+
+    female_size = Product::Property.find_by(name: 'Female Size')
+    female_lettering = Product::Property.find_by(name: 'Female Lettering')
+
+    line_items_properties.find_by(property_id: male_size.id).update(value: params[:male_size])
+    line_items_properties.find_by(property_id: male_lettering.id).update(value: params[:male_lettering])
+
+    line_items_properties.find_by(property_id: female_size.id).update(value: params[:female_size])
+    line_items_properties.find_by(property_id: female_lettering.id).update(value: params[:female_lettering])
+  end
+
 
   # protected instance methods ................................................
   # private instance methods ..................................................
@@ -71,6 +94,8 @@ class Order::LineItem < ActiveRecord::Base
   def set_prototype
     if product.taxons.pluck(:name).include? "求婚钻戒"
       self.prototype_id = Product::Prototype.find_by(name: "求婚钻戒订单项")
+    elsif product.taxons.pluck(:name).include? "结婚对戒"
+      self.prototype_id = Product::Prototype.find_by(name: "结婚对戒订单项")
     elsif product.taxons.pluck(:name).include? "钻石"
       self.prototype_id = Product::Prototype.find_by(name: "钻石订单项")
     end

@@ -29,42 +29,18 @@ class Frontend::LineItemsController < Frontend::ApplicationController
 
   def save_line_item
     if @line_item.save
-      save_engaement_properties
-      save_wedding_properties
-      save_diamond_properties
+      save_diamond
+      @line_item.save_engaement_properties(params)
+      @line_item.save_wedding_properties(params)
       redirect_to cart_path(@line_item.cart)
     end
-  end
-
-  def save_engaement_properties
-    return unless @line_item.product.is_engaement
-    size = Product::Property.find_by(name: 'Size')
-    lettering = Product::Property.find_by(name: 'Lettering')
-    @line_item.line_items_properties.find_by(property_id: size.id).update(value: params[:size])
-    @line_item.line_items_properties.find_by(property_id: lettering.id).update(value: params[:lettering])
-  end
-
-  def save_wedding_properties
-    return unless @line_item.product.is_wedding
-    male_size = Product::Property.find_by(name: 'Male Size')
-    male_lettering = Product::Property.find_by(name: 'Male Lettering')
-    
-    female_size = Product::Property.find_by(name: 'Female Size')
-    female_lettering = Product::Property.find_by(name: 'Female Lettering')
-
-    @line_item.line_items_properties.find_by(property_id: male_size.id).update(value: params[:male_size])
-    @line_item.line_items_properties.find_by(property_id: male_lettering.id).update(value: params[:male_lettering])
-
-    @line_item.line_items_properties.find_by(property_id: female_size.id).update(value: params[:female_size])
-    @line_item.line_items_properties.find_by(property_id: female_lettering.id).update(value: params[:female_lettering])
   end
 
   def save_diamond
     if params[:diamond_id]
       diamond = Product::Variant.find(params[:diamond_id])
       line_item = @cart.add_line_item(diamond)
-      line_item.type = "Order::Diamond"
-      line_item.line_item_id = @line_item.id
+      line_item.parent_id = @line_item.id
       line_item.save
     end
   end

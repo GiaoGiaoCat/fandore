@@ -110,12 +110,12 @@ ActiveRecord::Schema.define(version: 20151130154222) do
     t.decimal  "price",                        precision: 10, scale: 2,               null: false
     t.decimal  "adjustment_total",             precision: 10, scale: 2, default: 0.0
     t.decimal  "promo_total",                  precision: 10, scale: 2, default: 0.0
-    t.integer  "line_item_id",     limit: 4
-    t.string   "type",             limit: 191
+    t.string   "ancestry",         limit: 191
     t.datetime "created_at",                                                          null: false
     t.datetime "updated_at",                                                          null: false
   end
 
+  add_index "line_items", ["ancestry"], name: "index_line_items_on_ancestry", using: :btree
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["variant_id"], name: "index_line_items_on_variant_id", using: :btree
