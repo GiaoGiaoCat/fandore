@@ -362,17 +362,17 @@ product_05.status = 'available'
 product_05.description = '总有些意想不到的惊喜，不刻意为之，怦然于心。相遇的瞬间就已触动，窃窃的喜悦弥漫心间，那一丝波澜，想要一辈子珍藏。因为你我，爱才存在，相濡以沫或归于平静，偶有的涟漪，希望如初见般甜蜜温暖。'
 product_05.save
 
-v1 = product_05.variants.new(option_value_ids: ["1", "6"], price: 13000) # 18K金 男女
+v1 = product_05.variants.new(option_value_ids: ["1", "6"], price: 13000, sku: '18K-MF') # 18K金 男女
 v1.save
-v2 = product_05.variants.new(option_value_ids: ["1", "7"], price: 6000) # 18K金 男
+v2 = product_05.variants.new(option_value_ids: ["1", "7"], price: 6000, sku: '18K-M') # 18K金 男
 v2.save
-v1 = product_05.variants.new(option_value_ids: ["1", "8"], price: 7000) # 18K金 女
+v1 = product_05.variants.new(option_value_ids: ["1", "8"], price: 7000, sku: '18K-F') # 18K金 女
 v1.save
-v2 = product_05.variants.new(option_value_ids: ["2", "6"], price: 12000) # PT950 男女
+v2 = product_05.variants.new(option_value_ids: ["2", "6"], price: 12000, sku: 'PT950-MF') # PT950 男女
 v2.save
-v1 = product_05.variants.new(option_value_ids: ["2", "7"], price: 5500) # PT950 男
+v1 = product_05.variants.new(option_value_ids: ["2", "7"], price: 5500, sku: 'PT950-M') # PT950 男
 v1.save
-v2 = product_05.variants.new(option_value_ids: ["2", "8"], price: 6500) # PT950 女
+v2 = product_05.variants.new(option_value_ids: ["2", "8"], price: 6500, sku: 'PT950-F') # PT950 女
 v2.save
 master = product_05.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
