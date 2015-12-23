@@ -75,7 +75,7 @@ class Order < ActiveRecord::Base
       out_trade_no: number,
       subject: 'Order Name',
       total_fee: 0.01,
-      return_url: url_helpers.order_url(self, host: Figaro.env.site_domain),
+      return_url: url_helpers.alipay_done_order_url(self, host: Figaro.env.site_domain),
       notify_url: url_helpers.alipay_notify_orders_url(host: Figaro.env.site_domain)
     )
   end
