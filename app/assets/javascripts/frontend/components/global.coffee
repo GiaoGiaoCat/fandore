@@ -17,7 +17,7 @@ $ ->
     unless $mask.is(':visible')
       $('#mask').data('big-slide', $link).fadeIn 'fast'
 
-  .on 'click', '.link-close-nav', ->
+  .on 'click', '.link-close-nav, .link-close-sidebar', ->
     $('#mask').click()
 
   .on 'click', '#mask', ->
@@ -39,6 +39,19 @@ $ ->
 
   .on 'click', '.link-shopping-cart', ->
     $.get @href, (result) ->
-      $('#sidebar-cart').removeClass 'loading'
-        .html result
+      $('#sidebar-cart').removeClass('loading').html(result)
+      $('.total-quantity span').text renderCartQuantity()
+      $('.total-price span').text renderCartPrice()
     return false
+
+renderCartQuantity = ->
+  quantity = 0
+  $('.cart-table .quantity').each ->
+    quantity += @textContent * 1
+  quantity
+
+renderCartPrice = ->
+  price = 0
+  $('.cart-table .price').each ->
+    price += @textContent * 1
+  price

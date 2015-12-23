@@ -5,30 +5,45 @@
     </a>
 </div>
 
-<table class="cart-table table">
-    <thead>
-        <tr>
-            <th>商品/规格</th>
-            <th></th>
-            <th>数量</th>
-            <th>金额</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @cart.line_items.rings.each do |item| %>
-            <tr>
-                <th><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
-                <td><%= item.name %></td>
-                <td><%= item.quantity %></td>
-                <td><%= number_to_currency item.final_amount %></td>
-                <td>
-                    <a href="<%= line_item_path(item) %>" data-method="delete"
-                        data-confirm="确认删除？">
-                        <span class="glyphicon glyphicon-remove-sign"></span>
-                    </a>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<% if @cart.line_items.rings.size > 0 %>
+    <div class="cart-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="name">商品/规格</th>
+                    <th>数量</th>
+                    <th>金额</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @cart.line_items.rings.each do |item| %>
+                    <tr>
+                        <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                        <td class="name"><%= item.name %></td>
+                        <td class="quantity"><%= item.quantity %></td>
+                        <td class="price"><%= item.final_amount.to_i %></td>
+                        <td width="48">
+                            <a href="<%= line_item_path(item) %>" data-method="delete"
+                                data-confirm="确认删除？">
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                            </a>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="cart-footer">
+        <div class="cart-info">
+            <span class="total-quantity">共 <span></span> 件商品</span><br>
+            <span class="total-price">合计 <span></span></span>
+        </div>
+        <a href="<%= orders_path %>" class="btn btn-primary btn-lg btn-payment" data-method="post">现在结算</a>
+    </div>
+<% else %>
+    <p class="init">购物车里还没有商品</p>
+<% end %>
+
