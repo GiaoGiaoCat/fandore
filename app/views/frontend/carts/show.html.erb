@@ -16,12 +16,12 @@
         </tr>
     </thead>
     <tbody>
-        <% @cart.line_items.each do |item| %>
+        <% @cart.line_items.rings.each do |item| %>
             <tr>
-                <th><img src="<%= #这里是图片 %>"></th>
-                <td>item.product.name</td>
+                <th><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                <td><%= item.name %></td>
                 <td><%= item.quantity %></td>
-                <td><%= number_to_currency item.amount %></td>
+                <td><%= number_to_currency item.final_amount %></td>
                 <td>
                     <a href="<%= line_item_path(item) %>" data-method="delete"
                         data-confirm="确认删除？">
