@@ -1,9 +1,13 @@
 module Frontend::CartsHelper
   def show_diamond_info(item)
     return unless item
-    product_name = item.product.name
-    names = product_name.split("-")
-    "克拉总重量：#{names[0]}, #{names[1]} 成色, #{names[2]} 净度"
+    width = Product::Property.find_by(name: 'Weight')
+    color = Product::Property.find_by(name: 'Color')
+    clarity = Product::Property.find_by(name: 'Clarity')
+    width_value = item.product.product_properties.find_by(property_id: width.id).value
+    color_value = item.product.product_properties.find_by(property_id: color.id).value
+    clarity_value = item.product.product_properties.find_by(property_id: clarity.id).value
+    "克拉总重量：#{width_value}, #{color_value} 成色, #{clarity_value} 净度"
   end
 
   def show_certificate_no(item)

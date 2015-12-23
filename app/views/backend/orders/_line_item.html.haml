@@ -1,16 +1,22 @@
 .nested-fields
   - if f.object.is_diamond?
+    .row
+      .col-sm-6
+        = f.association :variant, collection: Product.available.diamonds.all, label_method: ->(v) { v.name }, value_method: ->(v) { v.master.id }, label: '钻石', wrapper: :nested_fields_with_btn
+      -# .col-sm-6
+      -#   = link_to_remove_association "删除订单项", f, class: 'btn btn-danger'
+
+    = f.simple_fields_for :line_items_properties do |property|
+      = property.input :value, label: property.object.presentation, wrapper: :nested_fields
+    -# = f.input :quantity, wrapper: :nested_fields
+  - else
     .form-group
-      %label.col-sm-2.control-label 钻石类型
+      %label.col-sm-2.control-label 商品
       .col-sm-4
         %span.input_info= f.object.product.name
     .form-group
-      %label.col-sm-2.control-label 钻石信息
-      .col-sm-4
-        %span.input_info= show_diamond_info(f.object)
-    .form-group
-      %label.col-sm-2.control-label 钻石价格
+      %label.col-sm-2.control-label 价格
       .col-sm-4
         %span.input_info= number_to_currency f.object.price
     = f.simple_fields_for :line_items_properties do |property|
-      = property.input :value, label: '钻石证书', wrapper: :nested_fields
+      = property.input :value, label: property.object.presentation, wrapper: :nested_fields

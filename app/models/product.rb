@@ -43,6 +43,7 @@ class Product < ActiveRecord::Base
 
   before_destroy :ensure_not_referenced_by_any_line_item
   # scopes ....................................................................
+  scope :available, -> { joins(:master).merge(Product::Variant.available) }
   scope :goods, -> { joins(:taxons).merge(Taxonomy::Taxon.goods) }
   scope :diamonds, -> { joins(:taxons).merge(Taxonomy::Taxon.diamond) }
   scope :by_taxon, ->(taxon_name) { joins(:taxons).merge(Taxonomy::Taxon.by_name(taxon_name)) }
