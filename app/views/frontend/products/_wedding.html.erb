@@ -4,14 +4,13 @@
 
     <div class="form-group product-variants" data-toggle="buttons">
         <label class="btn btn-primary active">
-            <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[0].id %>"
-            data-price="<%= @product.variants[0].price %>" checked> 男女对戒
+            <input class="render-price" type="radio" name="variant_name" value="MF" checked> 男女对戒
         </label>
         <label class="btn btn-primary">
-            <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[1].id %>" data-price="<%= @product.variants[1].price %>"> 单男款
+            <input class="render-price" type="radio" name="variant_name" value="M"> 单男款
         </label>
         <label class="btn btn-primary">
-            <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[1].id %>" data-price="<%= @product.variants[1].price %>"> 单女款
+            <input class="render-price" type="radio" name="variant_name" value="F"> 单女款
         </label>
     </div>
 
@@ -23,16 +22,28 @@
 
     <div class="form-group product-information">
         <div class="row">
-            <label for="product-size" class="col-sm-3 control-label"><b>选择手寸</b></label>
+            <label for="product-size" class="col-sm-3 control-label"><b>选择材质</b></label>
+            <div class="col-sm-9 form-group product-material" data-toggle="buttons">
+                <label class="btn btn-sm btn-primary active">
+                    <input class="render-price" type="radio" name="material" value="18K" checked> 18K白金
+                </label>
+                <label class="btn btn-sm btn-primary">
+                    <input class="render-price" type="radio" name="material" value="PT950"> PT950
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 control-label"><b>选择手寸</b></label>
             <div class="col-sm-9">
                 <a href="javascript:;" class="link-table" data-toggle="modal" data-target="#table">查看中国区戒指手寸对照表</a>
             </div>
         </div>
 
         <div class="row">
-            <label for="product-size" class="col-sm-3 control-label">男款</label>
+            <label for="male_size" class="col-sm-3 control-label">男款</label>
             <div class="col-sm-9">
-                <select class="form-control" id="product-size" name="male_size">
+                <select class="form-control" id="male_size" name="male_size">
                     <% (11..22).each do |index| %>
                         <option value="<%= index %>"><%= "#{ index }号" %></option>
                     <% end %>
@@ -41,9 +52,9 @@
         </div>
 
         <div class="row">
-            <label for="product-size" class="col-sm-3 control-label">女款</label>
+            <label for="female_size" class="col-sm-3 control-label">女款</label>
             <div class="col-sm-9">
-                <select class="form-control" id="product-size" name="female_size">
+                <select class="form-control" id="female_size" name="female_size">
                     <% (8..15).each do |index| %>
                         <option value="<%= index %>"><%= "#{ index }号" %></option>
                     <% end %>
@@ -52,25 +63,25 @@
         </div>
 
         <div class="row">
-            <label for="lettering" class="col-sm-3 control-label"><b>刻字内容</b></label>
+            <label class="col-sm-3 control-label"><b>刻字内容</b></label>
         </div>
 
         <div class="row">
-            <label for="lettering" class="col-sm-3 control-label">男款</label>
+            <label for="male_lettering" class="col-sm-3 control-label">男款</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="male_lettering" id="lettering" placeholder="4个汉字或8个字母">
+                <input type="text" class="form-control lettering" name="male_lettering" id="male_lettering" placeholder="4个汉字或8个字母">
             </div>
         </div>
 
         <div class="row">
-            <label for="lettering" class="col-sm-3 control-label">女款</label>
+            <label for="female_lettering" class="col-sm-3 control-label">女款</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="female_lettering" id="lettering" placeholder="4个汉字或8个字母">
+                <input type="text" class="form-control lettering" name="female_lettering" id="female_lettering" placeholder="4个汉字或8个字母">
             </div>
         </div>
     </div>
 
-    <input type="hidden" id="diamond_id" name="diamond_id">
+    <input type="hidden" id="variant_id" name="variant_id">
 
     <div class="form-buttons">
         <button type="submit" class="btn btn-default btn-lg btn-shopping">

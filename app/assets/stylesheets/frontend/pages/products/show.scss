@@ -45,7 +45,7 @@
       margin: 15px 0;
     }
 
-    .product-variants .btn {
+    label.btn {
       color: $text;
       border-color: #EFEFEF;
       background-color: #FCFCFC;
@@ -106,6 +106,7 @@
 
   .product-information {
     width: 100%;
+    font-size: 14px;
     line-height: 30px;
 
     .row {
@@ -123,7 +124,7 @@
       vertical-align: top;
     }
 
-    #lettering {
+    .lettering {
       width: 200px;
     }
   }
