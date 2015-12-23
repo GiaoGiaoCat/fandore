@@ -9,6 +9,10 @@ $ ->
       $('#sidebar-signup').show().siblings().hide()
     else if type is 'signin'
       $('#sidebar-signin').show().siblings().hide()
+    else if type is 'cart'
+      $('#sidebar-cart').show().siblings().hide()
+    else if type is 'profile'
+      $('#sidebar-profile').show().siblings().hide()
 
     unless $mask.is(':visible')
       $('#mask').data('big-slide', $link).fadeIn 'fast'
@@ -31,4 +35,10 @@ $ ->
     setTimeout ->
       $('.link[data-big-slide="signin"]').click()
     , 300
+    return false
+
+  .on 'click', '.link-shopping-cart', ->
+    $.get @href, (result) ->
+      $('#sidebar-cart').removeClass 'loading'
+        .html result
     return false
