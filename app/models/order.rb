@@ -23,8 +23,8 @@ class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy, inverse_of: :order
   has_many :variants, through: :line_items
   has_many :products, through: :variants
-  has_many :diamonds, -> { where.not(ancestry: nil) }, class_name: 'LineItem' 
-  # has_many :payments, dependent: :destroy
+  has_many :diamonds, -> { where.not(ancestry: nil) }, class_name: 'LineItem'
+  has_many :payments, dependent: :destroy
   # has_many :refunds, through: :payments
   # has_many :return_authorizations, dependent: :destroy, inverse_of: :order
   # has_many :reimbursements, inverse_of: :order
@@ -48,6 +48,7 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :shipping_address
   # accepts_nested_attributes_for :payments
   # accepts_nested_attributes_for :shipments
+  delegate :url_helpers, to: 'Rails.application.routes'
   delegate :name, to: :shipping_address
   alias_method :customer_name, :name
   # class methods .............................................................
@@ -70,21 +71,14 @@ class Order < ActiveRecord::Base
   end
 
   def pay_url
-    Alipay::Service.create_partner_trade_by_buyer_url(
-      :out_trade_no      => id.to_s,
-      :price             => total,
-      :quantity          => item_count,
-      :discount          => promo_total,
-      :subject           => "钻戒订单",
-      :logistics_type    => 'DIRECT',
-      :logistics_fee     => '0',
-      :logistics_payment => 'SELLER_PAY',
-      :return_url        => Rails.application.routes.url_helpers.order_url(self, :host => 'writings.io'),
-      :notify_url        => Rails.application.routes.url_helpers.alipay_notify_orders_url(:host => 'writings.io'),
-      :receive_name      => 'none', # 这里填写了收货信息，用户就不必填写
-      :receive_address   => 'none',
-      :receive_zip       => '100000',
-      :receive_mobile    => '100000000000'
+    Alipay::Service.create_direct_pay_by_user_url(
+      out_trade_no: number,
+      subject: 'Order Name',
+      total_fee: 0.01,
+    #   :return_url        => url_helpers.order_url(self, :host => 'writings.io'),
+    #   :notify_url        => url_helpers.alipay_notify_orders_url(:host => 'writings.io'),
+      return_url: 'https://example.com/orders/20150401000-0001',
+      notify_url: 'https://example.com/orders/20150401000-0001/notify'
     )
   end
 
