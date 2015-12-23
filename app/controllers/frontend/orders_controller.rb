@@ -19,8 +19,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
 
   def alipay_done
     alipay
-    # redirect_to order_path(@order)
-    render text: 'test'
+    redirect_to order_path(@order)
   end
 
   def alipay_notify
