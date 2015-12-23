@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     end
 
     # 购物相关
-    resources :orders, only: [:new, :create, :update] do
-      # resources :build, controller: 'orders/build'
-      scope module: 'orders', only: [:show, :create] do
+    resources :orders, only: [:new, :show, :create, :update] do
+      post :alipay_notify, on: :collection
+      scope module: 'orders' do
         resources :build, only: [:show, :update]
       end
     end

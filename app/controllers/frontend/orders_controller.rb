@@ -1,4 +1,7 @@
 class Frontend::OrdersController < Frontend::ApplicationController
+  skip_before_action :verify_authenticity_token, only: :alipay_notify
+  skip_before_action :authenticate_user!, only: :alipay_notify
+
   def create
     build_order
     save_order
@@ -8,6 +11,20 @@ class Frontend::OrdersController < Frontend::ApplicationController
     load_order
     @order.complete!
     redirect_to order_path(@order)
+  end
+
+  def show
+    load_order
+  end
+
+  def alipay_notify
+    @order = Order.find(params[:id])
+    notify_params = params.except(*request.path_parameters.keys)
+    if @order.pending? && Alipay::Notify.verify?(notify_params)
+      @order.payments.first_or_initialize.purchase(params)
+      @order.pay!
+      render text: 'success'
+    end
   end
 
   private

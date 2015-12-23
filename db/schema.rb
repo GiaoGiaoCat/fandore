@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130154222) do
+ActiveRecord::Schema.define(version: 20151223132945) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -212,6 +212,18 @@ ActiveRecord::Schema.define(version: 20151130154222) do
   add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id", using: :btree
   add_index "orders", ["user_id", "created_by_id"], name: "index_orders_on_user_id_and_created_by_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "order_id",       limit: 4
+    t.decimal  "amount",                     precision: 10, scale: 2, default: 0.0, null: false
+    t.string   "state",          limit: 191
+    t.string   "out_trade_no",   limit: 191
+    t.string   "transaction_id", limit: 191
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+  end
+
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
 
   create_table "prices", force: :cascade do |t|
     t.integer  "variant_id", limit: 4
