@@ -18,11 +18,14 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def alipay_done
+    @order = Order.find(params[:id])
     alipay
-    redirect_to order_path(@order)
+    # redirect_to order_path(@order)
+    render text: 'yeah'
   end
 
   def alipay_notify
+    @order = Order.find_by(out_trade_no: params[:out_trade_no])
     alipay
     text = @order.paid? ? 'success' : ''
     render text: text
@@ -54,7 +57,6 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def alipay
-    @order = Order.find(params[:id])
     notify_params = params.except(*request.path_parameters.keys)
     if @order.pending? && Alipay::Notify.verify?(notify_params)
       @order.payments.first_or_initialize.purchase(params)
