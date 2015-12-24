@@ -1,0 +1,60 @@
+@import 'frontend/base';
+
+#frontend-users-addresses-index {
+  .user-center-main {
+    header {
+      padding: 0 15px;
+      font-size: 18px;
+      line-height: 60px;
+      border-bottom: 1px solid #ccc;
+
+      .btn {
+        float: right;
+        margin-top: 12px;
+        color: #fff;
+        background-color: $ui-color;
+        border-color: $ui-color;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .address-table {
+    padding: 10px 15px;
+    font-size: 14px;
+
+    th, td {
+      text-align: left;
+      vertical-align: middle;
+      border: none;
+    }
+
+    .btn-address {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 26px;
+      text-align: center;
+      border-radius: 4px;
+      background-color: #D1D1D1;
+
+      &.btn-address-remove {
+        margin-left: 5px;
+        background-color: $ui-color;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      .glyphicon {
+        vertical-align: middle;
+      }
+    }
+  }
+}

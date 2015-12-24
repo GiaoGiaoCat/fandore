@@ -1,53 +1,42 @@
 <%= render 'layouts/frontend/header' %>
 
-<div class="sub-container">
-    <div class="clearfloat">
-        <%= render 'frontend/users/sidebar' %>
+<div class="page user-center">
+    <div class="container">
+        <%= render partial: 'frontend/users/sidebar', locals: {channle: 'addresses'} %>
+        <div class="user-center-main">
+            <header>
+                收货信息
+                <a class="btn btn-primary btn-new-address" href="#">添加收获地址</a>
+            </header>
 
-        <div class="sub-mainright">
-            <div class="box-white min-h820">
-                <div class="user-title-bar clearfloat">
-                    <div class="t-left">增改收货地址</div>
-                </div>
-                <div class="padd30 clearfloat">
-
-                    <%= link_to "创建新地址", new_address_path, {class: "btn-purple2 mr15", "data-size" => "big"}%>
-                    <span class="c-a0 font-s14">您已创建 <%= @addresses.size %> 个收货地址，最多可创建 10 个</span>
-                    <div class="clearfloat">
-                        <%@addresses.each do |address|%>
-                            <div class="address-list">
-                                <%= link_to content_tag(:i, nil, class: 'iconfont icon-close01'), address_path(address), method: :delete, data: { confirm: "确认删除?" }, class: 'delete' %>
-                                <h3 class="address-tit"><%= address.name %>
-                                    <% if address.is_default %>
-                                        <sup class="default-tag">默认地址</sup>
-                                    <% end %>
-                                </h3>
-                                <ul>
-                                    <li><span class="a-span">收货人： </span>
-                                        <%= address.name %>
-                                    </li>
-                                    <li><span class="a-span">所在地区： </span>
-                                        <%= address.district_name %>
-                                    </li>
-                                    <li><span class="a-span">地址： </span>
-                                        <%= address.address %>
-                                    </li>
-                                    <li><span class="a-span">手机： </span>
-                                        <%= address.mobile %>
-                                    </li>
-                                    <li><span class="a-span">电子邮箱：</span> <%= current_user.email %>
-                                    </li>
-                                </ul>
-                                <div class="address-tool">
-                                    <% unless address.is_default %>
-                                        <%= link_to "设为默认地址", address_path(id: address, user_address: {is_default: true}), method: :patch %>
-                                    <% end %>
-                                    <%= link_to '编辑', edit_address_path(address) %>
-                                </div>
-                            </div>
-                        <%end%>
-                     </div>
-                </div>
+            <div class="address-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>详细地址</th>
+                            <th>电话</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @addresses.each do |address| %>
+                            <tr data-id="<%= address.id %>">
+                                <th><%= address.name %></th>
+                                <td><%= address.address %></td>
+                                <td><%= address.mobile %></td>
+                                <td class="buttons" width="80">
+                                    <a href="" class="btn-address btn-address-edit">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    <a href="" class="btn-address btn-address-remove">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

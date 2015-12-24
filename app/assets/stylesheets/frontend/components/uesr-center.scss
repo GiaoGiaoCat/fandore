@@ -1,0 +1,47 @@
+@import 'frontend/base';
+
+.user-center .container {
+  position: relative;
+}
+
+.user-center-sidebar {
+  position: absolute;
+  left: 0;
+  width: 220px;
+  padding: 0 15px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #fff;
+
+  .avatar {
+    padding: 15px 0;
+    width: 100%;
+  }
+
+  .links {
+    margin: 20px -15px 0;
+
+    a {
+      display: block;
+      line-height: 50px;
+      color: $text-ll;
+      border-top: 1px solid #EFEFEF;
+
+      &:hover,
+      &.active {
+        color: $ui-color;
+      }
+
+      .glyphicon {
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+.user-center-main {
+  min-height: 444px;
+  margin-left: 240px;
+  border-radius: 10px;
+  background-color: #fff;
+}

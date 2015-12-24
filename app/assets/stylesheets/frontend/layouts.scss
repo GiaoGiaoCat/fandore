@@ -61,6 +61,12 @@ a {
 
 .page {
   min-height: 900px;
+
+  &.user-center {
+    padding-top: 20px;
+    background: image-url('redesign/user-bg.jpg') center no-repeat;
+    background-size: cover;
+  }
 }
 
 #mask {
