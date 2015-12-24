@@ -2,8 +2,10 @@ zh:
   views:
     orders:
       trackinfos:
+        started_processing: '创建订单'
+        pend: '正在支付订单'
         close: '关闭了订单'
-        pay: '手动支付了订单'
+        pay: '支付了订单'
         filter: '正在选钻'
         inlaid: '正在镶嵌'
         quality_check: '正在质量审核'

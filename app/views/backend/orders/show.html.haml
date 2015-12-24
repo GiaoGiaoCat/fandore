@@ -17,7 +17,7 @@
         .ibox-content.p-xl
           .text-right.m-b-lg
             - unless @order.diamonds.size.zero?
-              = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑钻石证书', edit_admin_order_path(@order), class: 'btn btn-white'
+              = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑订单', edit_admin_order_path(@order), class: 'btn btn-white'
             = next_state_btn(@order)
           .row
             .col-sm-6
@@ -66,7 +66,7 @@
                           = item.variant.options_text
                         %small
                           = show_properties(item)
-                          
+
                     %td= item.quantity
                     %td= number_to_currency item.price
                     %td= number_to_currency item.amount
@@ -89,7 +89,7 @@
           .row.m-t-lg.p-sm
             %h4.m-b-lg 系统记录
             #track-timeline.vertical-container.dark-timeline
-              = render partial: "track_info", collection: @order.track_info
+              = render partial: "track_info", collection: @order.track_info.reverse
           -# .well.m-t
           -#   %strong Comments
           -#   It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
