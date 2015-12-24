@@ -10,7 +10,6 @@ class Frontend::LineItemsController < Frontend::ApplicationController
   def destroy
     load_line_item
     @line_item.destroy
-    redirect_to root_path
   end
 
   private

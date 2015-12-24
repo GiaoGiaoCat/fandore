@@ -19,13 +19,13 @@
             </thead>
             <tbody>
                 <% @cart.line_items.rings.each do |item| %>
-                    <tr>
+                    <tr data-item="<%= item.id %>">
                         <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                         <td class="name"><%= item.name %></td>
                         <td class="quantity"><%= item.quantity %></td>
                         <td class="price"><%= item.final_amount.to_i %></td>
                         <td width="48">
-                            <a href="<%= line_item_path(item) %>" data-method="delete"
+                            <a href="<%= line_item_path(item) %>" data-remote="true" data-method="delete"
                                 data-confirm="确认删除？">
                                 <span class="glyphicon glyphicon-remove-sign"></span>
                             </a>

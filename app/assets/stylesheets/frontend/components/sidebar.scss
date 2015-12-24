@@ -76,6 +76,12 @@
       position: absolute;
       right: 20px;
       bottom: 16px;
+      background-color: $ui-color;
+      border-color: $ui-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 
