@@ -54,6 +54,9 @@ class Order < ActiveRecord::Base
   alias_method :customer_name, :name
   # class methods .............................................................
   # public instance methods ...................................................
+  def order_name
+    line_items.rings.collect(&:name).join(', ')
+  end
 
   def shipping_address
     super || build_shipping_address(user_id: user_id)
@@ -74,7 +77,7 @@ class Order < ActiveRecord::Base
   def pay_url
     Alipay::Service.create_direct_pay_by_user_url(
       out_trade_no: number,
-      subject: 'Order Name',
+      subject: order_name,
       total_fee: 0.01,
       return_url: url_helpers.alipay_done_order_url(self, host: Figaro.env.site_domain),
       notify_url: url_helpers.alipay_notify_orders_url(host: Figaro.env.site_domain)
