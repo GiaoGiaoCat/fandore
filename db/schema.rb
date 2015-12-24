@@ -216,7 +216,8 @@ ActiveRecord::Schema.define(version: 20151223132945) do
   create_table "payments", force: :cascade do |t|
     t.integer  "order_id",       limit: 4
     t.decimal  "amount",                     precision: 10, scale: 2, default: 0.0, null: false
-    t.string   "state",          limit: 191
+    t.integer  "state",          limit: 4
+    t.string   "buyer_info",     limit: 191
     t.string   "out_trade_no",   limit: 191
     t.string   "transaction_id", limit: 191
     t.datetime "created_at",                                                        null: false

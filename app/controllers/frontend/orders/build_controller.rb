@@ -16,12 +16,11 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
   def update
     load_order
     build_order
-    save_order
-    if step == :address
-      @order.checkout!
-    end
-    if step == :payment
-      # @order.pay!
+    case step
+    when :address
+      @order.started_processing!
+    when :payment
+      @order.pend!
       alipay_url = @order.pay_url
       redirect_to alipay_url and return
     end

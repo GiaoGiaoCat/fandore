@@ -11,14 +11,15 @@ module OrderStates
       # addressed: 2,
       # invoiced: 4,
       # shipmented: 6,
-      pending: 10,
-      paid: 20,
-      filtered: 30,
-      inlaided: 40,
-      quality_checked: 45,
-      packed: 50,
-      delivered: 60,
-      completed: 70,
+      processing: 10,
+      pending: 20,
+      paid: 30,
+      filtered: 40,
+      inlaided: 50,
+      quality_checked: 55,
+      packed: 60,
+      delivered: 70,
+      completed: 80,
       canceled: 90,
       closed: 93,
       refunded: 95,
@@ -28,6 +29,7 @@ module OrderStates
     aasm column: :state, enum: true do
 
       state :checkout, initial: true
+      state :processing
       state :pending
       state :paid
       state :filtered
@@ -41,8 +43,12 @@ module OrderStates
       state :refunded
       state :resumed
 
-      event :checkout, after: :update_totals do
-        transitions from: :checkout, to: :pending
+      event :started_processing, after: :update_totals do
+        transitions from: [:checkout, :pending, :completed, :processing], to: :processing
+      end
+
+      event :pend, after: [:update_totals, :initialize_payment] do
+        transitions from: [:checkout, :processing], to: :pending
       end
 
       event :pay, after: :notify_to_client do
@@ -90,6 +96,11 @@ module OrderStates
         transitions from: :closed, to: :pending
       end
 
+    end
+
+    # NOTE: 当用户点击付款，生成一条付款记录，目前每条订单对应一条支付记录
+    def initialize_payment
+      payments.first_or_create
     end
 
     # TODO: 这里需要验证订单确实已经付款过，拥有 payments
