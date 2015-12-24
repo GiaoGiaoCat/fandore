@@ -20,7 +20,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
   def alipay_done
     load_order
     alipay
-    redirect_to order_build_path(:complete, :order_id => @order.id)
+    redirect_to order_build_path(:complete, :order_id => @order)
   end
 
   def alipay_notify
@@ -36,7 +36,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def load_order
-    @order = order_scope.find(params[:id])
+    @order = order_scope.find_by_encrypted_id(params[:id])
   end
 
   def build_order
@@ -46,7 +46,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
   def save_order
     @order.add_line_items_from_cart(current_cart)
     if @order.save
-      redirect_to order_build_path(:address, :order_id => @order.id)
+      redirect_to order_build_path(:address, :order_id => @order)
     end
   end
 

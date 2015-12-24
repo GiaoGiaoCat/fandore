@@ -30,7 +30,7 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
   private
 
   def load_order
-    @order = order_scope.find(params[:order_id])
+    @order = order_scope.find_by_encrypted_id(params[:order_id])
   end
 
   def build_order

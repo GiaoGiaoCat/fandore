@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   include OrderStates
   include NumberGenerator
   include TrackInfo
-  # include Remarkable
+  include EncryptedId
   # constants .................................................................
   # related macros ............................................................
   attr_accessor :use_shipping
@@ -43,6 +43,7 @@ class Order < ActiveRecord::Base
   after_create :initial_totals
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
+  encrypted_id key: '9L4cFdvMFuJvrVncseZNKV'
   accepts_nested_attributes_for :line_items
   accepts_nested_attributes_for :billing_address
   accepts_nested_attributes_for :shipping_address
