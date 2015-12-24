@@ -18,17 +18,15 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def alipay_done
-    @order = Order.find(params[:id])
+    load_order
     alipay
-    # redirect_to order_path(@order)
-    render text: 'yeah'
+    redirect_to order_build_path(:complete, :order_id => @order.id)
   end
 
   def alipay_notify
-    @order = Order.find_by(out_trade_no: params[:out_trade_no])
+    @order = Order.find_by(number: params[:out_trade_no])
     alipay
-    text = @order.paid? ? 'success' : ''
-    render text: text
+    render text: (@order.paid? ? 'success' : '')
   end
 
   private

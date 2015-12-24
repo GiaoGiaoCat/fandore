@@ -24,8 +24,8 @@ Rails.application.routes.draw do
 
     # 购物相关
     resources :orders, only: [:new, :show, :create, :update] do
-      post :alipay_notify, on: :collection
       get :alipay_done, on: :member
+      post :alipay_notify, on: :collection
       scope module: 'orders' do
         resources :build, only: [:show, :update]
       end
