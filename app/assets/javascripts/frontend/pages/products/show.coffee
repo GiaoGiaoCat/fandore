@@ -9,6 +9,13 @@ $ ->
       $('#product-color').val 'F'
       $('#product-jingdu').val 'VVS2'
 
+    .on 'change', "##{ pageId } .form-wedding-rings input[name=variant_name]", ->
+      $('.form-control').prop 'disabled', false
+      if @value is 'M'
+        $('#female_size, #female_lettering').prop 'disabled', true
+      else if @value is 'F'
+        $('#male_size, #male_lettering').prop 'disabled', true
+
 
 $(document).on "page:load##{pageId}", (e) ->
   unless $('.page').hasClass('fullpage-wrapper')
