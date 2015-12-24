@@ -1,9 +1,15 @@
-<% @page_title = "产品列表"  %>
+<% @page_title = "账户资料"  %>
 
 <%= render 'layouts/frontend/header' %>
 
-<div class="page">
+<div class="page user-center">
+    <div class="container">
+        <%= render partial: 'frontend/users/sidebar', locals: {channle: 'profile'} %>
 
+        <div class="user-center-main">
+            <header>账户资料</header>
+        </div>
+    </div>
 </div>
 
 <%= render 'layouts/frontend/footer' %>
