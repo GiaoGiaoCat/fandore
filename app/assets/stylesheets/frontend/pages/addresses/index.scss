@@ -2,22 +2,15 @@
 
 #frontend-users-addresses-index {
   .user-center-main {
-    header {
-      padding: 0 15px;
-      font-size: 18px;
-      line-height: 60px;
-      border-bottom: 1px solid #ccc;
+    header .btn {
+      float: right;
+      margin-top: 12px;
+      color: #fff;
+      background-color: $ui-color;
+      border-color: $ui-color;
 
-      .btn {
-        float: right;
-        margin-top: 12px;
-        color: #fff;
-        background-color: $ui-color;
-        border-color: $ui-color;
-
-        &:hover {
-          opacity: 0.8;
-        }
+      &:hover {
+        opacity: 0.8;
       }
     }
   }
