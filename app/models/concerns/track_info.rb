@@ -14,13 +14,13 @@ module TrackInfo
     info = { time: Time.now, event: event }
     info[:operator_id] = operator_id if operator_id
     info[:note] = note if note
-    self.track_info << info
+    track_info << info
   end
 
-
-  def update_state(event, operator)
-    self.try(event)
-    self.add_track_info(event, operator.id)
+  def update_state_with_track!(event, operator)
+    try(event)
+    add_track_info(event, operator.id)
+    save
   end
 
   private

@@ -58,7 +58,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
     notify_params = params.except(*request.path_parameters.keys)
     if @order.pending? && Alipay::Notify.verify?(notify_params)
       @order.payments.first_or_initialize.purchase(params)
-      @order.pay!
+      @order.update_state_with_track!('pay', @order.user)
     end
   end
 
