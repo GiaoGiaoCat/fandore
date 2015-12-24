@@ -18,9 +18,9 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
     build_order
     case step
     when :address
-      @order.started_processing!
+      @order.update_state_with_track!('started_processing', current_user)
     when :payment
-      @order.pend!
+      @order.update_state_with_track!('pend', current_user)
       alipay_url = @order.pay_url
       redirect_to alipay_url and return
     end
