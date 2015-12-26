@@ -94,3 +94,23 @@
     }
   }
 }
+
+.order-items-table table.table {
+  th, td {
+    text-align: right;
+    vertical-align: middle;
+    border: none;
+  }
+
+  th {
+    font-size: 14px;
+  }
+
+  td {
+    color: $text-l;
+  }
+
+  .name {
+    text-align: left;
+  }
+}

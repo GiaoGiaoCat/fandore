@@ -1,0 +1,49 @@
+@import 'frontend/base';
+
+#frontend-users-orders-index {
+  .order {
+    font-size: 14px;
+
+    .title {
+      padding: 0 15px;
+      line-height: 60px;
+      background-color: #FBFAFA;
+
+      .btn,
+      .status {
+        float: right;
+      }
+
+      .btn {
+        margin: 15px 0 15px 10px;
+      }
+
+      .status {
+        color: $text-l;
+      }
+    }
+
+    .order-items-table {
+      padding: 0 10px 0 5px;
+    }
+
+    .table {
+      margin-bottom: 0;
+    }
+
+    .order-price {
+      line-height: 60px;
+      padding: 0 15px;
+      color: $text-l;
+      border-top: 1px solid #efefef;
+
+      span {
+        margin-right: 30px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

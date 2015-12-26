@@ -22,26 +22,6 @@
     main {
       padding: 20px 30px;
     }
-
-    .items-table {
-      th, td {
-        text-align: right;
-        vertical-align: middle;
-        border: none;
-      }
-
-      th {
-        font-size: 14px;
-      }
-
-      td {
-        color: $text-l;
-      }
-
-      .name {
-        text-align: left;
-      }
-    }
   }
 
   .section-order {
@@ -73,3 +53,4 @@
     }
   }
 }
+
