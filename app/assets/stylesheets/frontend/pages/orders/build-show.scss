@@ -1,0 +1,75 @@
+@import 'frontend/base';
+
+#frontend-orders-build-show {
+  .section-address {
+    .col-md-4 p {
+      font-size: 14px;
+      color: $text-l;
+    }
+  }
+
+  .section-invoice {
+    .form-group {
+      margin-right: 30px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .section-items {
+    main {
+      padding: 20px 30px;
+    }
+
+    .items-table {
+      th, td {
+        text-align: right;
+        vertical-align: middle;
+        border: none;
+      }
+
+      th {
+        font-size: 14px;
+      }
+
+      td {
+        color: $text-l;
+      }
+
+      .name {
+        text-align: left;
+      }
+    }
+  }
+
+  .section-order {
+    .success {
+      text-align: center;
+
+      h3 {
+        position: relative;
+        padding-top: 120px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -20px;
+          right: 0;
+          left: 0;
+          margin: auto;
+          width: 116px;
+          height: 116px;
+          background: image-url("redesign/red-right.png") center no-repeat;
+          background-size: 116px;
+        }
+      }
+    }
+
+    .tips {
+      margin-top: 40px;
+      color: $text-l;
+    }
+  }
+}
