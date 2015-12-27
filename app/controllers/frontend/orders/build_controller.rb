@@ -24,7 +24,6 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
       alipay_url = @order.pay_url
       redirect_to alipay_url and return
     end
-    render_wizard @order
   end
 
   private
