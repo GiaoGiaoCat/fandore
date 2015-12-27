@@ -218,6 +218,7 @@ ActiveRecord::Schema.define(version: 20151223132945) do
 
   create_table "payment_methods", force: :cascade do |t|
     t.string   "name",         limit: 191
+    t.string   "description",  limit: 191
     t.string   "type",         limit: 191
     t.boolean  "active",                   default: true
     t.string   "environment",  limit: 191
@@ -238,8 +239,6 @@ ActiveRecord::Schema.define(version: 20151223132945) do
     t.string   "buyer_info",        limit: 191
     t.string   "out_trade_no",      limit: 191
     t.string   "transaction_id",    limit: 191
-    t.integer  "source_id",         limit: 4
-    t.string   "source_type",       limit: 191
     t.datetime "created_at",                                                           null: false
     t.datetime "updated_at",                                                           null: false
   end

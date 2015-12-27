@@ -100,7 +100,8 @@ module OrderStates
 
     # NOTE: 当用户点击付款，生成一条付款记录，目前每条订单对应一条支付记录
     def initialize_payment
-      payments.first_or_create
+      payment_method = Payment::PaymentMethod.find_by(name: self.payment_method)
+      payments.first_or_create(payment_method_id: payment_method.id)
     end
 
     # TODO: 这里需要验证订单确实已经付款过，拥有 payments

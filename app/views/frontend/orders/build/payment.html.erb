@@ -24,62 +24,65 @@
             </main>
         </div>
 
-        <%= form_for @order, url: wizard_path, html: {class: 'form-order-payment'}, method: :put, data: { remote: true } do |f| %>
+        <%= form_for @order, url: wizard_path, html: {class: 'form-order-payment'}, method: :put do |f| %>
         <div class="section section-payment">
             <header>支付方式</header>
             <main class="row">
                 <p class="title">支付平台</p>
                 <div class="payments">
                     <label class="active">
-                        <input type="radio" name="payment_method" value="alipay" checked>
+                        <input type="radio" name="order[payment_method]" value="alipay" checked>
                         <img src="<%= asset_path('bank/alipay.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="wxpay">
+                        <input type="radio" name="order[payment_method]" value="wxpay">
                         <img src="<%= asset_path('bank/weixin.png') %>" />
                     </label>
                 </div>
 
                 <p class="title">网银支付</p>
+                <!-- 这里是一个传递网银的参数例子 -->
+                <input type="radio" name="order[payment_bank]" value="CMB">
+                <!-- 这里是一个传递网银的参数例子 -->
                 <div class="payments bank">
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="ABC">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="ABC">
                         <img src="<%= asset_path('bank/bank_01.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="ICBCB2C">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="ICBCB2C">
                         <img src="<%= asset_path('bank/bank_02.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="CCB">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="CCB">
                         <img src="<%= asset_path('bank/bank_03.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="POSTGC">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="POSTGC">
                         <img src="<%= asset_path('bank/bank_04.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="BOCB2C">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="BOCB2C">
                         <img src="<%= asset_path('bank/bank_05.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="CMB">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="CMB">
                         <img src="<%= asset_path('bank/bank_06.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="SPDB">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="SPDB">
                         <img src="<%= asset_path('bank/bank_08.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="CIB">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="CIB">
                         <img src="<%= asset_path('bank/bank_10.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="SPABANK">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="SPABANK">
                         <img src="<%= asset_path('bank/bank_11.png') %>" />
                     </label>
                     <label>
-                        <input type="radio" name="payment_method" value="bankpay" data-bank="GDB">
+                        <input type="radio" name="order[payment_method]" value="bankpay" data-bank="GDB">
                         <img src="<%= asset_path('bank/bank_13.png') %>" />
                     </label>
                 </div>

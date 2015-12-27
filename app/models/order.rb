@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   include EncryptedId
   # constants .................................................................
   # related macros ............................................................
-  attr_accessor :use_shipping
+  attr_accessor :use_shipping, :payment_method, :payment_bank
   # relationships .............................................................
   # belongs_to :store
   belongs_to :user
@@ -50,7 +50,6 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :shipping_address
   # accepts_nested_attributes_for :payments
   # accepts_nested_attributes_for :shipments
-  delegate :url_helpers, to: 'Rails.application.routes'
   delegate :name, to: :shipping_address
   alias_method :customer_name, :name
   # class methods .............................................................
@@ -71,13 +70,7 @@ class Order < ActiveRecord::Base
   end
 
   def pay_url
-    Alipay::Service.create_direct_pay_by_user_url(
-      out_trade_no: number,
-      subject: order_name,
-      total_fee: 0.01,
-      return_url: url_helpers.alipay_done_order_url(self, host: Figaro.env.site_domain),
-      notify_url: url_helpers.alipay_notify_orders_url(host: Figaro.env.site_domain)
-    )
+    payments.checkout.last.payment_method.pay_url(self)
   end
 
   # protected instance methods ................................................

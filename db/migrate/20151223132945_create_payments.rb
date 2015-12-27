@@ -9,8 +9,8 @@ class CreatePayments < ActiveRecord::Migration
       t.string      :out_trade_no #商户网站唯一订单号
       t.string      :transaction_id #支付宝交易号/微信订单号
 
-      t.integer     :source_id
-      t.string      :source_type
+      # t.integer     :source_id
+      # t.string      :source_type
       
       # t.string   :response_code
       # t.string   :avs_response # 等于 transaction_id

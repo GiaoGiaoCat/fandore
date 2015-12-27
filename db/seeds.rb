@@ -7,6 +7,12 @@ User.create(email: 'li2013@gmail.com', mobile: '13269259371', password: 'db5566'
 User.create(email: 'ls2013@gmail.com', mobile: '13269259370', password: 'db5566', role: "product_manager")
 address = User::Address.create(user_id: member.id, province:"河北区", zipcode:"610116", city: "石家庄", district: "长安区", name: "lishaohua", mobile: "13932011432", is_default: true, address: "shuizidao ")
 
+# 支付方式
+
+Payment::PaymentMethod.create(name: 'alipay', description: '支付宝支付', type: 'Payment::Alipay')
+Payment::PaymentMethod.create(name: 'wxpay', description: '微信支付', type: 'Payment::Wxpay')
+Payment::PaymentMethod.create(name: 'bankpay', description: '支付宝网银支付', type: 'Payment::Bankpay')
+
 # 戒托属性和可选属性
 # metal 材质（可选）
 # style 款式（可选）
