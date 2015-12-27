@@ -5,139 +5,140 @@
 <div class="page order-build">
     <div class="container">
         <%= render partial: 'nav', locals: {step: 2} %>
-
-        <div class="section section-address">
-            <header>收货信息</header>
-            <main class="row">
-                <div class="col-md-7">
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input type="text" name="order[shipping_address_attributes][name]" class="form-control input-name" placeholder="收货人姓名" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="order[shipping_address_attributes][phone]" class="form-control input-phone" placeholder="手机号码" required>
-                        </div>
-                    </div>
-                    <div class="form-inline">
-                        <div class="city-group">
+        <%= form_for @order, url: wizard_path, method: :put do |f| %>
+            <div class="section section-address">
+                <header>收货信息</header>
+                <main class="row">
+                    <div class="col-md-7">
+                        <div class="form-inline">
                             <div class="form-group">
-                                <select name="order[shipping_address_attributes][province]" class="form-control city-select" required>
-                                    <option>选择省份</option>
-                                    <%= options_for_select(ChinaCity.list) %>
-                                </select>
+                                <input type="text" name="order[shipping_address_attributes][name]" class="form-control input-name" placeholder="收货人姓名" required>
                             </div>
                             <div class="form-group">
-                                <select name="order[shipping_address_attributes][city]" class="form-control city-select" required>
-                                    <option>选择城市</option>
-                                </select>
+                                <input type="text" name="order[shipping_address_attributes][phone]" class="form-control input-phone" placeholder="手机号码" required>
                             </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="city-group">
+                                <div class="form-group">
+                                    <select name="order[shipping_address_attributes][province]" class="form-control city-select" required>
+                                        <option>选择省份</option>
+                                        <%= options_for_select(ChinaCity.list) %>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="order[shipping_address_attributes][city]" class="form-control city-select" required>
+                                        <option>选择城市</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="order[shipping_address_attributes][district]" class="form-control city-select" required>
+                                        <option>选择区县</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-inline">
                             <div class="form-group">
-                                <select name="order[shipping_address_attributes][district]" class="form-control city-select" required>
-                                    <option>选择区县</option>
-                                </select>
+                                <input type="text" name="order[shipping_address_attributes][address]" class="form-control input-address" placeholder="街道编号/名称，楼宇名称" required>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-5">
+                        <h4>配送说明</h4>
+                        <p>VANDODO产品目前仅限在中国大陆地区购买。您订购的商品将通过顺丰速运配送，顺丰无法送达的地区将改用其他快递公司，您订购的产品我们将按产品总额全额投保。<br>
+                        配送时间：星期一至星期日 下午 5:30</p>
+                    </div>
+                </main>
+            </div>
+
+            <div class="section section-coupon">
+                <header>优惠码</header>
+                <main>
                     <div class="form-inline">
                         <div class="form-group">
-                            <input type="text" name="order[shipping_address_attributes][address]" class="form-control input-address" placeholder="街道编号/名称，楼宇名称" required>
+                            <label>使用优惠码</label>
+                            <div class="input-group">
+                                <input type="text" name="" class="form-control" disabled>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">立即使用</button>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-5">
-                    <h4>配送说明</h4>
-                    <p>VANDODO产品目前仅限在中国大陆地区购买。您订购的商品将通过顺丰速运配送，顺丰无法送达的地区将改用其他快递公司，您订购的产品我们将按产品总额全额投保。<br>
-                    配送时间：星期一至星期日 下午 5:30</p>
-                </div>
-            </main>
-        </div>
+                </main>
+            </div>
 
-        <div class="section section-coupon">
-            <header>优惠码</header>
-            <main>
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label>使用优惠码</label>
-                        <div class="input-group">
-                            <input type="text" name="" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">立即使用</button>
-                            </span>
+            <div class="section section-invoice">
+                <header>发票信息</header>
+                <main>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 需要发票
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-
-        <div class="section section-invoice">
-            <header>发票信息</header>
-            <main>
-                <div class="form-inline">
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> 需要发票
+                        <div class="form-group">发票类型：普通发票</div>
+                        <div class="form-group">发票内容：商品明细</div>
+                        <div class="form-group">
+                            发票抬头：
+                            <label class="radio-inline">
+                                <input type="radio" name="type" value="0" checked> 个人
                             </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="type" value="1"> 公司
+                            </label>
+                            <div class="form-group form-group-title">
+                                <input type="text" class="form-control" placeholder="输入公司名称">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">发票类型：普通发票</div>
-                    <div class="form-group">发票内容：商品明细</div>
-                    <div class="form-group">
-                        发票抬头：
-                        <label class="radio-inline">
-                            <input type="radio" name="type" value="0" checked> 个人
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="type" value="1"> 公司
-                        </label>
-                        <div class="form-group form-group-title">
-                            <input type="text" class="form-control" placeholder="输入公司名称">
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
+                </main>
+            </div>
 
-        <div class="section section-items">
-            <header>商品信息</header>
-            <main>
-                <div class="order-items-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th class="name">商品/规格</th>
-                                <th>数量</th>
-                                <th>金额</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% @order.line_items.rings.each do |item| %>
-                                <tr data-item="<%= item.id %>">
-                                    <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
-                                    <td class="name"><%= item.name %></td>
-                                    <td class="quantity"><%= item.quantity %></td>
-                                    <td class="price"><%= item.final_amount.to_i %></td>
+            <div class="section section-items">
+                <header>商品信息</header>
+                <main>
+                    <div class="order-items-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="name">商品/规格</th>
+                                    <th>数量</th>
+                                    <th>金额</th>
                                 </tr>
-                            <% end %>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
-        </div>
+                            </thead>
+                            <tbody>
+                                <% @order.line_items.rings.each do |item| %>
+                                    <tr data-item="<%= item.id %>">
+                                        <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                                        <td class="name"><%= item.name %></td>
+                                        <td class="quantity"><%= item.quantity %></td>
+                                        <td class="price"><%= item.final_amount.to_i %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </div>
 
-        <footer class="order-payment">
-            <p>
-                <span>商品总金额：¥<%= @order.total.to_i %></span> 　　
-                <span>优惠金额：¥0</span>　　
-                <span>运费：¥0</span> 　　
-                <span>支付方式：在线支付</span>　　
-                <span>应付金额：<span class="price">￥<%= @order.item_total.to_i %></span></span>
-            </p>
-            <p class="right">
-                <button type="submit" class="btn btn-default btn-lg">提交订单</button>
-            </p>
-        </footer>
+            <footer class="order-payment">
+                <p>
+                    <span>商品总金额：¥<%= @order.total.to_i %></span> 　　
+                    <span>优惠金额：¥0</span>　　
+                    <span>运费：¥0</span> 　　
+                    <span>支付方式：在线支付</span>　　
+                    <span>应付金额：<span class="price">￥<%= @order.item_total.to_i %></span></span>
+                </p>
+                <p class="right">
+                    <button type="submit" class="btn btn-default btn-lg">提交订单</button>
+                </p>
+            </footer>
+        <% end %>
     </div>
 </div>
 
