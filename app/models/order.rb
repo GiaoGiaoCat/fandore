@@ -44,6 +44,7 @@ class Order < ActiveRecord::Base
   # scopes ....................................................................
   # other macros (like devise's) ..............................................
   encrypted_id key: '9L4cFdvMFuJvrVncseZNKV'
+  accepts_nested_attributes_for :invoice
   accepts_nested_attributes_for :line_items
   accepts_nested_attributes_for :billing_address
   accepts_nested_attributes_for :shipping_address
@@ -67,11 +68,6 @@ class Order < ActiveRecord::Base
       item.cart_id = nil
       line_items << item
     end
-  end
-
-  # NOTE: 暂时没用上
-  def amount
-    line_items.inject(0.0) { |sum, li| sum + li.amount }
   end
 
   def pay_url

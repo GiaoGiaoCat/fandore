@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20151223132945) do
     t.integer  "user_id",            limit: 4
     t.integer  "billing_address_id", limit: 4
     t.integer  "payment_type",       limit: 4,                              default: 0
-    t.integer  "type",               limit: 4,                              default: 0
     t.string   "title",              limit: 191
     t.string   "mobile",             limit: 191
     t.string   "code",               limit: 191
@@ -198,6 +197,9 @@ ActiveRecord::Schema.define(version: 20151223132945) do
     t.boolean  "confirmation_delivered",                                        default: false
     t.integer  "invoice_id",             limit: 4
     t.text     "track_info",             limit: 65535
+    t.boolean  "need_invoice",                                                  default: false
+    t.integer  "invoice_type",           limit: 4,                              default: 0
+    t.string   "invoice_title",          limit: 191
     t.datetime "created_at",                                                                    null: false
     t.datetime "updated_at",                                                                    null: false
   end
@@ -214,18 +216,36 @@ ActiveRecord::Schema.define(version: 20151223132945) do
   add_index "orders", ["user_id", "created_by_id"], name: "index_orders_on_user_id_and_created_by_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.string   "name",         limit: 191
+    t.string   "type",         limit: 191
+    t.boolean  "active",                   default: true
+    t.string   "environment",  limit: 191
+    t.boolean  "auto_capture",             default: true
+    t.string   "display_on",   limit: 191
+    t.datetime "deleted_at"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  add_index "payment_methods", ["id", "type"], name: "index_payment_methods_on_id_and_type", using: :btree
+
   create_table "payments", force: :cascade do |t|
-    t.integer  "order_id",       limit: 4
-    t.decimal  "amount",                     precision: 10, scale: 2, default: 0.0, null: false
-    t.integer  "state",          limit: 4
-    t.string   "buyer_info",     limit: 191
-    t.string   "out_trade_no",   limit: 191
-    t.string   "transaction_id", limit: 191
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.integer  "order_id",          limit: 4
+    t.integer  "payment_method_id", limit: 4
+    t.decimal  "amount",                        precision: 10, scale: 2, default: 0.0, null: false
+    t.integer  "state",             limit: 4
+    t.string   "buyer_info",        limit: 191
+    t.string   "out_trade_no",      limit: 191
+    t.string   "transaction_id",    limit: 191
+    t.integer  "source_id",         limit: 4
+    t.string   "source_type",       limit: 191
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
   end
 
   add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
+  add_index "payments", ["payment_method_id"], name: "index_payments_on_payment_method_id", using: :btree
 
   create_table "prices", force: :cascade do |t|
     t.integer  "variant_id", limit: 4

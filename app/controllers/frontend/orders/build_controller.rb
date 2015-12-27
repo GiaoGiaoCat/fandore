@@ -10,6 +10,9 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
 
   def show
     load_order
+    if step == :address && @order.processing?
+      jump_to(:payment, order_id: @order)
+    end
     render_wizard
   end
 

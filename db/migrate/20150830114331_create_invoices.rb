@@ -4,7 +4,6 @@ class CreateInvoices < ActiveRecord::Migration
       t.references  :user, index: true
       t.integer     :billing_address_id, index: true
       t.integer     :payment_type, default: 0
-      t.integer     :type, default: 0
       t.string      :title
       t.string      :mobile
       t.string      :code

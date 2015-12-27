@@ -35,6 +35,12 @@ class CreateOrders < ActiveRecord::Migration
 
       t.integer   :invoice_id, index: true
       t.text      :track_info
+
+      # 以下字段标记发票信息
+      t.boolean   :need_invoice, default: false
+      t.integer   :invoice_type, default: 0
+      t.string    :invoice_title
+
       # 以下字段暂时无用
       # t.decimal   :additional_tax_total, precision: 10, scale: 2, default: 0.0, null: false
       # t.integer   :shipping_method_id, index: true

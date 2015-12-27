@@ -5,7 +5,7 @@
 <div class="page order-build">
     <div class="container">
         <%= render partial: 'nav', locals: {step: 2} %>
-        <%= form_for @order, url: wizard_path, method: :put, data: {remote: true} do |f| %>
+        <%= form_for @order, url: wizard_path, method: :put, data: { remote: true } do |f| %>
             <div class="section section-address">
                 <header>收货信息</header>
                 <main class="row">
@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> 需要发票
+                                    <input name="order[need_invoice]" type="checkbox" value="1"> 需要发票
                                 </label>
                             </div>
                         </div>
@@ -85,13 +85,13 @@
                         <div class="form-group">
                             发票抬头：
                             <label class="radio-inline">
-                                <input type="radio" name="type" value="0" checked> 个人
+                                <input type="radio" name="order[invoice_type]" value="0" checked> 个人
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="type" value="1"> 公司
+                                <input type="radio" name="order[invoice_type]" value="1"> 公司
                             </label>
                             <div class="form-group form-group-title">
-                                <input type="text" class="form-control" placeholder="输入公司名称">
+                                <input type="text" name="order[invoice_title]" class="form-control" placeholder="输入公司名称">
                             </div>
                         </div>
                     </div>
@@ -128,11 +128,11 @@
 
             <footer class="order-payment">
                 <p>
-                    <span>商品总金额：¥<%= @order.total.to_i %></span> 　　
+                    <span>商品总金额：<%= number_to_currency @order.item_total %></span> 　　
                     <span>优惠金额：¥0</span>　　
                     <span>运费：¥0</span> 　　
                     <span>支付方式：在线支付</span>　　
-                    <span>应付金额：<span class="price">￥<%= @order.item_total.to_i %></span></span>
+                    <span>应付金额：<span class="price"><%= number_to_currency @order.total %></span></span>
                 </p>
                 <p class="right">
                     <button type="submit" class="btn btn-default btn-lg" data-disable-with="正在提交...">提交订单</button>
