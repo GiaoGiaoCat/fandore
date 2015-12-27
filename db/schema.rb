@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20151223132945) do
     t.integer  "user_id",            limit: 4
     t.integer  "billing_address_id", limit: 4
     t.integer  "payment_type",       limit: 4,                              default: 0
+    t.integer  "type",               limit: 4,                              default: 0
     t.string   "title",              limit: 191
     t.string   "mobile",             limit: 191
     t.string   "code",               limit: 191

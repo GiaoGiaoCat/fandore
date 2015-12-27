@@ -2,7 +2,7 @@
 
 #frontend-orders-build-show {
   .section-address {
-    .col-md-4 p {
+    .col-md-5 p {
       font-size: 14px;
       color: $text-l;
     }
@@ -96,6 +96,30 @@
     .tips {
       margin-top: 40px;
       color: $text-l;
+    }
+  }
+
+  .order-payment {
+    margin: 30px 0 50px 20px;
+
+    .price {
+      font-size: 28px;
+      color: $ui-color;
+      font-family: sans-serif;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .btn {
+      color: #fff;
+      background-color: $ui-color;
+      border-color: $ui-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

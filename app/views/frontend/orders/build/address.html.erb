@@ -9,7 +9,7 @@
         <div class="section section-address">
             <header>收货信息</header>
             <main class="row">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="form-inline">
                         <div class="form-group">
                             <input type="text" name="order[shipping_address_attributes][name]" class="form-control input-name" placeholder="收货人姓名" required>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <h4>配送说明</h4>
                     <p>VANDODO产品目前仅限在中国大陆地区购买。您订购的商品将通过顺丰速运配送，顺丰无法送达的地区将改用其他快递公司，您订购的产品我们将按产品总额全额投保。<br>
                     配送时间：星期一至星期日 下午 5:30</p>
@@ -85,10 +85,10 @@
                     <div class="form-group">
                         发票抬头：
                         <label class="radio-inline">
-                            <input type="radio" name="invoice" value="" checked> 个人
+                            <input type="radio" name="type" value="0" checked> 个人
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="invoice" value=""> 公司
+                            <input type="radio" name="type" value="1"> 公司
                         </label>
                         <div class="form-group form-group-title">
                             <input type="text" class="form-control" placeholder="输入公司名称">
@@ -125,6 +125,19 @@
                 </div>
             </main>
         </div>
+
+        <footer class="order-payment">
+            <p>
+                <span>商品总金额：¥<%= @order.total.to_i %></span> 　　
+                <span>优惠金额：¥0</span>　　
+                <span>运费：¥0</span> 　　
+                <span>支付方式：在线支付</span>　　
+                <span>应付金额：<span class="price">￥<%= @order.item_total.to_i %></span></span>
+            </p>
+            <p class="right">
+                <button type="submit" class="btn btn-default btn-lg">提交订单</button>
+            </p>
+        </footer>
     </div>
 </div>
 
