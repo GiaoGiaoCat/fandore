@@ -9,7 +9,41 @@
         <div class="section section-address">
             <header>收货信息</header>
             <main class="row">
-                <div class="col-md-8">一堆表单</div>
+                <div class="col-md-8">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="order[shipping_address_attributes][name]" class="form-control input-name" placeholder="收货人姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="order[shipping_address_attributes][phone]" class="form-control input-phone" placeholder="手机号码" required>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <div class="city-group">
+                            <div class="form-group">
+                                <select name="order[shipping_address_attributes][province]" class="form-control city-select" required>
+                                    <option>选择省份</option>
+                                    <%= options_for_select(ChinaCity.list) %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="order[shipping_address_attributes][city]" class="form-control city-select" required>
+                                    <option>选择城市</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="order[shipping_address_attributes][district]" class="form-control city-select" required>
+                                    <option>选择区县</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="order[shipping_address_attributes][address]" class="form-control input-address" placeholder="街道编号/名称，楼宇名称" required>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-4">
                     <h4>配送说明</h4>
                     <p>VANDODO产品目前仅限在中国大陆地区购买。您订购的商品将通过顺丰速运配送，顺丰无法送达的地区将改用其他快递公司，您订购的产品我们将按产品总额全额投保。<br>
@@ -18,7 +52,7 @@
             </main>
         </div>
 
-        <div class="section">
+        <div class="section section-coupon">
             <header>优惠码</header>
             <main>
                 <div class="form-inline">
@@ -56,6 +90,9 @@
                         <label class="radio-inline">
                             <input type="radio" name="invoice" value=""> 公司
                         </label>
+                        <div class="form-group form-group-title">
+                            <input type="text" class="form-control" placeholder="输入公司名称">
+                        </div>
                     </div>
                 </div>
             </main>

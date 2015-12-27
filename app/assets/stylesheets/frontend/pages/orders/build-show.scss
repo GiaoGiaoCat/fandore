@@ -6,6 +6,47 @@
       font-size: 14px;
       color: $text-l;
     }
+
+    .form-inline {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .input-name {
+      width: 145px;
+    }
+
+    .input-phone {
+      width: 230px;
+    }
+
+    .input-address {
+      width: 400px;
+    }
+  }
+
+  .section-coupon {
+    label {
+      margin-right: 10px;
+      font-weight: normal;
+    }
+
+    .btn {
+      color: #fff;
+      background-color: $ui-color;
+      border-color: $ui-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 
   .section-invoice {
@@ -15,6 +56,11 @@
       &:last-child {
         margin-right: 0;
       }
+    }
+
+    .form-group-title {
+      margin-left: 10px;
+      visibility: hidden;
     }
   }
 
