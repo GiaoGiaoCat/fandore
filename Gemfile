@@ -70,6 +70,9 @@ gem 'kaminari'
 gem 'cancancan', '~> 1.10'
 # An unofficial alipay ruby gem
 gem 'alipay', github: 'chloerei/alipay'
+# An unofficial simple wechat pay gem
+gem 'wx_pay'
+gem 'rqrcode_png'
 
 # Use Puma as the app server
 gem 'puma', group: :production
