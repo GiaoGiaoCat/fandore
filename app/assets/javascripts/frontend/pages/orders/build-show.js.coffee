@@ -14,4 +14,4 @@ $ ->
 
     .on 'ajax:beforeSend', "##{ pageId } .form-order-payment", (e, xhr, settings) ->
       $lable = $('.payments.bank label.active')
-      settings.data += "&bank=#{ $lable.find('input').data('bank') }"  if $lable.length
+      settings.data += "&order[payment_bank]=#{ $lable.find('input').data('bank') }"  if $lable.length
