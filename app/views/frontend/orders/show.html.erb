@@ -9,9 +9,93 @@
         <div class="user-center-main">
             <header>
                 订单号：<%= @order.number %>
-                <span class="status"><%= I18n.t("views.orders.states.#{order.state}") %></span>
+                <span class="status"><%= I18n.t("views.orders.states.#{@order.state}") %></span>
             </header>
             <main>
+                <div class="section section-progress">
+                    <ul class="order-progress">
+                        <li>
+                            <span class="text">下单</span>
+                            <span class="time">2015-12-02 13:26</span>
+                            <span class="circle"></span>
+                        </li>
+                        <li>
+                            <span class="text">付款</span>
+                            <span class="time">2015-12-02 13:26</span>
+                            <span class="circle"></span>
+                        </li>
+                        <li>
+                            <span class="text">定制完成</span>
+                            <span class="time"></span>
+                            <span class="circle"></span>
+                        </li>
+                        <li>
+                            <span class="text">出库</span>
+                            <span class="time"></span>
+                            <span class="circle"></span>
+                        </li>
+                        <li>
+                            <span class="text">交易完成</span>
+                            <span class="time"></span>
+                            <span class="circle"></span>
+                        </li>
+                    </ul>
+
+                    <div class="order-states">
+                        <h4>订单状态：<%= I18n.t("views.orders.states.#{@order.state}") %></h4>
+                        <p>等待发货</p>
+                    </div>
+                </div>
+
+                <div class="section section-progress">
+                    <div class="title">商品明细</div>
+
+                    <div class="content order-items-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th class="name">商品/规格</th>
+                                    <th>数量</th>
+                                    <th>金额</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @order.line_items.rings.each do |item| %>
+                                    <tr data-item="<%= item.id %>">
+                                        <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                                        <td class="name"><%= item.name %></td>
+                                        <td width="48"><%= item.quantity %></td>
+                                        <td width="100"><%= item.final_amount.to_i %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="title">收货人信息</div>
+                    <div class="content">
+                        <p>收货人：&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.shipping_address.name %></p>
+                        <p>联系电话：<%= @order.shipping_address.mobile %></p>
+                        <p>详细地址：<%= "#{@order.shipping_address.province} #{@order.shipping_address.city} #{@order.shipping_address.district} #{@order.shipping_address.address}" %></p>
+                    </div>
+                </div>
+
+
+                <% if @order.need_invoice %>
+                    <div class="section">
+                        <div class="title">发票信息</div>
+                        <div class="content">
+                            <p>发票抬头：<%= @order.invoice_type ? '企业' : '个人' %></p>
+                            <% if @order.invoice_type %>
+                                <p>公司名称：<%= @order.invoice_title %></p>
+                            <% end %>
+                            <p>发票内容：购买商品明细</p>
+                        </div>
+                    </div>
+                <% end %>
             </main>
         </div>
     </div>
