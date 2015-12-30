@@ -1,4 +1,31 @@
 module Frontend::Users::OrdersHelper
+  def show_next_state(obj)
+    next_state =
+      case obj.state
+      when 'checkout'
+        'processing'
+      when 'processing'
+        'pending'
+      when 'pending'
+        'paid'
+      when 'paid'
+        'filtered'
+      when 'filtered'
+        'inlaided'
+      when 'inlaided'
+        'quality_checked'
+      when 'quality_checked'
+        'packed'
+      when 'packed'
+        'delivered'
+      when 'delivered'
+        'completed'
+      else
+        ''
+      end
+    I18n.t("views.orders.states.#{next_state}")
+  end
+
   def next_state_button(obj)
     class_name, event_name =
       case obj.state

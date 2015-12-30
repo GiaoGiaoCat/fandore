@@ -43,7 +43,7 @@
 
                     <div class="order-states">
                         <h4>订单状态：<%= I18n.t("views.orders.states.#{@order.state}") %></h4>
-                        <p>等待发货</p>
+                        <p><%= show_next_state(@order) %></p>
                     </div>
                 </div>
 
