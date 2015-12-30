@@ -1,0 +1,20 @@
+<% @page_title = "我的订单"  %>
+
+<%= render 'layouts/frontend/header' %>
+
+<div class="page user-center">
+    <div class="container">
+        <%= render partial: 'frontend/users/sidebar', locals: {channle: 'orders'} %>
+
+        <div class="user-center-main">
+            <header>
+                订单号：<%= @order.number %>
+                <span class="status"><%= I18n.t("views.orders.states.#{order.state}") %></span>
+            </header>
+            <main>
+            </main>
+        </div>
+    </div>
+</div>
+
+<%= render 'layouts/frontend/footer' %>

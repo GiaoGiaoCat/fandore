@@ -15,15 +15,15 @@
                     <div class="order">
                         <div class="title">
                             订单号：<span class="number"><%= order.number %></span>
-                            <button type="button" class="btn btn-default btn-sm">查看进度</button>
-                            <span class="status">已付款</span>
+                            <button type="button" class="btn btn-default btn-sm">(在这里填写)</button>
+                            <span class="status"><%= I18n.t("views.orders.states.#{order.state}") %></span>
                         </div>
                         <div class="order-items-table">
                             <table class="table">
                                 <tbody>
                                     <% order.line_items.rings.each do |item| %>
                                         <tr>
-                                            <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                                            <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                                             <td class="name"><%= item.name %></td>
                                             <td width="48"><%= item.quantity %></td>
                                             <td width="100"><%= item.final_amount.to_i %></td>
@@ -36,6 +36,7 @@
                             <span class="total">商品金额：￥<%= order.total.to_i %></span>
                             <span class="reduce">优惠金额：￥<%= order.adjustment_total.to_i %></span>
                             <span class="price">订单金额：￥<%= order.item_total.to_i %></span>
+                            <a href="<%= order_path(order) %>" class="link-order-show">查看详情</a>
                         </div>
                     </div>
                 <% end %>
