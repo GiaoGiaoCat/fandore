@@ -80,6 +80,17 @@ a {
   z-index: 9;
 }
 
+// 初始化提示
+.init {
+  padding: 50px 0;
+  text-align: center;
+
+  .init-content {
+    margin: 20px 0;
+    color: $text-ll;
+  }
+}
+
 // 表单
 .form-group {
   // position: relative;
