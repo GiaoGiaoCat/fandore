@@ -33,6 +33,8 @@ config/secrets.yml
 config/database.yml
 config/oneapm.yml
 config/application.yml
+config/initializers/alipay.rb
+config/initializers/wx_pay.rb
 
 ## Environment normalisation:
 /.bundle
@@ -49,5 +51,4 @@ config/application.yml
 
 # Ignore pow environment settings
 .powenv
-config/initializers/alipay.rb
 .byebug_history

@@ -30,6 +30,7 @@ set :keep_releases, 20
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, [
   'config/initializers/alipay.rb',
+  'config/initializers/wx_pay.rb',
   'config/database.yml',
   'config/oneapm.yml',
   'config/secrets.yml',
