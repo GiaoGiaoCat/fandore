@@ -26,7 +26,7 @@
                         <% @addresses.each do |address| %>
                             <tr data-id="<%= address.id %>">
                                 <th><%= address.name %></th>
-                                <td><%= address.address %></td>
+                                <td><%= "#{address.province} #{address.city} #{address.district} #{address.address}" %></td>
                                 <td><%= address.mobile %></td>
                                 <td class="buttons" width="80">
                                     <a href="" class="btn-address btn-address-edit">

@@ -27,7 +27,7 @@
                                                 <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                                                 <td class="name"><%= item.name %></td>
                                                 <td width="48"><%= item.quantity %></td>
-                                                <td width="100"><%= item.final_amount.to_i %></td>
+                                                <td width="100"><%= number_to_currency item.final_amount %></td>
                                             </tr>
                                         <% end %>
                                     </tbody>
