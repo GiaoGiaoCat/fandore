@@ -23,6 +23,7 @@ zh:
         complete: '完成'
       states:
         checkout: '等待下单'
+        processing: '正在填写订单'
         pending: '等待支付'
         paid: '已付款'
         filtered: '选钻已完成'
