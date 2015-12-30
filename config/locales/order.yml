@@ -13,14 +13,14 @@ zh:
         delivery: '正在发货'
         complete: '订单完成'
       state_btn:
-        close: '关闭'
+        close: '取消订单'
         pay: '支付'
         filter: '选钻'
         inlaid: '镶嵌'
         quality_check: '质量审核'
         pack: '包装'
         delivery: '发货'
-        complete: '完成'
+        complete: '确认签收'
       states:
         checkout: '等待下单'
         processing: '正在填写订单'

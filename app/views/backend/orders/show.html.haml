@@ -18,7 +18,7 @@
           .text-right.m-b-lg
             - unless @order.diamonds.size.zero?
               = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑订单', edit_admin_order_path(@order), class: 'btn btn-white'
-            = next_state_btn(@order)
+            = next_state_link(@order)
           .row
             .col-sm-6
               %h4 收货人信息

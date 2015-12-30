@@ -16,7 +16,21 @@
                         <div class="order">
                             <div class="title">
                                 订单号：<span class="number"><%= order.number %></span>
-                                <button type="button" class="btn btn-default btn-sm">(在这里填写)</button>
+                                <% if order.checkout? || order.processing? %>
+                                  <%= next_state_button(order) %>
+                                <% elsif order.pending? %>
+                                  <%= next_state_button(order) %>
+                                  <%= link_to '立即支付', '#', class: 'btn btn-default btn-sm' %>
+                                <% elsif order.paid? %>
+                                  <%= next_state_button(order) %>
+                                  <%= link_to '查看进度', '#', class: 'btn btn-default btn-sm' %>
+                                  <% elsif order.delivered? %>
+                                    <%= next_state_button(order) %>
+                                    <%= link_to '查看物流', '#', class: 'btn btn-default btn-sm' %>
+                                <% elsif order.completed? %>
+                                  <%# next_state_button(order) 这里应该是退换货 %>
+                                  <%= link_to '发表评价', '#', class: 'btn btn-default btn-sm' %>
+                                <% end %>
                                 <span class="status"><%= I18n.t("views.orders.states.#{order.state}") %></span>
                             </div>
                             <div class="order-items-table">

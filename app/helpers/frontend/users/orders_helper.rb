@@ -1,25 +1,22 @@
-module Backend::OrdersHelper
-  def show_shipping_address(address)
-    "#{address.address}, #{address.name}, #{address.mobile}"
-  end
-
-  def next_state_link(obj)
+module Frontend::Users::OrdersHelper
+  def next_state_button(obj)
     class_name, event_name =
       case obj.state
       when 'checkout'
         ['fa fa-send', 'close']
       when 'pending'
-        ['fa fa-send', 'pay']
+        ['fa fa-send', 'close']
+        # ['fa fa-send', 'pay']
       when 'paid'
-        ['fa fa-send', 'filter']
+        ['', '']
       when 'filtered'
-        ['fa fa-send', 'inlaid']
+        ['', '']
       when 'inlaided'
-        ['fa fa-send', 'quality_check']
+        ['', '']
       when 'quality_checked'
-        ['fa fa-send', 'pack']
+        ['', '']
       when 'packed'
-        ['fa fa-send', 'delivery']
+        ['', '']
       when 'delivered'
         ['fa fa-send', 'complete']
       when 'completed'
@@ -40,12 +37,6 @@ module Backend::OrdersHelper
       end
     return if event_name.blank?
     btn_name = ' ' + I18n.t("views.orders.state_btn.#{event_name}")
-    link_to content_tag(:i, nil, class: class_name) + btn_name, update_state_admin_order_path(@order, event: event_name), method: :put, class: 'btn btn-primary'
-  end
-
-  def show_track_info_operator_and_time(track_info)
-    return unless track_info
-    # operator
-    format_datetime track_info[:time]
+    link_to btn_name, update_state_order_path(obj, event: event_name), method: :put, class: 'btn btn-default btn-sm'
   end
 end

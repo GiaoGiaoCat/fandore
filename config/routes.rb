@@ -57,7 +57,9 @@ Rails.application.routes.draw do
       resources :binding_emails, only: [:index, :show, :create]
       resources :favorites, only: [:index, :destroy]
       resources :addresses
-      resources :orders, only: [:index]
+      resources :orders, only: [:index] do
+        put :update_state, on: :member
+      end
     end
   end
 
