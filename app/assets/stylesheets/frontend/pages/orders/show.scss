@@ -96,7 +96,10 @@
       .time {
         position: absolute;
         top: 80px;
-        max-width: 80px;
+        right: 0;
+        left: 0;
+        width: 80px;
+        margin: auto;
 
         &:empty + .circle::after {
           content: '';
