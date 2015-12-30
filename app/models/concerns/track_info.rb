@@ -9,6 +9,11 @@ module TrackInfo
   module ClassMethods
   end
 
+  def get_track_time(event)
+    info = track_info.select { |info| info[:event] == event.to_s }[0]
+    info[:time] if info
+  end
+
   def add_track_info(event, operator_id = nil, note = nil)
     init_track_info
     info = { time: Time.now, event: event }

@@ -16,34 +16,33 @@
                     <ul class="order-progress">
                         <li>
                             <span class="text">下单</span>
-                            <span class="time">2015-12-02 13:26</span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:started_processing) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">付款</span>
-                            <span class="time">2015-12-02 13:26</span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:paid) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">定制完成</span>
-                            <span class="time"></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:quality_checked) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">出库</span>
-                            <span class="time"></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:delivered) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">交易完成</span>
-                            <span class="time"></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:completed) %></span>
                             <span class="circle"></span>
                         </li>
                     </ul>
 
                     <div class="order-states">
                         <h4>订单状态：<%= I18n.t("views.orders.states.#{@order.state}") %></h4>
-                        <p><%= show_next_state(@order) %></p>
                     </div>
                 </div>
 
