@@ -64,6 +64,6 @@ module Frontend::Users::OrdersHelper
       end
     return if event_name.blank?
     btn_name = ' ' + I18n.t("views.orders.state_btn.#{event_name}")
-    link_to btn_name, update_state_order_path(obj, event: event_name), method: :put, class: 'btn btn-default btn-sm'
+    link_to btn_name, update_state_order_path(obj, event: event_name), method: :put, class: 'link'
   end
 end

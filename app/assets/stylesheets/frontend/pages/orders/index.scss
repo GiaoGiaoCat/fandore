@@ -16,6 +16,14 @@
 
       .btn {
         margin: 15px 0 15px 10px;
+        color: #fff;
+        background-color: $ui-color;
+        border-color: $ui-color;
+        border-radius: 0;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       .status {
@@ -25,6 +33,10 @@
 
     .order-items-table {
       padding: 0 10px 0 5px;
+
+      .link {
+        font-size: 12px;
+      }
     }
 
     .table {
