@@ -16,8 +16,7 @@
                         </div>
                         <div class="col-md-10">
                             <p>修改头像</p>
-                            <%= form_for @user, url: users_profile_update_path, remote: true, html: {id: 'update-avatar'} do |f| %>
-                                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                            <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar'} do |f| %>
                                 <%= f.fields_for :profile do |field| %>
                                     <%= field.file_field :avatar, class: 'hide', id: 'user-avatar' %>
                                 <% end %>
