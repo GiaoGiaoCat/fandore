@@ -12,25 +12,30 @@
             </header>
             <main>
                 <% if @orders.size > 0 %>
-                    <% @orders.each do |order| %>
+                    <% @orders.reverse.each do |order| %>
                         <div class="order">
                             <div class="title">
-                                订单号：<span class="number"><%= order.number %></span>
-                                <% if order.checkout? || order.processing? %>
-                                  <%= next_state_button(order) %>
+                                订单号：<a href="<%= order_path(order) %>"><%= order.number %></a>
+
+                                <% if order.processing? %>
+                                    <%= next_state_button(order) %>
+                                <% elsif order.checkout? %>
+                                    <%= next_state_button(order) %>
+                                    <%= link_to '立即下单', order_build_path(:address, :order_id => order), class: 'btn btn-default btn-sm' %>
                                 <% elsif order.pending? %>
-                                  <%= next_state_button(order) %>
-                                  <%= link_to '立即支付', '#', class: 'btn btn-default btn-sm' %>
+                                    <%= next_state_button(order) %>
+                                    <%= link_to '立即支付', order_build_path(:payment, :order_id => order), class: 'btn btn-default btn-sm' %>
                                 <% elsif order.paid? %>
-                                  <%= next_state_button(order) %>
-                                  <%= link_to '查看进度', '#', class: 'btn btn-default btn-sm' %>
+                                    <%= next_state_button(order) %>
+                                    <%= link_to '查看进度', '#', class: 'btn btn-default btn-sm' %>
                                   <% elsif order.delivered? %>
                                     <%= next_state_button(order) %>
                                     <%= link_to '查看物流', '#', class: 'btn btn-default btn-sm' %>
                                 <% elsif order.completed? %>
-                                  <%# next_state_button(order) 这里应该是退换货 %>
-                                  <%= link_to '发表评价', '#', class: 'btn btn-default btn-sm' %>
+                                    <%# next_state_button(order) 这里应该是退换货 %>
+                                    <%= link_to '发表评价', '#', class: 'btn btn-default btn-sm' %>
                                 <% end %>
+
                                 <span class="status"><%= I18n.t("views.orders.states.#{order.state}") %></span>
                             </div>
                             <div class="order-items-table">

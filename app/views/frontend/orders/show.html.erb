@@ -7,10 +7,7 @@
         <%= render partial: 'frontend/users/sidebar', locals: {channle: 'orders'} %>
 
         <div class="user-center-main">
-            <header>
-                订单号：<%= @order.number %>
-                <span class="status"><%= I18n.t("views.orders.states.#{@order.state}") %></span>
-            </header>
+            <header>订单号：<%= @order.number %></header>
             <main>
                 <div class="section section-progress">
                     <ul class="order-progress">

@@ -8,7 +8,7 @@ $ ->
       else
         $('.form-group-title').css visibility: 'visible'
 
-    .on 'change', "##{ pageId } .section-payment input[name='payment_method']", ->
+    .on 'change', "##{ pageId } .section-payment input[name='order[payment_method]']", ->
       $('.payments label.active').removeClass 'active'
       $(@).parent().addClass 'active'
 
