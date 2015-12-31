@@ -7,7 +7,7 @@ module UserUpdateProfileable
 
   def update
     load_user
-    update_user_profile or render 'edit'
+    update_user_profile
   end
 
   private
