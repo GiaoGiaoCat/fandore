@@ -60,14 +60,28 @@
                 </div>
 
                 <div class="section">
-                    <div class="title">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
-                        邮箱验证
-                    </div>
-                    <div class="content">
-                        <span class="desc">未验证邮箱，请访问您注册时填写的邮箱 <%= @user.email %>，<br>查看激活邮件并验证。</span>
-                        <a href="#" class="link" data-toggle="modal" data-target="#modal-email">修改</a>
-                    </div>
+                    <% if @user.is_active? %>
+                        <div class="title">
+                            <span class="glyphicon glyphicon-ok-circle"></span>
+                            邮箱验证
+                        </div>
+                        <div class="content">
+                            <span class="desc">您验证的邮箱： <%= @user.email %></span>
+                            <a href="#" class="link" data-toggle="modal" data-target="#modal-email">修改</a>
+                        </div>
+                    <% else %>
+                        <div class="title">
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            邮箱验证
+                        </div>
+                        <div class="content">
+                            <span class="desc">未验证邮箱，请访问您注册时填写的邮箱 <%= @user.email %>，<br>查看激活邮件并验证。</span>
+                            <div class="right">
+                                <a href="#" class="link">重新发送邮件</a><br>
+                                <a href="#" class="link" data-toggle="modal" data-target="#modal-email">修改</a>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
 
                 <div class="section">

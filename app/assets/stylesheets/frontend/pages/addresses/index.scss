@@ -50,4 +50,48 @@
       }
     }
   }
+
+  .modal-address {
+    form {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    .form-group {
+      margin-right: 20px;
+      margin-bottom: 20px;
+      vertical-align: top;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .form-group-buttons {
+      margin-top: 20px;
+      text-align: center;
+
+      .btn {
+        width: 200px;
+        background-color: $ui-color;
+        border-color: $ui-color;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .input-name {
+      width: 145px;
+    }
+
+    .input-phone {
+      width: 230px;
+    }
+
+    .input-address {
+      width: 400px;
+    }
+  }
 }

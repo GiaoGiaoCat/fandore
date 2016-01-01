@@ -2,6 +2,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
 
   def index
     load_addresses
+    build_address
   end
 
   def new
@@ -10,24 +11,27 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
 
   def create
     build_address
-    save_address or render "new"
+    save_address
   end
 
   def edit
     load_address
     build_address
+    respond_to do |format|
+      format.html { render layout: false }
+      format.js
+    end
   end
 
   def update
     load_address
     build_address
-    save_address or render "edit"
+    save_address
   end
 
   def destroy
     load_address
     @address.destroy
-    redirect_to addresses_path
   end
 
   private
@@ -50,9 +54,7 @@ class Frontend::Users::AddressesController < Frontend::ApplicationController
   end
 
   def save_address
-    if @address.save
-      redirect_to addresses_path
-    end
+    @address.save
   end
 
   def address_params

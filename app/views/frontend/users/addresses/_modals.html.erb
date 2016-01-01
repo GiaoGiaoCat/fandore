@@ -1,0 +1,20 @@
+<div class="modal fade modal-address" id="modal-new-address">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">新增收货信息</h4>
+            </div>
+            <div class="modal-body">
+            <%= render partial: 'form', locals: {url: addresses_path} %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-address" id="modal-edit-address">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>

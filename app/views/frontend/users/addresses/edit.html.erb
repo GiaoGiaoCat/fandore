@@ -1,28 +1,7 @@
-<%= render 'layouts/frontend/header' %>
-
-<div class="sub-container">
-    <div class="clearfloat">
-        <%= render 'frontend/users/sidebar' %>
-
-        <div class="sub-mainright">
-            <div class="box-white min-h820">
-                <div class="user-title-bar clearfloat">
-                    <div class="t-left">编辑收货地址</div>
-                </div>
-                <div class="padd30 clearfloat">
-
-                  <div class="address-form">
-                      <div class="address-box">
-                          <ul class="address-ul">
-                              <%= render partial: 'form', object: @address, as: :address, locals: { url_path: address_path(@address) } %>
-                          </ul>
-                      </div>
-                  </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+    <h4 class="modal-title">修改收货信息</h4>
 </div>
-<%= render 'layouts/frontend/footer' %>
+<div class="modal-body">
+    <%= render partial: 'form', locals: {url: address_path(@address)} %>
+</div>

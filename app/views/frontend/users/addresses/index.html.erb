@@ -9,7 +9,7 @@
         <div class="user-center-main">
             <header>
                 收货信息
-                <a class="btn btn-primary btn-new-address" href="#">添加收获地址</a>
+                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal-new-address">添加收获地址</a>
             </header>
 
             <div class="address-table">
@@ -25,14 +25,15 @@
                     <tbody>
                         <% @addresses.each do |address| %>
                             <tr data-id="<%= address.id %>">
-                                <th><%= address.name %></th>
+                                <td><%= address.name %></td>
                                 <td><%= "#{address.province} #{address.city} #{address.district} #{address.address}" %></td>
                                 <td><%= address.mobile %></td>
                                 <td class="buttons" width="80">
-                                    <a href="" class="btn-address btn-address-edit">
+                                    <a href="<%= edit_address_path(address) %>" class="btn-address btn-address-edit"
+                                        data-toggle="modal" data-target="#modal-edit-address">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a>
-                                    <a href="" class="btn-address btn-address-remove">
+                                    <a href="#" class="btn-address btn-address-remove">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </a>
                                 </td>
@@ -46,3 +47,4 @@
 </div>
 
 <%= render 'layouts/frontend/footer' %>
+<%= render 'modals' %>
