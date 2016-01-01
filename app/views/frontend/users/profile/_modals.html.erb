@@ -1,0 +1,70 @@
+<div class="modal fade modal-profile" id="modal-nickname">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">设置昵称</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar'} do |f| %>
+                    <%= f.fields_for :profile do |field| %>
+                        <div class="form-group form-group-lg">
+                            <%= field.text_field :name, class: 'form-control input-lg', placeholder: '请输入昵称' %>
+                        </div>
+                    <% end %>
+                    <div class="form-group form-group-lg">
+                        <%= f.submit '提交', class: 'btn btn-primary btn-lg', data: { disable_with: '正在提交...' } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-profile" id="modal-partner">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">填写 Ta 的资料</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar', class: 'form-horizontal'} do |f| %>
+                    <%= f.fields_for :profile do |field| %>
+                        <div class="form-group form-group-lg">
+                            <%= field.label :partner_name, class: 'col-sm-3 control-label' %>
+                            <div class="col-sm-9">
+                                <%= field.text_field :partner_name, class: 'form-control input-lg', placeholder: '请输入姓名' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-lg">
+                            <%= field.label :partner_birthday, class: 'col-sm-3 control-label' %>
+                            <div class="col-sm-9">
+                                <%= field.text_field :partner_birthday, class: 'form-control input-lg', placeholder: '格式：2016-1-1' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-lg">
+                            <%= field.label :partner_email, class: 'col-sm-3 control-label' %>
+                            <div class="col-sm-9">
+                                <%= field.text_field :partner_email, class: 'form-control input-lg', placeholder: '请输入邮箱' %>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-lg">
+                            <%= field.label :partner_mobile, class: 'col-sm-3 control-label' %>
+                            <div class="col-sm-9">
+                                <%= field.text_field :partner_mobile, class: 'form-control input-lg', placeholder: '请输入电话' %>
+                            </div>
+                        </div>
+                    <% end %>
+
+                    <div class="form-group form-group-lg">
+                        <%= f.submit '提交', class: 'btn btn-primary btn-lg', data: { disable_with: '正在提交...' } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

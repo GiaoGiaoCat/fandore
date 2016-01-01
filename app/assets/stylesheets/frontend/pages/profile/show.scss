@@ -1,13 +1,62 @@
 @import 'frontend/base';
 
 #frontend-users-profile-show {
-  .section-avatar {
+  .section {
     padding: 20px 30px;
+    border-bottom: 1px solid #EFEFEF;
 
-    .avatar-preview {
-      max-width: 100px;
-      max-height: 100px;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .title {
+      margin-bottom: 10px;
+
+      span {
+        margin-right: 10px;
+        font-size: 20px;
+        color: #EEB430;
+        vertical-align: sub;
+
+        &.glyphicon-ok-circle {
+          color: #6CC433;
+        }
+      }
+    }
+
+    .desc {
+      margin-left: 35px;
+      display: inline-block;
+      max-width: 60%;
+      font-size: 14px;
+      color: $text-ll;
+    }
+
+    .link {
+      float: right;
+      font-size: 14px;
     }
   }
 
+  .avatar-preview {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .modal-profile {
+    .form-group {
+      width: 90%;
+      margin: 20px auto 30px;
+    }
+
+    .btn {
+      width: 100%;
+      background-color: $ui-color;
+      border-color: $ui-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }

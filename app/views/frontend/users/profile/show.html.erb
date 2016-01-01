@@ -9,7 +9,7 @@
         <div class="user-center-main">
             <header>账户资料</header>
             <main>
-                <div class="section section-avatar">
+                <div class="section">
                     <div class="row">
                         <div class="col-md-2">
                             <img src="<%= current_user.avatar.url %>" class="avatar-preview">
@@ -25,9 +25,92 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="section">
+                    <% if current_user.name.nil? %>
+                        <div class="title">
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            账户昵称
+                        </div>
+                        <div class="content">
+                            <span class="desc">未设置</span>
+                            <a href="#" class="link" data-toggle="modal" data-target="#modal-nickname">现在设置</a>
+                        </div>
+                    <% else %>
+                        <div class="title">
+                            <span class="glyphicon glyphicon-ok-circle"></span>
+                            账户昵称
+                        </div>
+                        <div class="content">
+                            <span class="desc"><%= current_user.name %></span>
+                            <a href="#" class="link" data-toggle="modal" data-target="#modal-nickname">修改</a>
+                        </div>
+                    <% end %>
+                </div>
+
+                <div class="section">
+                    <div class="title">
+                        <span class="glyphicon glyphicon-ok-circle"></span>
+                        登录密码
+                    </div>
+                    <div class="content">
+                        <span class="desc">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span>
+                        <a href="#" class="link">修改</a>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="title">
+                        <span class="glyphicon glyphicon-warning-sign"></span>
+                        邮箱验证
+                    </div>
+                    <div class="content">
+                        <span class="desc">未验证邮箱，请访问您注册时填写的邮箱 <%= @user.email %>，查看激活邮件并验证。</span>
+                        <a href="#" class="link">修改</a>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="title">
+                        <span class="glyphicon glyphicon-ok-circle"></span>
+                        手机验证
+                    </div>
+                    <div class="content">
+                        <span class="desc">您验证的手机：<%= @user.mobile %></span>
+                        <a href="#" class="link">修改</a>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <% if @user.profile.partner_name.empty? %>
+                        <div class="title">
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            Ta 的资料
+                        </div>
+                        <div class="content">
+                            <span class="desc">未填写</span>
+                            <a href="#" class="link" data-toggle="modal" data-target="#modal-partner">现在填写</a>
+                        </div>
+                    <% else %>
+                        <div class="title">
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            Ta 的资料
+                        </div>
+                        <div class="content">
+                            <p class="desc">
+                                <span>姓名：<%= @user.profile.partner_name %></span><br>
+                                <span>生日：<%= @user.profile.partner_birthday.to_date %></span><br>
+                                <span>电话：<%= @user.profile.partner_mobile %></span><br>
+                                <span>邮箱：<%= @user.profile.partner_email %></span>
+                            </p>
+                            <a href="#" class="link" data-toggle="modal" data-target="#modal-partner">修改</a>
+                        </div>
+                    <% end %>
+                </div>
             </main>
         </div>
     </div>
 </div>
 
 <%= render 'layouts/frontend/footer' %>
+<%= render 'modals' %>

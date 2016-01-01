@@ -5,7 +5,7 @@
         <div id="sidebar-profile">
             <div class="profile-header">
                 <img src="<%= current_user.avatar.url %>" width="100" height="100" class="avatar">
-                <p class="name"><b><%= current_user.email %></b></p>
+                <p class="name"><b><%= current_user.name || current_user.email %></b></p>
             </div>
             <div class="profile-links">
                 <a href="/orders">
