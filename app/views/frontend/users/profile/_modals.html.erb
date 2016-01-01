@@ -31,15 +31,15 @@
                 <h4 class="modal-title">修改密码</h4>
             </div>
             <div class="modal-body">
-                <%= form_for @user, url: 'xxx' do |f| %>
+                <%= form_for @password, url: passwords_path, remote: true do |f| %>
                     <div class="form-group form-group-lg">
                         <%= f.password_field :password, class: 'form-control input-lg', placeholder: '旧密码', required: true %>
                     </div>
                     <div class="form-group form-group-lg">
-                        <%= f.password_field :password, class: 'form-control input-lg', placeholder: '新密码', required: true %>
+                        <%= f.password_field :new_password, class: 'form-control input-lg', placeholder: '新密码', required: true %>
                     </div>
                     <div class="form-group form-group-lg">
-                        <%= f.password_field :password, class: 'form-control input-lg', placeholder: '重复新密码', required: true %>
+                        <%= f.password_field :password_confirmation, class: 'form-control input-lg', placeholder: '重复新密码', required: true %>
                     </div>
                     <div class="form-group form-group-lg">
                         <%= f.submit '提交', class: 'btn btn-primary btn-lg', data: { disable_with: '正在提交...' } %>

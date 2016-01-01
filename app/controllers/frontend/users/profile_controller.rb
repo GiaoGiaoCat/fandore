@@ -4,6 +4,7 @@ class Frontend::Users::ProfileController < Frontend::ApplicationController
 
   def show
      load_user
+     build_password # NOTE: 该页面集成了修改密码功能
   end
 
   private
@@ -18,5 +19,10 @@ class Frontend::Users::ProfileController < Frontend::ApplicationController
 
   def update_success_redirect_to_url
     redirect_to users_profile_path
+  end
+
+  # NOTE: 该页面集成了修改密码功能
+  def build_password
+    @password = User::PasswordChangeForm.new
   end
 end

@@ -1,5 +1,7 @@
 class Frontend::Users::PasswordsController < Frontend::ApplicationController
+
   skip_before_action :authenticate_user!
+
   def new
     if current_user || load_user
       build_password
@@ -10,21 +12,21 @@ class Frontend::Users::PasswordsController < Frontend::ApplicationController
 
   def create
     build_password
-    save_password or render 'new'
+    respond_to do |format|
+      if @password.save
+        format.html
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
+    end
   end
 
   private
 
   def build_password
-    @password ||= User::PasswordChangeForm.new(password_params)
-  end
-
-  def save_password
-    if @password.save
-      session[:user_id] = nil
-      @current_user = nil
-      redirect_to root_path
-    end
+    @password ||= User::PasswordChangeForm.new(password_params.merge(username: current_user.mobile))
   end
 
   def password_params
