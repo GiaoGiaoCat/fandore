@@ -1,6 +1,6 @@
 
 $ ->
-  $(document).on 'click', '.form-signup .btn-login-code', ->
+  $(document).on 'click', '#btn-login-code', ->
     $input = $('input[name="user[mobile]"]')
     mobile = $input.val()
     $('p.error').remove()
