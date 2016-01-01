@@ -5,11 +5,11 @@ class CreateProfiles < ActiveRecord::Migration
 
       t.string    :avatar
       t.string    :name, limit: 40
-      t.datetime  :birthday
+      t.date      :birthday
       t.integer   :gender
 
       t.string    :partner_name, limit: 40
-      t.datetime  :partner_birthday
+      t.date      :partner_birthday
       t.string    :partner_email, limit: 100
       t.string    :partner_mobile, limit: 50
 

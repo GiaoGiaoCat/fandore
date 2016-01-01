@@ -313,10 +313,10 @@ ActiveRecord::Schema.define(version: 20151223132945) do
     t.integer  "user_id",          limit: 4
     t.string   "avatar",           limit: 191
     t.string   "name",             limit: 40
-    t.datetime "birthday"
+    t.date     "birthday"
     t.integer  "gender",           limit: 4
     t.string   "partner_name",     limit: 40
-    t.datetime "partner_birthday"
+    t.date     "partner_birthday"
     t.string   "partner_email",    limit: 100
     t.string   "partner_mobile",   limit: 50
     t.string   "question",         limit: 191

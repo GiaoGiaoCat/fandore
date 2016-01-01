@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="section">
-                    <% if @user.profile.partner_name.empty? %>
+                    <% if @user.profile.partner_name.blank? %>
                         <div class="title">
                             <span class="glyphicon glyphicon-warning-sign"></span>
                             Ta 的资料
@@ -99,9 +99,9 @@
                         <div class="content">
                             <p class="desc">
                                 <span>姓名：<%= @user.profile.partner_name %></span><br>
-                                <span>生日：<%= @user.profile.partner_birthday.to_date %></span><br>
-                                <span>电话：<%= @user.profile.partner_mobile %></span><br>
-                                <span>邮箱：<%= @user.profile.partner_email %></span>
+                                <span>生日：<%= format_date @user.profile.partner_birthday %></span><br>
+                                <span>邮箱：<%= @user.profile.partner_email %></span><br>
+                                <span>电话：<%= @user.profile.partner_mobile %></span>
                             </p>
                             <a href="#" class="link" data-toggle="modal" data-target="#modal-partner">修改</a>
                         </div>
