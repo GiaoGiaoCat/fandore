@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
   delegate :name, :gender, :avatar, :birthday, to: :profile
   # class methods .............................................................
   # public instance methods ...................................................
+  def is_active?
+    activated_at.present?
+  end
+
   def profile
     super || build_profile
   end
