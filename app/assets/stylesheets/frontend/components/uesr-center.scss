@@ -32,6 +32,15 @@
         color: $ui-color;
       }
 
+      // 临时
+      &.disabled {
+        cursor: not-allowed;
+
+        &:hover {
+          color: $text-ll;
+        }
+      }
+
       .glyphicon {
         margin-right: 6px;
       }

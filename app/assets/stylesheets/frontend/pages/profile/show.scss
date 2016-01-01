@@ -1,6 +1,16 @@
 @import 'frontend/base';
 
 #frontend-users-profile-show {
+  label[for='user-avatar'] {
+    color: #fff;
+    background-color: $ui-color;
+    border-color: $ui-color;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
   .section {
     padding: 20px 30px;
     border-bottom: 1px solid #EFEFEF;
@@ -27,7 +37,7 @@
     .desc {
       margin-left: 35px;
       display: inline-block;
-      max-width: 60%;
+      max-width: 70%;
       font-size: 14px;
       color: $text-ll;
     }
@@ -51,12 +61,17 @@
 
     .btn {
       width: 100%;
+      color: #fff;
       background-color: $ui-color;
       border-color: $ui-color;
 
       &:hover {
         opacity: 0.8;
       }
+    }
+
+    .input-group-addon {
+      font-size: 20px;
     }
   }
 }

@@ -55,7 +55,7 @@
                     </div>
                     <div class="content">
                         <span class="desc">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span>
-                        <a href="#" class="link">修改</a>
+                        <a href="#" class="link" data-toggle="modal" data-target="#modal-password">修改</a>
                     </div>
                 </div>
 
@@ -65,8 +65,8 @@
                         邮箱验证
                     </div>
                     <div class="content">
-                        <span class="desc">未验证邮箱，请访问您注册时填写的邮箱 <%= @user.email %>，查看激活邮件并验证。</span>
-                        <a href="#" class="link">修改</a>
+                        <span class="desc">未验证邮箱，请访问您注册时填写的邮箱 <%= @user.email %>，<br>查看激活邮件并验证。</span>
+                        <a href="#" class="link" data-toggle="modal" data-target="#modal-email">修改</a>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                     </div>
                     <div class="content">
                         <span class="desc">您验证的手机：<%= @user.mobile %></span>
-                        <a href="#" class="link">修改</a>
+                        <a href="#" class="link" data-toggle="modal" data-target="#modal-mobile">修改</a>
                     </div>
                 </div>
 

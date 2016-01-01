@@ -1,3 +1,4 @@
+<%# 设置昵称 %>
 <div class="modal fade modal-profile" id="modal-nickname">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -6,10 +7,10 @@
                 <h4 class="modal-title">设置昵称</h4>
             </div>
             <div class="modal-body">
-                <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar'} do |f| %>
+                <%= form_for @user, url: users_profile_update_path do |f| %>
                     <%= f.fields_for :profile do |field| %>
                         <div class="form-group form-group-lg">
-                            <%= field.text_field :name, class: 'form-control input-lg', placeholder: '请输入昵称' %>
+                            <%= field.text_field :name, class: 'form-control input-lg', placeholder: '请输入昵称', required: true %>
                         </div>
                     <% end %>
                     <div class="form-group form-group-lg">
@@ -21,6 +22,93 @@
     </div>
 </div>
 
+<%# 修改密码 %>
+<div class="modal fade modal-profile" id="modal-password">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for @user, url: 'xxx' do |f| %>
+                    <div class="form-group form-group-lg">
+                        <%= f.password_field :password, class: 'form-control input-lg', placeholder: '旧密码', required: true %>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <%= f.password_field :password, class: 'form-control input-lg', placeholder: '新密码', required: true %>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <%= f.password_field :password, class: 'form-control input-lg', placeholder: '重复新密码', required: true %>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <%= f.submit '提交', class: 'btn btn-primary btn-lg', data: { disable_with: '正在提交...' } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%# 修改邮箱 %>
+<div class="modal fade modal-profile" id="modal-email">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">修改邮箱</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for @user, url: 'xxx' do |f| %>
+                    <div class="form-group form-group-lg">
+                        <%= f.password_field :password, class: 'form-control input-lg', placeholder: '请输入密码', required: true %>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <%= f.text_field :email, class: 'form-control input-lg', placeholder: '请输入新的邮箱', required: true %>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <%= f.submit '提交', class: 'btn btn-primary btn-lg', data: { disable_with: '正在提交...' } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%# 修改手机 %>
+<div class="modal fade modal-profile" id="modal-mobile">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">修改手机</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for @user, url: 'xxx' do |f| %>
+                    <div class="form-group form-group-lg">
+                        <%= f.text_field :mobile, class: 'form-control input-lg', placeholder: '请输入新的手机号', required: true %>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            </span>
+                            <%= f.text_field :code, class: 'form-control input-lg', placeholder: '短信验证码', required: true %>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg btn-login-code" type="button">获取验证码</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <%= f.submit '提交', class: 'btn btn-primary btn-lg', data: { disable_with: '正在提交...' } %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%# 填写 Ta 的资料 %>
 <div class="modal fade modal-profile" id="modal-partner">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -29,33 +117,33 @@
                 <h4 class="modal-title">填写 Ta 的资料</h4>
             </div>
             <div class="modal-body">
-                <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar', class: 'form-horizontal'} do |f| %>
+                <%= form_for @user, url: users_profile_update_path, html: {class: 'form-horizontal'} do |f| %>
                     <%= f.fields_for :profile do |field| %>
                         <div class="form-group form-group-lg">
                             <%= field.label :partner_name, class: 'col-sm-3 control-label' %>
                             <div class="col-sm-9">
-                                <%= field.text_field :partner_name, class: 'form-control input-lg', placeholder: '请输入姓名' %>
+                                <%= field.text_field :partner_name, class: 'form-control input-lg', placeholder: '请输入姓名', required: true %>
                             </div>
                         </div>
 
                         <div class="form-group form-group-lg">
                             <%= field.label :partner_birthday, class: 'col-sm-3 control-label' %>
                             <div class="col-sm-9">
-                                <%= field.text_field :partner_birthday, class: 'form-control input-lg', placeholder: '格式：2016-1-1' %>
+                                <%= field.text_field :partner_birthday, class: 'form-control input-lg', placeholder: '格式：2016-1-1', required: true %>
                             </div>
                         </div>
 
                         <div class="form-group form-group-lg">
                             <%= field.label :partner_email, class: 'col-sm-3 control-label' %>
                             <div class="col-sm-9">
-                                <%= field.text_field :partner_email, class: 'form-control input-lg', placeholder: '请输入邮箱' %>
+                                <%= field.text_field :partner_email, class: 'form-control input-lg', placeholder: '请输入邮箱', required: true %>
                             </div>
                         </div>
 
                         <div class="form-group form-group-lg">
                             <%= field.label :partner_mobile, class: 'col-sm-3 control-label' %>
                             <div class="col-sm-9">
-                                <%= field.text_field :partner_mobile, class: 'form-control input-lg', placeholder: '请输入电话' %>
+                                <%= field.text_field :partner_mobile, class: 'form-control input-lg', placeholder: '请输入电话', required: true %>
                             </div>
                         </div>
                     <% end %>
