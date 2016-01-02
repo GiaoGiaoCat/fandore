@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile, update_only: true
 
   delegate :name, :gender, :avatar, :birthday, to: :profile
+  delegate :is_favorite?, to: :favorites
   # class methods .............................................................
   # public instance methods ...................................................
   def is_active?
