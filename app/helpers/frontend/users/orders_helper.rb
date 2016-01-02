@@ -1,25 +1,40 @@
 module Frontend::Users::OrdersHelper
+  def options_for_select_with_default(object, attr)
+    case attr
+    when :province
+      if object.new_record?
+        options_for_select([["选择省份"]].concat(ChinaCity.list))
+      else
+        options_for_select(ChinaCity.list, object.send(attr))
+      end
+    when :city
+      if object.new_record?
+        options_for_select([["选择城市"]])
+      else
+        options_for_select([[ChinaCity.get(object.send(attr)), object.send(attr)]])
+      end
+    when :district
+      if object.new_record?
+        options_for_select([["选择区域"]])
+      else
+        options_for_select([[ChinaCity.get(object.send(attr)), object.send(attr)]])
+      end
+    end
+
+  end
+
   def show_next_state(obj)
     next_state =
       case obj.state
-      when 'checkout'
-        'processing'
-      when 'processing'
-        'pending'
-      when 'pending'
-        'paid'
-      when 'paid'
-        'filtered'
-      when 'filtered'
-        'inlaided'
-      when 'inlaided'
-        'quality_checked'
-      when 'quality_checked'
-        'packed'
-      when 'packed'
-        'delivered'
-      when 'delivered'
-        'completed'
+      when 'checkout' then 'processing'
+      when 'processing' then 'pending'
+      when 'pending' then 'paid'
+      when 'paid' then 'filtered'
+      when 'filtered' then 'inlaided'
+      when 'inlaided' then 'quality_checked'
+      when 'quality_checked' then 'packed'
+      when 'packed' then 'delivered'
+      when 'delivered' then 'completed'
       else
         ''
       end
@@ -29,38 +44,19 @@ module Frontend::Users::OrdersHelper
   def next_state_button(obj)
     class_name, event_name =
       case obj.state
-      when 'checkout'
-        ['fa fa-send', 'close']
-      when 'pending'
-        ['fa fa-send', 'close']
-        # ['fa fa-send', 'pay']
-      when 'paid'
-        ['', '']
-      when 'filtered'
-        ['', '']
-      when 'inlaided'
-        ['', '']
-      when 'quality_checked'
-        ['', '']
-      when 'packed'
-        ['', '']
-      when 'delivered'
-        ['fa fa-send', 'complete']
-      when 'completed'
-        ['', '']
-        # ['fa fa-send', 'close']
-      when 'canceled'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
-      when 'closed'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
-      when 'refunded'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
-      when 'resumed'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
+      when 'checkout' then ['fa fa-send', 'close']
+      when 'pending' then ['fa fa-send', 'close']
+      when 'paid' then ['', '']
+      when 'filtered' then ['', '']
+      when 'inlaided' then ['', '']
+      when 'quality_checked' then ['', '']
+      when 'packed' then ['', '']
+      when 'delivered' then ['fa fa-send', 'complete']
+      when 'completed' then ['', '']
+      when 'canceled' then ['', '']
+      when 'closed' then ['', '']
+      when 'refunded' then ['', '']
+      when 'resumed' then ['', '']
       end
     return if event_name.blank?
     btn_name = ' ' + I18n.t("views.orders.state_btn.#{event_name}")

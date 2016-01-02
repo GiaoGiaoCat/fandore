@@ -46,7 +46,8 @@ gem 'figaro'
 # ActiveRecord plugin allowing you to hide and restore records without actually deleting them.
 gem 'paranoia'
 # ChinaCity 省市区级联选择
-gem 'china_city', '0.0.4'
+gem 'GB2260'
+gem 'china_city', '0.0.5'
 # An ActiveRecord plugin for managing lists
 gem 'acts_as_list'
 # Allows for favorite refer to be added to multiple and different models.

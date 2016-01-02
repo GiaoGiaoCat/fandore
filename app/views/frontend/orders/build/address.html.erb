@@ -8,48 +8,49 @@
         <%= form_for @order, url: wizard_path, method: :put, data: { remote: true } do |f| %>
             <div class="section section-address">
                 <header>收货信息</header>
-                <main class="row">
-                    <div class="col-md-7">
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <input type="text" name="order[shipping_address_attributes][name]" class="form-control input-name" placeholder="收货人姓名" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="order[shipping_address_attributes][mobile]" class="form-control input-phone" placeholder="手机号码" required>
-                            </div>
-                        </div>
-                        <div class="form-inline">
-                            <div class="city-group">
+                <%= f.fields_for :shipping_address, @order.shipping_address do |field| %>
+                    <main class="row">
+                        <div class="col-md-7">
+                            <div class="form-inline">
                                 <div class="form-group">
-                                    <select name="order[shipping_address_attributes][province]" class="form-control city-select" required>
-                                        <option>选择省份</option>
-                                        <%= options_for_select(ChinaCity.list) %>
-                                    </select>
+                                    <%= field.text_field :name, class: 'form-control input-name', required: true, placeholder: '收货人姓名' %>
                                 </div>
                                 <div class="form-group">
-                                    <select name="order[shipping_address_attributes][city]" class="form-control city-select" required>
-                                        <option>选择城市</option>
-                                    </select>
+                                    <%= field.text_field :mobile, class: 'form-control input-phone', required: true, placeholder: '手机号码' %>
                                 </div>
+                            </div>
+                            <div class="form-inline">
+                                <div class="city-group">
+                                    <div class="form-group">
+                                        <%= field.select :province, nil, {include_blank: false, required: true}, class: 'form-control city-select' do %>
+                                            <%= options_for_select_with_default(field.object, :province) %>
+                                        <% end %>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= field.select :city, nil, {include_blank: false, required: true}, class: 'form-control city-select' do %>
+                                            <%= options_for_select_with_default(field.object, :city) %>
+                                        <% end %>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= field.select :district, nil, {include_blank: false, required: true}, class: 'form-control city-select' do %>
+                                            <%= options_for_select_with_default(field.object, :district) %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-inline">
                                 <div class="form-group">
-                                    <select name="order[shipping_address_attributes][district]" class="form-control city-select" required>
-                                        <option>选择区县</option>
-                                    </select>
+                                    <%= field.text_field :address, class: 'form-control input-address', required: true, placeholder: '街道编号/名称，楼宇名称' %>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <input type="text" name="order[shipping_address_attributes][address]" class="form-control input-address" placeholder="街道编号/名称，楼宇名称" required>
-                            </div>
+                        <div class="col-md-5">
+                            <h4>配送说明</h4>
+                            <p>VANDODO产品目前仅限在中国大陆地区购买。您订购的商品将通过顺丰速运配送，顺丰无法送达的地区将改用其他快递公司，您订购的产品我们将按产品总额全额投保。<br>
+                            配送时间：星期一至星期日 下午 5:30</p>
                         </div>
-                    </div>
-                    <div class="col-md-5">
-                        <h4>配送说明</h4>
-                        <p>VANDODO产品目前仅限在中国大陆地区购买。您订购的商品将通过顺丰速运配送，顺丰无法送达的地区将改用其他快递公司，您订购的产品我们将按产品总额全额投保。<br>
-                        配送时间：星期一至星期日 下午 5:30</p>
-                    </div>
-                </main>
+                    </main>
+                <% end %>
             </div>
 
             <div class="section section-coupon">

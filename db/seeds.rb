@@ -5,7 +5,7 @@ admin = User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password:
 member = User.create(email: 'lishaohua2013@gmail.com', mobile: '13269259372', password: 'db5566', role: "member")
 User.create(email: 'li2013@gmail.com', mobile: '13269259371', password: 'db5566', role: "customer_service")
 User.create(email: 'ls2013@gmail.com', mobile: '13269259370', password: 'db5566', role: "product_manager")
-address = User::Address.create(user_id: member.id, province:"河北区", zipcode:"610116", city: "石家庄", district: "长安区", name: "lishaohua", mobile: "13932011432", is_default: true, address: "shuizidao ")
+address = User::Address.create(user_id: member.id, province:"120000", zipcode:"120100", city: "120100", district: "120102", name: "lishaohua", mobile: "13932011432", is_default: true, address: "长安大街101号楼1202")
 
 # 支付方式
 
