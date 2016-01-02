@@ -9,7 +9,8 @@ class Frontend::Users::FavoritesController < Frontend::ApplicationController
   end
 
   def destroy
-    @favorite = current_user.favorites.find(params[:id])
+    @favorite = current_user.favorites.find_favorites_for_favable('Product', params[:id]).first
+    # @favorite = current_user.favorites.find(params[:id])
     @favorite.destroy
   end
 
