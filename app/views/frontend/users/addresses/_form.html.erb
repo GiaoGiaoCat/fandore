@@ -11,18 +11,18 @@
         <div class="city-group">
             <div class="form-group">
                 <select name="user_address[province]" class="form-control city-select" required>
-                    <option>选择省份</option>
+                    <option selected disabled>选择省份</option>
                     <%= options_for_select(ChinaCity.list) %>
                 </select>
             </div>
             <div class="form-group">
                 <select name="user_address[city]" class="form-control city-select" required>
-                    <option>选择城市</option>
+                    <option disabled>选择城市</option>
                 </select>
             </div>
             <div class="form-group">
                 <select name="user_address[district]" class="form-control city-select" required>
-                    <option>选择区县</option>
+                    <option disabled>选择区县</option>
                 </select>
             </div>
         </div>

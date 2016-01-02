@@ -12,36 +12,46 @@
                 <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal-new-address">添加收获地址</a>
             </header>
 
-            <div class="address-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>姓名</th>
-                            <th>详细地址</th>
-                            <th>电话</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @addresses.each do |address| %>
-                            <tr data-id="<%= address.id %>">
-                                <td><%= address.name %></td>
-                                <td><%= "#{address.province} #{address.city} #{address.district} #{address.address}" %></td>
-                                <td><%= address.mobile %></td>
-                                <td class="buttons" width="80">
-                                    <a href="<%= edit_address_path(address) %>" class="btn-address btn-address-edit"
-                                        data-toggle="modal" data-target="#modal-edit-address">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                    <a href="#" class="btn-address btn-address-remove">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
+            <main>
+                <% if @addresses.size > 0 %>
+                    <div class="address-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>详细地址</th>
+                                    <th>电话</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @addresses.each do |address| %>
+                                    <tr data-id="<%= address.id %>">
+                                        <td><%= address.name %></td>
+                                        <td><%= "#{address.province} #{address.city} #{address.district} #{address.address}" %></td>
+                                        <td><%= address.mobile %></td>
+                                        <td class="buttons" width="80">
+                                            <a href="<%= edit_address_path(address) %>" class="btn-address btn-address-edit"
+                                                data-toggle="modal" data-target="#modal-edit-address">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                            <a href="<%= address_path(address) %>" class="btn-address btn-address-remove"
+                                                data-remote="true" data-method="delete" data-confirm="确认删除？">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% else %>
+                    <div class="init">
+                        <%= image_tag 'redesign/init-orders.png', size: "74x100" %>
+                        <p class="init-content">您还没有收货地址</p>
+                    </div>
+                <% end %>
+            </main>
         </div>
     </div>
 </div>
