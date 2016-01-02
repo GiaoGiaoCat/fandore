@@ -28,7 +28,7 @@
                                 <% @addresses.each do |address| %>
                                     <tr data-id="<%= address.id %>">
                                         <td><%= address.name %> <%= '（默认地址）' if address.is_default %></td>
-                                        <td><%= "#{address.province} #{address.city} #{address.district} #{address.address}" %></td>
+                                        <td><%= "#{ChinaCity.get(address.province)} #{ChinaCity.get(address.city)} #{ChinaCity.get(address.district)} #{address.address}" %></td>
                                         <td><%= address.mobile %></td>
                                         <td class="buttons" width="80">
                                             <a href="<%= edit_address_path(address) %>" class="btn-address btn-address-edit"

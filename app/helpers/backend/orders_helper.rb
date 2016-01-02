@@ -1,6 +1,7 @@
 module Backend::OrdersHelper
   def show_shipping_address(address)
-    "#{address.address}, #{address.name}, #{address.mobile}"
+    city_address = "#{ChinaCity.get(address.province)} #{ChinaCity.get(address.city)} #{ChinaCity.get(address.district)}"
+    "#{city_address} #{address.address}, #{address.name}, #{address.mobile}"
   end
 
   def next_state_link(obj)
