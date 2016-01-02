@@ -18,6 +18,22 @@
     width: 100%;
   }
 
+  .inline-links {
+    font-size: 14px;
+
+    a {
+      color: $text-l;
+
+      &:hover {
+        color: $ui-color
+      }
+
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+
   .links {
     margin: 20px -15px 0;
 
@@ -49,7 +65,7 @@
 }
 
 .user-center-main {
-  min-height: 424px;
+  min-height: 444px;
   margin-left: 220px;
   margin-bottom: 50px;
   border-radius: 10px;

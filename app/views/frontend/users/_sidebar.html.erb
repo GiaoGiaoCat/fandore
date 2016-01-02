@@ -2,6 +2,10 @@
 
 <div class="user-center-sidebar">
     <img src="<%= current_user.avatar.url %>" class="avatar">
+    <div class="inline-links">
+        <a href="<%= favorites_path %>">收藏夹: <span class="count"><%= current_user.favorites.size %></span></a>
+        <a href="#">优惠码: <span class="count">0</span></a>
+    </div>
 
     <div class="links">
         <a href="/orders" class="<%= 'active' if channle == 'orders' %>">

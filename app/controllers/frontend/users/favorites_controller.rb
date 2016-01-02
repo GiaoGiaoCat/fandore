@@ -5,7 +5,7 @@ class Frontend::Users::FavoritesController < Frontend::ApplicationController
 
   def create
     load_product
-    @product.favorites.create(user: current_user)
+    @favorite = @product.favorites.create(user: current_user)
   end
 
   def destroy

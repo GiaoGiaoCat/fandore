@@ -27,7 +27,7 @@
                             <tbody>
                                 <% @addresses.each do |address| %>
                                     <tr data-id="<%= address.id %>">
-                                        <td><%= address.name %></td>
+                                        <td><%= address.name %> <%= '（默认地址）' if address.is_default %></td>
                                         <td><%= "#{address.province} #{address.city} #{address.district} #{address.address}" %></td>
                                         <td><%= address.mobile %></td>
                                         <td class="buttons" width="80">

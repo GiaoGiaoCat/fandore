@@ -1,49 +1,39 @@
+<% @page_title = "我的订单"  %>
+
 <%= render 'layouts/frontend/header' %>
 
-<div class="sub-container">
-    <div class="clearfloat">
-        <%= render 'frontend/users/sidebar' %>
+<div class="page user-center">
+    <div class="container">
+        <%= render partial: 'frontend/users/sidebar' %>
 
-        <div class="sub-mainright">
-            <div class="box-white">
-                <div class="user-title-bar clearfloat">
-                    <div class="t-left">我的收藏</div>
-                    <div class="t-right">
-                        <input type="checkbox" name="" id="" value="" class="icheck" />全选 <a href="" class="link-red">加入购物车</a> | <a href="" class="link-red">取消收藏</a>
+        <div class="user-center-main">
+            <header>我的收藏</header>
+
+            <main>
+                <% if @favorites.size > 0 %>
+                    <% @favorites.each do |f| %>
+                        <div class="favorite">
+                            <img src="<%= f.favable.master.images.first.picture.middle.url %>" class="favorite-image">
+                            <p><%= link_to f.favable.name, product_path(f.favable) %></p>
+                            <p class="favorite-title">
+                                <%= f.favable.name %>
+                            </p>
+                            <p class="favorite-buttons">
+                                加入购物车
+                                取消收藏
+                            </p>
+                        </div>
+
+                    <% end %>
+                <% else %>
+                    <div class="init">
+                        <%= image_tag 'redesign/init-orders.png', size: "74x100" %>
+                        <p class="init-content">您还没有任何收藏</p>
                     </div>
-                </div>
-                <div class="padd30">
-                    <div class="prolist-col3 clearfloat">
-                        <ul>
-                            <li>
-                                <div class="imgbox277 bg-f5">
-                                    <a href="" class="hover-zoom">
-                                        <div class="mask-zoom">
-                                            <div class="red-zoom">
-                                                <i class="iconfont icon-zoom"></i>
-                                            </div>
-                                        </div>
-                                        <img src="<%= asset_path('product/product1.png') %>" />
-                                    </a>
-                                </div>
-                                <div class="colltxt">
-                                    <div class="clearfloat">
-                                        <div class="fl">
-                                            <h2 class="c-title">THE ROSELANDt 古典款</h2><em class="c-price">￥15662</em>
-                                        </div>
-                                        <input type="checkbox" name="" id="" value="" class="icheck fr" />
-                                    </div>
-                                    <p class="c-say"><span>38人评价</span><span>好评度100%</span></p>
-                                    <input type="button" name="" id="" value="加入购物车" class="btn-purple mr15" />
-                                    <input type="button" name="" id="" value="删除" class="btn-light-gray" />
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                <% end %>
+            </main>
         </div>
     </div>
-
 </div>
+
 <%= render 'layouts/frontend/footer' %>
