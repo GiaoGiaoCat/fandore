@@ -1,2 +1,4 @@
 <%= show_track_info_operator_and_time(track_info) %>
-<%= I18n.t("views.orders.trackinfos.#{track_info[:event]}") %><br />
+<%= I18n.t("views.orders.trackinfos.#{track_info[:event]}") -%>
+<% if track_info[:note] %><%= "，#{track_info[:note]}" %><% end %>
+<br />

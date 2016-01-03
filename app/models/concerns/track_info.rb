@@ -22,9 +22,9 @@ module TrackInfo
     track_info << info
   end
 
-  def update_state_with_track!(event, operator)
+  def update_state_with_track!(event, operator, note = nil)
     try(event)
-    add_track_info(event, operator.id)
+    add_track_info(event, operator.id, note)
     save
   end
 

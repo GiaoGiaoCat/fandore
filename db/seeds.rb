@@ -467,8 +467,14 @@ order.line_items << line_item_1
 order.line_items << line_item_2
 
 order.shipping_address = address
-order.state = "delivered"
+order.state = "paid"
 order.save
+
+order.update_state_with_track!('filter', member, 'GIA证书编号40129340102')
+order.update_state_with_track!('inlaid', member)
+order.update_state_with_track!('quality_check', member)
+order.update_state_with_track!('pack', member)
+order.update_state_with_track!('delivery', member, '顺丰运单号1002938381272736')
 
 
 # 添加结婚对戒订单
