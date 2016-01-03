@@ -8,6 +8,10 @@ class Frontend::Users::OrdersController < Frontend::ApplicationController
     load_order
   end
 
+  def states
+    load_order
+  end
+
   def update_state
     load_order
     @order.update_state_with_track!(params[:event], current_user)

@@ -58,7 +58,10 @@ Rails.application.routes.draw do
       resources :favorites, only: [:index, :destroy]
       resources :addresses
       resources :orders, only: [:index] do
-        put :update_state, on: :member
+        member do
+          put :update_state
+          get :states
+        end
       end
     end
   end
