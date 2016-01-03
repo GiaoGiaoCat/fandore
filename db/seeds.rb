@@ -434,6 +434,43 @@ order.shipping_address = address
 order.state = "checkout"
 order.save
 
+# 添加已完成的订单，测试评论
+order = Order.new(user: member)
+line_item_1 = Order::LineItem.create(variant: v01, quantity: 1)
+item_size = Product::Property.find_by(name: 'Size')
+item_lettering = Product::Property.find_by(name: 'Lettering')
+line_item_1.line_items_properties.find_by(property_id: item_size.id).update(value: '7')
+line_item_1.line_items_properties.find_by(property_id: item_lettering.id).update(value: 'Love')
+
+line_item_2 = Order::LineItem.create(variant: product_122.master, quantity: 1)
+line_item_2.parent_id = line_item_1.id
+
+order.line_items << line_item_1
+order.line_items << line_item_2
+
+order.shipping_address = address
+order.state = "completed"
+order.save
+
+# 添加已发货的订单，测试签收
+order = Order.new(user: member)
+line_item_1 = Order::LineItem.create(variant: v01, quantity: 1)
+item_size = Product::Property.find_by(name: 'Size')
+item_lettering = Product::Property.find_by(name: 'Lettering')
+line_item_1.line_items_properties.find_by(property_id: item_size.id).update(value: '7')
+line_item_1.line_items_properties.find_by(property_id: item_lettering.id).update(value: 'Love')
+
+line_item_2 = Order::LineItem.create(variant: product_122.master, quantity: 1)
+line_item_2.parent_id = line_item_1.id
+
+order.line_items << line_item_1
+order.line_items << line_item_2
+
+order.shipping_address = address
+order.state = "delivered"
+order.save
+
+
 # 添加结婚对戒订单
 order = Order.new(user: member)
 line_item_1 = Order::LineItem.create(variant: v1, quantity: 1)
