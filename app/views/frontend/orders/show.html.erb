@@ -75,7 +75,7 @@
                     <div class="content">
                         <p>收货人：&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.shipping_address.name %></p>
                         <p>联系电话：<%= @order.shipping_address.mobile %></p>
-                        <p>详细地址：<%= "#{@order.shipping_address.province} #{@order.shipping_address.city} #{@order.shipping_address.district} #{@order.shipping_address.address}" %></p>
+                        <p>收货信息：<%= "#{ChinaCity.get(@order.shipping_address.province)} #{ChinaCity.get(@order.shipping_address.city)} #{ChinaCity.get(@order.shipping_address.district)} #{@order.shipping_address.address}" %></p>
                     </div>
                 </div>
 

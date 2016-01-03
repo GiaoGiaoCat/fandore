@@ -16,9 +16,9 @@
                 <div class="col-md-6">
                     <h4>订单详情</h4>
                     <p>订单编号：<%= @order.number %></p>
-                    <p>收货信息：<%= "#{@order.shipping_address.province} #{@order.shipping_address.city} #{@order.shipping_address.district} #{@order.shipping_address.address}" %></p>
-                    <p>联系电话：<%= @order.shipping_address.mobile %></p>
                     <p>收货人：&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.shipping_address.name %></p>
+                    <p>联系电话：<%= @order.shipping_address.mobile %></p>
+                    <p>收货信息：<%= "#{ChinaCity.get(@order.shipping_address.province)} #{ChinaCity.get(@order.shipping_address.city)} #{ChinaCity.get(@order.shipping_address.district)} #{@order.shipping_address.address}" %></p>
                     <p class="tips">请确认订单信息无误，支付后不能修改。</p>
                 </div>
             </main>

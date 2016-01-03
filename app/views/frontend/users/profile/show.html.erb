@@ -11,10 +11,8 @@
             <main>
                 <div class="section">
                     <div class="row">
-                        <div class="col-md-2">
-                            <img src="<%= current_user.avatar.url %>" class="avatar-preview">
-                        </div>
-                        <div class="col-md-10">
+                        <img src="<%= current_user.avatar.url %>" class="avatar-preview">
+                        <div class="avatar-main">
                             <p>修改头像</p>
                             <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar'} do |f| %>
                                 <%= f.fields_for :profile do |field| %>
