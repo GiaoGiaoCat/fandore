@@ -14,13 +14,12 @@
                     <% @favorites.each do |f| %>
                         <div class="favorite">
                             <img src="<%= f.favable.master.images.first.picture.middle.url %>" class="favorite-image">
-                            <p><%= link_to f.favable.name, product_path(f.favable) %></p>
                             <p class="favorite-title">
                                 <%= f.favable.name %>
                             </p>
                             <p class="favorite-buttons">
-                                加入购物车
-                                取消收藏
+                                <%= link_to '加入购物车', product_path(f.favable), class: 'btn btn-default btn-sm btn-cart' %>
+                                <%= link_to '取消收藏', favorite_path(f.favable), method: :delete, remote: true, class: 'btn btn-default btn-sm btn-cancel', date: { 'disable-with' => '正在取消...' }  %>
                             </p>
                         </div>
 

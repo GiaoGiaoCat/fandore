@@ -1,0 +1,42 @@
+@import 'frontend/base';
+
+#frontend-users-favorites-index {
+  main {
+    padding: 10px;
+    font-size: 0;
+  }
+
+  .favorite {
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+    font-size: 16px;
+    vertical-align: top;
+
+    .favorite-image {
+      width: 200px;
+      height: 200px;
+      background-color: #EFEFEF;
+    }
+
+    .favorite-title {
+      margin: 10px 0;
+      font-size: 14px;
+      color: $text-l;
+    }
+
+    .btn-cart {
+      color: #fff;
+      background-color: $ui-color;
+      border-color: $ui-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .btn-cancel {
+      float: right;
+    }
+  }
+}
