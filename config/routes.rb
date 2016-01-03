@@ -93,6 +93,11 @@ Rails.application.routes.draw do
     patch 'users/questions/update' => :update
   end
 
+  # errors
+  %w(404 500).each do |code|
+    get code, to: 'frontend/errors#show', code: code
+  end
+
   #省市级联
   mount ChinaCity::Engine => '/china_city'
 
@@ -126,6 +131,7 @@ Rails.application.routes.draw do
     resources :promotions
     resources :promotion_categories
     resources :promotion_promotion_categories, controller: 'promotion_categories'
+
     resources :orders, only: [:index, :show, :edit, :update] do
       put :update_state, on: :member
     end

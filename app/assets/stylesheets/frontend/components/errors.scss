@@ -1,0 +1,38 @@
+@import 'frontend/base';
+
+.page.page-errors {
+  background-color: #EFEFEF;
+
+  .header {
+    background-color: #EFEFEF;
+  }
+
+  .error-main {
+    position: relative;
+    margin-top: 250px;
+    text-align: center;
+
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: 0;
+      left: -180px;
+      margin: auto;
+      width: 170px;
+      height: 136px;
+      background: image-url('redesign/icon-error.png') center no-repeat;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-l;
+    }
+  }
+
+  .error-title {
+    font-size: 150px;
+    font-family: sans-serif;
+  }
+}
