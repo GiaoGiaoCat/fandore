@@ -1,6 +1,6 @@
 
 $ ->
-  $(document).on 'click', 'a[data-big-slide]', ->
+  $(document).on 'click touchstart', 'a[data-big-slide]', ->
     $link = $(@)
     $mask = $('#mask')
     type = $link.data 'big-slide'
@@ -17,10 +17,10 @@ $ ->
     unless $mask.is(':visible')
       $('#mask').data('big-slide', $link).fadeIn 'fast'
 
-  .on 'click', '.link-close-nav, .link-close-sidebar', ->
+  .on 'click touchstart', '.link-close-nav, .link-close-sidebar', ->
     $('#mask').click()
 
-  .on 'click', '#mask', ->
+  .on 'click touchstart', '#mask', ->
     $(@).fadeOut('fast').data('big-slide').click()
 
   .on 'click', '#sidebar .link-signup', ->
