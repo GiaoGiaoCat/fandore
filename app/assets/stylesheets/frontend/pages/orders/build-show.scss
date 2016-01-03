@@ -72,6 +72,10 @@
   }
 
   .section-order {
+    &.section-complete {
+      margin-top: 40px;
+    }
+
     .success {
       text-align: center;
 
