@@ -10,6 +10,18 @@
     background-color: transparent;
   }
 
+  .link-next {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    margin: auto;
+    width: 30px;
+    height: 44px;
+    background: image-url('redesign/mouse.png') no-repeat center;
+    z-index: 1;
+  }
+
   .section-jumbotron {
     background-color: #E7E7ED;
   }
