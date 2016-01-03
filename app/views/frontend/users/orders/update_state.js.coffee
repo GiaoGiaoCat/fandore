@@ -1,1 +1,1 @@
-$("#<%= dom_id(@order)%>").remove()
+Turbolinks.visit location.href
