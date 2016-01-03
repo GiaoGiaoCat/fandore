@@ -10,20 +10,19 @@
     <div class="form-inline">
         <div class="city-group">
             <div class="form-group">
-                <select name="user_address[province]" class="form-control city-select" required>
-                    <option selected disabled>选择省份</option>
-                    <%= options_for_select(ChinaCity.list) %>
-                </select>
+                <%= f.select :province, nil, {include_blank: false, required: true}, class: 'form-control city-select' do %>
+                    <%= options_for_select_with_default(f.object, :province) %>
+                <% end %>
             </div>
             <div class="form-group">
-                <select name="user_address[city]" class="form-control city-select" required>
-                    <option disabled>选择城市</option>
-                </select>
+                <%= f.select :city, nil, {include_blank: false, required: true}, class: 'form-control city-select' do %>
+                    <%= options_for_select_with_default(f.object, :city) %>
+                <% end %>
             </div>
             <div class="form-group">
-                <select name="user_address[district]" class="form-control city-select" required>
-                    <option disabled>选择区县</option>
-                </select>
+                <%= f.select :district, nil, {include_blank: false, required: true}, class: 'form-control city-select' do %>
+                    <%= options_for_select_with_default(f.object, :district) %>
+                <% end %>
             </div>
         </div>
     </div>
