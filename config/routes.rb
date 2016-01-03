@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get 'account_safe' => 'frontend/welcome#account_safe'
-  get 'user_center' => 'frontend/welcome#user_center'
 
+  get 'privacy' => 'frontend/welcome#privacy'
+  get 'statement' => 'frontend/welcome#statement'
+  get 'about' => 'frontend/welcome#about'
+  get 'service' => 'frontend/welcome#service'
 
   concern :authenticatable do
     controller :sessions do

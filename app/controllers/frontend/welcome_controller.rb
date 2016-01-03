@@ -6,10 +6,16 @@ class Frontend::WelcomeController < Frontend::ApplicationController
     @channel = 'home'
   end
 
-  def account_safe
+  def privacy
   end
 
-  def user_center
+  def statement
+  end
+
+  def about
+  end
+
+  def service
   end
 
 end
