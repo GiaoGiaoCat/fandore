@@ -18,22 +18,22 @@
                         </li>
                         <li>
                             <span class="text">付款</span>
-                            <span class="time"><%= format_datetime @order.get_track_time(:paid) %></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:pay) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">定制完成</span>
-                            <span class="time"><%= format_datetime @order.get_track_time(:quality_checked) %></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:quality_check) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">出库</span>
-                            <span class="time"><%= format_datetime @order.get_track_time(:delivered) %></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:delivery) %></span>
                             <span class="circle"></span>
                         </li>
                         <li>
                             <span class="text">交易完成</span>
-                            <span class="time"><%= format_datetime @order.get_track_time(:completed) %></span>
+                            <span class="time"><%= format_datetime @order.get_track_time(:complete) %></span>
                             <span class="circle"></span>
                         </li>
                     </ul>
