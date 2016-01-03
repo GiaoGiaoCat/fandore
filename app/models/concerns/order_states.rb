@@ -80,11 +80,11 @@ module OrderStates
       end
 
       event :cancel do
-        transitions from: :pending, to: :canceled
+        transitions from: [:checkout, :pending, :processing], to: :canceled
       end
 
       event :close do
-        transitions from: [:checkout, :pending], to: :closed
+        transitions from: [:checkout, :pending, :processing], to: :closed
       end
 
       event :refund do
