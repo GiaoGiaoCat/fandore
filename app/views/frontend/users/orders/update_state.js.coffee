@@ -1,1 +1,1 @@
-$("#<%= dom_id(@order)%>").before("<%= j render(partial: 'order', object: @order) %>").remove();
+$("#<%= dom_id(@order)%>").remove()
