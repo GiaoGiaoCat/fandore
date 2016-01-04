@@ -18,7 +18,7 @@ class Frontend::Users::ProfileController < Frontend::ApplicationController
   end
 
   def update_success_redirect_to_url
-    redirect_to users_profile_path
+    redirect_to profile_path
   end
 
   # NOTE: 该页面集成了修改密码功能

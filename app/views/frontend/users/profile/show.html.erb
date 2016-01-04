@@ -14,7 +14,7 @@
                         <img src="<%= current_user.avatar.url %>" class="avatar-preview">
                         <div class="avatar-main">
                             <p>修改头像</p>
-                            <%= form_for @user, url: users_profile_update_path, html: {id: 'update-avatar'} do |f| %>
+                            <%= form_for @user, url: profile_update_path, html: {id: 'update-avatar'} do |f| %>
                                 <%= f.fields_for :profile do |field| %>
                                     <%= field.file_field :avatar, class: 'hide', id: 'user-avatar' %>
                                 <% end %>

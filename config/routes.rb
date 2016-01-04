@@ -65,13 +65,13 @@ Rails.application.routes.draw do
           get :states
         end
       end
-    end
-  end
 
-  controller 'frontend/users/profile' do
-    get 'users/profile' => :show
-    get 'users/profile/edit' => :edit
-    patch 'users/profile/update' => :update
+      controller 'profile' do
+        get 'profile', to: :show
+        patch 'profile/update', to: :update
+      end
+
+    end
   end
 
   controller 'frontend/users/verification_codes' do
