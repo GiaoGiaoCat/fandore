@@ -72,6 +72,10 @@ class Product < ActiveRecord::Base
     variant_images.unscope(:order).order(position: :desc).first.try(:position) || 0
   end
 
+  def default_price
+    price + Product.diamonds.where(name: "0.3Ct-F-VVS2").first.price
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

@@ -9,7 +9,7 @@
                 <a href="<%= product_path(a) %>" class="product">
                     <div class="product-bg" style="background-image: url('<%= a.master.images.first.picture.middle.url %>');"></div>
                     <div class="product-info">
-                        <p class="price"><%= number_to_currency(a.price, unit: '￥') %></p>
+                        <p class="price"><%= number_to_currency(a.default_price, unit: '￥') %></p>
                         <p class="name"><%= a.name %></p>
                         <div class="link-group">
                             <span>
@@ -26,7 +26,7 @@
                     <a href="<%= product_path(b) %>" class="product">
                         <div class="product-bg" style="background-image: url('<%= b.master.images.first.picture.middle.url %>');"></div>
                         <div class="product-info">
-                            <p class="price"><%= number_to_currency(b.price, unit: '￥') %></p>
+                            <p class="price"><%= number_to_currency(b.default_price, unit: '￥') %></p>
                             <p class="name"><%= b.name %></p>
                             <div class="link-group">
                                 <span>
