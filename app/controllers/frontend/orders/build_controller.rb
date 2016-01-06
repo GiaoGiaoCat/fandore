@@ -23,7 +23,7 @@ class Frontend::Orders::BuildController < Frontend::ApplicationController
     when :address
       @order.update_state_with_track!('started_processing', current_user)
     when :payment
-      @order.update_state_with_track!('pend', current_user)
+      @order.update_state_with_track!('pend', current_user) if @order.processing?
       alipay_url = @order.pay_url
       redirect_to alipay_url and return
     end
