@@ -41,10 +41,6 @@
                 </div>
 
                 <p class="title">网银支付</p>
-                <% if true %>
-                    <!-- 这里是一个传递网银的参数例子 -->
-                    <input type="hidden" name="order[payment_bank]" value="CMB">
-                <% end %>
                 <div class="payments bank">
                     <label>
                         <input type="radio" name="order[payment_method]" value="bankpay" data-bank="ABC">
@@ -87,6 +83,8 @@
                         <img src="<%= asset_path('bank/bank_13.png') %>" />
                     </label>
                 </div>
+
+                <input type="hidden" name="order[payment_bank]" id="payment_bank">
 
                 <footer class="order-payment">
                     <p class="right">

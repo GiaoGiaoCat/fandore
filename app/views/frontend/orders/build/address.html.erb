@@ -77,24 +77,26 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input name="order[need_invoice]" type="checkbox" value="1"> 需要发票
+                                    <input name="order[need_invoice]" type="checkbox" value="0"> 需要发票
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">发票类型：普通发票</div>
-                        <div class="form-group">发票内容：商品明细</div>
-                        <div class="form-group">
-                            发票抬头：
-                            <label class="radio-inline">
-                                <input type="radio" name="order[invoice_type]" value="0" checked> 个人
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="order[invoice_type]" value="1"> 公司
-                            </label>
-                            <div class="form-group form-group-title">
-                                <input type="text" name="order[invoice_title]" class="form-control" placeholder="输入公司名称">
+                        <span class="form-group-invoice">
+                            <div class="form-group">发票类型：普通发票</div>
+                            <div class="form-group">发票内容：商品明细</div>
+                            <div class="form-group">
+                                发票抬头：
+                                <label class="radio-inline">
+                                    <input type="radio" name="order[invoice_type]" value="0" checked> 个人
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="order[invoice_type]" value="1"> 公司
+                                </label>
+                                <div class="form-group form-group-title">
+                                    <input type="text" name="order[invoice_title]" class="form-control" placeholder="输入公司名称">
+                                </div>
                             </div>
-                        </div>
+                        </span>
                     </div>
                 </main>
             </div>

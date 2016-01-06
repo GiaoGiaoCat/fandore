@@ -59,9 +59,21 @@
       }
     }
 
+    .form-group-invoice {
+      visibility: hidden;
+
+      &.active {
+        visibility: visible;
+      }
+    }
+
     .form-group-title {
       margin-left: 10px;
       visibility: hidden;
+
+      &.active {
+        visibility: visible;
+      }
     }
   }
 

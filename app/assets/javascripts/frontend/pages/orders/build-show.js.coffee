@@ -2,16 +2,14 @@ pageId = 'frontend-orders-build-show'
 
 $ ->
   $(document)
+    .on 'change', "##{ pageId } input[name='order[need_invoice]']", ->
+      @value = $(@).is(':checked') ? 1 : 0
+      $('.form-group-invoice').toggleClass 'active', $(@).is(':checked')
+
     .on 'change', "##{ pageId } input[name='order[invoice_type]']", ->
-      if $(@).parent().is(':first-child')
-        $('.form-group-title').css visibility: 'hidden'
-      else
-        $('.form-group-title').css visibility: 'visible'
+      $('.form-group-title').toggleClass 'active', !$(@).parent().is(':first-child')
 
     .on 'change', "##{ pageId } .section-payment input[name='order[payment_method]']", ->
       $('.payments label.active').removeClass 'active'
-      $(@).parent().addClass 'active'
-
-    .on 'ajax:beforeSend', "##{ pageId } .form-order-payment", (e, xhr, settings) ->
-      $lable = $('.payments.bank label.active')
-      settings.data += "&order[payment_bank]=#{ $lable.find('input').data('bank') }"  if $lable.length
+      $label = $(@).parent().addClass 'active'
+      $('#payment_bank').val $label.find('input').data('bank')
