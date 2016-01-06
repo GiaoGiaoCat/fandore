@@ -21,7 +21,7 @@
                 <% @cart.line_items.rings.each do |item| %>
                     <tr data-item="<%= item.id %>">
                         <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
-                        <td class="name"><%= item.name %></td>
+                        <td class="name"><%= item.name %><span><%= show_diamond_info(item.diamond) %></span></td>
                         <td class="quantity"><%= item.quantity %></td>
                         <td class="price"><%= item.final_amount.to_i %></td>
                         <td width="48">
@@ -46,4 +46,3 @@
 <% else %>
     <p class="init">购物车里还没有商品</p>
 <% end %>
-

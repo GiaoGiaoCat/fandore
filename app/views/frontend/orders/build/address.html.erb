@@ -116,7 +116,9 @@
                                 <% @order.line_items.rings.each do |item| %>
                                     <tr data-item="<%= item.id %>">
                                         <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
-                                        <td class="name"><%= item.name %></td>
+                                        <td class="name">
+                                            <%= item.name %> <span><%= item.variant.options_text %> <%= show_properties(item) %> <%= show_diamond_info(item.diamond) %></span>
+                                        </td>
                                         <td class="quantity"><%= item.quantity %></td>
                                         <td class="price"><%= item.final_amount.to_i %></td>
                                     </tr>
