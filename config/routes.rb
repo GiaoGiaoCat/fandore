@@ -67,8 +67,8 @@ Rails.application.routes.draw do
       end
 
       controller 'profile' do
-        get 'profile', to: :show
-        patch 'profile/update', to: :update
+        get 'profile', action: :show
+        patch 'profile/update', action: :update
       end
 
     end
