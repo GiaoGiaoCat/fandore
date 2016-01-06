@@ -1,26 +1,34 @@
 module Frontend::Users::OrdersHelper
   def options_for_select_with_default(object, attr)
+    hash = {
+      default_opt_value: nil,
+      current_opt_id: object.send(attr),
+      current_opt_text: ChinaCity.get(object.send(attr)),
+      single: false
+    }
     case attr
     when :province
-      if object.new_record?
-        options_for_select([["选择省份"]].concat(ChinaCity.list))
-      else
-        options_for_select(ChinaCity.list, object.send(attr))
-      end
+      hash[:default_opt_value] = [["选择省份"]].concat(ChinaCity.list)
+      hash[:current_opt_text] = ChinaCity.list
+      hash[:single] = true
     when :city
-      if object.new_record?
-        options_for_select([["选择城市"]])
-      else
-        options_for_select([[ChinaCity.get(object.send(attr)), object.send(attr)]])
-      end
+      hash[:default_opt_value] = [["选择城市"]]
     when :district
-      if object.new_record?
-        options_for_select([["选择区域"]])
+      hash[:default_opt_value] = [["选择区域"]]
+    end
+    options_for_select_with_value(object, hash)
+  end
+
+  def options_for_select_with_value(object, hash)
+    if object.new_record? && hash[:current_opt_id].blank?
+      options_for_select(hash[:default_opt_value])
+    else
+      if hash[:single]
+        options_for_select(hash[:current_opt_text], hash[:current_opt_id])
       else
-        options_for_select([[ChinaCity.get(object.send(attr)), object.send(attr)]])
+        options_for_select([[hash[:current_opt_text], hash[:current_opt_id]]])
       end
     end
-
   end
 
   def show_next_state(obj)
