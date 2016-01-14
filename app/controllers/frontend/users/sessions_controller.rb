@@ -1,7 +1,7 @@
 class Frontend::Users::SessionsController < Frontend::ApplicationController
   include Authenticatable
 
-  layout false
+  # layout false
 
   private
 
