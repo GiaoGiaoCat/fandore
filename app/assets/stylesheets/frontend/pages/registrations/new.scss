@@ -1,0 +1,19 @@
+#frontend-users-registrations-new {
+  background: #fff image-url('redesign/sign-bg.jpg') top center no-repeat;
+  background-size: cover;
+
+  .header {
+    background-color: transparent;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .form-sign {
+    margin-top: 50px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+  }
+}
