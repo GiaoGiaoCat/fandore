@@ -18,7 +18,7 @@ when 'demo'
   set :branch, 'redesign'
   set :deploy_to, '/home/deployer/www/demo.fandore.com'
 else
-  set :branch, 'develop'
+  set :branch, 'redesign'
   set :deploy_to, '/home/deployer/www/fandore.com'
 end
 set :keep_releases, 20
