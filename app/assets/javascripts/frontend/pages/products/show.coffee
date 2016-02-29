@@ -20,7 +20,6 @@ $ ->
       _MEIQIA._SHOWPANEL()
 
 
-
 $(document).on "page:load##{pageId}", (e) ->
   unless $('.page').hasClass('fullpage-wrapper')
     $('.page').fullpage()

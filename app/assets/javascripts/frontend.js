@@ -6,7 +6,6 @@
 //=  require fullpage.js/jquery.fullPage
 //=  require china_city/jquery.china_city
 //=  require ga
-//=  require meiqia
 
 //=  require ./frontend/fandore
 
