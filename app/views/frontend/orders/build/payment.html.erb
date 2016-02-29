@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-6">
                     <h4>订单详情</h4>
-                    <p>订单编号：<%= @order.number %></p>
+                    <p>订单编号：<span id="order-number"><%= @order.number %></span></p>
                     <p>收货人：&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.shipping_address.name %></p>
                     <p>联系电话：<%= @order.shipping_address.mobile %></p>
                     <p>收货信息：<%= "#{ChinaCity.get(@order.shipping_address.province)} #{ChinaCity.get(@order.shipping_address.city)} #{ChinaCity.get(@order.shipping_address.district)} #{@order.shipping_address.address}" %></p>
@@ -34,10 +34,13 @@
                         <input type="radio" name="order[payment_method]" value="alipay" checked>
                         <img src="<%= asset_path('bank/alipay.png') %>" />
                     </label>
-                    <!-- <label>
-                        <input type="radio" name="order[payment_method]" value="wxpay">
-                        <img src="<%= asset_path('bank/weixin.png') %>" />
-                    </label> -->
+
+                    <% if false %>
+                        <label>
+                            <input type="radio" name="order[payment_method]" value="wxpay">
+                            <img src="<%= asset_path('bank/weixin.png') %>" />
+                        </label>
+                    <% end %>
                 </div>
 
                 <p class="title">网银支付</p>
@@ -88,8 +91,8 @@
 
                 <footer class="order-payment">
                     <p class="right">
-                        <span>应付金额：<span class="price"><%= number_to_currency @order.total %></span></span>
-                        <button type="submit" class="btn btn-default btn-lg" data-disable-with="正在跳转...">支付</button>
+                        <span>应付金额：<span class="price" id="order-price" data-price="<%= @order.total %>"><%= number_to_currency @order.total %></span></span>
+                        <button type="submit" class="btn btn-default btn-lg" id="btn-payment" data-disable-with="正在跳转...">支付</button>
                     </p>
                 </footer>
             </main>
@@ -99,3 +102,12 @@
 </div>
 
 <%= render 'layouts/frontend/footer' %>
+
+<%# GA 提交的数据 %>
+<% @order.line_items.rings.each do |item| %>
+    <div class="ga-order-item">
+        <input type="hidden" value="<%= item.name %>" class="order-item-name">
+        <input type="hidden" value="<%= item.final_amount.to_i / item.quantity %>" class="order-item-price">
+        <input type="hidden" value="<%= item.quantity %>" class="order-item-quantity">
+    </div>
+<% end %>
