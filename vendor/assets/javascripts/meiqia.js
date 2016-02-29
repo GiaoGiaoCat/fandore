@@ -10,3 +10,5 @@
     s.parentNode.insertBefore(j, s);
 })(window, document, 'script', '//eco-api.meiqia.com/dist/meiqia.js', '_MEIQIA');
 _MEIQIA('entId', 7955);
+_MEIQIA('manualInit', true);
+_MEIQIA('withoutBtn', true);

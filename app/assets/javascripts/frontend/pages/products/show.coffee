@@ -16,12 +16,17 @@ $ ->
       else if @value is 'F'
         $('#male_size, #male_lettering').prop 'disabled', true
 
+    .on 'click', "##{ pageId } .page-toolbar-btn-service", ->
+      _MEIQIA._SHOWPANEL()
+
+
 
 $(document).on "page:load##{pageId}", (e) ->
   unless $('.page').hasClass('fullpage-wrapper')
     $('.page').fullpage()
 
   renderPrice()
+  initMeiqia()
 
 .on "page:before-unload##{pageId}", (e) ->
   $.fn.fullpage.destroy()
@@ -39,3 +44,11 @@ renderPrice = ->
     $diamond = $("#product-prices li[data-name='#{ name }']")
     $('#price').text "￥#{ $diamond.text() * 1 + $('input[name=variant_id]:checked').data('price') * 1 }"
     $('#diamond_id').val "#{ $diamond.attr 'id' }"
+
+
+initMeiqia = ->
+  if _MEIQIA._INIT
+    _MEIQIA._INIT()
+  else
+    $('#meiqia-script').on 'load', ->
+      _MEIQIA._INIT()

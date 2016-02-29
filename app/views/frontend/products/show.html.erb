@@ -50,8 +50,40 @@
             <% else %>
                 <%= render 'engaement' %>
             <% end %>
+
+            <div class="page-toolbar">
+                <a href="javascript:;" onclick="$.fn.fullpage.moveSectionUp()" class="page-toolbar-btn">
+                    <%= image_tag 'redesign/btn-top.png' %>
+                </a>
+                <a href="/products?taxon_name=<%= @product.is_wedding? ? '结婚对戒' : '求婚钻戒' %>" class="page-toolbar-btn">
+                    <%= image_tag 'redesign/btn-list.png' %>
+                </a>
+                <a href="javascript:;" class="page-toolbar-btn page-toolbar-btn-service">
+                    <%= image_tag 'redesign/btn-service.png' %>
+                </a>
+                <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart page-toolbar-btn" data-big-slide="cart">
+                    <%= image_tag 'redesign/btn-cart.png' %>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
 <%= render 'table' %>
+
+<script type='text/javascript'>
+    (function(m, ei, q, i, a, j, s) {
+        m[a] = m[a] || function() {
+            (m[a].a = m[a].a || []).push(arguments)
+        };
+        j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+        j.async = true;
+        j.src = i;
+        j.id = 'meiqia-script'
+        s.parentNode.insertBefore(j, s)
+    })(window, document, 'script', '//eco-api.meiqia.com/dist/meiqia.js', '_MEIQIA');
+    _MEIQIA('entId', 7955);
+    _MEIQIA('manualInit', true);
+    _MEIQIA('withoutBtn', true);
+</script>
