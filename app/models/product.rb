@@ -72,7 +72,9 @@ class Product < ActiveRecord::Base
     variant_images.unscope(:order).order(position: :desc).first.try(:position) || 0
   end
 
+  # DOC: 结婚对戒不需要计算钻石的价格，而求婚钻戒的默认价格由默认价格和最低品质的钻石价格组成
   def default_price
+    return price if is_wedding?
     price + Product.diamonds.where(name: "0.3Ct-F-VVS2").first.price
   end
 
