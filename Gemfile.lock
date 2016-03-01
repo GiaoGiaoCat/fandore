@@ -53,6 +53,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_link_to (1.0.3)
+      actionpack
     active_model_otp (1.2.0)
       activemodel
       rotp
@@ -293,6 +295,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  active_link_to
   active_model_otp
   active_type
   acts_as_commentable

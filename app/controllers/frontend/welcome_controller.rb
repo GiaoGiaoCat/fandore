@@ -3,7 +3,6 @@ class Frontend::WelcomeController < Frontend::ApplicationController
   before_action :load_cart
 
   def index
-    @channel = 'home'
   end
 
   def privacy

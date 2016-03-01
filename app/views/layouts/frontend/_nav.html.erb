@@ -1,19 +1,19 @@
 <nav id="global-nav" class="global-nav">
     <ul>
         <li>
-            <a href="/" class="<%= 'active' if @channel == 'home' %>">首页 Home</a>
+            <%= active_link_to '首页 Home', root_url, active: :exclusive %>
         </li>
         <li>
-            <a href="/products?taxon_name=求婚钻戒" class="<%= 'active' if params[:taxon_name] == '求婚钻戒' %>">求婚钻戒 Engagement</a>
+            <%= active_link_to '求婚钻戒 Engagement', products_path(taxon_name: '求婚钻戒'), active: :exact %>
         </li>
         <li>
-            <a href="/products?taxon_name=结婚对戒" class="<%= 'active' if params[:taxon_name] == '结婚对戒' %>">结婚对戒 Wedding</a>
+            <%= active_link_to '结婚对戒 Wedding', products_path(taxon_name: '结婚对戒'), active: :exact %>
         </li>
         <li>
-            <a href="/about">品牌 Brand</a>
+            <%= active_link_to '品牌 Brand', about_path, active: :exclusive %>
         </li>
         <li>
-            <a href="/service">服务 Service</a>
+            <%= active_link_to '服务 Service', service_path, active: :exclusive %>
         </li>
         <li>
             <a href="#">博客 Blog</a>

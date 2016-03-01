@@ -73,6 +73,8 @@ gem 'alipay', github: 'chloerei/alipay'
 # An unofficial simple wechat pay gem
 gem 'wx_pay'
 gem 'rqrcode_png'
+# View helper to manage "active" state of a link
+gem 'active_link_to'
 
 # Use Puma as the app server
 gem 'puma', group: :production
