@@ -78,6 +78,11 @@ class Product < ActiveRecord::Base
     price + Product.diamonds.where(name: "0.3Ct-F-VVS2").first.price
   end
 
+  # DOC: 将 available?, sold?, unavailable? 方法委托给 master
+  def method_missing(method, *args, &block)
+    master.respond_to?(method) ? master.send(method, *args, &block) : super
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

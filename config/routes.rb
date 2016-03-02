@@ -147,7 +147,7 @@ Rails.application.routes.draw do
   end
 
   # Admin root path
-  get 'vansys', to: 'backend/dashboards#index'
+  get 'vansys', to: 'backend/dashboards#index', as: :admin
 
   # You can have the root of your site routed with "root"
   root 'frontend/welcome#index'
