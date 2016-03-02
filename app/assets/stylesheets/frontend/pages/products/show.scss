@@ -108,7 +108,7 @@
 
   .form-wedding-rings .product-information {
     label {
-      text-align: right;
+      max-width: 100px;
     }
 
     .link-table {
@@ -140,7 +140,8 @@
       width: 200px;
     }
 
-    select {
+    select.form-control {
+      padding: 0;
       font-size: 12px;
     }
   }
