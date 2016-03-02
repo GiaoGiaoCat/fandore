@@ -388,7 +388,7 @@ img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
 img_2.picture = File.new(Rails.root.join('db', 'images', 'thecrown', 'pic2.png'))
 img_2.save
 
-# 对戒
+# 对戒 1
 product_05 = Product.new(name: '微澜对戒', prototype_id: prototype_02.id, taxon_ids: taxon_3.id)
 product_05.price = 3000
 product_05.status = 'available'
@@ -414,6 +414,24 @@ img_1.save
 img_2 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
 img_2.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'pic2.png'))
 img_2.save
+
+# 对戒 2
+product_06 = Product.new(name: 'pj02', prototype_id: prototype_02.id, taxon_ids: taxon_3.id)
+product_06.price = 3480
+product_06.status = 'available'
+product_06.description = 'pj02只有18K金版本'
+product_06.save
+
+v1 = product_06.variants.new(option_value_ids: ["1", "6"], price: 3480, sku: '18K-MF') # 18K金 男女
+v1.save
+v2 = product_06.variants.new(option_value_ids: ["1", "7"], price: 1880, sku: '18K-M') # 18K金 男
+v2.save
+v1 = product_06.variants.new(option_value_ids: ["1", "8"], price: 1600, sku: '18K-F') # 18K金 女
+v1.save
+master = product_06.master
+img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
+img_1.picture = File.new(Rails.root.join('db', 'images', 'whispper', 'pic3.png'))
+img_1.save
 
 
 # 添加求婚戒指订单

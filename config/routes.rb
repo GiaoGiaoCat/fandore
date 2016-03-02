@@ -106,7 +106,7 @@ Rails.application.routes.draw do
   #省市级联
   mount ChinaCity::Engine => '/china_city'
 
-  scope :admin, module: :backend, as: :admin do
+  scope :vansys, module: :backend, as: :admin do
     concerns :authenticatable
 
     resources :users
@@ -147,7 +147,7 @@ Rails.application.routes.draw do
   end
 
   # Admin root path
-  get 'admin', to: 'backend/dashboards#index'
+  get 'vansys', to: 'backend/dashboards#index'
 
   # You can have the root of your site routed with "root"
   root 'frontend/welcome#index'
