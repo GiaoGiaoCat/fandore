@@ -1,6 +1,6 @@
 <% if @user.errors.blank? %>
   $('#mask').click()
-  Turbolinks.visit location.href
+  Turbolinks.visit '/'
 <% else %>
   errors = $.parseJSON "<%= j @user.errors.to_formatted_json %>"
   fandore.handleErrors(errors)

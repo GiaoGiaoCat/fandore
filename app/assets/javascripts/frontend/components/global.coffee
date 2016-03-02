@@ -20,7 +20,7 @@ $ ->
   .on 'click touchstart', '.link-close-nav, .link-close-sidebar', ->
     $('#mask').click()
 
-  .on 'click touchstart', '#mask', ->
+  .on 'click touchstart', '#mask:visible', ->
     $(@).fadeOut('fast').data('big-slide').click()
 
   .on 'click', '#sidebar .link-signup', ->
