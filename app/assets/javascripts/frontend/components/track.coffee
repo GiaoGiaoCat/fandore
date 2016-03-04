@@ -22,3 +22,5 @@ $ ->
         name: $item.find('.order-item-name').val()
         price: $item.find('.order-item-price').val()
         quantity: $item.find('.order-item-quantity').val()
+
+    ga('ecommerce:send')
