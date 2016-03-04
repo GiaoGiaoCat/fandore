@@ -7,6 +7,15 @@ $ ->
   .on 'click', '#sidebar-signup #btn-signup', ->
     ga('send', 'event', '用户操作', 'click', '注册', 0)
 
+  .on 'click', '#frontend-products-show .btn-shopping', ->
+    ga('send', 'event', '订单操作', 'click', '加入购物车', 0)
+
+  .on 'click', '#frontend-products-show .page-toolbar-btn-service', ->
+    ga('send', 'event', '用户操作', 'click', '联系客服', 0)
+
+  .on 'click', '#sidebar .btn-payment', ->
+    ga('send', 'event', '购物', 'click', '下订单', 0)
+
   .on 'click', '#frontend-orders-build-show #btn-payment', ->
     # 订单支付信息
     ga 'ecommerce:addTransaction',
