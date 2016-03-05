@@ -83,8 +83,11 @@
     <%= render 'buttons' %>
 <% end %>
 
-<ul id="product-prices" style="display:none!important;">
-    <% @diamonds.each do |diamond| %>
-        <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
-    <% end %>
-</ul>
+
+<% cache ['diamonds', 'price', @diamonds] do %>
+    <ul id="product-prices" style="display:none!important;">
+        <% @diamonds.each do |diamond| %>
+            <li data-name="<%= diamond.name.downcase %>" id="<%= diamond.id %>"><%= diamond.price %></li>
+        <% end %>
+    </ul>
+<% end %>
