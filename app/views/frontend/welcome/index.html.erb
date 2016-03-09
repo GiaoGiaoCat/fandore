@@ -2,9 +2,10 @@
     <section class="section section-jumbotron">
         <%= render 'layouts/frontend/header' %>
 
-        <a href="/products?taxon_name=求婚钻戒" class="link-show-all">查看全部款式</a>
+        <!-- <a href="/products?taxon_name=求婚钻戒" class="link-show-all">查看全部款式</a> -->
     </section>
 
+    <% if false %>
     <section class="section section-one">
         <div class="horizontal top"></div>
         <div class="horizontal bottom">
@@ -22,16 +23,33 @@
             </a>
         </div>
     </section>
+    <% end %>
 
+    <div class="section section-one"></div>
     <section class="section section-two">
-        <div class="horizontal top"></div>
-        <div class="horizontal bottom">
+        <div class="section-bg"></div>
+    </section>
+
+    <section class="section section-three">
+        <div class="section-bg">
             <div class="vertical left"></div>
             <div class="vertical right"></div>
         </div>
     </section>
 
-    <section class="section section-three">
+    <section class="section section-four">
+        <div class="center-block">
+            <h3>每天最高限售七枚！</h3>
+            <p>寻找你理想中的求婚钻戒</p>
+            <a href="/products?taxon_name=求婚钻戒" class="link-show-all">查看全部款式</a>
+        </div>
+    </section>
+
+    <section class="section section-five">
+        <div class="section-bg"></div>
+    </section>
+
+    <section class="section section-last">
         <%= render 'layouts/frontend/footer' %>
     </section>
 </div>
