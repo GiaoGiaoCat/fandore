@@ -1,5 +1,5 @@
 <a href="<%= product_path(product) %>" class="product">
-    <div class="product-bg" style="background-image: url('<%= product.master.images.first.picture.middle.url %>');"></div>
+    <div class="product-bg" style="background-image: url('<%= product.master.images.first.picture.middle.url rescue '' %>');"></div>
     <div class="product-info">
         <p class="price"><%= number_to_currency(product.default_price, unit: '￥') %></p>
         <p class="name"><%= product.name %></p>
