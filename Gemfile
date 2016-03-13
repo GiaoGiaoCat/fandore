@@ -1,4 +1,4 @@
-# source 'https://gems.ruby-china.org'
+source 'https://gems.ruby-china.org'
 # source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -60,7 +60,7 @@ gem 'wicked'
 # Provides a single Comment model that can be attached to any model(s) within your app.
 gem 'acts_as_commentable'
 # Classier solution for Multiple file uploads for Multiple file upload.
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 # Captcha into a Rails application
 gem 'simple_captcha_reloaded'
