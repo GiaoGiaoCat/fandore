@@ -325,9 +325,9 @@ product_01.price = 2500
 product_01.status = 'available'
 product_01.description = '用心才能真正看得清。你的美丽与善良，众所周知，但你的特别，只有我才知道，因为你是我的玫瑰。庄园里有很多叫rose的花，对我而言，你才是最重要的，经得起终身承诺，一生陪伴。'
 product_01.save
-v1 = product_01.variants.new(option_value_ids: ["1", "3"], price: 2500) # 18K金 简约款
+v1 = product_01.variants.new(option_value_ids: ["1", "3"], price: 2500, sku: '18K-S') # 18K金 简约款
 v1.save
-v2 = product_01.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金 轻奢款
+v2 = product_01.variants.new(option_value_ids: ["1", "4"], price: 2500, sku: '18K-I') # 18K金 轻奢款
 v2.save
 master = product_01.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
@@ -359,9 +359,9 @@ product_03.price = 2000
 product_03.status = 'available'
 product_03.description = '轻简是一种姿态，不凡的爱情正在延绵。说不上为什么，我变得很主动，这很真实，你就是我要找的。褪去繁复，淬炼菁华，心意凝然于指，爱意久远于心，简单却是最完整。'
 product_03.save
-v1 = product_03.variants.new(option_value_ids: ["1", "3"], price: 2000) # 18K金 简约款
+v1 = product_03.variants.new(option_value_ids: ["1", "3"], price: 2000, sku: '18K-S') # 18K金 简约款
 v1.save
-v2 = product_03.variants.new(option_value_ids: ["1", "4"], price: 2000) # 18K金 轻奢款
+v2 = product_03.variants.new(option_value_ids: ["1", "4"], price: 2000, sku: '18K-I') # 18K金 轻奢款
 v2.save
 master = product_03.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
@@ -376,9 +376,9 @@ product_04.price = 2500
 product_04.status = 'available'
 product_04.description = '从触目可及的美好中给予最好的只是一个开始。你以一朵花的姿态自由行走，惊艳了时光，惹醉了岁月，悠然入我心。那不染尘俗的美，在我心间静静绽放，凝固成最永恒的爱恋。'
 product_04.save
-v01 = product_04.variants.new(option_value_ids: ["1", "3"], price: 2500) # 18K金 简约款
+v01 = product_04.variants.new(option_value_ids: ["1", "3"], price: 2500, sku: '18K-S') # 18K金 简约款
 v01.save
-v02 = product_04.variants.new(option_value_ids: ["1", "4"], price: 2500) # 18K金 轻奢款
+v02 = product_04.variants.new(option_value_ids: ["1", "4"], price: 2500, sku: '18K-I') # 18K金 轻奢款
 v02.save
 master = product_04.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
