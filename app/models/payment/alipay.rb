@@ -16,7 +16,7 @@ class Payment::Alipay < Payment::PaymentMethod
       out_trade_no: order.number,
       subject: order.order_name,
       total_fee: 0.01,
-      return_url: url_helpers.alipay_done_order_url(self, host: Figaro.env.site_domain),
+      return_url: url_helpers.alipay_done_order_url(order, host: Figaro.env.site_domain),
       notify_url: url_helpers.alipay_notify_orders_url(host: Figaro.env.site_domain)
     )
   end
