@@ -17,7 +17,7 @@ class Payment::Bankpay < Payment::PaymentMethod
       defaultbank: order.payment_bank,
       out_trade_no: order.number,
       subject: order.order_name,
-      total_fee: 0.01,
+      total_fee: order.total,
       return_url: url_helpers.alipay_done_order_url(order, host: Figaro.env.site_domain),
       notify_url: url_helpers.alipay_notify_orders_url(host: Figaro.env.site_domain)
     )
