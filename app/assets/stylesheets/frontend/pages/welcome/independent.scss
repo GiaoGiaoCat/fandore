@@ -1,0 +1,139 @@
+@mixin font($size, $weight) {
+  font: {
+    size: #{$size};
+    weight: #{$weight};
+  }
+}
+
+@mixin box($width) {
+  width: #{$width};
+  min-height: 500px;
+}
+
+@mixin independent($page_id) {
+  #{$page_id} {
+    .other-pages {
+      .container { padding: 50px 0; }
+
+      .header {
+        width: 1100px;
+        height: 250px;
+        margin: auto;
+
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .section {
+        @include box("1100px");
+        margin: auto;
+
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        -ms-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        box-shadow: 0 1px 1px rgba(0,0,0,.1);
+
+        background: #fff image-url('redesign/service-split.jpg') 250px 0 repeat-y;
+        overflow:hidden;
+
+        .nav {
+          float: left;
+          @include box("250px");
+
+          dt {
+            padding-top:20px;
+            text-align:center;
+            line-height:48px;
+            border-bottom:1px #eee solid;
+            @include font("20px", "500");
+
+            span {
+              display:inline-block;
+              border-bottom:4px #e15258 solid;
+            }
+          }
+
+          dl {
+            dd {
+              display: block;
+              position: relative;
+              border-bottom: 1px #eee solid;
+
+              &.current em {
+                display: block;
+              }
+
+              em {
+                display: none;
+                width: 10px;
+                height: 61px;
+                position: absolute;
+                top: 0px;
+                right: -1px;
+                background: image-url('redesign/service-current.png') no-repeat;
+              }
+
+              a {
+                display: block;
+                height: 60px;
+                line-height: 60px;
+                color: #333;
+                font-size: 16px;
+                text-align: center;
+                -webkit-transition: color .3s ease-in-out;
+                -moz-transition: color .3s ease-in-out;
+                -ms-transition: color .3s ease-in-out;
+                transition: color .3s ease-in-out;
+              }
+            }
+          }
+
+          .current {
+            a {
+              color:#fff;
+              background:#e15258;
+            }
+          }
+        }
+
+        .content{
+          float: right;
+          @include box("848px");
+          padding: 40px 0;
+          font-size: 14px;
+          overflow: auto;
+
+          .c-section {
+            width: 770px;
+            margin: auto;
+            position: relative;
+
+            h2 {
+              font-size: 20px;
+              margin-bottom: 30px;
+              padding-bottom: 15px;
+              border-bottom: 1px #eee solid;
+            }
+
+            h3 {
+              margin: 20px auto;
+              @include font("14px", "bold");
+            }
+
+            p {
+              line-height: 2em;
+              margin-bottom: 1em;
+            }
+
+            ul {
+              padding-left: 28px;
+              line-height: 28px;
+              margin: 20px 0;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

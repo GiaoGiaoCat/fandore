@@ -57,9 +57,9 @@
     <div class="form-group links">
         <input type="checkbox" checked>
         我已阅并同意遵守
-        <a href="#" class="link-page" target="_blank">法律声明</a>
+        <%= link_to '法律声明', statement_path, class: 'link-page' %>
         和
-        <a href="#" class="link-page" target="_blank">隐私条款</a>
+        <%= link_to '隐私条款', privacy_path, class: 'link-page' %>
     </div>
 
     <div class="form-group signin">
