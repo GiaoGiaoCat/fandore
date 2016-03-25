@@ -6,11 +6,7 @@ Rails.application.routes.draw do
   get 'privacy' => 'frontend/welcome#privacy'
   get 'statement' => 'frontend/welcome#statement'
   get 'about' => 'frontend/welcome#about'
-  get 'service' => 'frontend/welcome#service'
-  get 'service_2' => 'frontend/welcome#service'
-  get 'service_3' => 'frontend/welcome#service'
-  get 'service_4' => 'frontend/welcome#service'
-  get 'service_5' => 'frontend/welcome#service'
+  (1..5).each { |num| get "service_#{num}" => 'frontend/welcome#service' }
 
   concern :authenticatable do
     controller :sessions do
