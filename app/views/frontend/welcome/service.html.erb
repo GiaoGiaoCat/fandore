@@ -1,11 +1,32 @@
-<% @page_title = "服务细则" %>
+<% @page_title = service_name(request.path) %>
 
 <%= render 'layouts/frontend/header' %>
 
 <div class="page other-pages">
     <div class="container">
+        <div class="header">
+            <%= image_tag "redesign/other-h1.jpg" %>
+      	</div>
+        <div class="section cl">
+            <div class="nav">
+                <dl>
+            				<dt><span>售后条款</span></dt>
+                    <dd class="<%= is_active_request_path('/service') %>"><%= link_to '购买须知', service_path %></dd>
+                    <dd class="<%= is_active_request_path('/service_2') %>"><%= link_to '7天无理由退货', service_2_path %></dd>
+                    <dd class="<%= is_active_request_path('/service_3') %>"><%= link_to '30天免费换货', service_3_path %></dd>
+                    <dd class="<%= is_active_request_path('/service_4') %>"><%= link_to 'GIA国际权威认证', service_4_path %></dd>
+                    <dd class="<%= is_active_request_path('/service_5') %>"><%= link_to '全额保价配送', service_5_path %></dd>
+          			</dl>
+            </div>
 
+            <div class="content">
+                <div class="c-section">
+                    <%= render partial: "frontend/welcome/service/#{request.path}" %>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <%= render 'layouts/frontend/footer' %>

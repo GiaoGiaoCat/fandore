@@ -20,6 +20,10 @@ module ApplicationHelper
     params[:action] == action_name ? "active" : nil
   end
 
+  def is_active_request_path(path_name)
+    request.path == path_name ? "current" : nil
+  end
+
   def format_datetime(datetime, format = "%Y-%m-%d %H:%M:%S")
     if datetime
       datetime.localtime.strftime(format)

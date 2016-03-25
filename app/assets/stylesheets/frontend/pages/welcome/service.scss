@@ -1,0 +1,5 @@
+@import 'frontend/pages/welcome/independent';
+
+@include independent("#frontend-welcome-service");
+@include independent("#frontend-welcome-service-2");
+@include independent("#frontend-welcome-service-3");
