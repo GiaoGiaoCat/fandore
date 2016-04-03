@@ -1,45 +1,8 @@
 @import 'frontend/base';
 
-// footer.footer {
-//   position: relative;
-//   margin: auto;
-//   padding-top: 100px;
-//   font-size: 12px;
-//   text-align: center;
-//   background-color: #fff;
-//
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     top: 20px;
-//     right: 0;
-//     left: 0;
-//     margin: auto;
-//     width: 467px;
-//     height: 78px;
-//     background-image: image-url('footer.png');
-//     background-repeat: no-repeat;
-//   }
-//
-//   p {
-//     margin: 0;
-//     line-height: 2;
-//   }
-//
-//   .more-info {
-//     margin: 10px 0;
-//     padding: 10px 0;
-//     color: #777;
-//     border-top: 1px solid #ddd;
-//
-//     a {
-//       color: #777;
-//     }
-//   }
-// }
-
 footer {
   position: relative;
+  margin: auto;
   padding-top: 20px;
   font-size: 12px;
   text-align: center;
