@@ -83,6 +83,10 @@ class Product < ActiveRecord::Base
     master.respond_to?(method) ? master.send(method, *args, &block) : super
   end
 
+  def taxons_name
+    taxons.collect(&:name).join('')
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
