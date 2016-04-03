@@ -1,9 +1,9 @@
 module ApplicationHelper
   def page_title
     if @page_title
-      "#{@page_title} - Vandodo范朵朵珠宝官网"
+      "#{@page_title} - VANDODO范朵朵珠宝官网"
     else
-      "Vandodo范朵朵珠宝官网，求婚钻戒高级定制典范"
+      "VANDODO范朵朵珠宝，每个女生都期待一场浪漫求婚"
     end
   end
 
