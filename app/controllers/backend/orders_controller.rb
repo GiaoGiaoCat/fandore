@@ -45,7 +45,7 @@ class Backend::OrdersController < Backend::ApplicationController
   end
 
   def save_order
-    if @order.save
+    if @order.update_totals && @order.save
       redirect_to admin_order_path(@order), notice: '订单更新成功.'
     end
   end

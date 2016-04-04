@@ -28,6 +28,7 @@ class Order::LineItem < ActiveRecord::Base
   before_create :set_prototype
   after_create :add_associations_from_prototype
   before_validation :copy_price
+  after_update :copy_price
   after_destroy :destroy_diamond
   # after_commit :update_related_parent_model_remark
   # scopes ....................................................................
@@ -111,7 +112,9 @@ class Order::LineItem < ActiveRecord::Base
 
   def copy_price
     if variant
-      self.price = variant.price if price.nil?
+      # NOTE: 客户要求后台修改订单可以影响订单价格
+      self.price = variant.price
+      # self.price = variant.price if price.nil?
       # self.cost_price = variant.cost_price if cost_price.nil?
       # self.currency = variant.currency if currency.nil?
     end
