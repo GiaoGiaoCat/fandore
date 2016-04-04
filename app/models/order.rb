@@ -59,8 +59,9 @@ class Order < ActiveRecord::Base
   end
 
   def shipping_address
-    default_address = user.addresses.default.first.dup
-    super || build_shipping_address(default_address.attributes)
+    default_address = user.addresses.default.first
+    attrs = default_address.attributes if default_address
+    super || build_shipping_address(attrs)
   end
 
   def add_line_items_from_cart(cart)
