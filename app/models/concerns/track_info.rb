@@ -25,6 +25,7 @@ module TrackInfo
   def update_state_with_track!(event, operator, note = nil)
     try(event)
     add_track_info(event, operator.id, note)
+    update_totals
     save
   end
 

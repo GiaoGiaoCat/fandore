@@ -45,7 +45,10 @@ class Backend::OrdersController < Backend::ApplicationController
   end
 
   def save_order
-    if @order.update_totals && @order.save
+    if @order.save
+      if @order.line_items.collect(&:changed?).include? true
+        @order.update_state_with_track!('change_line_item', current_user)
+      end
       redirect_to admin_order_path(@order), notice: '订单更新成功.'
     end
   end
