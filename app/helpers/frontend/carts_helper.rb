@@ -7,7 +7,7 @@ module Frontend::CartsHelper
     width_value = item.product.product_properties.find_by(property_id: width.id).value
     color_value = item.product.product_properties.find_by(property_id: color.id).value
     clarity_value = item.product.product_properties.find_by(property_id: clarity.id).value
-    "克拉总重量：#{width_value}, #{color_value} 成色, #{clarity_value} 净度"
+    "主钻：#{width_value}/#{color_value}/#{clarity_value}/3EX"
   end
 
   def show_certificate_no(item)
