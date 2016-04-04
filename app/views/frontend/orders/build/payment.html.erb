@@ -89,12 +89,12 @@
 
                 <input type="hidden" name="order[payment_bank]" id="payment_bank">
 
-                <footer class="order-payment">
+                <div class="order-payment">
                     <p class="right">
                         <span>应付金额：<span class="price" id="order-price" data-price="<%= @order.total %>"><%= number_to_currency @order.total %></span></span>
                         <button type="submit" class="btn btn-default btn-lg" id="btn-payment" data-disable-with="正在跳转...">支付</button>
                     </p>
-                </footer>
+                </div>
             </main>
         </div>
         <% end %>
