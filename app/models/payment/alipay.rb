@@ -15,7 +15,7 @@ class Payment::Alipay < Payment::PaymentMethod
     Alipay::Service.create_direct_pay_by_user_url(
       out_trade_no: order.number,
       subject: order.order_name,
-      total_fee: order.total,
+      total_fee: 1,
       return_url: url_helpers.alipay_done_order_url(order, host: Figaro.env.site_domain),
       notify_url: url_helpers.alipay_notify_orders_url(host: Figaro.env.site_domain)
     )
