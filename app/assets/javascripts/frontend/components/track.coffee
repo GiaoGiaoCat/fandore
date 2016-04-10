@@ -25,16 +25,16 @@ $ ->
     ga 'ecommerce:addTransaction', data
     console.log(data) # 打印数据
 
-    # 订单商品信息
-    $('.ga-order-item').each ->
-      $item = $(@)
-      data =
-        id: $('#order-number').text()
-        name: $item.find('.order-item-name').val()
-        price: $item.find('.order-item-price').val()
-        quantity: $item.find('.order-item-quantity').val() * 1
-      ga 'ecommerce:addItem', data
-      console.log(data)  # 打印数据
+  # 订单商品信息
+  $('.ga-order-item').each ->
+    $item = $(@)
+    data =
+      id: $('#order-number').text()
+      name: $item.find('.order-item-name').val()
+      price: $item.find('.order-item-price').val()
+      quantity: $item.find('.order-item-quantity').val() * 1
+    ga 'ecommerce:addItem', data
+    console.log(data)  # 打印数据
 
-    ga('ecommerce:send')
-    return false
+  ga('ecommerce:send')
+  return false
