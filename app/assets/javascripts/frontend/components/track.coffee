@@ -10,7 +10,7 @@ $ ->
   .on 'click', '#frontend-products-show .btn-shopping', ->
     ga('send', 'event', '订单操作', 'click', '加入购物车', 0)
 
-  .on 'click', '#frontend-products-show .page-toolbar-btn-service', ->
+  .on 'click', '.page-toolbar-btn-service', ->
     ga('send', 'event', '用户操作', 'click', '联系客服', 0)
 
   .on 'click', '#sidebar .btn-payment', ->

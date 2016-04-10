@@ -16,19 +16,16 @@ $ ->
       else if @value is 'F'
         $('#male_size, #male_lettering').prop 'disabled', true
 
-    .on 'click', "##{ pageId } .page-toolbar-btn-service", ->
-      _MEIQIA._SHOWPANEL()
-
 
 $(document).on "page:load##{pageId}", (e) ->
-  unless $('.page').hasClass('fullpage-wrapper')
-    $('.page').fullpage()
+  # unless $('.page').hasClass('fullpage-wrapper')
+  #   $('.page').fullpage()
 
   renderPrice()
   initMeiqia()
 
 .on "page:before-unload##{pageId}", (e) ->
-  $.fn.fullpage.destroy()
+  # $.fn.fullpage.destroy()
   $('html').removeClass('fp-enabled').attr 'style', ''
 
 

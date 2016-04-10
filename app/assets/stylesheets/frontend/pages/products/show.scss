@@ -22,6 +22,11 @@
     z-index: 1;
   }
 
+  .section {
+    position: relative;
+    min-height: 800px;
+  }
+
   .section-jumbotron {
     background-color: #E7E7ED;
   }
@@ -158,28 +163,7 @@
     }
   }
 
-  .page-toolbar {
-    position: absolute;
-    right: 15px;
-    bottom: 0;
-
-    .page-toolbar-btn {
-      display: block;
-      margin-top: -1px;
-      width: 40px;
-      height: 40px;
-      line-height: 35px;
-      text-align: center;
-      border: 1px solid #ddd;
-      @include transition(300ms, background-color);
-
-      &:hover {
-        background-color: $ui-color;
-      }
-
-      img {
-        max-width: 18px;
-      }
-    }
+  .carousel {
+    padding-top: 150px;
   }
 }

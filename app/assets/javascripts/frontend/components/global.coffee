@@ -44,6 +44,9 @@ $ ->
       $('.total-price span').text renderCartPrice()
     return false
 
+  .on 'click', '.page-toolbar-btn-service', ->
+    _MEIQIA._SHOWPANEL()
+
 renderCartQuantity = ->
   quantity = 0
   $('.cart-table .quantity').each ->

@@ -23,7 +23,7 @@
             </a>
         </div>
 
-        <a href="javascript:;" onclick="$.fn.fullpage.moveSectionDown()" class="link-next" title="点击下一页"></a>
+        <!-- <a href="javascript:;" onclick="$.fn.fullpage.moveSectionDown()" class="link-next" title="点击下一页"></a> -->
     </section>
 
     <div class="section section-product">
@@ -50,22 +50,22 @@
             <% else %>
                 <%= render 'engaement' %>
             <% end %>
-
-            <div class="page-toolbar">
-                <a href="javascript:;" onclick="$.fn.fullpage.moveSectionUp()" class="page-toolbar-btn">
-                    <%= image_tag 'redesign/btn-top.png' %>
-                </a>
-                <a href="/products?taxon_name=<%= @product.is_wedding? ? '结婚对戒' : '求婚钻戒' %>" class="page-toolbar-btn">
-                    <%= image_tag 'redesign/btn-list.png' %>
-                </a>
-                <a href="javascript:;" class="page-toolbar-btn page-toolbar-btn-service">
-                    <%= image_tag 'redesign/btn-service.png' %>
-                </a>
-                <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart page-toolbar-btn" data-big-slide="cart">
-                    <%= image_tag 'redesign/btn-cart.png' %>
-                </a>
-            </div>
         </div>
+    </div>
+
+    <div class="page-toolbar">
+        <a href="#top" class="page-toolbar-btn">
+            <%= image_tag 'redesign/btn-top.png' %>
+        </a>
+        <a href="/products?taxon_name=<%= @product.is_wedding? ? '结婚对戒' : '求婚钻戒' %>" class="page-toolbar-btn">
+            <%= image_tag 'redesign/btn-list.png' %>
+        </a>
+        <a href="javascript:;" class="page-toolbar-btn page-toolbar-btn-service">
+            <%= image_tag 'redesign/btn-service.png' %>
+        </a>
+        <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart page-toolbar-btn" data-big-slide="cart">
+            <%= image_tag 'redesign/btn-cart.png' %>
+        </a>
     </div>
 </div>
 
