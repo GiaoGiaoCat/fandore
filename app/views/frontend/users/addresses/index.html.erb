@@ -7,12 +7,12 @@
         <%= render partial: 'frontend/users/sidebar', locals: {channle: 'addresses'} %>
 
         <div class="user-center-main">
-            <header>
+            <div class="header">
                 收货信息
                 <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal-new-address">添加收获地址</a>
-            </header>
+            </div>
 
-            <main>
+            <div class="main">
                 <% if @addresses.size > 0 %>
                     <div class="address-table">
                         <table class="table">
@@ -51,7 +51,7 @@
                         <p class="init-content">您还没有收货地址</p>
                     </div>
                 <% end %>
-            </main>
+            </div>
         </div>
     </div>
 </div>

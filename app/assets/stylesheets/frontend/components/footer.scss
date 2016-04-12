@@ -2,12 +2,12 @@
 
 footer {
   position: relative;
-  margin: auto;
-  padding-top: 20px;
+  height:240px;
+  margin-top: 20px;
   font-size: 12px;
   text-align: center;
   background-color: #fff;
-  z-index: 999;
+  z-index: 8;
 
   * {
     margin: 0;
@@ -33,20 +33,21 @@ footer {
   .fr { float: right; }
   img { vertical-align: middle;}
   img {border:0;}
+  @media screen and (min-width:1200px){
+    .inner{position: relative;width:1200px; margin: 0 auto;}
+  }
+  @media screen and (min-width:768px) and (max-width:1200px){
+    .inner{position: relative;width:100%}
 
+  }
   .inner {
-    position: relative;
-    width: 1000px;
-    margin: 0 auto;
-
-
     .shopping-info {
       overflow: hidden;
       text-align: center;
 
       li {
         float: left;
-        width: 200px;
+        width: 20%;
         height: 153px;
 
         span {

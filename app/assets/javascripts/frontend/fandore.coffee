@@ -96,7 +96,7 @@ $(document).ajaxSend (e, xhr, settings) ->
     $('.link-toggle-nav').bigSlide
       menu: $('#global-nav')
       push: $('.wrapper')
-      menuWidth: '50%'
+      menuWidth: '30%'
 
     $('.link-toggle-right-nav').bigSlide
       menu: $('#sidebar')

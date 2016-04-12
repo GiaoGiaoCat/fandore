@@ -7,8 +7,8 @@
         <%= render partial: 'frontend/users/sidebar', locals: {channle: 'orders'} %>
 
         <div class="user-center-main">
-            <header>订单号：<%= @order.number %></header>
-            <main>
+            <div class="header">订单号：<%= @order.number %></div>
+            <div class="main">
                 <div class="section section-progress">
                     <ul class="order-progress">
                         <li>
@@ -52,17 +52,21 @@
                                 <tr>
                                     <th></th>
                                     <th class="name">商品/规格</th>
+                                    <th>钻石参数</th>
                                     <th>数量</th>
                                     <th>金额</th>
+                                    <th>产品备注</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% @order.line_items.rings.each do |item| %>
                                     <tr data-item="<%= item.id %>">
-                                        <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
-                                        <td class="name"><%= item.name %> <span><%= item.variant.options_text %> <%= show_properties(item) %> <%= show_diamond_info(item.diamond) %></span></td>
+                                        <th width="100"><img width="100" height="56" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                                        <td class="name"><%= item.name %> <span><%= item.variant.options_text %></span></td>
+                                        <td><%= show_diamond_info(item.diamond) %></td>
                                         <td width="48"><%= item.quantity %></td>
                                         <td width="100"><%= number_to_currency item.final_amount %></td>
+                                        <td><%= show_properties(item) %></td>
                                     </tr>
                                 <% end %>
                             </tbody>
@@ -92,7 +96,7 @@
                         </div>
                     </div>
                 <% end %>
-            </main>
+            </div>
         </div>
     </div>
 </div>

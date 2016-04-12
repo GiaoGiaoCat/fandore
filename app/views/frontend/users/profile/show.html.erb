@@ -7,8 +7,8 @@
         <%= render partial: 'frontend/users/sidebar', locals: {channle: 'profile'} %>
 
         <div class="user-center-main">
-            <header>账户资料</header>
-            <main>
+            <div class="header">账户资料</div>
+            <div class="main">
                 <div class="section">
                     <div class="row">
                         <img src="<%= current_user.avatar.url %>" class="avatar-preview">
@@ -119,7 +119,7 @@
                         </div>
                     <% end %>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 </div>

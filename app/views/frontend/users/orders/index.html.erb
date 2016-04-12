@@ -7,10 +7,10 @@
         <%= render partial: 'frontend/users/sidebar', locals: {channle: 'orders'} %>
 
         <div class="user-center-main">
-            <header>
+            <div class="header">
                 我的订单
-            </header>
-            <main>
+            </div>
+            <div class="main">
                 <% if @orders.size > 0 %>
                     <%= render partial: "order", collection: @orders.reverse %>
                 <% else %>
@@ -19,7 +19,7 @@
                         <p class="init-content">您还没有任何订单</p>
                     </div>
                 <% end %>
-            </main>
+            </div>
         </div>
     </div>
 </div>

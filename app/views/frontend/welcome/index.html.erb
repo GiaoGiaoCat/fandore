@@ -1,97 +1,87 @@
+<%= render 'layouts/frontend/header' %>
 <div class="page">
-    <section class="section section-jumbotron">
-        <%= render 'layouts/frontend/header' %>
-    </section>
+    <div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide cell-travel">
+				<%= image_tag "redesign/travel.jpg" %>
+				<div class="wrap">
+					<p>和你们一起探索生命中的一切可能性</p>
+					<h2>「浪漫与优雅的探索之旅」</h2>
+					</div>
+	            </div>
+	            <div class="swiper-slide cell-pinkdiamond">
+					<%= image_tag "redesign/pinkdiamond.jpg" %>
+					<div class="wrap">
+		                <h2>「粉色迷情，独特如你」</h2>
+		                <p>姑娘的心，淡淡的粉</p>
+		                <a class="btn-ghost" href="<%= products_path(taxon_name: '求婚钻戒')%>">浏览全部求婚钻戒</a>
+	            	</div>
+	            </div>
+	            <div class="swiper-slide cell-guide">
+	            	<%= image_tag "redesign/wedding.jpg" %>
+					<div class="wrap">
+	            		<h2>Know it before buy it</h2>
+						<a class="btn-ghost" href="<%= products_path(taxon_name: '结婚对戒')%>">浏览全部情侣钻戒</a>
+					</div>
 
-    <div class="section section-one">
-        <h3 class="section-title">离完美只差一丢丢</h3>
-        <p class="section-desc">
-            钻石"4C"，取自于Carat(克拉)、Color(成色)、Clarity(净度)、<br>
-            Cut(切工)的英文首字母而成的钻石评价标准，钻石蕴含此4大元素<br>
-            均衡度越佳，越珍贵，越能绽放美丽耀眼的璀璨光芒。
-        </p>
-        <div class="section-cards">
-            <div class="card">
-                <h4 class="card-title">D-F</h4>
-                <p class="card-desc">COLOR GRADE<br>GIA 4C评价体系<br>完全无色级</p>
-            </div>
-            <div class="card">
-                <h4 class="card-title">IF-VVS</h4>
-                <p class="card-desc">CLARITY GRADE<br>GIA 4C评价体系<br>内部无暇级</p>
-            </div>
-            <div class="card">
-                <h4 class="card-title">3EX</h4>
-                <p class="card-desc">CUT GRADE<br>GIA 4C评价体系<br>完美切工/抛光/对称性</p>
-            </div>
-        </div>
-    </div>
+	            </div>
+	            <div class="swiper-slide cell-weixin">
+	            	<%= image_tag "redesign/weixin.jpg" %>
+					<div class="wrap">
+						<h2>「来微信，开启我们的对话」</h2>
+						<%= image_tag "redesign/qrcode111.jpg",class:"qrcode",alt:"微信二维码" %>
+					</div>
+	            </div>
 
-    <section class="section section-two">
-        <h3 class="section-title">无可挑剔的火彩测试</h3>
-        <p class="section-desc">
-            VANDODO每颗主钻石在各项切工比例参数上都经过严格筛选，<br>
-            Holloway Cut Adviser（HCA）钻石火彩评价体系四项指标（反光性、火彩、闪耀性、延展性）<br>
-            测试至少3个达到Excellent评价，确保高几率钻石火彩绚丽动人。
-        </p>
+			</div>
+		<!-- Add Pagination -->
+		<div class="swiper-pagination swiper-pagination-white"></div>
+	</div>
 
-        <div class="section-cards">
-            <div class="card">
-                <p class="card-desc">台面比<br>TABLE<br>56%-58%</p>
-            </div>
-            <div class="card">
-                <p class="card-desc">深度比<br>DEPTH<br>61%-62%</p>
-            </div>
-            <div class="card">
-                <p class="card-desc">亭角<br>PAVILION ANGLE<br>40.5%-41%</p>
-            </div>
-            <div class="card">
-                <p class="card-desc">冠角E<br>CROWN ANGLE<br>34%-35%</p>
-            </div>
-        </div>
-    </section>
 
-    <section class="section section-three">
-        <div class="section-bg">
-            <div class="vertical left">
-                <h3 class="section-title">多种戒托材质可选</h3>
-                <div class="section-cards">
-                    <div class="card">
-                        <p class="card-desc">铂金<br>PT950</p>
+	<div class="contain">
+		<div class="main-promos">
+			<ul>
+				<li>
+                    <a href="<%= products_path(taxon_name: '求婚钻戒')%>">
+                    <i><%= image_tag "redesign/zj.jpg" %></i>
+                    <div class="title">
+                        <h2>VANDODO · 求婚戒指</h2>
+                        <p>每个女孩都期待一场浪漫求婚</p>
+                     </div>
+                    </a>
+				</li>
+				<li>
+                    <a href="<%= products_path(taxon_name: '结婚对戒')%>">
+                    <i><%= image_tag "redesign/dj.jpg" %></i>
+                    <div class="title">
+                        <h2>VANDODO · 情侣对戒</h2>
+                        <p>少女的心都是粉色的</p>
+                     </div>
+                    </a>
+				</li>
+				<li>
+                    <a href="/">
+                    <i><%= image_tag "redesign/sets.jpg" %></i>
+                    <div class="title">
+                        <h2>Birdal Sets</h2>
+                        <p>即将开放</p>
                     </div>
-                    <div class="card">
-                        <p class="card-desc">玫瑰金<br>K18PG</p>
-                    </div>
-                    <div class="card">
-                        <p class="card-desc">18K白金<br>K18WG</p>
-                    </div>
-                </div>
-            </div>
-            <div class="vertical right"></div>
-        </div>
-    </section>
-
-    <section class="section section-four">
-        <div class="center-block">
-            <h3>每天最高限售七枚！</h3>
-            <p>寻找你理想中的求婚钻戒</p>
-            <a href="/products?taxon_name=求婚钻戒" class="link-show-all">查看全部款式</a>
-        </div>
-    </section>
-
-    <section class="section section-five">
-        <div class="vertical left">
-            <h3 class="section-title">不满意？不用担心！</h3>
-            <p class="section-desc">
-                7天无理由退货，30天免费换货，往返运费由VANDODO承担！<br>
-                全程保价配送，安全省心，更有无忧的售后服务支持。<br>
-                如您对产品有任何不满意之处，可在签收7天内无理由退货、30天只换不修！<br>
-                您仅需联系上客服或前往用户中心服务区发起对换货请求即可完成售后服务。
-            </p>
-        </div>
-        <div class="vertical right"></div>
-    </section>
-
-    <section class="section section-last">
-        <%= render 'layouts/frontend/footer' %>
-    </section>
+                    </a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
+<%= render 'layouts/frontend/footer' %>
+<script>
+   var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop : true,
+        keyboardControl : true,
+        effect : 'slide',
+		autoplay : 3000
+    });
+    
+</script>

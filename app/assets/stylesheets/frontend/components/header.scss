@@ -1,14 +1,33 @@
 @import 'frontend/base';
 
-header.header {
-  position: relative;
-  margin: 0 50px 0 38px;
-  height: 60px;
-  line-height: 60px;
-  background-color: #fff;
+header {
+  height: 75px;
+  line-height: 75px;
+  top:0;
+  background-color: rgba(255, 255, 255, .95);
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  position: fixed;
+  z-index: 8;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
 
-  .container {
-    position: relative;
+
+  .menu{
+    width:50px;
+    height:50px;
+    position:absolute;
+    left:35px;
+    top:50%;
+    margin-top:-25px;
+    background:image-url('redesign/icon-menu.png') center no-repeat;
+    &:hover{
+      @include transition(300ms, all);
+      background:$ui-color image-url('redesign/icon-menu-light.png') center no-repeat;
+    }
+    
   }
 
   .logo {
@@ -24,34 +43,52 @@ header.header {
     background: image-url('logo-dark.png') no-repeat center;
   }
 
-  .link {
-    display: inline-block;
-    width: 44px;
+
+
+  a{
+    @include transition(300ms, all);
     font-size: 20px;
     color: $text;
     text-align: center;
-    vertical-align: top;
 
     &:hover {
       color: $ui-color;
+      border-color:$ui-color;
     }
 
     &.link-toggle-right-nav {
-      font-size: 16px;
+      font-size: 14px;
+      margin-left:5px;
+    }
+    
+  }
+
+  .signup{
+    border:1px #666 solid;
+    padding:8px 20px;
+  }
+  .signin{
+    background:$ui-color;
+    color:#fff;
+    padding:8px 20px;
+    &:hover{
+      background:#39cb80;
+      color:#fff;
     }
   }
 
   .avatar {
     margin-top: -8px;
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
   }
 
   .toolbar {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 35px;
+    
 
     .btn-group {
       vertical-align: top;

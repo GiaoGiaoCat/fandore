@@ -1,6 +1,6 @@
 <%= form_tag line_items_path, id: 'add-to-cat', class: 'form-inline form-wedding-rings', data: { remote: true } do %>
-    <h3 class="price" id="price"></h3>
-    <p class="name"><%= @product.name %></p>
+    <h2 class="name"><%= @product.name %></h2>
+    <p class="price" id="price"></p>
 
     <div class="form-group product-variants" data-toggle="buttons">
         <label class="btn btn-primary active">
@@ -13,10 +13,6 @@
             <input class="render-price" type="radio" name="variant_name" value="F"> 单女款
         </label>
     </div>
-
-    <hr>
-
-    <p class="description"><%= @product.description %></p>
 
     <hr>
 
@@ -36,7 +32,7 @@
         <div class="row">
             <label class="col-sm-3 control-label"><b>选择手寸</b></label>
             <div class="col-sm-9">
-                <a href="javascript:;" class="link-table" data-toggle="modal" data-target="#table">查看中国区戒指手寸对照表</a>
+                <a href="javascript:;" class="link-table" data-toggle="modal" data-target="#table">查看手寸对照表</a>
             </div>
         </div>
 

@@ -1,29 +1,22 @@
 <%= form_tag line_items_path, id: 'add-to-cat', class: 'form-inline form-engaement-ring', data: { remote: true } do %>
-    <h3 class="price" id="price"></h3>
-    <p class="name"><%= @product.name %></p>
-
-    <div class="form-group product-variants" data-toggle="buttons">
-        <label class="btn btn-primary active">
-            <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[0].id %>"
-            data-price="<%= @product.variants[0].price %>" checked> 简约款
-        </label>
-        <label class="btn btn-primary">
-            <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[1].id %>" data-price="<%= @product.variants[1].price %>"> 轻奢款
-        </label>
-    </div>
+    <h2 class="name"><%= @product.name %></h2>
+    <p class="price" id="price"></p>
 
     <hr>
-
-    <p class="description"><%= @product.description %></p>
-
-    <hr>
-
     <div class="form-group product-information row">
         <div class="col-xs-6">
             <div class="row">
                 <label class="col-sm-6 control-label">主钻重量</label>
-                <p class="col-sm-6" id="diamond-weight">0.3CT</p>
+                <p class="col-sm-6" class="diamond-weight">
+                    <select class="form-control render-price" id="diamond-weight">
+                        <option value="0.3CT" selected>30分</option>
+                        <option value="0.5CT" >50分</option>
+                        <option value="1CT" >1克拉</option>
+                    </select>
+                </p>
             </div>
+
+
 
             <div class="row">
                 <label for="product-color" class="col-sm-6 control-label">主钻颜色</label>
@@ -34,6 +27,7 @@
                         <option value="F" selected>F</option>
                     </select>
                 </div>
+
             </div>
         </div>
 
@@ -63,23 +57,25 @@
             <label for="product-size" class="col-sm-3 control-label">选择材质</label>
             <div class="col-sm-9 form-group product-material" data-toggle="buttons">
                 <label class="btn btn-sm btn-primary active">
-                    <input class="render-price" type="radio" name="material" value="18K" checked> 18K白金
+                    <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[0].id %>" data-price="<%= @product.variants[0].price %>" checked> 18K白金
                 </label>
                 <label class="btn btn-sm btn-primary">
-                    <input class="render-price" type="radio" name="material" value="PT950"> PT950
+                    <input class="render-price" type="radio" name="variant_id" value="<%= @product.variants[1].id %>" data-price="<%= @product.variants[1].price %>"> PT950
                 </label>
             </div>
         </div>
+
+
 
         <div class="row">
             <label for="product-size" class="col-sm-4 control-label">选择手寸</label>
             <p class="col-sm-8">
                 <select class="form-control" id="product-size" name="size">
-                    <% (8..22).each do |index| %>
+                    <% (8..16).each do |index| %>
                         <option value="<%= index %>"><%= "#{ index }号" %></option>
                     <% end %>
                 </select>
-                <a href="javascript:;" class="link-table" data-toggle="modal" data-target="#table">查看中国区戒指手寸对照表</a>
+                <a href="javascript:;" class="link-table" data-toggle="modal" data-target="#table">查看手寸对照表</a>
             </p>
         </div>
 

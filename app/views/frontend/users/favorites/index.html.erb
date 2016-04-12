@@ -7,9 +7,9 @@
         <%= render partial: 'frontend/users/sidebar' %>
 
         <div class="user-center-main">
-            <header>我的收藏</header>
+            <div class="header">我的收藏</div>
 
-            <main>
+            <div class="main">
                 <% if @favorites.size > 0 %>
                     <% @favorites.each do |f| %>
                         <div class="favorite">
@@ -30,7 +30,7 @@
                         <p class="init-content">您还没有任何收藏</p>
                     </div>
                 <% end %>
-            </main>
+            </div>
         </div>
     </div>
 </div>
