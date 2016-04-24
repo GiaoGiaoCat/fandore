@@ -2,12 +2,8 @@ pageId = 'frontend-products-show'
 
 $ ->
   $(document)
-    .on 'change', "##{ pageId } .render-price", renderPrice
-    .on 'click', "##{ pageId } .form-engaement-ring .product-variants label", ->
-      $weight = $('#diamond-weight')
-      if $(@).is('.product-variants label:last') then $weight.text '0.5CT' else $weight.text '0.3CT'
-      $('#product-color').val 'F'
-      $('#product-jingdu').val 'VVS2'
+    .on 'change', "##{ pageId } .render-price", (e) ->
+      renderPrice()
 
     .on 'change', "##{ pageId } .form-wedding-rings input[name=variant_name]", ->
       $('.form-control').prop 'disabled', false
@@ -16,19 +12,16 @@ $ ->
       else if @value is 'F'
         $('#male_size, #male_lettering').prop 'disabled', true
 
-    .on 'click', "##{ pageId } .page-toolbar-btn-service", ->
-      _MEIQIA._SHOWPANEL()
-
 
 $(document).on "page:load##{pageId}", (e) ->
-  unless $('.page').hasClass('fullpage-wrapper')
-    $('.page').fullpage()
+  # unless $('.page').hasClass('fullpage-wrapper')
+  #   $('.page').fullpage()
 
   renderPrice()
   initMeiqia()
 
 .on "page:before-unload##{pageId}", (e) ->
-  $.fn.fullpage.destroy()
+  # $.fn.fullpage.destroy()
   $('html').removeClass('fp-enabled').attr 'style', ''
 
 
@@ -39,7 +32,7 @@ renderPrice = ->
     $('#price').text "￥#{ $product.text() * 1 }"
     $('#variant_id').val "#{ $product.attr 'id' }"
   else
-    name = "#{ $('#diamond-weight').text() }-#{ $('#product-color').val() }-#{ $('#product-jingdu').val() }".toLowerCase()
+    name = "#{ $('#diamond-weight').val() }-#{ $('#product-color').val() }-#{ $('#product-jingdu').val() }".toLowerCase()
     $diamond = $("#product-prices li[data-name='#{ name }']")
     $('#price').text "￥#{ $diamond.text() * 1 + $('input[name=variant_id]:checked').data('price') * 1 }"
     $('#diamond_id').val "#{ $diamond.attr 'id' }"

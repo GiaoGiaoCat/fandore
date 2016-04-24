@@ -7,7 +7,7 @@
         <%= render partial: 'nav', locals: {step: 2} %>
         <%= form_for @order, url: wizard_path, method: :put, data: { remote: true } do |f| %>
             <div class="section section-address">
-                <header>收货信息</header>
+                <div class="header">收货信息</div>
                 <%= f.fields_for :shipping_address, @order.shipping_address do |field| %>
                     <main class="row">
                         <div class="col-md-7">
@@ -54,7 +54,7 @@
             </div>
 
             <div class="section section-coupon">
-                <header>优惠码</header>
+                <div class="header">优惠码</div>
                 <main>
                     <div class="form-inline">
                         <div class="form-group">
@@ -71,7 +71,7 @@
             </div>
 
             <div class="section section-invoice">
-                <header>发票信息</header>
+                <div class="header">发票信息</div>
                 <main>
                     <div class="form-inline">
                         <div class="form-group">
@@ -102,7 +102,7 @@
             </div>
 
             <div class="section section-items">
-                <header>商品信息</header>
+                <div class="header">商品信息</div>
                 <main>
                     <div class="order-items-table">
                         <table class="table">
@@ -117,7 +117,7 @@
                             <tbody>
                                 <% @order.line_items.rings.each do |item| %>
                                     <tr data-item="<%= item.id %>">
-                                        <th width="48"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                                        <th width="100"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                                         <td class="name">
                                             <%= item.name %> <span><%= item.variant.options_text %> <%= show_properties(item) %> <%= show_diamond_info(item.diamond) %></span>
                                         </td>

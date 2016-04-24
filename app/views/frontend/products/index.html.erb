@@ -4,6 +4,14 @@
 <%= render 'layouts/frontend/header' %>
 
 <div class="page">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><%= image_tag 'redesign/focus-slide-1.jpg' %></div>
+            <div class="swiper-slide"><%= image_tag 'redesign/focus-slide-1.jpg' %></div>
+        </div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+    </div>
     <div class="product-list">
         <% @products.each_slice(2) do |products| %>
             <div class="product-group">
@@ -11,6 +19,42 @@
             </div>
         <% end %>
     </div>
+    <div class="page-toolbar">
+	    <a href="#" class="page-toolbar-btn page-toolbar-btn-top">
+            <%= image_tag 'redesign/btn-top.png' %>
+        </a>
+        <a href="javascript:;" class="page-toolbar-btn page-toolbar-btn-service">
+            <%= image_tag 'redesign/btn-service.png' %>
+        </a>
+        <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart page-toolbar-btn" data-big-slide="cart">
+            <%= image_tag 'redesign/btn-cart.png' %>
+        </a>
+    </div>
 </div>
+<script type='text/javascript'>
+    (function(m, ei, q, i, a, j, s) {
+        m[a] = m[a] || function() {
+            (m[a].a = m[a].a || []).push(arguments)
+        };
+        j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+        j.async = true;
+        j.src = i;
+        j.id = 'meiqia-script'
+        s.parentNode.insertBefore(j, s)
+    })(window, document, 'script', '//eco-api.meiqia.com/dist/meiqia.js', '_MEIQIA');
+    _MEIQIA('entId', 7955);
+    _MEIQIA('manualInit', true);
+    _MEIQIA('withoutBtn', true);
+
+    var swiper = new Swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        loop : true,
+        keyboardControl : true,
+        effect : 'slide',
+        autoplay : 3000
+    });
+</script>
 
 <%= render 'layouts/frontend/footer' %>

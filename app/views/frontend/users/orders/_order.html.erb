@@ -22,7 +22,7 @@
             <tbody>
                 <% order.line_items.rings.each_with_index do |item, i| %>
                     <tr>
-                        <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                        <th width="100"><img width="100" height="56" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                         <td class="name">
                           <%= item.name %>
                           <span><%= item.variant.options_text %> <%= show_properties(item) %> <%= show_diamond_info(item.diamond) %></span>

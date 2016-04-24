@@ -60,7 +60,7 @@ class Order < ActiveRecord::Base
 
   def shipping_address
     default_address = user.addresses.default.first
-    attrs = default_address.attributes if default_address
+    attrs = default_address.dup.attributes if default_address
     super || build_shipping_address(attrs)
   end
 

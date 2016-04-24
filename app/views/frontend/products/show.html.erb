@@ -2,41 +2,26 @@
 
 
 <div class="page">
-    <section class="section section-jumbotron">
-        <%= render 'layouts/frontend/header' %>
-
-        <div id="main-slide" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
+    <%= render 'layouts/frontend/header' %>
+    <section class="mb20 section section-jumbotron"> 
+        <div class="swiper-hd">
+            <div class="swiper-wrapper">
                 <% @product.master.images.each_with_index do |image, index| %>
-                <div class="item <%= 'active' if index == 0 %>">
+                <div class="swiper-slide">
                     <img src="<%= image.picture.url %>">
                 </div>
                 <% end %>
+
             </div>
-
-            <a class="left carousel-control" href="#main-slide" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-
-            <a class="right carousel-control" href="#main-slide" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
         </div>
-
-        <a href="javascript:;" onclick="$.fn.fullpage.moveSectionDown()" class="link-next" title="点击下一页"></a>
     </section>
 
     <div class="section section-product">
-        <div class="col-sm-6 hidden-xs">
-            <div id="product-slide" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+        <div class="col-sm-6 left">
+            <div class="swiper-hs">
+                <div class="swiper-wrapper">
                     <% @product.master.images.each_with_index do |image, index| %>
-                        <li data-target="#product-slide" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
-                    <% end %>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <% @product.master.images.each_with_index do |image, index| %>
-                    <div class="item <%= 'active' if index == 0 %>">
+                    <div class="swiper-slide <%= 'active' if index == 0 %>">
                         <img src="<%= image.picture.url %>">
                     </div>
                     <% end %>
@@ -50,28 +35,28 @@
             <% else %>
                 <%= render 'engaement' %>
             <% end %>
-
-            <div class="page-toolbar">
-                <a href="javascript:;" onclick="$.fn.fullpage.moveSectionUp()" class="page-toolbar-btn">
-                    <%= image_tag 'redesign/btn-top.png' %>
-                </a>
-                <a href="/products?taxon_name=<%= @product.is_wedding? ? '结婚对戒' : '求婚钻戒' %>" class="page-toolbar-btn">
-                    <%= image_tag 'redesign/btn-list.png' %>
-                </a>
-                <a href="javascript:;" class="page-toolbar-btn page-toolbar-btn-service">
-                    <%= image_tag 'redesign/btn-service.png' %>
-                </a>
-                <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart page-toolbar-btn" data-big-slide="cart">
-                    <%= image_tag 'redesign/btn-cart.png' %>
-                </a>
-            </div>
         </div>
+    </div>
+    <%= render 'layouts/frontend/footer' %>
+    <div class="page-toolbar">
+
+        <a href="/products?taxon_name=<%= @product.is_wedding? ? '结婚对戒' : '求婚钻戒' %>" class="page-toolbar-btn">
+            <%= image_tag 'redesign/btn-list.png' %>
+        </a>
+        <a href="javascript:;" class="page-toolbar-btn page-toolbar-btn-service">
+            <%= image_tag 'redesign/btn-service.png' %>
+        </a>
+        <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart page-toolbar-btn" data-big-slide="cart">
+            <%= image_tag 'redesign/btn-cart.png' %>
+        </a>
     </div>
 </div>
 
 <%= render 'table' %>
 
 <script type='text/javascript'>
+    var swiper = new Swiper('.swiper-hd'); 
+    var swiper = new Swiper('.swiper-hs'); 
     (function(m, ei, q, i, a, j, s) {
         m[a] = m[a] || function() {
             (m[a].a = m[a].a || []).push(arguments)

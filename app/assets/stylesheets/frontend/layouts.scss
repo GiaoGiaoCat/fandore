@@ -6,13 +6,29 @@
   src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), font-url('glyphicons-halflings-regular.woff2') format('woff2'), font-url('glyphicons-halflings-regular.woff') format('woff'), font-url('glyphicons-halflings-regular.ttf') format('truetype'), font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+@font-face {
+    font-family: 'FZYouHeiS-L-GB';
+    src:url('FZYOUH_XIJW.eot');
+    src:url('FZYOUH_XIJW.woff') format('woff'),
+        url('FZYOUH_XIJW.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: 'FZL11anTingHei-L-GBK';
+    src:url('FZLTXHK.eot');
+    src:url('FZLTXHK.woff') format('woff'),
+        url('FZLTXHK.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 200;
+}
 body {
-  font-family: "微软雅黑", arial, sans-serif;
   font-size: 14px;
+  font-family: "FZLanTingHei-L-GBK","GothamBook","helvetica","arial","Microsoft Yahei","微软雅黑",sans-serif;
   color: $text;
   overflow-x: hidden;
-
-  // 默认不显示手机提示
+  background:#f8f8f8;
+    // 默认不显示手机提示
   > .hidden-xs ~ .phone-tips {
     display: none;
   }
@@ -29,14 +45,18 @@ html.turbolinks-progress-bar::before {
 }
 
 a {
-  @include transition(300ms, color);
 
+  @include transition(300ms, color);
+  outline:none;
   &:hover {
     color: $ui-color;
     text-decoration: none;
   }
-}
+  &:visited,:active,:focus{
+    text-decoration:none;
+  }
 
+}
 .phone-tips {
   position: absolute;
   top: -80px;
@@ -61,23 +81,21 @@ a {
 }
 
 .page {
-  min-height: 900px;
-
+  margin-top:90px;
+  min-height: 760px;
   &.user-center {
-    padding-top: 20px;
-    background: image-url('redesign/user-bg.jpg') center no-repeat;
-    background-size: cover;
+    padding-top: 40px;
   }
 }
 
 #mask {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   display: none;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.85);
   z-index: 9;
 }
 
@@ -117,9 +135,51 @@ a {
   // }
 }
 
-@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
-100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
 }
-@keyframes spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}
-100%{-webkit-transform:rotate(359deg);transform:rotate(359deg)}
+ 
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+.btn{boder-radius:2px}
+.page-toolbar {
+  position: fixed;
+  right:10%;
+  margin-right:-40px;
+  top:50%;
+  marin-top:-88px;
+  background-color: #fff;
+  z-index:8;
+
+  .page-toolbar-btn {
+    display: block;
+    margin-top: -1px;
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    text-align: center;
+    border: 1px solid #ddd;
+    @include transition(300ms, background-color);
+
+    &:hover {
+      background-color: $ui-color;
+    }
+
+    img {
+      max-width: 18px;
+    }
+  }
 }

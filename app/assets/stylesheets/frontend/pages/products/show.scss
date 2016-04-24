@@ -1,15 +1,6 @@
 @import 'frontend/base';
 
 #frontend-products-show {
-  .header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 9;
-    background-color: transparent;
-  }
-
   .link-next {
     position: absolute;
     right: 0;
@@ -22,10 +13,74 @@
     z-index: 1;
   }
 
-  .section-jumbotron {
-    background-color: #E7E7ED;
+  @media screen and (min-width:1200px){
+    .section-jumbotron{
+      position: relative;
+      overflow: hidden;
+      width: 1200px; 
+      margin: 0 auto;
+      img{width:1200px}
+    }
+  }
+  @media screen and (min-width:768px) and (max-width:1200px){
+    .section-jumbotron{
+      position: relative;
+      width:100%;
+      overflow: hidden;
+      img{width:100%;}
+    }
+
+  }
+  @media screen and (min-width:1200px){
+    .section-product{
+      position: relative;
+      overflow:hidden;
+      clear:both;
+      width:1200px; 
+      margin: 0 auto;
+      .left{
+        overflow:hidden;
+        img{width:100%}
+      }
+          
+    }
+  }
+  @media screen and (min-width:768px) and (max-width:1200px){
+    .section-product{
+      position: relative;
+      overflow:hidden;
+      clear:both;
+      width:100%;
+      .left{
+        overflow:hidden;
+        img{width:100%}
+      }
+      
+    }
   }
 
+
+  .section-jumbotron,.section-product {
+    background-color: #fff;
+  }
+  
+ .section-jumbotron{
+    margin-bottom:20px;background:none;
+    .swiper-hd{
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+    }
+  }
+  .section-product{
+    min-height:600px;
+    .left{
+      margin-top:160px;
+        cursor: move;
+        cursor: -webkit-grab;
+        cursor: grab;
+      }
+    }
   .section-product > .col-xs-6:last-child {
     padding-right: 30px;
   }
@@ -35,6 +90,7 @@
     height: 60px;
     margin: auto;
     background-image: none;
+    color:#222;
   }
 
   .carousel-indicators li {
@@ -47,14 +103,14 @@
 
   .form-inline {
     .price {
-      margin-top: 50px;
-      font-weight: bold;
-      font-size: 28px;
+      font-size: 18px;
+      margin: 15px 0;
+      
     }
 
     .name {
+      margin-top: 50px;
       font-size: 24px;
-      margin: 15px 0;
     }
 
     label.btn {
@@ -71,19 +127,19 @@
     }
 
     .form-buttons {
-      margin-top: 50px;
+      margin: 20px 0;
     }
 
     .btn-shopping {
       margin-right: 20px;
       color: #fff;
-      font-size: 16px;
+      font-size: 14px;
       background-color: $ui-color;
       border-color: $ui-color;
     }
 
     .btn-collect {
-      font-size: 16px;
+      font-size: 14px;
       color: $text;
     }
   }
@@ -158,28 +214,5 @@
     }
   }
 
-  .page-toolbar {
-    position: absolute;
-    right: 15px;
-    bottom: 0;
 
-    .page-toolbar-btn {
-      display: block;
-      margin-top: -1px;
-      width: 40px;
-      height: 40px;
-      line-height: 35px;
-      text-align: center;
-      border: 1px solid #ddd;
-      @include transition(300ms, background-color);
-
-      &:hover {
-        background-color: $ui-color;
-      }
-
-      img {
-        max-width: 18px;
-      }
-    }
-  }
 }

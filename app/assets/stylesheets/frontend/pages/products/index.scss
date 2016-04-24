@@ -1,13 +1,48 @@
 @import 'frontend/base';
 
 #frontend-products-index {
-  .header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    background-color: transparent;
-    z-index: 9;
+
+  @media screen and (min-width:1200px){
+    .swiper-container{
+      position: relative;
+      width:1200px; 
+      margin: 0 auto 20px;
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+      img{
+        width:1200px;
+      }
+    }
+  }
+  @media screen and (min-width:768px) and (max-width:1200px){
+    .swiper-container{
+      position: relative;
+      width:100%;
+      margin:0 auto 20px;
+      cursor: move;
+      cursor: -webkit-grab;
+      cursor: grab;
+      img{
+        width:100%;
+      }
+    }
+
+  }
+
+  @media screen and (min-width:1200px){
+    .product-list{
+      position: relative;
+      width:1200px; 
+      margin: 0 auto;
+    }
+  }
+  @media screen and (min-width:768px) and (max-width:1200px){
+    .product-list{
+      position: relative;
+      width:100%
+    }
+
   }
 
   .product-group {
@@ -44,7 +79,7 @@
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 300px auto;
+    background-size: 500px auto;
     background-color: #fff;
     border: 15px solid transparent;
     @include transition(300ms);

@@ -24,45 +24,39 @@
         }
       }
 
-      .header {
-        width: 1100px;
-        height: 250px;
-        margin: auto;
-
-        margin-bottom: 20px;
-        overflow: hidden;
+      @media screen and (min-width:1200px){
+        .section{position: relative;width:1200px; margin: 0 auto;}
       }
+      @media screen and (min-width:768px) and (max-width:1200px){
+        .section{position: relative;width:100%}
 
+      }
       .section {
-        @include box("1100px");
-        margin: auto;
 
         -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         -moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         -ms-box-shadow: 0 1px 1px rgba(0,0,0,.1);
         box-shadow: 0 1px 1px rgba(0,0,0,.1);
-
-        background: #fff image-url('redesign/service-split.jpg') 250px 0 repeat-y;
-
+        background:#fff;
         .nav {
           float: left;
-          @include box("250px");
-
-          dt {
-            text-align:center;
-            line-height:48px;
-            height: 103px;
-            border-bottom:1px #eee solid;
-            @include font("20px", "500");
-
-            span {
-              padding-top: 20px;
-              display:inline-block;
-              border-bottom:4px #e15258 solid;
-            }
-          }
-
+          width:25%;
           dl {
+            padding-top:40px;
+            dt {
+              text-align:center;
+              line-height:48px;
+              height: 103px;
+              border-bottom:1px #eee solid;
+              @include font("20px", "500");
+
+              span {
+                padding-top: 20px;
+                display:inline-block;
+                border-bottom:4px #e15258 solid;
+              }
+            }
+
             dd {
               display: block;
               position: relative;
@@ -107,15 +101,15 @@
 
         .content{
           float: right;
-          @include box("848px");
+          width:75%;
           padding: 40px 0;
           font-size: 14px;
           overflow: auto;
-
+          border-left:1px #ddd solid;
           .c-section {
-            width: 770px;
-            margin: auto;
-            position: relative;
+            width:80%;
+            margin:0 auto;
+            position:relative;
 
             h2 {
               font-size: 20px;

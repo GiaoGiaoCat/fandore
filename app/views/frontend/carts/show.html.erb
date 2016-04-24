@@ -8,26 +8,18 @@
 <% if @cart.line_items.rings.size > 0 %>
     <div class="cart-table">
         <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th class="name">商品/规格</th>
-                    <th>数量</th>
-                    <th>金额</th>
-                    <th></th>
-                </tr>
-            </thead>
+
             <tbody>
                 <% @cart.line_items.rings.each do |item| %>
                     <tr data-item="<%= item.id %>">
-                        <th width="48"><img width="48" height="48" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
+                        <th width="100"><img width="100" height="56" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                         <td class="name"><%= item.name %><span><%= show_diamond_info(item.diamond) %></span></td>
                         <td class="quantity"><%= item.quantity %></td>
                         <td class="price"><%= item.final_amount.to_i %></td>
                         <td width="48">
                             <a href="<%= line_item_path(item) %>" data-remote="true" data-method="delete"
                                 data-confirm="确认删除？">
-                                <span class="glyphicon glyphicon-remove-sign"></span>
+                                <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         </td>
                     </tr>
@@ -44,5 +36,5 @@
         <a href="<%= orders_path %>" class="btn btn-primary btn-lg btn-payment" data-method="post">现在结算</a>
     </div>
 <% else %>
-    <p class="init">购物车里还没有商品</p>
+    <p class="init">您的购物车还未添加商品</p>
 <% end %>

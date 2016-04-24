@@ -7,10 +7,10 @@
 .user-center-sidebar {
   position: absolute;
   left: 0;
-  width: 200px;
+  width: 240px;
   padding: 0 15px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
 
   .avatar {
@@ -42,6 +42,7 @@
       line-height: 50px;
       color: $text-ll;
       border-top: 1px solid #EFEFEF;
+      margin:0 20px;
 
       &:hover,
       &.active {
@@ -65,13 +66,13 @@
 }
 
 .user-center-main {
-  min-height: 444px;
-  margin-left: 220px;
+  min-height: 600px;
+  margin-left: 260px;
   margin-bottom: 50px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #fff;
 
-  header {
+  .header {
     padding: 0 15px;
     font-size: 18px;
     line-height: 60px;

@@ -22,12 +22,14 @@
             %table.table.table-striped
               %thead
                 %tr
+                  %th 商品分类
                   %th 商品名称
                   %th 添加时间
                   %th
               %tbody
                 - @products.each do |product|
                   %tr
+                    %td= product.name
                     %td= product.name
                     %td= product.created_at.to_s(:db)
                     %td
