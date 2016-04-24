@@ -21,8 +21,9 @@ class Order::Cart < ActiveRecord::Base
 
   # public instance methods ...................................................
   def add_line_item(variant)
-    current_item = line_items.find_or_initialize_by(variant_id: variant.id)
-    current_item.quantity += 1 if current_item.persisted?
+    current_item = line_items.new(variant_id: variant.id)
+    # current_item = line_items.find_or_initialize_by(variant_id: variant.id)
+    # current_item.quantity += 1 if current_item.persisted?
     current_item
   end
 
