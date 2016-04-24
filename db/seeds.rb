@@ -104,7 +104,7 @@ property_18 = Product::Property.create(name: 'Clarity', presentation: '净度')
 property_19 = Product::Property.create(name: 'Lettering', presentation: '刻字内容')
 property_20 = Product::Property.create(name: 'Male Lettering', presentation: '男款刻字内容')
 property_21 = Product::Property.create(name: 'Female Lettering', presentation: '女款刻字内容')
-property_22 = Product::Property.create(name: 'Mile Color', presentation: '奶色')
+property_22 = Product::Property.create(name: 'Milk Color', presentation: '奶色')
 property_23 = Product::Property.create(name: 'Partial Color', presentation: '偏色')
 property_24 = Product::Property.create(name: 'HCA', presentation: 'HCA评价')
 
