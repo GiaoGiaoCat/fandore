@@ -56,5 +56,5 @@ renderCartQuantity = ->
 renderCartPrice = ->
   price = 0
   $('.cart-table .price').each ->
-    price += @textContent * 1
+    price += @textContent * renderCartQuantity()
   price
