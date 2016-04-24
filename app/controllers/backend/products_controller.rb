@@ -40,7 +40,7 @@ class Backend::ProductsController < Backend::ApplicationController
   private
 
   def load_products
-    @products ||= product_scope.goods
+    @products ||= product_scope.goods.page params[:page]
   end
 
   def load_product

@@ -48,6 +48,8 @@ class Product < ActiveRecord::Base
   scope :diamonds, -> { joins(:taxons).merge(Taxonomy::Taxon.diamond) }
   scope :by_taxon, ->(taxon_name) { joins(:taxons).merge(Taxonomy::Taxon.by_name(taxon_name)) }
   # other macros (like devise's) ..............................................
+  paginates_per 25
+
   accepts_nested_attributes_for :product_properties, allow_destroy: true
 
   # delegate :sku, :price, :currency, :display_amount, :display_price, :weight, :height, :width, :depth, :is_master, :has_default_price?, :cost_currency, :price_in, :amount_in, to: :master

@@ -39,7 +39,7 @@ class Backend::DiamondsController < Backend::ApplicationController
   private
 
   def load_products
-    @products ||= product_scope.diamonds
+    @products ||= product_scope.diamonds.page params[:page]
   end
 
   def load_product
