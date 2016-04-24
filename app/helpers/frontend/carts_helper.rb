@@ -1,18 +1,18 @@
 module Frontend::CartsHelper
   def show_diamond_info(item)
     return unless item
-    width = Product::Property.find_by(name: 'Weight')
+    carat = Product::Property.find_by(name: 'Carat')
     color = Product::Property.find_by(name: 'Color')
     clarity = Product::Property.find_by(name: 'Clarity')
-    width_value = item.product.product_properties.find_by(property_id: width.id).value
+    carat_value = item.product.product_properties.find_by(property_id: carat.id).value
     color_value = item.product.product_properties.find_by(property_id: color.id).value
     clarity_value = item.product.product_properties.find_by(property_id: clarity.id).value
-    "主钻：#{width_value}/#{color_value}/#{clarity_value}/3EX"
+    "主钻：#{carat_value}/#{color_value}/#{clarity_value}/3EX"
   end
 
   def show_certificate_no(item)
     return unless item
-    certificate_no = Product::Property.find_by(name: 'Certificate No')
+    certificate_no = Product::Property.find_by(name: 'GIA Report Number')
     certificate_no_value = item.line_items_properties.find_by(property_id: certificate_no.id).value
     "证书编号：#{certificate_no_value}"
   end

@@ -55,7 +55,7 @@ prototype_02 = Product::Prototype.create(name: '对戒')
 prototype_02.option_types << [option_type_1, option_type_3]
 # 钻石属性
 # shape 形状
-# weight 重量
+# carat 克拉数
 # color 颜色
 # stock 库存地址
 # certificate number 证书编号
@@ -64,19 +64,27 @@ prototype_02.option_types << [option_type_1, option_type_3]
 # girdle thickness 腰围厚度
 # depth ratio 深度比
 # table ratio 台面比
-# min measurement 最小直径
-# max measurement 最大直径
-# depth 深度
 # fluorescence 荧光反应
 # polish 抛光
 # cut 切工
 # symmetry 对称性
 # clarity 净度
 # Lettering 刻字
+# crownangle 冠角
+# pavilionangle 亭角
+# measurement 尺寸
+# milecolor 奶色
+# partialcolor 偏色
+# HCA HCA评价
+# 作废属性
+# weight 重量
+# min measurement 最小直径
+# max measurement 最大直径
+# depth 深度
 # Certificate No 钻石证书编号
 
 property_01 = Product::Property.create(name: 'Shape', presentation: '形状')
-property_02 = Product::Property.create(name: 'Weight', presentation: '重量')
+property_02 = Product::Property.create(name: 'Carat', presentation: '克拉数')
 property_03 = Product::Property.create(name: 'Color', presentation: '颜色')
 property_04 = Product::Property.create(name: 'Stock', presentation: '库存地址')
 property_05 = Product::Property.create(name: 'GIA Report Number', presentation: '证书编号')
@@ -85,18 +93,20 @@ property_07 = Product::Property.create(name: 'Culet', presentation: '底尖')
 property_08 = Product::Property.create(name: 'Girdle Thickness', presentation: '腰围厚度')
 property_09 = Product::Property.create(name: 'Depth Ratio', presentation: '深度比')
 property_10 = Product::Property.create(name: 'Table Ratio', presentation: '台面比')
-property_11 = Product::Property.create(name: 'Min Measurement', presentation: '最小直径')
-property_12 = Product::Property.create(name: 'Max Measurement', presentation: '最大直径')
-property_13 = Product::Property.create(name: 'Depth', presentation: '深度')
+property_11 = Product::Property.create(name: 'Crownangle', presentation: '冠角')
+property_12 = Product::Property.create(name: 'Pavilionangle', presentation: '亭角')
+property_13 = Product::Property.create(name: 'Measurement', presentation: '尺寸')
 property_14 = Product::Property.create(name: 'Fluorescence', presentation: '荧光反应')
 property_15 = Product::Property.create(name: 'Polish', presentation: '抛光')
 property_16 = Product::Property.create(name: 'Cut', presentation: '切工')
 property_17 = Product::Property.create(name: 'Symmetry', presentation: '对称性')
 property_18 = Product::Property.create(name: 'Clarity', presentation: '净度')
-property_20 = Product::Property.create(name: 'Certificate No', presentation: '钻石证书编号')
 property_19 = Product::Property.create(name: 'Lettering', presentation: '刻字内容')
-property_21 = Product::Property.create(name: 'Male Lettering', presentation: '男款刻字内容')
-property_22 = Product::Property.create(name: 'Female Lettering', presentation: '女款刻字内容')
+property_20 = Product::Property.create(name: 'Male Lettering', presentation: '男款刻字内容')
+property_21 = Product::Property.create(name: 'Female Lettering', presentation: '女款刻字内容')
+property_22 = Product::Property.create(name: 'Mile Color', presentation: '奶色')
+property_23 = Product::Property.create(name: 'Partial Color', presentation: '偏色')
+property_24 = Product::Property.create(name: 'HCA', presentation: 'HCA评价')
 
 
 prototype_2 = Product::Prototype.create(name: '钻石')
