@@ -5,6 +5,7 @@ admin = User.create(email: 'wjp2013@gmail.com', mobile: '13269259377', password:
 member = User.create(email: 'lishaohua2013@gmail.com', mobile: '13269259372', password: 'db5566', role: "member")
 User.create(email: 'li2013@gmail.com', mobile: '13269259371', password: 'db5566', role: "customer_service")
 User.create(email: 'ls2013@gmail.com', mobile: '13269259370', password: 'db5566', role: "product_manager")
+User.create(email: 'la2013@gmail.com', mobile: '13269259373', password: 'db5566', role: "member")
 address = User::Address.create(user_id: member.id, province:"120000", zipcode:"120100", city: "120100", district: "120102", name: "lishaohua", mobile: "13932011432", is_default: true, address: "长安大街101号楼1202")
 
 # 支付方式
@@ -124,7 +125,7 @@ prototype_3 = Product::Prototype.create(name: '钻石订单项')
 prototype_3.properties << [property_20]
 
 prototype_3 = Product::Prototype.create(name: '结婚对戒订单项')
-prototype_3.properties << [property_013, property_023, property_21, property_22]
+prototype_3.properties << [property_013, property_023, property_20, property_21]
 
 # 分类
 taxon_1 = Taxonomy.create(name: '求婚钻戒')
@@ -352,9 +353,9 @@ product_02.price = 3000
 product_02.status = 'available'
 product_02.description = '总有些意想不到的惊喜，不刻意为之，怦然于心。相遇的瞬间就已触动，窃窃的喜悦弥漫心间，那一丝波澜，想要一辈子珍藏。因为你我，爱才存在，相濡以沫或归于平静，偶有的涟漪，希望如初见般甜蜜温暖。'
 product_02.save
-v1 = product_02.variants.new(option_value_ids: ["1", "3"], price: 3000) # 18K金 简约款
+v1 = product_02.variants.new(option_value_ids: ["1", "3"], price: 3000, sku: '18K-S') # 18K金 简约款
 v1.save
-v2 = product_02.variants.new(option_value_ids: ["1", "4"], price: 3000) # 18K金 轻奢款
+v2 = product_02.variants.new(option_value_ids: ["1", "4"], price: 3000, sku: '18K-I') # 18K金 轻奢款
 v2.save
 master = product_02.master
 img_1 = Image.new(viewable_id: master.id, viewable_type: 'Product::Variant')
