@@ -1,0 +1,145 @@
+@import 'frontend/base';
+
+#frontend-welcome-index {
+    .swiper-container{
+        height:768px;
+        cursor: move;
+        cursor: -webkit-grab;
+        cursor: grab;
+        .swiper-pagination{
+            bottom:30px;
+        }
+        .swiper-slide {
+            img{
+                width:100%
+            }
+            .wrap{
+                color:#fff;
+                position: absolute;
+                left: 50%;
+                z-index: 2;
+                width: 810px;
+                margin-left: -405px;
+                height: 310px;
+                top: 50%;
+                margin-top: -155px;
+                h2{
+                    text-align:center;
+                    font-size: 40px;
+                    line-height: 40px;
+                }
+                p{
+                    font-size:20px;
+                    text-align:center;
+                    margin:20px 0;
+                }
+            }
+        }
+        .cell-travel{
+            p{
+                letter-spacing:8px;
+            }
+        }
+        .cell-pinkdiamond{
+            h2{
+                color: #f35626;
+            }
+            p{
+
+                letter-spacing:24px;
+            }
+        }
+        .cell-weixin{
+            h2{
+                color: #64cb31;
+            }
+            .qrcode{
+                position:absolute;
+                left:50%;
+                margin-left:-105px;
+                margin-top:50px;
+                width:210px;
+            }
+        }
+
+
+        .btn-ghost{
+            border:2px #fafafa solid;
+            position:absolute;
+            left:50%;
+            bottom:20%;
+            margin-left:-96px;
+            padding:10px 30px;
+            text-align:center;
+            color:#fff
+        }
+        .btn-ghost:hover{
+            background-color: #fff;
+            color:#444;
+            @include transition(300ms, all);
+        }
+
+
+    }
+   
+    .main-promos {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+        ul {
+            width: 100%;
+            padding:0;
+            margin:0;
+            display: table;
+            height: 100%;
+            li {
+                display: table-cell;
+                position: relative;
+                height: 480px;
+                box-sizing: content-box;
+                overflow: hidden;
+                a {
+                    display: block;
+                    position: relative;
+                    height: 100%;
+                    overflow: hidden;
+                    width: 100%;
+                    i {
+                        display: block;
+                        position: absolute;
+                        height: 100%;
+                        width: 2000px;
+                        left: 50%;
+                        margin-left: -1000px;
+                        text-align: center;
+                        z-index: 1;
+                    }
+                    .title {
+                        width: 100%;
+                        position: absolute;
+                        z-index: 2;
+                        text-align: center;
+                        left: 0;
+                        bottom: 60px;
+                        color:#444;
+                        font-weight:100;
+                        h2 {
+                            font-size: 18px;
+                            color: #333;
+                            margin-top: 20px;
+                            line-height: 25px;
+                        }
+                        p {
+                            font-size: 13px;
+                            line-height: 20px;
+                            margin-top: 15px;
+                            color: #666666;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

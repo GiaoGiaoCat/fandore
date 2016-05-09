@@ -8,23 +8,27 @@
 
 @font-face {
     font-family: 'FZYouHeiS-L-GB';
-    src:url('FZYOUH_XIJW.eot');
-    src:url('FZYOUH_XIJW.woff') format('woff'),
-        url('FZYOUH_XIJW.ttf') format('truetype');
+    src:font-url('FZYOUH_XIJW.eot');
+    src:font-url('FZYOUH_XIJW.woff') format('woff'),
+        font-url('FZYOUH_XIJW.ttf') format('truetype');
     font-style: normal;
     font-weight: 200;
 }
 @font-face {
     font-family: 'FZL11anTingHei-L-GBK';
-    src:url('FZLTXHK.eot');
-    src:url('FZLTXHK.woff') format('woff'),
-        url('FZLTXHK.ttf') format('truetype');
+    src:font-url('FZLTXHK.eot');
+    src:font-url('FZLTXHK.woff') format('woff'),
+        font-url('FZLTXHK.ttf') format('truetype');
     font-style: normal;
     font-weight: 200;
 }
+article, aside, blockquote, body, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
 body {
   font-size: 14px;
-  font-family: "FZLanTingHei-L-GBK","GothamBook","helvetica","arial","Microsoft Yahei","微软雅黑",sans-serif;
+  font-family:"Open Sans Light",PingFangSC-Light,Helvetica,STHeiti,微软雅黑,"Microsoft YaHei",华文细黑,Arial,"Hiragino Sans GB",SimHei,sans-serif;
   color: $text;
   overflow-x: hidden;
   background:#f8f8f8;
@@ -47,15 +51,22 @@ html.turbolinks-progress-bar::before {
 a {
 
   @include transition(300ms, color);
-  outline:none;
   &:hover {
     color: $ui-color;
     text-decoration: none;
   }
-  &:visited,:active,:focus{
+  &:visited{
     text-decoration:none;
+    outline:none;
   }
-
+  &:active{
+    text-decoration:none;
+    outline:none;
+  }
+  &:focus{
+    text-decoration:none;
+    outline:none;
+  }
 }
 .phone-tips {
   position: absolute;
@@ -81,7 +92,7 @@ a {
 }
 
 .page {
-  margin-top:90px;
+
   min-height: 760px;
   &.user-center {
     padding-top: 40px;
@@ -154,7 +165,7 @@ a {
   }
 }
 
-.btn{boder-radius:2px}
+.btn{border-radius:2px}
 .page-toolbar {
   position: fixed;
   right:10%;

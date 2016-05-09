@@ -1,12 +1,11 @@
 @import 'frontend/base';
 
 header {
-  height: 75px;
-  line-height: 75px;
-  top:0;
-  background-color: rgba(255, 255, 255, .95);
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
-  position: fixed;
+  height: 60px;
+  line-height: 60px;
+  background-color: #fff;
+  border-bottom:1px #efefef solid;
+  position: relative;
   z-index: 8;
   display: -webkit-box;
   display: -webkit-flex;
@@ -16,8 +15,8 @@ header {
 
 
   .menu{
-    width:50px;
-    height:50px;
+    width:60px;
+    height:48px;
     position:absolute;
     left:35px;
     top:50%;
@@ -32,13 +31,11 @@ header {
 
   .logo {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
+    top:0;
+    left: 50%;
+    margin-left:-88px;
     width: 176px;
-    height: 50px;
+    height: 60px;
     text-indent: -9999px;
     background: image-url('logo-dark.png') no-repeat center;
   }
@@ -63,19 +60,8 @@ header {
     
   }
 
-  .signup{
-    border:1px #666 solid;
-    padding:8px 20px;
-  }
-  .signin{
-    background:$ui-color;
-    color:#fff;
-    padding:8px 20px;
-    &:hover{
-      background:#39cb80;
-      color:#fff;
-    }
-  }
+
+  
 
   .avatar {
     margin-top: -8px;
@@ -88,8 +74,21 @@ header {
     position: absolute;
     top: 0;
     right: 35px;
-    
+    .user{
+      display:inline-blok;
 
+    }
+    .link-shopping-cart{
+      border:1px #9b9b9b solid;
+      border-radius: 2px;
+      padding:6px 6px;
+      margin-right:20px;
+      &:hover{
+        background-color:$ui-color;
+        color:#fff;
+        border-color: $ui-color;
+      }
+  }
     .btn-group {
       vertical-align: top;
     }

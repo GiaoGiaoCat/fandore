@@ -1,9 +1,8 @@
 <% @page_title = "#{@product.name} #{@product.taxons_name}"  %>
 
-
-<div class="page">
-    <%= render 'layouts/frontend/header' %>
-    <section class="mb20 section section-jumbotron"> 
+<%= render 'layouts/frontend/header' %>
+<div class="page">    
+    <section class="section-jumbotron"> 
         <div class="swiper-hd">
             <div class="swiper-wrapper">
                 <% @product.master.images.each_with_index do |image, index| %>
@@ -16,7 +15,7 @@
         </div>
     </section>
 
-    <div class="section section-product">
+    <div class="section-product">
         <div class="col-sm-6 left">
             <div class="swiper-hs">
                 <div class="swiper-wrapper">
@@ -37,7 +36,7 @@
             <% end %>
         </div>
     </div>
-    <%= render 'layouts/frontend/footer' %>
+    
     <div class="page-toolbar">
 
         <a href="/products?taxon_name=<%= @product.is_wedding? ? '结婚对戒' : '求婚钻戒' %>" class="page-toolbar-btn">
@@ -51,6 +50,7 @@
         </a>
     </div>
 </div>
+<%= render 'layouts/frontend/footer' %>
 
 <%= render 'table' %>
 

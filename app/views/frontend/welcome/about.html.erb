@@ -3,20 +3,28 @@
 <%= render 'layouts/frontend/header' %>
 
 <div class="page other-pages">
-    <div class="container">
+    <div class="fullpage">
       <div class="section section-one">
-        <h1 class="title"></h1>
-        <p>深圳市范朵朵和她的朋友们珠宝有限公司成立于 2015 年，由一群年轻、理想主义、富有浪漫情怀的80、90后成员组成的创业团队，每位成员都曾供职于国内顶尖的互联网或珠宝企业。</p>
-        <p>范朵朵珠宝的大本营在深圳，我们的成员散落在世界各地，不需要固定的办公室，只要有网就能保证畅快无碍的远程沟通与协作。Vandodo帮助向往自由的人们奔向自由，不再被雾霾，拥堵的交通狭窄的办公室格子间困住远行的脚步，也让在这地球上任意有网的地方完成高效协作沟通成为可能。如果你也向往自由，心怀梦想就快加入和我们一起组成完整的 Vandodo。</p>
-        <p class="center">
-          欢迎加入我们<br>
-          <a href="mailto:join@vandodo.com">join@vandodo.com</a><br>
-          +86-755-23348695
-        </p>
+        <div class="row">
+          <div class="col fp-image">
+            <%= image_tag "redesign/about-img-one.jpg" %>
+          </div>
+          <div class="col fp-about">
+            <h2>关于我们</h2>
+            <p>
+              范朵朵珠宝是一个钻饰品类珠宝公司新秀，我们希望用严谨而简单的方式让钻石选择性变得容易，并且物超所值。
+              每一个点子的萌起都起源于一个问题，
+              2015年在深圳注册成立，前后经过近一年时间的筹备跌跌撞撞推出来，经历了从信心满心->恐惧->怀疑->前后经过接近一年的时间，
+            </p>
+          </div>
+        </div>
       </div>
-
-      <div class="section section-two"></div>
+      <div class="section section-two">
+        <div class="row">
+          <h2>“谨以VANDODO，献给永远的“范朵朵”！献给相爱的你们!”</h2>
+          <h3>——Vandodo Founder / KK</h3>
+        </div>
+      </div>
     </div>
 </div>
 
-<%= render 'layouts/frontend/footer' %>

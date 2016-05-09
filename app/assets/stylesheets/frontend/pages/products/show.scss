@@ -1,17 +1,10 @@
 @import 'frontend/base';
 
 #frontend-products-show {
-  .link-next {
-    position: absolute;
-    right: 0;
-    bottom: 20px;
-    left: 0;
-    margin: auto;
-    width: 30px;
-    height: 44px;
-    background: image-url('redesign/mouse.png') no-repeat center;
-    z-index: 1;
+  .page{
+    padding:20px 0;
   }
+
 
   @media screen and (min-width:1200px){
     .section-jumbotron{
@@ -19,8 +12,11 @@
       overflow: hidden;
       width: 1200px; 
       margin: 0 auto;
-      img{width:1200px}
+      img{
+        width:1200px
+      }
     }
+
   }
   @media screen and (min-width:768px) and (max-width:1200px){
     .section-jumbotron{
@@ -58,9 +54,27 @@
       
     }
   }
+  @media screen and (min-width:1200px){
+    .product-detail{
+      position: relative;
+      overflow: hidden;
+      width: 1200px; 
+      margin: 0 auto;
+      img{width:1200px}
+    }
 
+  }
+  @media screen and (min-width:768px) and (max-width:1200px){
+    .product-detail{
+      position: relative;
+      width:100%;
+      overflow: hidden;
+      img{width:100%;}
+    }
 
-  .section-jumbotron,.section-product {
+  }
+
+  .section-jumbotron,.section-product,.product-detail {
     background-color: #fff;
   }
   
@@ -74,6 +88,7 @@
   }
   .section-product{
     min-height:600px;
+    hr{margin:15px 0;}
     .left{
       margin-top:160px;
         cursor: move;
@@ -85,21 +100,35 @@
     padding-right: 30px;
   }
 
-  .carousel-control {
-    width: 60px;
-    height: 60px;
-    margin: auto;
-    background-image: none;
-    color:#222;
-  }
 
-  .carousel-indicators li {
-    border-color: $text;
-
-    &.active {
-      background-color: $text;
+  .product-detail{
+    min-height:500px;
+    margin-top:20px;
+    #tabTitle {
+      padding: 10px 50px 0 50px;
+      li{ 
+        a{line-height: 32px;color:#111;font-size:16px;}
+      }      
+    }
+    #tabContent{
+      img{width:100%}
+      .property{
+        padding:100px 100px;
+        border-bottom:1px #eee solid;
+        clear:both;
+        overflow:hidden;
+        .row{
+          width:50%;
+          float:left;
+          span{float:left}
+          .title{width:200px;}
+          h3{font-size:24px;}
+          p{font-size:16px;line-height:32px;}
+        }        
+      }
     }
   }
+
 
   .form-inline {
     .price {

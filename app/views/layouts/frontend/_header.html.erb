@@ -1,6 +1,6 @@
 <header class="header" id="top">
     <a href="javascript:;" class="menu link-toggle-nav" data-big-slide="nav"></a>
-    <h1 class="logo">VANDODO</h1>
+    <a href="/" class="logo">VANDODO</a>
     <div class="toolbar">
         <a href="<%= cart_path(current_cart) %>" class="link-toggle-right-nav link-shopping-cart" data-big-slide="cart">
             <span class="glyphicon glyphicon-shopping-cart" style="margin-right:14px;"></span>购物车
@@ -10,8 +10,11 @@
                 <img src="<%= current_user.avatar.url %>" class="avatar">
             </a>
         <% else %>
-            <a href="javascript:;" class="link-toggle-right-nav signup" data-big-slide="signup">注册</a>
-            <a href="javascript:;" class="link-toggle-right-nav signin" data-big-slide="signin">登录</a>
+            <span class="user">
+            <a href="javascript:;" class="link-toggle-right-nav" data-big-slide="signup">注册</a> /
+            <a href="javascript:;" class="link-toggle-right-nav" data-big-slide="signin">登录</a>
+            </span>
         <% end %>
     </div>
+    
 </header>

@@ -1,0 +1,13 @@
+pageId = 'frontend-welcome-about'
+timer = null
+
+$(document).on "page:load##{pageId}", (e) ->
+  unless $('.page').hasClass('fullpage')
+    $('.page').fullpage
+      navigation: true
+
+.on "page:before-unload##{pageId}", (e) ->
+  $.fn.fullpage.destroy()
+  $('html').removeClass('fp-enabled').attr 'style', ''
+  clearInterval timer
+

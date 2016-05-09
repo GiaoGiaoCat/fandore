@@ -1,6 +1,13 @@
 @import 'frontend/base';
 
 #frontend-products-index {
+  .page{
+    background:image-url('redesign/propose-section.jpg');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    padding:20px 0;
+  }
 
   @media screen and (min-width:1200px){
     .swiper-container{
@@ -11,7 +18,7 @@
       cursor: -webkit-grab;
       cursor: grab;
       img{
-        width:1200px;
+        width:100%;
       }
     }
   }
@@ -30,30 +37,10 @@
 
   }
 
-  @media screen and (min-width:1200px){
-    .product-list{
-      position: relative;
-      width:1200px; 
-      margin: 0 auto;
-    }
-  }
-  @media screen and (min-width:768px) and (max-width:1200px){
-    .product-list{
-      position: relative;
-      width:100%
-    }
-
-  }
-
-  .product-group {
-    font-size: 0;
-    &:nth-child(odd) .product:nth-child(odd) .product-bg {
-      background-color: #F5F5F5;
-    }
-
-    &:nth-child(even) .product:nth-child(even) .product-bg {
-      background-color: #F5F5F5;
-    }
+  .product-list{
+    position: relative;
+    width:90%; 
+    margin: 0 auto;
   }
 
   .product {
@@ -80,7 +67,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 500px auto;
-    background-color: #fff;
     border: 15px solid transparent;
     @include transition(300ms);
   }

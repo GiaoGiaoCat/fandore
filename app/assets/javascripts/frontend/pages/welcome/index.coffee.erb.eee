@@ -1,0 +1,7 @@
+pageId = 'frontend-welcome-index'
+# timer = null
+
+# $(document).on "page:load##{pageId}", (e) ->
+#  unless $('.page').hasClass('fullpage-wrapper')
+#    $('.page').fullpage
+#      navigation: true

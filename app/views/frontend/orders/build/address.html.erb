@@ -109,8 +109,11 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th class="name">商品/规格</th>
+                                    <th class="name">商品/规格</th>                                    
+                                    <th>钻石参数</th>
+                                    <th>戒托材质</th>
                                     <th>数量</th>
+                                    <th>手寸/刻字</th>
                                     <th>金额</th>
                                 </tr>
                             </thead>
@@ -119,9 +122,12 @@
                                     <tr data-item="<%= item.id %>">
                                         <th width="100"><img src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                                         <td class="name">
-                                            <%= item.name %> <span><%= item.variant.options_text %> <%= show_properties(item) %> <%= show_diamond_info(item.diamond) %></span>
+                                            <%= item.name %>
                                         </td>
+                                        <td><%= show_diamond_info(item.diamond) %></td>
+                                        <td><%= item.variant.options_text %></td>
                                         <td class="quantity"><%= item.quantity %></td>
+                                        <td><%= show_properties(item) %></td>
                                         <td class="price"><%= item.final_amount.to_i %></td>
                                     </tr>
                                 <% end %>
