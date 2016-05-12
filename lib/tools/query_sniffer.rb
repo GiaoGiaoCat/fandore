@@ -2,11 +2,12 @@
 
 module Tools
   class QuerySniffer
+    GIA_URL = 'http://www.gia.edu/otmm_wcs_int/proxy-report/'.freeze
 
     class << self
       # Tools::QuerySniffer.get_gia_info(6222032974)
       def get_gia_info(report_number)
-        uri = "http://www.gia.edu/otmm_wcs_int/proxy-report/?ReportNumber=#{report_number}&url=https://myapps.gia.edu/ReportCheckPOC/pocservlet?ReportNumber=#{report_number}"
+        uri = GIA_URL + "?ReportNumber=#{report_number}&url=https://myapps.gia.edu/ReportCheckPOC/pocservlet?ReportNumber=#{report_number}"
         xml = open(uri).read
         doc = Nokogiri::HTML(xml)
         result = {}
