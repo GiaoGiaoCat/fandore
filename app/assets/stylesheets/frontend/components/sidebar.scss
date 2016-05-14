@@ -61,6 +61,20 @@
       }
     }
 
+    .btn-try-brfore-buy {
+      position: absolute;
+      right: 200px;
+      bottom: 16px;
+      font-size:14px;
+      background-color: $ui-color;
+      border-color: $ui-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+    }
+
     .btn-payment {
       position: absolute;
       right: 20px;

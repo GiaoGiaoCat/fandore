@@ -4,7 +4,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
 
   def create
     build_order
-    save_order
+    save_order(params[:is_try])
   end
 
   def update
@@ -43,8 +43,11 @@ class Frontend::OrdersController < Frontend::ApplicationController
     @order ||= order_scope.new
   end
 
-  def save_order
+  def save_order(is_try)
     @order.add_line_items_from_cart(current_cart)
+    if is_try == "true"
+      @order.is_try_before_buy = true
+    end
     if @order.save
       redirect_to order_build_path(:address, :order_id => @order)
     end

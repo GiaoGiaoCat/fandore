@@ -21,7 +21,12 @@ module OrderUpdater
   # +total+              The so-called "order total."  This is equivalent to +item_total+ plus +adjustment_total+.
   def update_totals
     # update_payment_total
-    update_item_total
+    if self.is_try_before_buy?
+      self.item_total = 300
+      self.total = 300
+    else
+      update_item_total
+    end
     # update_shipment_total
     # update_adjustment_total
   end
