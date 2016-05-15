@@ -32,6 +32,7 @@
               %h4 订单号
               %h4.text-navy= @order.number
               - if @order.state == "delivered"
+                %p= "快递公司: " + @order.express.company
                 %p= "快递单号: " + @order.express.number
               %p
                 %span.badge

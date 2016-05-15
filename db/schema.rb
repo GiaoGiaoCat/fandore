@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160515065726) do
   create_table "expresses", force: :cascade do |t|
     t.integer  "order_id",   limit: 4
     t.string   "number",     limit: 191, null: false
+    t.string   "company",    limit: 191, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

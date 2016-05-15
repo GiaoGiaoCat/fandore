@@ -39,8 +39,10 @@ class Backend::OrdersController < Backend::ApplicationController
 
   def create_express
     express_number = params[:express][:number]
+    express_company = params[:express][:company]
     express = Order::Express.find_or_initialize_by(order_id: @order.id)
     express.number = express_number
+    express.company = express_company
     if express.save
       if @order.state != 'delivered'
         @order.update_state_with_track!('delivery', current_user)
