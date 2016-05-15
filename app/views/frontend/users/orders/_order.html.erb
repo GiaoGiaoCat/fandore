@@ -24,11 +24,11 @@
                     <tr>
                         <th width="100"><img width="100" height="56" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                         <td class="name">
-                          <%= item.name %>
+                        <%= link_to item.name, product_path(item.product) %>
                           <span><%= item.variant.options_text %> <%= show_properties(item) %> <%= show_diamond_info(item.diamond) %></span>
                         </td>
                         <td width="48"><%= item.quantity %></td>
-                        <td width="100"><%= number_to_currency item.final_amount %></td>
+                        <td width="100"><%= "商品原价" if order.is_try_before_buy? %><%= number_to_currency item.final_amount %></td>
                         <% if i == 0 %>
                             <td width="100" rowspan="<%= order.line_items.rings.size %>"><%= next_state_button(order) %></td>
                         <% end %>
@@ -38,8 +38,10 @@
         </table>
     </div>
     <div class="order-price">
-        <span class="total">商品：￥<%= order.total.to_i %></span>
-        <span class="reduce">优惠：￥<%= order.adjustment_total.to_i %></span>
+        <% unless order.is_try_before_buy? %>
+            <span class="total">商品：￥<%= order.total.to_i %></span>
+            <span class="reduce">优惠：￥<%= order.adjustment_total.to_i %></span>
+        <% end %>
         <span class="price">订单：￥<%= order.item_total.to_i %></span>
         <a href="<%= order_path(order) %>" class="link-order-show">查看详情</a>
     </div>

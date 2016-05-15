@@ -52,57 +52,59 @@
                     </main>
                 <% end %>
             </div>
-
-            <div class="section section-coupon">
-                <div class="header">优惠码</div>
-                <main>
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <label>使用优惠码</label>
-                            <div class="input-group">
-                                <input type="text" name="" class="form-control" disabled>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">立即使用</button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-
-            <div class="section section-invoice">
-                <div class="header">发票信息</div>
-                <main>
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input name="order[need_invoice]" type="checkbox" value="0"> 需要发票
-                                </label>
-                            </div>
-                        </div>
-                        <span class="form-group-invoice">
-                            <div class="form-group">发票类型：普通发票</div>
-                            <div class="form-group">发票内容：商品明细</div>
+            
+            <% unless @order.is_try_before_buy? %>
+                <div class="section section-coupon">
+                    <div class="header">优惠码</div>
+                    <main>
+                        <div class="form-inline">
                             <div class="form-group">
-                                发票抬头：
-                                <label class="radio-inline">
-                                    <input type="radio" name="order[invoice_type]" value="0" checked> 个人
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="order[invoice_type]" value="1"> 公司
-                                </label>
-                                <div class="form-group form-group-title">
-                                    <input type="text" name="order[invoice_title]" class="form-control" placeholder="输入公司名称">
+                                <label>使用优惠码</label>
+                                <div class="input-group">
+                                    <input type="text" name="" class="form-control" disabled>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">立即使用</button>
+                                    </span>
                                 </div>
                             </div>
-                        </span>
-                    </div>
-                </main>
-            </div>
+                        </div>
+                    </main>
+                </div>
+
+                <div class="section section-invoice">
+                    <div class="header">发票信息</div>
+                    <main>
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="order[need_invoice]" type="checkbox" value="0"> 需要发票
+                                    </label>
+                                </div>
+                            </div>
+                            <span class="form-group-invoice">
+                                <div class="form-group">发票类型：普通发票</div>
+                                <div class="form-group">发票内容：商品明细</div>
+                                <div class="form-group">
+                                    发票抬头：
+                                    <label class="radio-inline">
+                                        <input type="radio" name="order[invoice_type]" value="0" checked> 个人
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="order[invoice_type]" value="1"> 公司
+                                    </label>
+                                    <div class="form-group form-group-title">
+                                        <input type="text" name="order[invoice_title]" class="form-control" placeholder="输入公司名称">
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </main>
+                </div>
+            <% end %>
 
             <div class="section section-items">
-                <div class="header">商品信息</div>
+                <div class="header">商品信息 <%= "(试戴商品)" if @order.is_try_before_buy? %></div>
                 <main>
                     <div class="order-items-table">
                         <table class="table">
@@ -114,7 +116,9 @@
                                     <th>戒托材质</th>
                                     <th>数量</th>
                                     <th>手寸/刻字</th>
-                                    <th>金额</th>
+                                    <% unless @order.is_try_before_buy? %>
+                                        <th>金额</th>
+                                    <% end %>
                                 </tr>
                             </thead>
                             <tbody>
@@ -128,7 +132,7 @@
                                         <td><%= item.variant.options_text %></td>
                                         <td class="quantity"><%= item.quantity %></td>
                                         <td><%= show_properties(item) %></td>
-                                        <td class="price"><%= item.final_amount.to_i %></td>
+                                        <td class="price"><%= item.final_amount.to_i unless @order.is_try_before_buy? %></td>
                                     </tr>
                                 <% end %>
                             </tbody>
