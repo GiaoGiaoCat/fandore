@@ -19,6 +19,8 @@
             - unless @order.diamonds.size.zero?
               = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 编辑订单', edit_admin_order_path(@order), class: 'btn btn-white'
             = next_state_link(@order)
+            - if @order.state == "delivered"
+              = link_to content_tag(:i, nil, class: 'fa fa-pencil') + ' 修改发货单号', fill_in_express_admin_order_path(@order), class: 'btn btn-default'
           .row
             .col-sm-6
               %h4 收货人信息
@@ -29,6 +31,8 @@
             .col-sm-6.text-right
               %h4 订单号
               %h4.text-navy= @order.number
+              - if @order.state == "delivered"
+                %p= "快递单号: " + @order.express.number
               %p
                 %span.badge
                   = I18n.t("views.orders.states.#{@order.state}")

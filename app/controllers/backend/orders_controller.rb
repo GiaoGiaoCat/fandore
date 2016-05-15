@@ -39,11 +39,16 @@ class Backend::OrdersController < Backend::ApplicationController
 
   def create_express
     express_number = params[:express][:number]
-    # if express.save
-    #   @order.update_state_with_track!('delivery', current_user)
-    # end
-    p express_number
-    redirect_to admin_order_path(@order)
+    express = Order::Express.find_or_initialize_by(order_id: @order.id)
+    express.number = express_number
+    if express.save
+      if @order.state != 'delivered'
+        @order.update_state_with_track!('delivery', current_user)
+      end
+      redirect_to admin_order_path(@order), notice: '填写快递成功'
+    else
+      render 'fill_in_express', notice: '请填写快递单号'
+    end
   end
 
   private

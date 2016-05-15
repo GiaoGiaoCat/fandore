@@ -42,6 +42,15 @@
                         <h4>订单状态：<%= I18n.t("views.orders.states.#{@order.state}") %></h4>
                     </div>
                 </div>
+                
+                <% if @order.state == 'delivered' %>
+                    <div class="section">
+                        <div class="title">快递信息</div>
+                        <div class="content">
+                            <p>单号：&nbsp;&nbsp;&nbsp;&nbsp;<%= @order.express.number %></p>
+                        </div>
+                    </div>
+                <% end %>
 
                 <div class="section section-progress">
                     <div class="title">商品明细</div>

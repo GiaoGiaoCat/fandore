@@ -1,6 +1,6 @@
-$(document).on('click', '.btn-try-brfore-buy', function(event) {
-  event.preventDefault();
-  alert("sss")
-  
-});
+// $(document).on('click', '.btn-try-brfore-buy', function(event) {
+//   event.preventDefault();
+//   alert("sss")
+//   return false;
+// });
 

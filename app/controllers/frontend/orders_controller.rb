@@ -52,9 +52,13 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def mark_is_try_before_buy
-    if current_cart.line_items.size > 3
-      render text: "试戴商品最多只能选择3种"
-    end
+    p "------------"
+    p current_cart.line_items.size
+    p current_cart.line_items.count
+    p "-----=====-------"
+    # if current_cart.line_items.size > 3
+    #   render text: "试戴商品最多只能选择3种"
+    # end
     @order.is_try_before_buy = true
   end
 
