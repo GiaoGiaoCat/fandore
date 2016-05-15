@@ -32,10 +32,15 @@ module OrderStates
       state :processing
       state :pending
       state :paid
+      # 选钻
       state :filtered
+      # 镶嵌
       state :inlaided
+      # 质量审核
       state :quality_checked
+      # 包装
       state :packed
+      # 发货
       state :delivered
       state :completed
       state :canceled

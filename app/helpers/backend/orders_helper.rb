@@ -6,38 +6,66 @@ module Backend::OrdersHelper
 
   def next_state_link(obj)
     class_name, event_name =
-      case obj.state
-      when 'checkout'
-        ['fa fa-send', 'close']
-      when 'pending'
-        ['fa fa-send', 'pay']
-      when 'paid'
-        ['fa fa-send', 'filter']
-      when 'filtered'
-        ['fa fa-send', 'inlaid']
-      when 'inlaided'
-        ['fa fa-send', 'quality_check']
-      when 'quality_checked'
-        ['fa fa-send', 'pack']
-      when 'packed'
-        ['fa fa-send', 'delivery']
-      when 'delivered'
-        ['fa fa-send', 'complete']
-      when 'completed'
-        ['', '']
-        # ['fa fa-send', 'close']
-      when 'canceled'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
-      when 'closed'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
-      when 'refunded'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
-      when 'resumed'
-        ['', '']
-        # ['fa fa-send', 'quality_check']
+      if obj.is_try_before_buy?
+        case obj.state
+        when 'checkout'
+          ['fa fa-send', 'close']
+        when 'pending'
+          ['fa fa-send', 'pay']
+        when 'paid'
+          ['fa fa-send', 'delivery']
+        when 'delivered'
+          ['fa fa-send', 'complete']
+        when 'completed'
+          ['', '']
+          # ['fa fa-send', 'close']
+        when 'canceled'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        when 'closed'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        when 'refunded'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        when 'resumed'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        end
+      else
+        case obj.state
+        when 'checkout'
+          ['fa fa-send', 'close']
+        when 'pending'
+          ['fa fa-send', 'pay']
+        when 'paid'
+          ['fa fa-send', 'filter']
+        when 'filtered'
+          ['fa fa-send', 'inlaid']
+        when 'inlaided'
+          ['fa fa-send', 'quality_check']
+        when 'quality_checked'
+          ['fa fa-send', 'pack']
+        when 'packed'
+          ['fa fa-send', 'delivery']
+        when 'delivered'
+          ['fa fa-send', 'complete']
+        when 'completed'
+          ['', '']
+          # ['fa fa-send', 'close']
+        when 'canceled'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        when 'closed'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        when 'refunded'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        when 'resumed'
+          ['', '']
+          # ['fa fa-send', 'quality_check']
+        end
       end
     return if event_name.blank?
     btn_name = ' ' + I18n.t("views.orders.state_btn.#{event_name}")
