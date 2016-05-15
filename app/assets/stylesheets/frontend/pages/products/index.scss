@@ -1,48 +1,21 @@
 @import 'frontend/base';
 
 #frontend-products-index {
-  .page{
-    background:image-url('redesign/propose-section.jpg');
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position:center;
-    padding:20px 0;
+  .header {
+    background-color: #fff;
+    z-index: 9;
   }
-
-  @media screen and (min-width:1200px){
-    .swiper-container{
-      position: relative;
-      width:1200px; 
-      margin: 0 auto 20px;
-      cursor: move;
-      cursor: -webkit-grab;
-      cursor: grab;
-      img{
-        width:100%;
-      }
-    }
-  }
-  @media screen and (min-width:768px) and (max-width:1200px){
-    .swiper-container{
-      position: relative;
-      width:100%;
-      margin:0 auto 20px;
-      cursor: move;
-      cursor: -webkit-grab;
-      cursor: grab;
-      img{
-        width:100%;
-      }
+  .product-list{margin:20px 0}
+  .product-group {
+    font-size: 0;
+    &:nth-child(odd) .product:nth-child(odd) .product-bg {
+      background-color: #F5F5F5;
     }
 
+    &:nth-child(even) .product:nth-child(even) .product-bg {
+      background-color: #F5F5F5;
+    }
   }
-
-  .product-list{
-    position: relative;
-    width:90%; 
-    margin: 0 auto;
-  }
-
   .product {
     position: relative;
     display: inline-block;
@@ -67,6 +40,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 500px auto;
+    background-color: #fff;
     border: 15px solid transparent;
     @include transition(300ms);
   }
@@ -97,7 +71,6 @@
 
     .link-group {
       font-size: 0;
-
       > span {
         display: inline-block;
         width: 80px;
@@ -106,7 +79,6 @@
         font-size: 16px;
         color: #fff;
         @include transition(300ms, opacity);
-
         &:first-child {
           background-color: #000;
         }
