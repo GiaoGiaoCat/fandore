@@ -26,7 +26,20 @@ class Backend::OrdersController < Backend::ApplicationController
 
   def update_state
     load_order
-    @order.update_state_with_track!(params[:event], current_user)
+    if params[:event] == "delivery"
+      redirect_to fill_in_express_admin_order_path(@order)
+    else
+      @order.update_state_with_track!(params[:event], current_user)
+      redirect_to :back
+    end
+  end
+
+  def fill_in_express
+  end
+
+  def create_express
+    express_number = params[:express][:number]
+    p express_number
   end
 
   private

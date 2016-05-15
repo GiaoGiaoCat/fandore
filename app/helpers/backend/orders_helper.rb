@@ -10,27 +10,10 @@ module Backend::OrdersHelper
         case obj.state
         when 'checkout'
           ['fa fa-send', 'close']
-        when 'pending'
-          ['fa fa-send', 'pay']
         when 'paid'
           ['fa fa-send', 'delivery']
-        when 'delivered'
-          ['fa fa-send', 'complete']
-        when 'completed'
+        else
           ['', '']
-          # ['fa fa-send', 'close']
-        when 'canceled'
-          ['', '']
-          # ['fa fa-send', 'quality_check']
-        when 'closed'
-          ['', '']
-          # ['fa fa-send', 'quality_check']
-        when 'refunded'
-          ['', '']
-          # ['fa fa-send', 'quality_check']
-        when 'resumed'
-          ['', '']
-          # ['fa fa-send', 'quality_check']
         end
       else
         case obj.state
