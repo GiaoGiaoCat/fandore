@@ -39,7 +39,11 @@ class Backend::OrdersController < Backend::ApplicationController
 
   def create_express
     express_number = params[:express][:number]
+    # if express.save
+    #   @order.update_state_with_track!('delivery', current_user)
+    # end
     p express_number
+    redirect_to admin_order_path(@order)
   end
 
   private
