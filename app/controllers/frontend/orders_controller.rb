@@ -44,21 +44,20 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def save_order(is_try)
+    if current_cart.line_items.size > 6
+      return render js: "alert('试戴商品不能超过三个');"
+    end
     mark_is_try_before_buy if is_try == "true"
     @order.add_line_items_from_cart(current_cart)
     if @order.save
-      redirect_to order_build_path(:address, :order_id => @order)
+      respond_to do |format|
+        format.html { redirect_to order_build_path(:address, :order_id => @order) }
+        format.js { render js: "window.location.href='"+ order_build_path(:address, :order_id => @order) +"'" }
+      end
     end
   end
 
   def mark_is_try_before_buy
-    p "------------"
-    p current_cart.line_items.size
-    p current_cart.line_items.count
-    p "-----=====-------"
-    # if current_cart.line_items.size > 3
-    #   render text: "试戴商品最多只能选择3种"
-    # end
     @order.is_try_before_buy = true
   end
 

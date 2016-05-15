@@ -33,7 +33,7 @@
             <span class="total-quantity">共 <span></span> 件商品</span><br>
             <span class="total-price">合计 <span></span></span>
         </div>
-        <a href="<%= orders_path(is_try: true) %>" class="btn btn-primary btn-lg btn-try-brfore-buy" data-method="post">try before buy</a>
+        <a href="<%= orders_path(is_try: true) %>" class="btn btn-primary btn-lg btn-try-brfore-buy" data-remote="true" data-method="post">try before buy</a>
         <a href="<%= orders_path %>" class="btn btn-primary btn-lg btn-payment" data-method="post">现在结算</a>
     </div>
 <% else %>
