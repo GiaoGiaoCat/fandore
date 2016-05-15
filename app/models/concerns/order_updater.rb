@@ -22,8 +22,7 @@ module OrderUpdater
   def update_totals
     # update_payment_total
     if self.is_try_before_buy?
-      self.item_total = 300
-      self.total = 300
+      update_try_before_buy_total
     else
       update_item_total
     end
@@ -40,5 +39,10 @@ module OrderUpdater
 
   def update_order_total
     self.total = item_total + shipment_total + adjustment_total
+  end
+
+  def update_try_before_buy_total
+    self.item_total = 300
+    self.total = 300
   end
 end

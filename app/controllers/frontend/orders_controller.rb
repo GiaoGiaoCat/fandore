@@ -44,13 +44,18 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def save_order(is_try)
+    mark_is_try_before_buy if is_try == "true"
     @order.add_line_items_from_cart(current_cart)
-    if is_try == "true"
-      @order.is_try_before_buy = true
-    end
     if @order.save
       redirect_to order_build_path(:address, :order_id => @order)
     end
+  end
+
+  def mark_is_try_before_buy
+    if current_cart.line_items.size > 3
+      render text: "试戴商品最多只能选择3种"
+    end
+    @order.is_try_before_buy = true
   end
 
   def order_scope

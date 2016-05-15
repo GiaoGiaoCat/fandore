@@ -37,6 +37,7 @@ class Order < ActiveRecord::Base
   # has_many :shipments, dependent: :destroy, inverse_of: :order
 
   # validations ...............................................................
+  validate :try_before_buy_count
   # callbacks .................................................................
   before_validation :clone_shipping_address, if: :use_shipping?
   before_create :create_token, :link_by_email
@@ -79,6 +80,10 @@ class Order < ActiveRecord::Base
   # protected instance methods ................................................
   # private instance methods ..................................................
   private
+
+  def try_before_buy_count
+    errors.add(:line_items, "试戴商品最多只能选择3种") if self.line_items.size > 3
+  end
 
   def link_by_email
     self.email = user.email if self.user
