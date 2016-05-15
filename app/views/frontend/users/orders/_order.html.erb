@@ -1,6 +1,6 @@
 <div class="order">
     <div class="title">
-        订单号：<a href="<%= order_path(order) %>"><%= order.number %></a>
+        订单号：<a href="<%= order_path(order) %>"><%= order.number %></a> <%= "试戴订单" if order.is_try_before_buy? %>
 
         <% if order.checkout? || order.processing? %>
             <%= link_to '立即下单', order_build_path(order, :address), class: 'btn btn-default btn-sm' %>
