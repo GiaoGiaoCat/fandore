@@ -17,20 +17,28 @@ module Tools
         result
       end
 
-      # Tools::QuerySniffer.get_hca_info
-      def get_hca_info
+      # Tools::QuerySniffer.get_hca_info("60", "57", "34", "40.5", "0")
+      def get_hca_info(depth_textbox, table_textbox, crown_textbox, pavilion_textbox, cutlet_textbox)
         uri = URI('http://www.pricescope.com/tools/hca')
         params = {
-          depth_textbox: 60,
-          table_textbox: 57,
-          crown_textbox: 34,
-          cutlet_textbox: 0,
-          pavilion_textbox: 40.5,
-          crown_listbox: 0,
-          pavilion_listbox: 0
+          depth_textbox: depth_textbox,
+          table_textbox: table_textbox,
+          crown_textbox: crown_textbox,
+          pavilion_textbox: pavilion_textbox,
+          cutlet_textbox: cutlet_textbox,
+          crown_listbox: "0",
+          pavilion_listbox: "0"
         }
         res = Net::HTTP.post_form(uri, params)
-        puts res.body
+        html = res.body
+        doc = Nokogiri::HTML(html)
+        result = doc.css("table td font").children.map do |ele|
+            ele.text
+        end
+        result[14..30]
+        # doc.css("table td img").each do |ele|
+        #   p ele.values
+        # end
       end
     end
 
