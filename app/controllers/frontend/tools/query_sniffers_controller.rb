@@ -8,4 +8,13 @@ class Frontend::Tools::QuerySniffersController < Frontend::ApplicationController
     @gia_infos = ::Tools::QuerySniffer.get_gia_info(params[:gia_number])
   end
 
+  def hca_query
+  end
+
+  def hca_query_result
+    @hac_results = ::Tools::QuerySniffer.get_hca_info(params[:depth_textbox], 
+                                                    params[:table_textbox], params[:crown_textbox], 
+                                                    params[:pavilion_textbox], params[:cutlet_textbox])
+  end
+
 end

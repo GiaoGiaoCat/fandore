@@ -1,0 +1,17 @@
+<% @page_title = "HCA查询" %>
+
+<%= render 'layouts/frontend/header' %>
+
+<%= form_tag hca_query_result_path do %>
+  <%= label_tag :depth_textbox %>
+  <%= text_field_tag :depth_textbox, params[:depth_textbox] %>
+  <%= label_tag :table_textbox %>
+  <%= text_field_tag :table_textbox, params[:table_textbox] %>
+  <%= label_tag :crown_textbox %>
+  <%= text_field_tag :crown_textbox, params[:crown_textbox] %>
+  <%= label_tag :pavilion_textbox %>
+  <%= text_field_tag :pavilion_textbox, params[:pavilion_textbox] %>
+  <%= label_tag :cutlet_textbox %>
+  <%= text_field_tag :cutlet_textbox, params[:cutlet_textbox] %>
+  <%= submit_tag "提交" %>
+<% end %>
