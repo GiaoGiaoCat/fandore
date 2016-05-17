@@ -1,0 +1,8 @@
+<% @page_title = "GIA证书查询" %>
+
+<%= render 'layouts/frontend/header' %>
+
+<%= form_tag gia_certificate_result_path do %>
+  <%= text_field_tag :gia_number, params[:gia_number] %>
+  <%= submit_tag "提交" %>
+<% end %>

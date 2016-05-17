@@ -39,6 +39,14 @@ Rails.application.routes.draw do
       end
     end
 
+    # 工具相关
+    scope module: 'tools' do
+      controller 'query_sniffers' do
+        get 'gia_certificate', 'hca_query'
+        post 'gia_certificate_result', 'hca_query_result'
+      end
+    end
+
     # 会员相关
     scope module: 'users' do
       controller 'registrations' do
