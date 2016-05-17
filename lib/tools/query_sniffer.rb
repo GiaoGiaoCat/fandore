@@ -35,7 +35,9 @@ module Tools
         result = doc.css("table td font").children.map do |ele|
             ele.text
         end
-        result[14..30]
+        result = result[16..30]
+        result.delete_at(7)
+        result
         # doc.css("table td img").each do |ele|
         #   p ele.values
         # end
