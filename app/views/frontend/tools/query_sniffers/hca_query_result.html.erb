@@ -3,16 +3,17 @@
 <%= render 'layouts/frontend/header' %>
 
 <% @hac_results.each_slice(2) do |result| %>
-  <% case result.first %>
-  <% when "Light Return" %> 
-    反光性: <%= result.last %> <br/>
-  <% when "Fire" %>
-    火彩: <%= result.last  %> <br/>
-  <% when "Scintillation" %>
-    闪耀性: <%= result.last  %> <br/>
-  <% when "Spreador diameter for weight" %>
-    延展性: <%= result.last  %> <br/>
-  <% when "Total Visual Performance" %>
-    综合评分: <%= result.last  %> <br/>
-  <% end %>
+  <%= result %>
+  <%# case result.first %>
+  <%# when "Light Return" %> 
+    <!-- 反光性: <%#= result.last %> <br/> -->
+  <%# when "Fire" %>
+    <!-- 火彩: <%#= result.last  %> <br/> -->
+  <%# when "Scintillation" %>
+    <!-- 闪耀性: <%#= result.last  %> <br/> -->
+  <%# when "Spreador diameter for weight" %>
+    <!-- 延展性: <%= result.last  %> <br/> -->
+  <%# when "Total Visual Performance" %>
+    <!-- 综合评分: <%= result.last  %> <br/> -->
+  <%# end %>
 <% end %>
