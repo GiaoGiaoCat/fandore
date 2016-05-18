@@ -2,19 +2,60 @@
 
 <%= render 'layouts/frontend/header' %>
 
-<% @hac_results.each_slice(2) do |result| %>
-  <% case result.first %>
-  <% when "Light Return" %> 
-    反光性: <%= result.last %> <br/>
-  <% when "Fire" %>
-    火彩: <%= result.last  %> <br/>
-  <% when "Scintillation" %>
-    闪耀性: <%= result.last  %> <br/>
-  <% when "Spreador diameter for weight" %>
-    延展性: <%= result.last  %> <br/>
-  <% when "Total Visual Performance" %>
-    综合评分: <%= result.last  %> <br/>
-  <% else %>
-    <%= result %>
-  <% end %>
-<% end %>
+<div class="form-sign">
+    <div class="form-group">
+        <p class="title">HCA查询结果</p>
+    </div>
+    <% @hac_results.each_slice(2) do |result| %>
+      <% case result.first %>
+      <% when "Light Return" %> 
+         <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>反光性</span>
+                </span>
+                <%= result.last %>
+            </div>
+          </div>
+      <% when "Fire" %>
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>火彩</span>
+                </span>
+                <%= result.last %>
+            </div>
+          </div>
+      <% when "Scintillation" %>
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>闪耀性</span>
+                </span>
+                <%= result.last %>
+            </div>
+          </div>
+      <% when "Spreador diameter for weight" %>
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>延展性</span>
+                </span>
+                <%= result.last %>
+            </div>
+          </div>
+      <% when "Total Visual Performance" %>
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>综合评分</span>
+                </span>
+                <%= result.last %>
+            </div>
+          </div>
+      <%# else %>
+        <%#= result %>
+      <% end %>
+    <% end %>
+</div>
+

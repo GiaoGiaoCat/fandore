@@ -2,6 +2,18 @@
 
 <%= render 'layouts/frontend/header' %>
 
-<% @gia_infos.each do |k, v| %>
-  <%= k %>: <%= v %> <br/>
-<% end %>
+<div class="form-sign">
+    <div class="form-group">
+        <p class="title">GIA查询结果</p>
+    </div>
+    <% @gia_infos.each do |k, v| %>
+      <div class="form-group">
+          <div class="input-group">
+              <span class="input-group-addon">
+                  <span><%= k %></span>
+              </span>
+              <%= v %>
+          </div>
+      </div>
+    <% end %>
+</div>
