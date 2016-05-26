@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     scope module: 'tools' do
       controller 'query_sniffers' do
         get 'gia_certificate', 'hca_query'
-        post 'gia_certificate_result', 'hca_query_result'
+        post 'gia_certificate', 'hca_query'
       end
     end
 

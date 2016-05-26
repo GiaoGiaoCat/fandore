@@ -3,7 +3,7 @@
 <%= render 'layouts/frontend/header' %>
 
 
-<%= form_tag gia_certificate_result_path, class: "form-sign form-signup" do %>
+<%= form_tag gia_certificate_path, class: "form-sign form-signup" do %>
     <div class="form-group">
         <p class="title">GIA证书查询</p>
     </div>
@@ -19,3 +19,22 @@
 
     <button type="submit" class="btn btn-default btn-block" id="btn-signup">查询</button>
 <% end %>
+
+<% if @gia_infos.any? %>
+    <div class="form-sign">
+        <div class="form-group">
+            <p class="title">GIA查询结果</p>
+        </div>
+        <% @gia_infos.each do |k, v| %>
+          <div class="form-group">
+              <div class="input-group">
+                  <span class="input-group-addon">
+                      <span><%= k %></span>
+                  </span>
+                  <%= v %>
+              </div>
+          </div>
+        <% end %>
+    </div>
+<% end %>
+
