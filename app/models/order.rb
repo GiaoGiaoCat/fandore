@@ -77,6 +77,11 @@ class Order < ActiveRecord::Base
     payments.checkout.last.payment_method.pay_url(self)
   end
 
+  # 微信支付二维码保存路径
+  def wx_qrcode_path
+    "/uploads/wx_pub_qr/#{number}.png"
+  end
+
   # protected instance methods ................................................
   # private instance methods ..................................................
   private

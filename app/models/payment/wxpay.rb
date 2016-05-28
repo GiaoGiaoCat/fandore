@@ -15,7 +15,7 @@ class Payment::Wxpay < Payment::PaymentMethod
     pingxx_result = Pingpp::Charge.create(
       :subject  => order.order_name,
       :body     => order.products.map(&:name).join(","),
-      :amount   => order.total,
+      :amount   => order.total * 100,
       :order_no => order.number,
       :channel  => "wx_pub_qr",
       :currency => "cny",
@@ -24,9 +24,9 @@ class Payment::Wxpay < Payment::PaymentMethod
       :app => {'id' => "app_WHSmb5CuLCK0uf9u"}
     )
     wx_pub_qr = pingxx_result[:credential][:wx_pub_qr]
-    qr_path = "public/#{order.number}.png"
+    qr_path = "public/uploads/wx_pub_qr/#{order.number}.png"
     RQRCode::QRCode.new( wx_pub_qr, :size => 5, :level => :h ).to_img.resize(200, 200).save(qr_path)
-    "/orders/#{order.number}/wx_qr_payment"
+    Rails.application.routes.url_helpers.wx_qr_payment_order_path(order)
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
