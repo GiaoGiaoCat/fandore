@@ -74,6 +74,8 @@ gem 'cancancan', '~> 1.10'
 gem 'alipay', github: 'chloerei/alipay'
 # An unofficial simple wechat pay gem
 gem 'wx_pay'
+# 支付ping++
+gem 'pingpp'
 gem 'rqrcode_png'
 # View helper to manage "active" state of a link
 gem 'active_link_to'
