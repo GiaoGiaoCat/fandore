@@ -33,6 +33,12 @@ class Frontend::OrdersController < Frontend::ApplicationController
     load_order
   end
 
+  def wxpay_notify
+    p "----------------------------"
+    p params
+    p "==================="
+  end
+
   private
 
   def load_orders

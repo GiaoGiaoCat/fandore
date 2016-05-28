@@ -15,7 +15,7 @@ class Payment::Wxpay < Payment::PaymentMethod
     pingxx_result = Pingpp::Charge.create(
       :subject  => order.order_name,
       :body     => order.products.map(&:name).join(","),
-      :amount   => order.total * 100,
+      :amount   => 1,
       :order_no => order.number,
       :channel  => "wx_pub_qr",
       :currency => "cny",
