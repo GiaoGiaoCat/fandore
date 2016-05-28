@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :show, :create, :update] do
       get :alipay_done, on: :member
       post :alipay_notify, on: :collection
+      get :wx_qr_payment, on: :member
       scope module: 'orders' do
         resources :build, only: [:show, :update]
       end

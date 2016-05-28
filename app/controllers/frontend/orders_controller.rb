@@ -29,6 +29,10 @@ class Frontend::OrdersController < Frontend::ApplicationController
     render text: (@order.paid? ? 'success' : '')
   end
 
+  def wx_qr_payment
+    load_order
+  end
+
   private
 
   def load_orders
