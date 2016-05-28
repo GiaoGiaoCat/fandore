@@ -15,6 +15,7 @@ class Payment::Wxpay < Payment::PaymentMethod
     pingxx_result = Pingpp::Charge.create(
       :subject  => order.order_name,
       :body     => order.products.map(&:name).join(","),
+      # :amount   => order.total * 100,
       :amount   => 1,
       :order_no => order.number,
       :channel  => "wx_pub_qr",
@@ -61,3 +62,25 @@ end
     #     "credential": {"object":"credential","wx_pub_qr":"weixin://wxpay/bizpayurl?pr=QiIrd6Z"},
     #     "description": null
     #   }
+
+
+# {"id"=>"evt_lhZH6kxk7IlLO4n2FiFPWr9D", "created"=>1464443420, 
+#   "livemode"=>true, "type"=>"charge.succeeded", 
+#   "data"=>{"object"=>{"id"=>"ch_eXf9aHGqPSeLOqDe14qHWbrP", 
+#     "object"=>"charge", "created"=>1464443397, "livemode"=>true, 
+#     "paid"=>true, "refunded"=>false, "app"=>"app_WHSmb5CuLCK0uf9u", 
+#     "channel"=>"wx_pub_qr", "order_no"=>"N073120064", "client_ip"=>"0.0.0.0", "amount"=>1,
+#      "amount_settle"=>1, "currency"=>"cny", "subject"=>"Crown钻石戒指", "body"=>"Crown钻石戒指,0.3CT-H-VS2", 
+#      "extra"=>{"product_id"=>2016, "open_id"=>"o4QdzswK88PaUjBvsYfx8ZbDtkhI", "bank_type"=>"CFT"}, 
+#      "time_paid"=>1464443419, "time_expire"=>1464450597, "time_settle"=>nil, 
+#      "transaction_no"=>"4000152001201605286442541441", 
+#      "refunds"=>{"object"=>"list", "url"=>"/v1/charges/ch_eXf9aHGqPSeLOqDe14qHWbrP/refunds", 
+#       "has_more"=>false, "data"=>nil}, "amount_refunded"=>0, "failure_code"=>nil, 
+#       "failure_msg"=>nil, "metadata"=>{}, "credential"=>{}, "description"=>nil}}, 
+#       "object"=>"event", "pending_webhooks"=>1, "request"=>"iar_CWHGuTyLSiHKDW5yvLzzfv54",
+#        "order"=>{"id"=>"evt_lhZH6kxk7IlLO4n2FiFPWr9D"}}
+
+
+
+
+

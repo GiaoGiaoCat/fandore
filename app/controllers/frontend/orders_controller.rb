@@ -1,6 +1,6 @@
 class Frontend::OrdersController < Frontend::ApplicationController
-  skip_before_action :verify_authenticity_token, only: :alipay_notify
-  skip_before_action :authenticate_user!, only: :alipay_notify
+  skip_before_action :verify_authenticity_token, only: :alipay_notify, :wxpay_notify
+  skip_before_action :authenticate_user!, only: :alipay_notify, :wxpay_notify
 
   def create
     build_order
@@ -36,6 +36,8 @@ class Frontend::OrdersController < Frontend::ApplicationController
   def wxpay_notify
     p "----------------------------"
     p params
+    p "----------------------------"
+    p params[:data]
     p "==================="
   end
 
