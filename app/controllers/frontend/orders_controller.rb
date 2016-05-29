@@ -34,11 +34,11 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def wxpay_notify
-    p "----------------------------"
-    p params
-    p "----------------------------"
-    p params[:data]
-    p "==================="
+    Rails.logger.info "----------------------------"
+    Rails.logger.info params
+    Rails.logger.info "----------------------------"
+    Rails.logger.info params[:data]
+    Rails.logger.info "==================="
   end
 
   private
