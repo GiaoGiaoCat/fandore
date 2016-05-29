@@ -26,6 +26,7 @@ class Order < ActiveRecord::Base
   has_many :diamonds, -> { where.not(ancestry: nil) }, class_name: 'LineItem'
   has_many :payments, dependent: :destroy
   has_one :express, dependent: :destroy
+  has_one :pingxx_info, dependent: :destroy
   # has_many :refunds, through: :payments
   # has_many :return_authorizations, dependent: :destroy, inverse_of: :order
   # has_many :reimbursements, inverse_of: :order

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515065726) do
+ActiveRecord::Schema.define(version: 20160529015532) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -256,6 +256,19 @@ ActiveRecord::Schema.define(version: 20160515065726) do
 
   add_index "payments", ["order_id"], name: "index_payments_on_order_id", using: :btree
   add_index "payments", ["payment_method_id"], name: "index_payments_on_payment_method_id", using: :btree
+
+  create_table "pingxx_infos", force: :cascade do |t|
+    t.string   "pingxx_id",  limit: 191
+    t.string   "channel",    limit: 191
+    t.string   "paid",       limit: 191
+    t.integer  "amount",     limit: 4
+    t.integer  "order_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "pingxx_infos", ["order_id"], name: "index_pingxx_infos_on_order_id", using: :btree
+  add_index "pingxx_infos", ["pingxx_id"], name: "index_pingxx_infos_on_pingxx_id", using: :btree
 
   create_table "prices", force: :cascade do |t|
     t.integer  "variant_id", limit: 4

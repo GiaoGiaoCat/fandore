@@ -24,10 +24,13 @@ class Payment::Wxpay < Payment::PaymentMethod
       :extra=> {'product_id' => order.products.first.id},
       :app => {'id' => "app_WHSmb5CuLCK0uf9u"}
     )
-    wx_pub_qr = pingxx_result[:credential][:wx_pub_qr]
-    qr_path = "public/uploads/wx_pub_qr/#{order.number}.png"
-    RQRCode::QRCode.new( wx_pub_qr, :size => 5, :level => :h ).to_img.resize(200, 200).save(qr_path)
-    Rails.application.routes.url_helpers.wx_qr_payment_order_path(order)
+    pingxx_info = order.build_pingxx_info(pingxx_id: pingxx_result[:id], channel: pingxx_result[:channel], amount: pingxx_result[:amount])
+    if pingxx_info.save
+      wx_pub_qr = pingxx_result[:credential][:wx_pub_qr]
+      qr_path = "public/uploads/wx_pub_qr/#{order.number}.png"
+      RQRCode::QRCode.new( wx_pub_qr, :size => 5, :level => :h ).to_img.resize(200, 200).save(qr_path)
+      Rails.application.routes.url_helpers.wx_qr_payment_order_path(order)
+    end
   end
   # protected instance methods ................................................
   # private instance methods ..................................................
@@ -66,10 +69,12 @@ end
 
 # {"id"=>"evt_lhZH6kxk7IlLO4n2FiFPWr9D", "created"=>1464443420, 
 #   "livemode"=>true, "type"=>"charge.succeeded", 
-#   "data"=>{"object"=>{"id"=>"ch_eXf9aHGqPSeLOqDe14qHWbrP", 
-#     "object"=>"charge", "created"=>1464443397, "livemode"=>true, 
-#     "paid"=>true, "refunded"=>false, "app"=>"app_WHSmb5CuLCK0uf9u", 
-#     "channel"=>"wx_pub_qr", "order_no"=>"N073120064", "client_ip"=>"0.0.0.0", "amount"=>1,
+#   "data"=>
+#       {"object"=>
+#             {"id"=>"ch_eXf9aHGqPSeLOqDe14qHWbrP", 
+#               "object"=>"charge", "created"=>1464443397, "livemode"=>true, 
+#               "paid"=>true, "refunded"=>false, "app"=>"app_WHSmb5CuLCK0uf9u", 
+#               "channel"=>"wx_pub_qr", "order_no"=>"N073120064", "client_ip"=>"0.0.0.0", "amount"=>1,
 #      "amount_settle"=>1, "currency"=>"cny", "subject"=>"Crown钻石戒指", "body"=>"Crown钻石戒指,0.3CT-H-VS2", 
 #      "extra"=>{"product_id"=>2016, "open_id"=>"o4QdzswK88PaUjBvsYfx8ZbDtkhI", "bank_type"=>"CFT"}, 
 #      "time_paid"=>1464443419, "time_expire"=>1464450597, "time_settle"=>nil, 
