@@ -24,6 +24,23 @@ class Payment < ActiveRecord::Base
     self.attributes = options
     complete!
   end
+
+  def pingxx_purchase(params)
+    options = {
+      amount: params[:amount],
+      transaction_id: params[:transaction_no]
+    }
+    self.attributes = options
+    pingxx_options = {
+      paid: params[:paid],
+      amount_settle: params[:amount_settle],
+      transaction_no: params[:transaction_no],
+      time_paid: params[:time_paid]
+    }
+    self.order.pingxx_info.update(pingxx_options)
+    complete!
+  end
   # protected instance methods ................................................
   # private instance methods ..................................................
 end
+

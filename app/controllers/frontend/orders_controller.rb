@@ -34,11 +34,10 @@ class Frontend::OrdersController < Frontend::ApplicationController
   end
 
   def wxpay_notify
-    Rails.logger.info "----------------------------"
-    Rails.logger.info params
-    Rails.logger.info "----------------------------"
-    Rails.logger.info params[:data]
-    Rails.logger.info "==================="
+    pay_result = params[:data][:object]
+    @order = Order.find_by(number: pay_result[:order_no])
+    wxpay(pay_result)
+    render text: (@order.paid? ? 'success' : '')
   end
 
   private
@@ -81,6 +80,13 @@ class Frontend::OrdersController < Frontend::ApplicationController
     notify_params = params.except(*request.path_parameters.keys)
     if @order.pending? && Alipay::Notify.verify?(notify_params)
       @order.payments.first_or_initialize.purchase(params)
+      @order.update_state_with_track!('pay', @order.user)
+    end
+  end
+
+  def wxpay(pay_result)
+    if @order.pending? && @order.pingxx_info.charge_retrieve.paid && pay_result[:paid]
+      @order.payments.first_or_initialize.pingxx_purchase(pay_result)
       @order.update_state_with_track!('pay', @order.user)
     end
   end

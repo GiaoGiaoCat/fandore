@@ -258,13 +258,17 @@ ActiveRecord::Schema.define(version: 20160529015532) do
   add_index "payments", ["payment_method_id"], name: "index_payments_on_payment_method_id", using: :btree
 
   create_table "pingxx_infos", force: :cascade do |t|
-    t.string   "pingxx_id",  limit: 191
-    t.string   "channel",    limit: 191
-    t.string   "paid",       limit: 191
-    t.integer  "amount",     limit: 4
-    t.integer  "order_id",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "pingxx_id",      limit: 191
+    t.string   "channel",        limit: 191
+    t.boolean  "paid"
+    t.integer  "amount",         limit: 4
+    t.integer  "amount_settle",  limit: 4
+    t.integer  "order_id",       limit: 4
+    t.string   "transaction_no", limit: 191
+    t.string   "time_paid",      limit: 191
+    t.string   "time_expire",    limit: 191
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "pingxx_infos", ["order_id"], name: "index_pingxx_infos_on_order_id", using: :btree
