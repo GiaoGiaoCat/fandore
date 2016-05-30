@@ -2,116 +2,218 @@
 
 <%= render 'layouts/frontend/header' %>
 
+<style type="text/css">
+        /**{
+            margin:0px;
+            border:0px;
+            padding:0px;
+        }*/
+        .navigation-text{
+            position: relative;
+            background-color: black;
+            min-height: 320px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .headline-text{
+            padding-top: 55px;
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: x-large;
+        }
+        .font-text{
+            color:#fff;
+        }
+        .search-text1 input{
+            height: 35px;
+            width: 165px;
+            background-color: #000;
+            border:solid #fff 1px;
+            border-radius:5px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .search-text1{
+            position: relative;
+            right:100px;
+        }
+        .search-text2 input{
+            height: 35px;
+            width: 165px;
+            background-color: #000;
+            border:solid #fff 1px;
+            border-radius:5px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .search-text2{
+            position: absolute;
+            top: 92px;
+            left: 50%;
+        }
+        .search-text3 input{
+            height: 35px;
+            width: 165px;
+            background-color: #000;
+            border:solid #fff 1px;
+            border-radius:5px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .search-text3{
+            position: relative;
+            right: 108.5px;
+        }
+        .search-text4 input{
+            height: 35px;
+            width: 165px;
+            background-color: #000;
+            border:solid #fff 1px;
+            border-radius:5px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .search-text4{
+            position: absolute;
+            top: 150px;
+            left: 50%;
+        }
+        .search-text5 input{
+            height: 35px;
+            width: 165px;
+            background-color: #000;
+            border:solid #fff 1px;
+            border-radius:5px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        .search-text5{
+            position: relative;
+            right: 108px; 
+        }
+        .search-button1{
+            background: #b22222;
+            color: #fff;
+            width: 80px;
+            height: 38px;
+            border: 1px;
+            border-radius:5px;
+            position: relative;
+            bottom: 37.5px;
+            left: 103.5px;
+        }
+        .search-button2{
+            background: #fef8e6;
+            width: 80px;
+            height: 38px;
+            border: 1px;
+            border-radius:5px;
+            position: relative;
+            bottom: 37.5px;
+            left: 111.5px;
+        }
+        .search-last{
+            position: relative;
+            font-size:x-small;
+        }
+        .search-last a{
+            text-decoration:none
+        }
+        .result-text{
+            text-align: center;
+        }
+        .result-first{
+            font-size: xx-large;
+            font-weight: bold;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        td.form-1{
+            width: 100px;
+            height: 32px;
+        }
+        td.form-2{
+            width: 200px;
+            height: 32px;
+        }
+        .hca-img{
+            margin-top: 50px;
+        }
+        .hca-img img{
+            width: 300px;
+            height: 300px;
+        }
+        </style>
 
-<%= form_tag hca_query_path, class: "form-sign form-signup" do %>
-    <div class="form-group">
-        <p class="title">HCA查询</p>
-    </div>
-
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon">depth</span>
-            </span>
-            <input type="text" name="depth_textbox" class="form-control" required>
+<div class="navigation-text">
+    <div class="headline-text"><strong>HCA火彩评估</strong></div>
+        <%= form_tag hca_query_path do %>
+            <div class="search-text1">      
+                <input  style="color: #fff;padding-left:10px;" type="text" name="depth_textbox" placeholder="深度比"/>
+                <span class="font-text">%</span>
+            </div>
+            <div class="search-text2">    
+                <input  style="color: #fff;padding-left:10px;" type="text" name="table_textbox" placeholder="台面比"/>
+                <span class="font-text">%</span>
+            </div>
+            <div class="search-text3">
+                <input  style="color: #fff;padding-left:10px;" type="text" name="crown_textbox" placeholder="冠  角"/>
+            </div>
+          <div class="search-text4">
+                <input  style="color: #fff;padding-left:10px;" type="text" name="pavilion_textbox" placeholder="亭  角"/>
+            </div>    
+            <div class="search-text5">
+                <input  style="color: #fff;padding-left:10px;" type="text" name="cutlet_textbox" placeholder="底 尖"/>
+            </div>   
+            <div class="search-button">    
+                <button type="submit" class="search-button1" id="btn-signup">计算</button>
+                <input class="search-button2" type="reset" value="重置"  onclick="javascript:document.getElementById('input').value='';" value="clear" />
+            </div>
+        <% end %>  
+        <div class="search-last">
+            <span style="color: #fff">其他钻石评估工具：</span><a href="#" style="color: red">GIA证书查询</a>
         </div>
-    </div>
-
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon">table</span>
-            </span>
-            <input type="text" name="table_textbox" class="form-control" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon">crown</span>
-            </span>
-            <input type="text" name="crown_textbox" class="form-control" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon">pavilion</span>
-            </span>
-            <input type="text" name="pavilion_textbox" class="form-control" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon">
-                <span class="glyphicon">cutlet</span>
-            </span>
-            <input type="text" name="cutlet_textbox" class="form-control" required>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-default btn-block" id="btn-signup">查询</button>
-<% end %>
-
+    </div>    
+</div>
 
 <% if @hac_results.present? %>
-    <div class="form-sign">
-    <div class="form-group">
-        <p class="title">HCA查询结果</p>
+    <div class="result-text">
+        <div class="result-first">
+            <span>HCA结果评估</span>   
+        </div>
+        <div align="center">
+            <table cellspacing=0>
+                <% @hac_results.each_slice(2) do |result| %>
+                    <tr  style="background-color:#f5f5f5;">
+                    <% case result.first %>
+                    <% when "Light Return" %>
+                        <td class="form-1">反光性</td>
+                        <td class="form-2"><%= result.last %></td>
+                    <% when "Fire" %>
+                        <td class="form-1">火彩</td>
+                        <td class="form-2"><%= result.last %></td>
+                    </tr>
+                    <tr>
+                    <% when "Scintillation" %>
+                        <td class="form-1">闪耀性</td>
+                        <td class="form-2"><%= result.last %></td>
+                    <% when "Spreador diameter for weight" %>
+                        <td class="form-1">延展性</td>
+                        <td class="form-2"><%= result.last %></td>
+                    </tr>
+                    <tr  style="background-color:#f5f5f5;">
+                    <% when "Total Visual Performance" %>
+                        <td class="form-1">综合评分</td>
+                        <td class="form-3" colspan=3><%= result.last %></td>        
+                    </tr>
+                    <% end %>
+                <% end %>
+            </table>
+        </div>
+        <div class="hca-img">
+            <img src="img\hca.png">
+        </div>
     </div>
-    <% @hac_results.each_slice(2) do |result| %>
-      <% case result.first %>
-      <% when "Light Return" %> 
-         <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <span>反光性</span>
-                </span>
-                <%= result.last %>
-            </div>
-          </div>
-      <% when "Fire" %>
-          <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <span>火彩</span>
-                </span>
-                <%= result.last %>
-            </div>
-          </div>
-      <% when "Scintillation" %>
-          <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <span>闪耀性</span>
-                </span>
-                <%= result.last %>
-            </div>
-          </div>
-      <% when "Spreador diameter for weight" %>
-          <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <span>延展性</span>
-                </span>
-                <%= result.last %>
-            </div>
-          </div>
-      <% when "Total Visual Performance" %>
-          <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <span>综合评分</span>
-                </span>
-                <%= result.last %>
-            </div>
-          </div>
-      <%# else %>
-        <%#= result %>
-      <% end %>
-    <% end %>
-</div>
 <% end %>
+
+
