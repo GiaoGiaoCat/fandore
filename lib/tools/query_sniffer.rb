@@ -35,12 +35,14 @@ module Tools
         result = doc.css("table td font").children.map do |ele|
             ele.text
         end
-        result = result[16..30]
+        image = ""
+        doc.css("table td img").each do |ele|
+          image = ele.values[2]
+        end
+        result = result[16..26]
         result.delete_at(7)
-        result
-        # doc.css("table td img").each do |ele|
-        #   p ele.values
-        # end
+        image_hash = {"image_path" => "http://www.pricescope.com" + image}
+        Hash[*result].merge! image_hash
       end
     end
 

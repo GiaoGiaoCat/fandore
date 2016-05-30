@@ -7,9 +7,13 @@ class Frontend::Tools::QuerySniffersController < Frontend::ApplicationController
 
   def hca_query
     if request.method == "POST"
-      @hac_results = ::Tools::QuerySniffer.get_hca_info(params[:depth_textbox], 
+      if params[:depth_textbox].present? && params[:table_textbox].present? && params[:crown_textbox].present? && params[:pavilion_textbox].present? && params[:cutlet_textbox].present?
+        @hac_results = ::Tools::QuerySniffer.get_hca_info(params[:depth_textbox], 
                                                       params[:table_textbox], params[:crown_textbox], 
                                                       params[:pavilion_textbox], params[:cutlet_textbox])
+      else
+        render 'hca_query'
+      end
     end
   end
 

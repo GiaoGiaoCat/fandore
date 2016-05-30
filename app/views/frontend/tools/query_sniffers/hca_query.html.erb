@@ -48,7 +48,7 @@
         }
         .search-text2{
             position: absolute;
-            top: 92px;
+            top: 99px;
             left: 50%;
         }
         .search-text3 input{
@@ -75,7 +75,7 @@
         }
         .search-text4{
             position: absolute;
-            top: 150px;
+            top: 154px;
             left: 50%;
         }
         .search-text5 input{
@@ -94,23 +94,23 @@
         .search-button1{
             background: #b22222;
             color: #fff;
-            width: 80px;
-            height: 38px;
-            border: 1px;
+            width: 78px;
+            height: 37px;
+            border: 0px;
             border-radius:5px;
             position: relative;
-            bottom: 37.5px;
-            left: 103.5px;
+            bottom: 35px;
+            left: 99px;
         }
         .search-button2{
             background: #fef8e6;
-            width: 80px;
-            height: 38px;
-            border: 1px;
+            width: 78px;
+            height: 37px;
+            border: 0px;
             border-radius:5px;
             position: relative;
-            bottom: 37.5px;
-            left: 111.5px;
+            bottom: 35px;
+            left: 106px;
         }
         .search-last{
             position: relative;
@@ -126,7 +126,7 @@
             font-size: xx-large;
             font-weight: bold;
             margin-top: 60px;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
         }
         td.form-1{
             width: 100px;
@@ -136,12 +136,22 @@
             width: 200px;
             height: 32px;
         }
+        .form-1rd{
+            background-color: #ddd;
+        }
         .hca-img{
             margin-top: 50px;
         }
         .hca-img img{
             width: 300px;
             height: 300px;
+        }
+        .line {
+            height: 2px;
+            width: 1000px;
+            background-color: #ddd;
+            margin: 0 auto;
+            margin-bottom: 40px;
         }
         </style>
 
@@ -163,7 +173,7 @@
                 <input  style="color: #fff;padding-left:10px;" type="text" name="pavilion_textbox" placeholder="亭  角"/>
             </div>    
             <div class="search-text5">
-                <input  style="color: #fff;padding-left:10px;" type="text" name="cutlet_textbox" placeholder="底 尖"/>
+                <input  style="color: #fff;padding-left:10px;" type="text" name="cutlet_textbox" placeholder="底 尖   0"/>
             </div>   
             <div class="search-button">    
                 <button type="submit" class="search-button1" id="btn-signup">计算</button>
@@ -171,9 +181,9 @@
             </div>
         <% end %>  
         <div class="search-last">
-            <span style="color: #fff">其他钻石评估工具：</span><a href="#" style="color: red">GIA证书查询</a>
+            <span style="color: #fff">其他钻石评估工具：</span><a href="/gia_certificate" style="color: red">GIA证书查询</a>
         </div>
-    </div>    
+    </div>
 </div>
 
 <% if @hac_results.present? %>
@@ -181,39 +191,30 @@
         <div class="result-first">
             <span>HCA结果评估</span>   
         </div>
+        <div class="line"></div>
         <div align="center">
-            <table cellspacing=0>
-                <% @hac_results.each_slice(2) do |result| %>
-                    <tr  style="background-color:#f5f5f5;">
-                    <% case result.first %>
-                    <% when "Light Return" %>
-                        <td class="form-1">反光性</td>
-                        <td class="form-2"><%= result.last %></td>
-                    <% when "Fire" %>
-                        <td class="form-1">火彩</td>
-                        <td class="form-2"><%= result.last %></td>
-                    </tr>
-                    <tr>
-                    <% when "Scintillation" %>
-                        <td class="form-1">闪耀性</td>
-                        <td class="form-2"><%= result.last %></td>
-                    <% when "Spreador diameter for weight" %>
-                        <td class="form-1">延展性</td>
-                        <td class="form-2"><%= result.last %></td>
-                    </tr>
-                    <tr  style="background-color:#f5f5f5;">
-                    <% when "Total Visual Performance" %>
-                        <td class="form-1">综合评分</td>
-                        <td class="form-3" colspan=3><%= result.last %></td>        
-                    </tr>
-                    <% end %>
-                <% end %>
-            </table>
+        <table cellspacing=0>
+            <tr  class="form-1rd">
+            <td class="form-1">反光性</td>
+            <td class="form-2"><%= @hac_results["Light Return"] %></td>
+            <td class="form-1">火彩</td>
+            <td class="form-2"><%= @hac_results["Fire"] %></td>
+        </tr>
+        <tr>
+            <td class="form-1">闪耀性</td>
+            <td class="form-2"><%= @hac_results["Scintillation"] %></td>
+            <td class="form-1">延展性</td>
+            <td class="form-2"><%= @hac_results["Spreador diameter for weight"] %></td>
+        </tr>
+        <tr  class="form-1rd">
+            <td class="form-1">综合评分</td>
+            <td class="form-3" colspan=3><%= @hac_results["Total Visual Performance"] %></td>        
+        </tr>
+        </table>
         </div>
         <div class="hca-img">
-            <img src="img\hca.png">
+            <img src="<%= @hac_results["image_path"] %>">
         </div>
     </div>
 <% end %>
-
 
