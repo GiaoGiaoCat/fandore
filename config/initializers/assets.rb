@@ -13,3 +13,5 @@ Rails.application.config.assets.precompile += %w( backend.js backend.css fronten
 
 # include bower components in compiled assets
 Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'bower')
+
+Rails.application.config.assets.precompile += %w( frontend/tools/hca_query.css )
