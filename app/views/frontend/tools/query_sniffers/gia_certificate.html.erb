@@ -127,7 +127,6 @@
   </div> 
 <% end %>
 
-<%= @gia_infos %>
 <% if @gia_infos.any? %>
   <div class="special">证书查询结同步GIA官方数据，VANDODO对证书验证的反馈结果不做任何陈述和保证。</div>
   <div class="result-all">
@@ -135,64 +134,44 @@
           <div class="result-first">GIA检测报告</div>
           <div class="result-text1">GIA证书编号</div>
           <div class="result-text2">颁发日期</div>
-          <div class="result-text3">5156617376</div>
-          <div class="result-text4">2013/08/01</div>
+          <div class="result-text3"><%= @gia_infos["report_no"] %></div>
+          <div class="result-text4"><%= @gia_infos["report_dt"] %></div>
           <div class="result-text5">Round Brilliant</div>
           <table class="table table-striped">
               <tr><td>尺寸</td><td><%= @gia_infos["length"] %></td></tr>
               <tr><td>克拉重量</td><td><%= @gia_infos["weight"] %> carat</td></tr>
               <tr><td>颜色等级</td><td><%= @gia_infos["color"] %></td></tr>
-              <tr><td>净度等级</td><td>WSI</td></tr>
-              <tr><td>切工等级</td><td>Excellent</td></tr>
+              <tr><td>净度等级</td><td><%= @gia_infos["clarity"] %></td></tr>
+              <tr><td>切工等级</td><td><%= @gia_infos["final_cut"] %></td></tr>
           </table>
           <div class="result-text6">比例</div>
           <table class="table table-striped">
-              <tr><td>深度比</td><td>62.4%</td></tr>
-              <tr><td>台面比</td><td>56%</td></tr>
-              <tr><td>冠角</td><td>35.5°</td></tr>
-              <tr><td>冠高</td><td>16.0%</td></tr>
-              <tr><td>亭部角度</td><td>40.8°</td></tr>
-              <tr><td>亭深</td><td>43.0%</td></tr>
-              <tr><td>星形刻面长度</td><td>45%</td></tr>
-              <tr><td>腰下刻面</td><td>75%</td></tr>
-              <tr><td>腰围</td><td>Medium to Slightly Thick, Faceted, 3.5%</td></tr>
-              <tr><td>底尖</td><td>None</td></tr>
+              <tr><td>深度比</td><td><%= @gia_infos["depth_pct"] %>%</td></tr>
+              <tr><td>台面比</td><td><%= @gia_infos["table_pct"] %>%</td></tr>
+              <tr><td>冠角</td><td><%= @gia_infos["crn_ag"] %></td></tr>
+              <tr><td>冠高</td><td><%= @gia_infos["crn_ht"] %></td></tr>
+              <tr><td>亭部角度</td><td><%= @gia_infos["pav_ag"] %></td></tr>
+              <tr><td>亭深</td><td><%= @gia_infos["pav_dp"] %></td></tr>
+              <tr><td>星形刻面长度</td><td><%= @gia_infos["str_ln"] %></td></tr>
+              <tr><td>腰下刻面</td><td><%= @gia_infos["lr_half"] %></td></tr>
+              <tr><td>腰围</td><td><%= @gia_infos["girdle"] %>, <%= @gia_infos["girdle_condition"] %>, <%= @gia_infos["girdle_pct"] %></td></tr>
+              <tr><td>底尖</td><td><%= @gia_infos["culet_size"] %></td></tr>
           </table>
           <div class="result-text7">切工</div>
           <table class="table table-striped">
-              <tr><td>抛光</td><td>Excellent</td></tr>
-              <tr><td>对称</td><td>Excellent</td></tr>
+              <tr><td>抛光</td><td><%= @gia_infos["polish"] %></td></tr>
+              <tr><td>对称</td><td><%= @gia_infos["symmetry"] %></td></tr>
           </table>
           <div class="result-text8">荧光</div>
           <table class="table table-striped">
-              <tr><td>荧光</td><td>None</td></tr>
+              <tr><td>荧光</td><td><%= @gia_infos["fluorescence_intensity"] %></td></tr>
           </table>
           <div class="result-text9">净度特征</div>
           <table class="table table-striped">
-              <tr><td>净度特征</td><td>Cloud, Crystal</td></tr>
+              <tr><td>净度特征</td><td><%= @gia_infos["key_to_symbols"] %></td></tr>
           </table>
           <div class="last"></div>
       </div>
   </div>
 <% end %>
-
-
-
-
-    <div class="form-sign">
-        <div class="form-group">
-            <p class="title">GIA查询结果</p>
-        </div>
-        <% @gia_infos.each do |k, v| %>
-          <div class="form-group">
-              <div class="input-group">
-                  <span class="input-group-addon">
-                      <span><%= k %></span>
-                  </span>
-                  <%= v %>
-              </div>
-          </div>
-        <% end %>
-    </div>
-
 
