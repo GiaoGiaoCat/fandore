@@ -1,7 +1,7 @@
 <% @page_title = "GIA证书查询" %>
 
 <%= render 'layouts/frontend/header' %>
-    <style type="text/css">
+<style type="text/css">
         .navigation-text{
             background-color: black;
             height: 320px;
@@ -25,15 +25,15 @@
             
         }
         .search-button{
-            background: #b22222;
+            background: #DE111E;
             color: #fff;
             width: 60px;
             height: 38.5px;
             border: 1px;
             border-radius:5px;
             position: relative;
-            bottom:38px;
-            left: 214px;
+            bottom:37px;
+            left: 208px;
         }
         .search-last{
             margin-top: -10px;
@@ -42,25 +42,143 @@
         .search-last a{
             text-decoration:none
         }
+        .special{
+            text-align: center;
+            font-size: xx-small;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .result-all{
+            width: 800px;
+            min-height: 300px;
+            border:1px solid #ddd;
+            margin:0 auto;
+            margin-bottom: 120px;
+        }
+        .result-text{
+            width:600px;
+            margin:0 auto
+        }
+        .result-first{
+            text-align: center;
+            font-weight: normal;
+            font-size: xx-large;
+            margin-top: 70px;
+        }
+        .result-text1{
+            font-size: large;
+            margin-top: 70px;
+        }
+        .result-text2{
+            font-size: large;
+            position: relative;
+            bottom: 25px;
+            left: 360px;
+        }
+        .result-text3{
+            font-size: x-large;
+            position: relative;
+            bottom: 25px;
+        }
+        .result-text4{
+            font-size: x-large;
+            position: relative;
+            bottom: 59.5px;
+            left: 360px;
+        }
+        .result-text5{
+            margin-top: -30px;
+            margin-bottom: 20px;
+        }
+        .result-text6{
+            margin-bottom: 20px;
+        }
+        .result-text7{
+            margin-bottom: 20px;
+        }
+        .result-text8{
+            margin-bottom: 20px;
+        }
+        .result-text9{
+            margin-bottom: 20px;
+        }
+        .result-text td{
+            width: 400px;
+        }
+        .table-striped tbody tr:nth-child(odd) td {
+            background-color: #dcdcdc;
+        }
+        .last{
+            height: 50px;
+        }
     </style>
-
 
 <%= form_tag gia_certificate_path do %>
   <div class="navigation-text">
-      <div class="headline-text"><strong >GIA证书查询</strong></div>
-          <div class="search-text1">      
-              <input type="text" name="gia_number" style="color: #fff;padding-left:10px;" placeholder="请输入证书号"/>
-          </div>    
-              <input class="search-button" type="submit" value="查询" />
-          <div class="search-last">
-              <span style="color: #fff">其他钻石评估工具：</span><a href="#" style="color: red">HCA火彩评估</a>
-          </div>
-      </div>
+        <div class="headline-text"><strong>GIA证书查询</strong></div>
+            <div class="search-text1">
+                <input type="text" name="gia_number" style="color: #fff;padding-left:10px;" placeholder="请输入证书号">
+            </div>    
+                <input class="search-button" type="submit" value="查询">
+            <div class="search-last">
+                <span style="color: #fff">其他钻石评估工具：</span><a href="http://www.vandodo.com/gia_certificate#" style="color: red">HCA火彩评估</a>
+            </div>
+        </div>
   </div> 
 <% end %>
 
-
+<%= @gia_infos %>
 <% if @gia_infos.any? %>
+  <div class="special">证书查询结同步GIA官方数据，VANDODO对证书验证的反馈结果不做任何陈述和保证。</div>
+  <div class="result-all">
+      <div class="result-text">
+          <div class="result-first">GIA检测报告</div>
+          <div class="result-text1">GIA证书编号</div>
+          <div class="result-text2">颁发日期</div>
+          <div class="result-text3">5156617376</div>
+          <div class="result-text4">2013/08/01</div>
+          <div class="result-text5">Round Brilliant</div>
+          <table class="table table-striped">
+              <tr><td>尺寸</td><td><%= @gia_infos["length"] %></td></tr>
+              <tr><td>克拉重量</td><td><%= @gia_infos["weight"] %> carat</td></tr>
+              <tr><td>颜色等级</td><td><%= @gia_infos["color"] %></td></tr>
+              <tr><td>净度等级</td><td>WSI</td></tr>
+              <tr><td>切工等级</td><td>Excellent</td></tr>
+          </table>
+          <div class="result-text6">比例</div>
+          <table class="table table-striped">
+              <tr><td>深度比</td><td>62.4%</td></tr>
+              <tr><td>台面比</td><td>56%</td></tr>
+              <tr><td>冠角</td><td>35.5°</td></tr>
+              <tr><td>冠高</td><td>16.0%</td></tr>
+              <tr><td>亭部角度</td><td>40.8°</td></tr>
+              <tr><td>亭深</td><td>43.0%</td></tr>
+              <tr><td>星形刻面长度</td><td>45%</td></tr>
+              <tr><td>腰下刻面</td><td>75%</td></tr>
+              <tr><td>腰围</td><td>Medium to Slightly Thick, Faceted, 3.5%</td></tr>
+              <tr><td>底尖</td><td>None</td></tr>
+          </table>
+          <div class="result-text7">切工</div>
+          <table class="table table-striped">
+              <tr><td>抛光</td><td>Excellent</td></tr>
+              <tr><td>对称</td><td>Excellent</td></tr>
+          </table>
+          <div class="result-text8">荧光</div>
+          <table class="table table-striped">
+              <tr><td>荧光</td><td>None</td></tr>
+          </table>
+          <div class="result-text9">净度特征</div>
+          <table class="table table-striped">
+              <tr><td>净度特征</td><td>Cloud, Crystal</td></tr>
+          </table>
+          <div class="last"></div>
+      </div>
+  </div>
+<% end %>
+
+
+
+
     <div class="form-sign">
         <div class="form-group">
             <p class="title">GIA查询结果</p>
@@ -76,5 +194,5 @@
           </div>
         <% end %>
     </div>
-<% end %>
+
 
