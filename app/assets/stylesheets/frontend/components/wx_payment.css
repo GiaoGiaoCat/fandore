@@ -1,0 +1,84 @@
+.weixin{
+    height: 500px;
+    background-color: #2D3237;
+}
+.two-dimension{
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+    top:130px;
+    right: 160px;
+}
+.two-dimension1{
+    background-image: url(img/border.png);
+    background-repeat:no-repeat;
+    width: 200px;height: 200px;
+}
+.two-dimension1 img{
+    width: 160px;
+    height: 160px;
+    position: relative;
+    top:20px;
+    left: 20px;
+}
+.refresh-all{
+    text-align: center;
+}
+.explain{
+    text-align: center;
+    position: relative;
+    bottom:125px;
+    left: 160px;
+}
+.explain1{
+    color: #fff;
+    font-size: 27px;
+    letter-spacing:3px;
+}
+.explain2{
+    color: #fff;
+    font-size: 12px;
+}
+.explain3{
+    width: 230px;
+    margin: 0 auto;
+}
+.explain4{
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    bottom:125px;
+    left: 155px;
+}
+.explain5{
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    bottom:125px;
+    left: 155px;
+}
+.exolain3 p{
+    text-align:left!important;
+}
+.button{
+    text-align: center;
+    position: relative;
+    bottom:120px;
+    left: 160px;
+}
+.button a {
+  width: 240px;
+}
+.glyphicon-refresh{
+    margin-top: 20px;
+    color: #fff;
+}
+.refresh{
+    margin-top: 10px;
+}
