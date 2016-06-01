@@ -1,3 +1,116 @@
-<%= image_tag @order.wx_qrcode_path %>
+<% @page_title = "微信支付"  %>
 
-<%= link_to "支付完成", @order %>
+<%= render 'layouts/frontend/header' %>
+
+<style type="text/css">
+    .weixin{
+        height: 500px;
+        background-color: #2D3237;
+    }
+    .two-dimension{
+        width: 200px;
+        margin: 0 auto;
+        position: relative;
+        top:130px;
+        right: 160px;
+    }
+    .two-dimension1{
+        background-image: url(img/border.png);
+        background-repeat:no-repeat;
+        width: 200px;height: 200px;
+    }
+    .two-dimension1 img{
+        width: 160px;
+        height: 160px;
+        position: relative;
+        top:20px;
+        left: 20px;
+    }
+    .refresh-all{
+        text-align: center;
+    }
+    .explain{
+        text-align: center;
+        position: relative;
+        bottom:125px;
+        left: 160px;
+    }
+    .explain1{
+        color: #fff;
+        font-size: 27px;
+        letter-spacing:3px;
+    }
+    .explain2{
+        color: #fff;
+        font-size: 12px;
+    }
+    .explain3{
+        width: 230px;
+        margin: 0 auto;
+    }
+    .explain4{
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        position: relative;
+        bottom:125px;
+        left: 155px;
+    }
+    .explain5{
+        color: #fff;
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        position: relative;
+        bottom:125px;
+        left: 155px;
+    }
+    .exolain3 p{
+        text-align:left!important;
+    }
+    .button{
+        text-align: center;
+        position: relative;
+        bottom:120px;
+        left: 160px;
+    }
+    .button a {
+      width: 240px;
+    }
+    .glyphicon-refresh{
+        margin-top: 20px;
+        color: #fff;
+    }
+    .refresh{
+        margin-top: 10px;
+    }
+</style>
+
+<div class="weixin container-fluid">
+    <div class="two-dimension">
+        <div class="two-dimension1">
+          <%= image_tag @order.wx_qrcode_path %>
+        </div>
+        <div class="refresh-all">
+          <a href=" " class="glyphicon glyphicon-refresh" style="font-size: 20px;">
+            <p class="refresh" style="font-size: 15px; color: #909294">刷新二维码</p >
+          </a >
+        </div>
+    </div>
+    <div class="explain">
+        <p class="explain1">欢迎使用微信支付</p >
+        <p class="explain2">使用微信手机客户端扫描左边二维码完成支付</p >
+    </div>
+    <div class="explain3">
+        <p class="explain4">订单号： <%= @order.number %></p >
+        <p class="explain5">支付金额： ¥ <%= @order.total %></p >
+    </div>
+    <div class="button">
+      <%= link_to "已完成支付", @order, class: 'btn btn-default' %>
+    </div>
+</div>
+
+<%= render 'layouts/frontend/footer' %>
