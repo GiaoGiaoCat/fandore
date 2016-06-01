@@ -70,6 +70,7 @@ class Order < ActiveRecord::Base
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
       item.cart_id = nil
+      self.update(is_try_before_buy: true) if cart.is_try_before_buy
       line_items << item
     end
   end

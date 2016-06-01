@@ -27,6 +27,14 @@ class Order::Cart < ActiveRecord::Base
     current_item
   end
 
+  def set_is_try_before_buy(is_try)
+    if is_try == "true"
+      update(is_try_before_buy: true)
+    else
+      update(is_try_before_buy: false)
+    end
+  end
+
   def total_price
     # NOTE: amount 并不是最终价格，引入优惠码之后这里需要调整
     # line_items.to_a.sum { |item| item.amount }
