@@ -1,5 +1,5 @@
 <div class="cart-header">
-    购物车
+    购物车<%= " (试戴)" if @cart.is_try_before_buy? %>
     <a href="javascript:;" class="link-close-sidebar">
         <span class="glyphicon glyphicon-remove"></span>
     </a>

@@ -14,7 +14,10 @@
 
 <script>
   $(".btn-try-before-buy").on('click', function(){
-    // alert("ss");
     // return false;
+    $("#is_try_before_buy").val("true")
+  });
+  $(".btn-normal-buy").on('click', function(){
+    $("#is_try_before_buy").val("false")
   });
 </script>
