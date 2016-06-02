@@ -14,10 +14,15 @@
 
 <script>
   $(".btn-try-before-buy").on('click', function(){
-    // return false;
-    $("#is_try_before_buy").val("true")
+    $("#is_try_before_buy").val("true");
   });
   $(".btn-normal-buy").on('click', function(){
-    $("#is_try_before_buy").val("false")
+    $("#is_try_before_buy").val("false");
+  });
+  $(".btn-payment").on('click', function(){
+    if ($(".quantity").size() > 3) {
+      alert("试戴商品只能选择3个以内");
+      return false;
+    }
   });
 </script>
