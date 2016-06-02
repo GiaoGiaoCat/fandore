@@ -8,9 +8,18 @@ module Frontend::ProductsHelper
   end
 
   def add_to_cart_button(p)
-    btn_class = 'btn btn-default btn-lg btn-shopping'
+    btn_class = 'btn btn-default btn-lg btn-shopping btn-normal-buy'
     button_tag(type: 'submit', disabled: p.unavailable?, class: btn_class, data: { disable_with: '正在提交...'}) do
       content_tag(:span, nil, class: 'glyphicon glyphicon-shopping-cart') + '加入购物车'
+    end
+  end
+
+  def add_try_before_buy_to_cart_button(p)
+    btn_class = 'btn btn-default btn-lg btn-shopping btn-try-before-buy'
+    button_tag(type: 'submit', disabled: p.unavailable?, class: btn_class, data: { disable_with: '正在提交...'}) do
+      content_tag(:input, nil, type: 'hidden', name: 'is_try_before_buy', id: 'is_try_before_buy') do 
+        content_tag(:span, nil, class: 'glyphicon glyphicon-shopping-cart') + '加入试戴'
+      end
     end
   end
 end

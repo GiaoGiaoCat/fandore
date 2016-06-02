@@ -4,7 +4,7 @@ class Frontend::LineItemsController < Frontend::ApplicationController
   def create
     load_variant
     build_line_item
-    save_line_item or render 'new'
+    save_line_item(params[:is_try_before_buy]) or render 'new'
   end
 
   def destroy
@@ -26,11 +26,12 @@ class Frontend::LineItemsController < Frontend::ApplicationController
     @line_item = @cart.add_line_item(@variant)
   end
 
-  def save_line_item
+  def save_line_item(is_try_before_buy)
     if @line_item.save
       save_diamond
       @line_item.save_engaement_properties(params)
       @line_item.save_wedding_properties(params)
+      @cart.set_is_try_before_buy(is_try_before_buy)
       redirect_to cart_path(@line_item.cart)
     end
   end

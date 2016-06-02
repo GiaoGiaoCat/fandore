@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529015532) do
+ActiveRecord::Schema.define(version: 20160601011756) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 20160529015532) do
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
-    t.integer "user_id", limit: 4
+    t.integer "user_id",           limit: 4
+    t.boolean "is_try_before_buy",           default: false
   end
 
   add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree

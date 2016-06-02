@@ -1,5 +1,5 @@
 <div class="cart-header">
-    购物车
+    购物车<%= " (试戴)" if @cart.is_try_before_buy? %>
     <a href="javascript:;" class="link-close-sidebar">
         <span class="glyphicon glyphicon-remove"></span>
     </a>
@@ -15,7 +15,7 @@
                         <th width="100"><img width="100" height="56" src="<%= item.product.master.images.first.picture.mini.url rescue '' %>"></th>
                         <td class="name"><%= item.name %><span><%= show_diamond_info(item.diamond) %></span></td>
                         <td class="quantity"><%= item.quantity %></td>
-                        <td class="price"><%= item.final_amount.to_i %></td>
+                        <td class="price"><%= item.final_amount.to_i unless @cart.is_try_before_buy? %></td>
                         <td width="48">
                             <a href="<%= line_item_path(item) %>" data-remote="true" data-method="delete"
                                 data-confirm="确认删除？">
@@ -31,9 +31,8 @@
     <div class="cart-footer">
         <div class="cart-info">
             <span class="total-quantity">共 <span></span> 件商品</span><br>
-            <span class="total-price">合计 <span></span></span>
+            <span class="total-price">合计 <span></span><%= TRY_BEFORE_BUY_PRICE if @cart.is_try_before_buy? %></span>
         </div>
-        <a href="<%= orders_path(is_try: true) %>" class="btn btn-primary btn-lg btn-try-brfore-buy" data-remote="true" data-method="post">try before buy</a>
         <a href="<%= orders_path %>" class="btn btn-primary btn-lg btn-payment" data-method="post">现在结算</a>
     </div>
 <% else %>

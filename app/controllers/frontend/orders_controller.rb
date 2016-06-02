@@ -4,7 +4,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
 
   def create
     build_order
-    save_order(params[:is_try])
+    save_order
   end
 
   def update
@@ -54,11 +54,7 @@ class Frontend::OrdersController < Frontend::ApplicationController
     @order ||= order_scope.new
   end
 
-  def save_order(is_try)
-    if current_cart.line_items.size > 6
-      return render js: "alert('试戴商品不能超过三个');"
-    end
-    mark_is_try_before_buy if is_try == "true"
+  def save_order
     @order.add_line_items_from_cart(current_cart)
     if @order.save
       respond_to do |format|
@@ -66,10 +62,6 @@ class Frontend::OrdersController < Frontend::ApplicationController
         format.js { render js: "window.location.href='"+ order_build_path(:address, :order_id => @order) +"'" }
       end
     end
-  end
-
-  def mark_is_try_before_buy
-    @order.is_try_before_buy = true
   end
 
   def order_scope

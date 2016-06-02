@@ -42,7 +42,7 @@ module OrderUpdater
   end
 
   def update_try_before_buy_total
-    self.item_total = 300
-    self.total = 300
+    self.item_total = TRY_BEFORE_BUY_PRICE
+    self.total = TRY_BEFORE_BUY_PRICE
   end
 end

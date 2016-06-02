@@ -1,5 +1,6 @@
 <div class="form-buttons">
     <%= add_to_cart_button(@product) %>
+    <%= add_try_before_buy_to_cart_button(@product) %>
     <% if current_user %>
         <% if current_user.is_favorite? @product %>
             <%= link_to '取消收藏', favorite_path(@product.id), method: :delete, remote: true, class: 'btn btn-default btn-lg btn-collect', date: { 'disable-with' => '正在取消...'}  %>
@@ -11,3 +12,17 @@
 
 </div>
 
+<script>
+  $(".btn-try-before-buy").on('click', function(){
+    $("#is_try_before_buy").val("true");
+  });
+  $(".btn-normal-buy").on('click', function(){
+    $("#is_try_before_buy").val("false");
+  });
+  $(".btn-payment").on('click', function(){
+    if ($(".quantity").size() > 3) {
+      alert("试戴商品只能选择3个以内");
+      return false;
+    }
+  });
+</script>
