@@ -15,7 +15,7 @@
 <script>
   $(".btn-try-before-buy").on('click', function(){
     $("#is_try_before_buy").val("true");
-    if ($(".quantity").size() > 3) {
+    if ($(".quantity").size() > 2) {
       alert("试戴商品只能选择3个以内");
       return false;
     }
